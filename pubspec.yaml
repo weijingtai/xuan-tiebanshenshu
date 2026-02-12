@@ -42,9 +42,8 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   common:
-    git:
-      url: https://github.com/weijingtai/xuan-common.git
-      ref: main
+    path: ../xuan-common
+  google_fonts: ^8.0.1
 
 
 dev_dependencies:

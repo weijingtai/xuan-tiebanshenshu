@@ -10,9 +10,9 @@ import 'package:tiebanshenshu/features/yuan_tang_gua/yuan_tang_calculator.dart';
 import 'package:tiebanshenshu/features/yuan_tang_gua/yuan_tang_info.dart';
 import 'package:tiebanshenshu/features/yuan_tang_gua/yuan_tang_info_ext.dart';
 
-import '../../domain/models/base_number_model.dart';
-import '../../domain/models/base_number_model_result.dart';
-import '../../domain/models/xian_houtian_gua_base_number_model.dart';
+import 'package:tiebanshenshu/domain/models/base_number_model.dart';
+import 'package:tiebanshenshu/domain/models/base_number_model_result.dart';
+import 'package:tiebanshenshu/domain/models/xian_houtian_gua_base_number_model.dart';
 import '../../utils/tiao_wen_calculator.dart';
 import 'base/yuan_tang_based_strategy.dart';
 import 'base/yuan_tang_derived_params.dart';
@@ -88,22 +88,25 @@ class XianHoutianJiaZeStrategyParams extends YuanTangDerivedParams {
 /// - 复用 YuanTangInfo 计算结果，避免重复计算
 /// - 先天卦和后天卦分别计算基础数
 /// - 先天卦使用递增扩展，后天卦使用递减扩展
-class XianHoutianJiaZeStrategy extends YuanTangBasedStrategy<
-    XianHoutianJiaZeStrategyParams, BaseNumberModelResult> {
+class XianHoutianJiaZeStrategy
+    extends
+        YuanTangBasedStrategy<
+          XianHoutianJiaZeStrategyParams,
+          BaseNumberModelResult
+        > {
   @override
   String get name => "先后天八卦加则法";
 
   @override
-  String get description =>
-      "基于元堂卦信息，使用加则法计算先后天卦基础数，先天卦递增96四次，后天卦递减96四次";
+  String get description => "基于元堂卦信息，使用加则法计算先后天卦基础数，先天卦递增96四次，后天卦递减96四次";
 
   @override
   List<String> get detailSteps => [
-        "1. 获取元堂卦信息（包含天地卦、先天卦、后天卦、元堂爻等）",
-        "2. 先天卦加则法：使用加则法计算基础数",
-        "3. 后天卦加则法：使用加则法计算基础数",
-        "4. 条文扩展：先天卦递增96四次[0,96,192,288,384]，后天卦递减96四次[0,-96,-192,-288,-384]",
-      ];
+    "1. 获取元堂卦信息（包含天地卦、先天卦、后天卦、元堂爻等）",
+    "2. 先天卦加则法：使用加则法计算基础数",
+    "3. 后天卦加则法：使用加则法计算基础数",
+    "4. 条文扩展：先天卦递增96四次[0,96,192,288,384]，后天卦递减96四次[0,-96,-192,-288,-384]",
+  ];
 
   @override
   String get school => "先后天八卦加则法流派";
@@ -305,6 +308,5 @@ class XianHoutianJiaZeStrategy extends YuanTangBasedStrategy<
   }
 
   @override
-  String get tiaoWenCalculationDescription =>
-      "先天卦递增96四次，后天卦递减96四次，分别生成5个条文编号";
+  String get tiaoWenCalculationDescription => "先天卦递增96四次，后天卦递减96四次，分别生成5个条文编号";
 }

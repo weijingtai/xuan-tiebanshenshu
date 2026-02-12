@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:common/models/eight_chars.dart';
 import '../viewmodels/gua_zhong_view_model.dart';
+import '../components/gradient_card.dart';
 
 /// 卦中取数法展示卡片
 ///
@@ -9,10 +10,7 @@ import '../viewmodels/gua_zhong_view_model.dart';
 class GuaZhongCard extends StatelessWidget {
   final EightChars eightChars;
 
-  const GuaZhongCard({
-    super.key,
-    required this.eightChars,
-  });
+  const GuaZhongCard({super.key, required this.eightChars});
 
   @override
   Widget build(BuildContext context) {
@@ -24,86 +22,88 @@ class GuaZhongCard extends StatelessWidget {
       },
       child: Consumer<GuaZhongViewModel>(
         builder: (context, viewModel, child) {
-          return Card(
-            elevation: 2,
-            margin: const EdgeInsets.all(16),
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // 标题
-                  Row(
-                    children: [
-                      const Icon(Icons.calculate, color: Colors.deepPurple),
-                      const SizedBox(width: 8),
-                      Text(
-                        '卦中取数法',
-                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.deepPurple,
-                            ),
+          return Padding(
+            padding: const EdgeInsets.all(16),
+            child: GradientCard(
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // 标题
+                    Row(
+                      children: [
+                        const Icon(Icons.calculate, color: Colors.deepPurple),
+                        const SizedBox(width: 8),
+                        Text(
+                          '卦中取数法',
+                          style: Theme.of(context).textTheme.titleLarge
+                              ?.copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.deepPurple,
+                              ),
+                        ),
+                      ],
+                    ),
+                    const Divider(height: 24),
+
+                    // 四柱信息
+                    _buildInfoRow(
+                      context,
+                      '四柱',
+                      viewModel.fourZhuDisplayText,
+                      Icons.calendar_today,
+                    ),
+                    const SizedBox(height: 16),
+
+                    // 方案选择区域
+                    _buildPlanSelector(context, viewModel),
+                    const SizedBox(height: 16),
+
+                    // 状态显示
+                    if (viewModel.isLoading) ...[
+                      const Center(child: CircularProgressIndicator()),
+                    ] else if (viewModel.hasError) ...[
+                      _buildErrorView(context, viewModel.errorMessage!),
+                    ] else if (viewModel.hasResult) ...[
+                      // 年月卦
+                      _buildGuaSection(
+                        context,
+                        '年月卦',
+                        viewModel.nianYueGuaDisplayText,
+                        viewModel.nianYueUpperGuaDisplayText,
+                        viewModel.nianYueLowerGuaDisplayText,
+                        viewModel.nianYueGuaDescription,
+                        viewModel.nianYueTiaoWenNumbers,
+                        Colors.blue,
                       ),
-                    ],
-                  ),
-                  const Divider(height: 24),
+                      const SizedBox(height: 16),
 
-                  // 四柱信息
-                  _buildInfoRow(
-                    context,
-                    '四柱',
-                    viewModel.fourZhuDisplayText,
-                    Icons.calendar_today,
-                  ),
-                  const SizedBox(height: 16),
+                      // 日时卦
+                      _buildGuaSection(
+                        context,
+                        '日时卦',
+                        viewModel.riShiGuaDisplayText,
+                        viewModel.riShiUpperGuaDisplayText,
+                        viewModel.riShiLowerGuaDisplayText,
+                        viewModel.riShiGuaDescription,
+                        viewModel.riShiTiaoWenNumbers,
+                        Colors.green,
+                      ),
+                      const SizedBox(height: 16),
 
-                  // 方案选择区域
-                  _buildPlanSelector(context, viewModel),
-                  const SizedBox(height: 16),
+                      // 条文统计
+                      _buildTiaoWenStats(context, viewModel),
+                      const SizedBox(height: 16),
 
-                  // 状态显示
-                  if (viewModel.isLoading) ...[
-                    const Center(child: CircularProgressIndicator()),
-                  ] else if (viewModel.hasError) ...[
-                    _buildErrorView(context, viewModel.errorMessage!),
-                  ] else if (viewModel.hasResult) ...[
-                    // 年月卦
-                    _buildGuaSection(
-                      context,
-                      '年月卦',
-                      viewModel.nianYueGuaDisplayText,
-                      viewModel.nianYueUpperGuaDisplayText,
-                      viewModel.nianYueLowerGuaDisplayText,
-                      viewModel.nianYueGuaDescription,
-                      viewModel.nianYueTiaoWenNumbers,
-                      Colors.blue,
-                    ),
-                    const SizedBox(height: 16),
-
-                    // 日时卦
-                    _buildGuaSection(
-                      context,
-                      '日时卦',
-                      viewModel.riShiGuaDisplayText,
-                      viewModel.riShiUpperGuaDisplayText,
-                      viewModel.riShiLowerGuaDisplayText,
-                      viewModel.riShiGuaDescription,
-                      viewModel.riShiTiaoWenNumbers,
-                      Colors.green,
-                    ),
-                    const SizedBox(height: 16),
-
-                    // 条文统计
-                    _buildTiaoWenStats(context, viewModel),
-                    const SizedBox(height: 16),
-
-                    // 条文列表
-                    if (viewModel.result != null &&
-                        viewModel.result!.tiaoWenEntities.isNotEmpty) ...[
-                      _buildTiaoWenList(context, viewModel),
+                      // 条文列表
+                      if (viewModel.result != null &&
+                          viewModel.result!.tiaoWenEntities.isNotEmpty) ...[
+                        _buildTiaoWenList(context, viewModel),
+                      ],
                     ],
                   ],
-                ],
+                ),
               ),
             ),
           );
@@ -131,10 +131,7 @@ class GuaZhongCard extends StatelessWidget {
           ),
         ),
         Expanded(
-          child: Text(
-            value,
-            style: TextStyle(color: Colors.grey[700]),
-          ),
+          child: Text(value, style: TextStyle(color: Colors.grey[700])),
         ),
       ],
     );
@@ -171,7 +168,11 @@ class GuaZhongCard extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        const Icon(Icons.info_outline, size: 16, color: Colors.amber),
+                        const Icon(
+                          Icons.info_outline,
+                          size: 16,
+                          color: Colors.amber,
+                        ),
                         const SizedBox(width: 4),
                         Text(
                           '关于千位计算',
@@ -292,16 +293,16 @@ class GuaZhongCard extends StatelessWidget {
     final viewModel = context.watch<GuaZhongViewModel>();
 
     // 获取带方案标签的条文编号
-    final numbersWithLabel = viewModel.filteredTiaoWenNumbersWithLabel
-        .where((item) {
-          // 根据title过滤年月卦或日时卦
-          if (title == '年月卦') {
-            return item.$3.startsWith('年月卦');
-          } else {
-            return item.$3.startsWith('日时卦');
-          }
-        })
-        .toList();
+    final numbersWithLabel = viewModel.filteredTiaoWenNumbersWithLabel.where((
+      item,
+    ) {
+      // 根据title过滤年月卦或日时卦
+      if (title == '年月卦') {
+        return item.$3.startsWith('年月卦');
+      } else {
+        return item.$3.startsWith('日时卦');
+      }
+    }).toList();
 
     return Container(
       padding: const EdgeInsets.all(12),
@@ -331,10 +332,7 @@ class GuaZhongCard extends StatelessWidget {
           const SizedBox(height: 8),
 
           // 卦象信息
-          Text(
-            guaDisplay,
-            style: const TextStyle(fontSize: 14),
-          ),
+          Text(guaDisplay, style: const TextStyle(fontSize: 14)),
           const SizedBox(height: 4),
           Text(
             '上卦: $upperGua',
@@ -364,10 +362,7 @@ class GuaZhongCard extends StatelessWidget {
           if (numbersWithLabel.isNotEmpty) ...[
             const Text(
               '条文编号（按方案）：',
-              style: TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 4),
             ...List.generate(3, (index) {
@@ -528,13 +523,7 @@ class GuaZhongCard extends StatelessWidget {
             color: color,
           ),
         ),
-        Text(
-          label,
-          style: TextStyle(
-            fontSize: 12,
-            color: Colors.grey[600],
-          ),
-        ),
+        Text(label, style: TextStyle(fontSize: 12, color: Colors.grey[600])),
       ],
     );
   }
@@ -560,10 +549,7 @@ class GuaZhongCard extends StatelessWidget {
                   backgroundColor: Colors.deepPurple,
                   child: Text(
                     (tiaoWen.id - 1000).toString(),
-                    style: const TextStyle(
-                      fontSize: 10,
-                      color: Colors.white,
-                    ),
+                    style: const TextStyle(fontSize: 10, color: Colors.white),
                   ),
                 ),
                 title: Text(

@@ -1,4 +1,5 @@
 import 'package:common/enums.dart';
+import 'package:tiebanshenshu/presentation/components/glass_scaffold.dart';
 import 'package:common/features/datetime_details/input_info_params.dart';
 import 'package:common/models/jie_qi_info.dart';
 import 'package:flutter/material.dart';
@@ -219,10 +220,12 @@ class _StrategyDemoPageState extends State<StrategyDemoPage>
 
   @override
   Widget build(BuildContext context) {
-    print("------ build  ---- $_isInitialized");
-    return Scaffold(
+    return GlassScaffold(
       appBar: AppBar(
         title: Text(_getPageTitle()),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        centerTitle: true,
         actions: [
           IconButton(
             onPressed: _refreshCurrent,
@@ -244,6 +247,11 @@ class _StrategyDemoPageState extends State<StrategyDemoPage>
             ? TabBar(
                 controller: _tabController,
                 isScrollable: true,
+                indicatorColor: Theme.of(context).colorScheme.secondary,
+                labelColor: Theme.of(context).colorScheme.secondary,
+                unselectedLabelColor: Theme.of(
+                  context,
+                ).colorScheme.onSurface.withOpacity(0.6),
                 tabs: _tabs
                     .map(
                       (config) =>

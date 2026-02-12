@@ -3,6 +3,7 @@ import 'package:common/models/eight_chars.dart';
 import 'package:flutter/material.dart';
 import 'package:tiebanshenshu/domain/models/yuan_hui_yun_shi.dart';
 import 'package:tiebanshenshu/features/huang_ji/huang_ji_v2_demo_page.dart';
+import 'package:tiebanshenshu/presentation/home/home_page.dart';
 import 'package:tiebanshenshu/presentation/pages/strategy_demo_page.dart';
 import 'package:tiebanshenshu/presentation/pages/four_doors_and_gun_fa_page.dart';
 import 'package:tiebanshenshu/ui/pages/dev_page.dart';
@@ -18,6 +19,9 @@ class NavigatorGenerator {
 
   static final routes = {
     "/dev": (ctx, {arguments}) => const DevPage(),
+
+    // New Home Page
+    "/tiebanshenshu/home": (context, {arguments}) => const HomePage(),
 
     // "/tiebanshenshu/huang_ji_demo": (context, {arguments}) => const HuangJi6aDemoPage(),
     // 新的V2 Demo页面

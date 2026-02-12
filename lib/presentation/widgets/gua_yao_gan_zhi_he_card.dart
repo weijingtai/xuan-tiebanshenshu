@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../domain/models/gua_yao_gan_zhi_he_base_number_model.dart';
 import '../viewmodels/gua_yao_gan_zhi_he_view_model.dart';
+import '../components/gradient_card.dart';
 
 /// 卦爻干支和数法条文列表卡片
 ///
@@ -32,105 +33,115 @@ class _GuaYaoGanZhiHeCardState extends State<GuaYaoGanZhiHeCard> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // 标题区域
-          InkWell(
-            onTap: () => setState(() => _isExpanded = !_isExpanded),
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            Text(
-                              '卦爻干支和数法',
-                              style: theme.textTheme.titleMedium?.copyWith(
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            const SizedBox(width: 8.0),
-                            PopupMenuButton<GuaYaoGanZhiHeNaJiaMethod>(
-                              tooltip: '切换纳甲方法',
-                              icon: Icon(
-                                Icons.swap_horiz,
-                                color: theme.colorScheme.primary,
-                                size: 20.0,
-                              ),
-                              itemBuilder: (context) => [
-                                PopupMenuItem(
-                                  value:
-                                      GuaYaoGanZhiHeNaJiaMethod.yearGanYinYang,
-                                  child: Row(
-                                    children: [
-                                      if (widget.viewModel.currentNaJiaMethod ==
-                                          GuaYaoGanZhiHeNaJiaMethod
-                                              .yearGanYinYang)
-                                        const Icon(Icons.check, size: 16.0),
-                                      if (widget.viewModel.currentNaJiaMethod !=
-                                          GuaYaoGanZhiHeNaJiaMethod
-                                              .yearGanYinYang)
-                                        const SizedBox(width: 16.0),
-                                      const SizedBox(width: 8.0),
-                                      const Text('年干阴阳纳甲法'),
-                                    ],
-                                  ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+      child: GradientCard(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // 标题区域
+            InkWell(
+              onTap: () => setState(() => _isExpanded = !_isExpanded),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                '卦爻干支和数法',
+                                style: theme.textTheme.titleMedium?.copyWith(
+                                  fontWeight: FontWeight.bold,
                                 ),
-                                PopupMenuItem(
-                                  value:
-                                      GuaYaoGanZhiHeNaJiaMethod.innerOuterGua,
-                                  child: Row(
-                                    children: [
-                                      if (widget.viewModel.currentNaJiaMethod ==
-                                          GuaYaoGanZhiHeNaJiaMethod
-                                              .innerOuterGua)
-                                        const Icon(Icons.check, size: 16.0),
-                                      if (widget.viewModel.currentNaJiaMethod !=
-                                          GuaYaoGanZhiHeNaJiaMethod
-                                              .innerOuterGua)
-                                        const SizedBox(width: 16.0),
-                                      const SizedBox(width: 8.0),
-                                      const Text('传统内外卦纳甲法'),
-                                    ],
-                                  ),
+                              ),
+                              const SizedBox(width: 8.0),
+                              PopupMenuButton<GuaYaoGanZhiHeNaJiaMethod>(
+                                tooltip: '切换纳甲方法',
+                                icon: Icon(
+                                  Icons.swap_horiz,
+                                  color: theme.colorScheme.primary,
+                                  size: 20.0,
                                 ),
-                              ],
-                              onSelected: (method) {
-                                // widget.viewModel.switchNaJiaMethod(method);
-                              },
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 4.0),
-                        Text(
-                          '当前方法：${widget.viewModel.currentNaJiaMethod.displayName}',
-                          style: theme.textTheme.bodySmall,
-                        ),
-                      ],
+                                itemBuilder: (context) => [
+                                  PopupMenuItem(
+                                    value: GuaYaoGanZhiHeNaJiaMethod
+                                        .yearGanYinYang,
+                                    child: Row(
+                                      children: [
+                                        if (widget
+                                                .viewModel
+                                                .currentNaJiaMethod ==
+                                            GuaYaoGanZhiHeNaJiaMethod
+                                                .yearGanYinYang)
+                                          const Icon(Icons.check, size: 16.0),
+                                        if (widget
+                                                .viewModel
+                                                .currentNaJiaMethod !=
+                                            GuaYaoGanZhiHeNaJiaMethod
+                                                .yearGanYinYang)
+                                          const SizedBox(width: 16.0),
+                                        const SizedBox(width: 8.0),
+                                        const Text('年干阴阳纳甲法'),
+                                      ],
+                                    ),
+                                  ),
+                                  PopupMenuItem(
+                                    value:
+                                        GuaYaoGanZhiHeNaJiaMethod.innerOuterGua,
+                                    child: Row(
+                                      children: [
+                                        if (widget
+                                                .viewModel
+                                                .currentNaJiaMethod ==
+                                            GuaYaoGanZhiHeNaJiaMethod
+                                                .innerOuterGua)
+                                          const Icon(Icons.check, size: 16.0),
+                                        if (widget
+                                                .viewModel
+                                                .currentNaJiaMethod !=
+                                            GuaYaoGanZhiHeNaJiaMethod
+                                                .innerOuterGua)
+                                          const SizedBox(width: 16.0),
+                                        const SizedBox(width: 8.0),
+                                        const Text('传统内外卦纳甲法'),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                                onSelected: (method) {
+                                  // widget.viewModel.switchNaJiaMethod(method);
+                                },
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 4.0),
+                          Text(
+                            '当前方法：${widget.viewModel.currentNaJiaMethod.displayName}',
+                            style: theme.textTheme.bodySmall,
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  Icon(_isExpanded ? Icons.expand_less : Icons.expand_more),
-                ],
+                    Icon(_isExpanded ? Icons.expand_less : Icons.expand_more),
+                  ],
+                ),
               ),
             ),
-          ),
 
-          // 可展开内容
-          if (_isExpanded) ...[
-            const Divider(),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: _buildContent(theme),
-            ),
+            // 可展开内容
+            if (_isExpanded) ...[
+              const Divider(),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: _buildContent(theme),
+              ),
+            ],
           ],
-        ],
+        ),
       ),
     );
   }

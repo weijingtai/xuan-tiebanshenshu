@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tiebanshenshu/presentation/components/gradient_card.dart';
 import '../../domain/models/yuan_tang_base_number_model.dart';
 import '../../service/strategy/yuan_tang_strategy.dart';
 import '../models/yuan_tang_ui_model.dart';
@@ -47,111 +48,114 @@ class _YuanTangCardState extends State<YuanTangCard> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return Card(
-      elevation: 2.0,
-      margin: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // 头部 - 可点击展开/收起
-          InkWell(
-            onTap: () {
-              setState(() {
-                _isExpanded = !_isExpanded;
-              });
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.auto_awesome,
-                    color: theme.colorScheme.primary,
-                    size: 24.0,
-                  ),
-                  const SizedBox(width: 12.0),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          '元堂卦取数法',
-                          style: theme.textTheme.titleMedium?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const SizedBox(height: 4.0),
-                        Text(
-                          '性别:${widget.model.gender} | 三元:${widget.model.threeYuan} | 节气:${widget.model.birthAfterZhi}',
-                          style: theme.textTheme.bodySmall?.copyWith(
-                            color: theme.colorScheme.onSurface.withOpacity(0.7),
-                          ),
-                        ),
-                      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: GradientCard(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // 头部 - 可点击展开/收起
+            InkWell(
+              onTap: () {
+                setState(() {
+                  _isExpanded = !_isExpanded;
+                });
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.auto_awesome,
+                      color: theme.colorScheme.primary,
+                      size: 24.0,
                     ),
-                  ),
-                  Icon(
-                    _isExpanded ? Icons.expand_less : Icons.expand_more,
-                    color: theme.colorScheme.onSurface.withOpacity(0.7),
-                  ),
-                ],
+                    const SizedBox(width: 12.0),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            '元堂卦取数法',
+                            style: theme.textTheme.titleMedium?.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 4.0),
+                          Text(
+                            '性别:${widget.model.gender} | 三元:${widget.model.threeYuan} | 节气:${widget.model.birthAfterZhi}',
+                            style: theme.textTheme.bodySmall?.copyWith(
+                              color: theme.colorScheme.onSurface.withOpacity(
+                                0.7,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Icon(
+                      _isExpanded ? Icons.expand_less : Icons.expand_more,
+                      color: theme.colorScheme.onSurface.withOpacity(0.7),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
 
-          // 内容区域
-          if (_isExpanded) ...[
-            const Divider(height: 1),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // 先天卦和后天卦概览
-                  _buildGuaSummary(theme),
+            // 内容区域
+            if (_isExpanded) ...[
+              const Divider(height: 1),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // 先天卦和后天卦概览
+                    _buildGuaSummary(theme),
 
-                  const SizedBox(height: 16.0),
-
-                  // 计算步骤详情
-                  _buildCalculationSteps(theme),
-
-                  const SizedBox(height: 16.0),
-
-                  // 大运展示
-                  _buildDayunSection(theme),
-
-                  const SizedBox(height: 16.0),
-
-                  // 流运系统展示（如果数据可用）
-                  if (_canShowLiuyunSystem()) ...[
-                    _buildLiuyunSystemSection(theme),
                     const SizedBox(height: 16.0),
+
+                    // 计算步骤详情
+                    _buildCalculationSteps(theme),
+
+                    const SizedBox(height: 16.0),
+
+                    // 大运展示
+                    _buildDayunSection(theme),
+
+                    const SizedBox(height: 16.0),
+
+                    // 流运系统展示（如果数据可用）
+                    if (_canShowLiuyunSystem()) ...[
+                      _buildLiuyunSystemSection(theme),
+                      const SizedBox(height: 16.0),
+                    ],
+
+                    // 条文扩展展示
+                    _buildTiaoWenExpansionSection(theme),
+
+                    const SizedBox(height: 16.0),
+
+                    // 条文编号方法
+                    _buildTiaoWenMethods(theme),
+
+                    if (widget.model.hasTiaoWen) ...[
+                      const SizedBox(height: 16.0),
+
+                      // 条文内容列表
+                      _buildTiaoWenContentList(theme),
+
+                      const SizedBox(height: 16.0),
+
+                      // 条文数量统计
+                      _buildTiaoWenStats(theme),
+                    ],
                   ],
-
-                  // 条文扩展展示
-                  _buildTiaoWenExpansionSection(theme),
-
-                  const SizedBox(height: 16.0),
-
-                  // 条文编号方法
-                  _buildTiaoWenMethods(theme),
-
-                  if (widget.model.hasTiaoWen) ...[
-                    const SizedBox(height: 16.0),
-
-                    // 条文内容列表
-                    _buildTiaoWenContentList(theme),
-
-                    const SizedBox(height: 16.0),
-
-                    // 条文数量统计
-                    _buildTiaoWenStats(theme),
-                  ],
-                ],
+                ),
               ),
-            ),
+            ],
           ],
-        ],
+        ),
       ),
     );
   }

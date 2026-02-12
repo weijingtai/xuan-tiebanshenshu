@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tiebanshenshu/presentation/components/gradient_card.dart';
 import '../viewmodels/base_tiao_wen_list_view_model.dart';
 import '../models/ui_tiao_wen_list_result_model.dart';
 import '../../domain/models/tiao_wen_list_state.dart';
@@ -50,12 +51,11 @@ class _StrategyCardState extends State<StrategyCard> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin:
+    return Padding(
+      padding:
           widget.margin ??
           const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-      child: Card(
-        elevation: 2.0,
+      child: GradientCard(
         child: Column(
           children: [_buildHeader(), if (_isExpanded) _buildContent()],
         ),

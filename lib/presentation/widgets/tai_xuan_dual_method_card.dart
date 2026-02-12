@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tiebanshenshu/presentation/components/gradient_card.dart';
 import '../viewmodels/tai_xuan_four_zhu_view_model.dart';
 import 'loading_widget.dart';
 import 'error_widget.dart';
@@ -40,16 +41,13 @@ class _TaiXuanDualMethodCardState extends State<TaiXuanDualMethodCard> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: widget.margin ??
+    return Padding(
+      padding:
+          widget.margin ??
           const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-      child: Card(
-        elevation: 2.0,
+      child: GradientCard(
         child: Column(
-          children: [
-            _buildHeader(),
-            if (_isExpanded) _buildContent(),
-          ],
+          children: [_buildHeader(), if (_isExpanded) _buildContent()],
         ),
       ),
     );
@@ -85,25 +83,23 @@ class _TaiXuanDualMethodCardState extends State<TaiXuanDualMethodCard> {
                       Text(
                         '太玄四柱（双纳甲方案）',
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                              fontWeight: FontWeight.bold,
-                            ),
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       if (widget.viewModel.hasSelection) ...[
                         const SizedBox(height: 4.0),
                         Text(
                           '八字: ${widget.viewModel.eightCharsDisplayText}',
-                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                color: Colors.grey[600],
-                              ),
+                          style: Theme.of(context).textTheme.bodySmall
+                              ?.copyWith(color: Colors.grey[600]),
                         ),
                       ],
                       if (widget.viewModel.hasAnyResult) ...[
                         const SizedBox(height: 4.0),
                         Text(
                           _buildSummaryText(),
-                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                color: Colors.blue[700],
-                              ),
+                          style: Theme.of(context).textTheme.bodySmall
+                              ?.copyWith(color: Colors.blue[700]),
                         ),
                       ],
                     ],
@@ -161,11 +157,7 @@ class _TaiXuanDualMethodCardState extends State<TaiXuanDualMethodCard> {
     }
 
     if (widget.viewModel.hasError) {
-      return Icon(
-        Icons.error_outline,
-        color: Colors.red[700],
-        size: 20.0,
-      );
+      return Icon(Icons.error_outline, color: Colors.red[700], size: 20.0);
     }
 
     if (widget.viewModel.hasAnyResult) {
@@ -265,10 +257,7 @@ class _TaiXuanDualMethodCardState extends State<TaiXuanDualMethodCard> {
     // 默认空状态
     return const Padding(
       padding: EdgeInsets.all(16.0),
-      child: SimpleEmptyWidget(
-        message: '暂无计算结果',
-        icon: Icons.info_outline,
-      ),
+      child: SimpleEmptyWidget(message: '暂无计算结果', icon: Icons.info_outline),
     );
   }
 
@@ -283,9 +272,9 @@ class _TaiXuanDualMethodCardState extends State<TaiXuanDualMethodCard> {
           Text(
             '显示方案',
             style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.grey[700],
-                ),
+              fontWeight: FontWeight.bold,
+              color: Colors.grey[700],
+            ),
           ),
           const SizedBox(height: 8.0),
           Row(

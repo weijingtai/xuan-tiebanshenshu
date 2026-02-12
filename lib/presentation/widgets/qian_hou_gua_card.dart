@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../viewmodels/qian_hou_gua_view_model.dart';
+import '../components/gradient_card.dart';
 
 /// 前后卦取数法结果展示卡片
 ///
@@ -31,95 +32,98 @@ class _QianHouGuaCardState extends State<QianHouGuaCard> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return Card(
-      elevation: 2.0,
-      margin: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // 头部 - 可点击展开/收起
-          InkWell(
-            onTap: () {
-              setState(() {
-                _isExpanded = !_isExpanded;
-              });
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.auto_awesome,
-                    color: theme.colorScheme.primary,
-                    size: 24.0,
-                  ),
-                  const SizedBox(width: 12.0),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          '前后卦取数法',
-                          style: theme.textTheme.titleMedium?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const SizedBox(height: 4.0),
-                        Text(
-                          widget.viewModel.paramsDisplayText,
-                          style: theme.textTheme.bodySmall?.copyWith(
-                            color: theme.colorScheme.onSurface.withOpacity(0.7),
-                          ),
-                        ),
-                      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: GradientCard(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // 头部 - 可点击展开/收起
+            InkWell(
+              onTap: () {
+                setState(() {
+                  _isExpanded = !_isExpanded;
+                });
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.auto_awesome,
+                      color: theme.colorScheme.primary,
+                      size: 24.0,
                     ),
-                  ),
-                  Icon(
-                    _isExpanded ? Icons.expand_less : Icons.expand_more,
-                    color: theme.colorScheme.onSurface.withOpacity(0.7),
-                  ),
-                ],
-              ),
-            ),
-          ),
-
-          // 内容区域
-          if (_isExpanded) ...[
-            const Divider(height: 1),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // 卦象概览
-                  _buildGuaSummary(theme),
-
-                  const SizedBox(height: 16.0),
-
-                  // 计算步骤详情
-                  _buildCalculationSteps(theme),
-
-                  const SizedBox(height: 16.0),
-
-                  // 条文扩展展示
-                  _buildTiaoWenExpansionSection(theme),
-
-                  if (widget.viewModel.hasResult) ...[
-                    const SizedBox(height: 16.0),
-
-                    // 条文内容列表
-                    _buildTiaoWenContentList(theme),
-
-                    const SizedBox(height: 16.0),
-
-                    // 条文数量统计
-                    _buildTiaoWenStats(theme),
+                    const SizedBox(width: 12.0),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            '前后卦取数法',
+                            style: theme.textTheme.titleMedium?.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 4.0),
+                          Text(
+                            widget.viewModel.paramsDisplayText,
+                            style: theme.textTheme.bodySmall?.copyWith(
+                              color: theme.colorScheme.onSurface.withOpacity(
+                                0.7,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Icon(
+                      _isExpanded ? Icons.expand_less : Icons.expand_more,
+                      color: theme.colorScheme.onSurface.withOpacity(0.7),
+                    ),
                   ],
-                ],
+                ),
               ),
             ),
+
+            // 内容区域
+            if (_isExpanded) ...[
+              const Divider(height: 1),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // 卦象概览
+                    _buildGuaSummary(theme),
+
+                    const SizedBox(height: 16.0),
+
+                    // 计算步骤详情
+                    _buildCalculationSteps(theme),
+
+                    const SizedBox(height: 16.0),
+
+                    // 条文扩展展示
+                    _buildTiaoWenExpansionSection(theme),
+
+                    if (widget.viewModel.hasResult) ...[
+                      const SizedBox(height: 16.0),
+
+                      // 条文内容列表
+                      _buildTiaoWenContentList(theme),
+
+                      const SizedBox(height: 16.0),
+
+                      // 条文数量统计
+                      _buildTiaoWenStats(theme),
+                    ],
+                  ],
+                ),
+              ),
+            ],
           ],
-        ],
+        ),
       ),
     );
   }

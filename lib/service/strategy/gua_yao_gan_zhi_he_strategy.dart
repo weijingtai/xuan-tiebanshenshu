@@ -7,8 +7,8 @@ library;
 import 'package:common/enums.dart';
 import 'package:common/models/eight_chars.dart';
 
-import '../../features/six_yao_gua/pure_six_yao_gua.dart';
-import '../../features/six_yao_gua/six_yao_calculator.dart';
+import 'package:tiebanshenshu/features/six_yao_gua/pure_six_yao_gua.dart';
+import 'package:tiebanshenshu/features/six_yao_gua/six_yao_calculator.dart';
 import '../../domain/models/base_number_model.dart';
 import '../../domain/models/base_number_model_result.dart';
 import '../../domain/models/gua_yao_gan_zhi_he_base_number_model.dart';
@@ -49,9 +49,12 @@ class GuaYaoGanZhiHeStrategyParams extends BaseCalculationParams {
 /// 2. Install NaJia for all 6 yaos
 /// 3. Calculate TaiXuan sums for each yao (filtering sum=10)
 /// 4. Generate base number: upperSum*100 + lowerSum
-class GuaYaoGanZhiHeStrategy extends StandardCalculationStrategy<
-    GuaYaoGanZhiHeStrategyParams, BaseNumberModelResult> {
-
+class GuaYaoGanZhiHeStrategy
+    extends
+        StandardCalculationStrategy<
+          GuaYaoGanZhiHeStrategyParams,
+          BaseNumberModelResult
+        > {
   @override
   String get name => "GuaYaoGanZhiHe Method";
 
@@ -103,7 +106,8 @@ class GuaYaoGanZhiHeStrategy extends StandardCalculationStrategy<
       final baseNumbers = <BaseNumberModel>[];
 
       // Determine isYangYear for yearGanYinYang method
-      final isYangYear = params.naJiaMethod == GuaYaoGanZhiHeNaJiaMethod.yearGanYinYang
+      final isYangYear =
+          params.naJiaMethod == GuaYaoGanZhiHeNaJiaMethod.yearGanYinYang
           ? params.eightChars.year.gan.isYang
           : null;
 
@@ -147,7 +151,8 @@ class GuaYaoGanZhiHeStrategy extends StandardCalculationStrategy<
       return BaseNumberModelResult(
         algorithmName: name,
         algorithmDescription: description,
-        calculationParams: 'EightChars: ${params.eightChars}, Method: ${params.naJiaMethod.displayName}',
+        calculationParams:
+            'EightChars: ${params.eightChars}, Method: ${params.naJiaMethod.displayName}',
         baseNumbers: baseNumbers,
         calculationTime: DateTime.now(),
         sourceData: {
@@ -184,19 +189,29 @@ class GuaYaoGanZhiHeStrategy extends StandardCalculationStrategy<
     final pureSixYaoGua = PureSixYaoGua.by8Gua(gua64.top, gua64.bottom);
 
     // Install NaJia based on method
-    _installNaJia(pureSixYaoGua, gua64.top, gua64.bottom, naJiaMethod, isYangYear);
+    _installNaJia(
+      pureSixYaoGua,
+      gua64.top,
+      gua64.bottom,
+      naJiaMethod,
+      isYangYear,
+    );
 
     // Calculate sums and get yao details
-    final (yaoDetails, calcLowerSum, calcUpperSum) = _calculateSums(pureSixYaoGua);
+    final (yaoDetails, calcLowerSum, calcUpperSum) = _calculateSums(
+      pureSixYaoGua,
+    );
 
     // Generate base number
     final baseNumber = calcUpperSum * 100 + calcLowerSum;
 
     // Build formula string
-    final formula = '${gua64.top.name}${gua64.bottom.name}: $calcUpperSum*100 + $calcLowerSum = $baseNumber';
+    final formula =
+        '${gua64.top.name}${gua64.bottom.name}: $calcUpperSum*100 + $calcLowerSum = $baseNumber';
 
     // Build description
-    final description = '64Gua: ${gua64.name}, Method: ${naJiaMethod.displayName}, '
+    final description =
+        '64Gua: ${gua64.name}, Method: ${naJiaMethod.displayName}, '
         'LowerSum: $calcLowerSum, UpperSum: $calcUpperSum';
 
     return GuaYaoGanZhiHeResult(
@@ -293,9 +308,9 @@ class GuaYaoGanZhiHeStrategy extends StandardCalculationStrategy<
   ///
   /// Returns: (yaoDetails, lowerSum, upperSum)
   static (List<GuaYaoGanZhiHeYaoDetail>, int, int) _calculateSums(
-    PureSixYaoGua gua,
-    {bool filterSum10 = true}  // Add parameter to control filtering
-  ) {
+    PureSixYaoGua gua, {
+    bool filterSum10 = true, // Add parameter to control filtering
+  }) {
     final yaoDetails = <GuaYaoGanZhiHeYaoDetail>[];
     int lowerSum = 0;
     int upperSum = 0;

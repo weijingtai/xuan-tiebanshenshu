@@ -6,6 +6,8 @@ import 'package:tiebanshenshu/providers/datetime_provider.dart';
 import 'package:common/dev_constant.dart';
 import 'package:timezone/data/latest.dart' as tz;
 
+import 'package:tiebanshenshu/presentation/viewmodels/theme_view_model.dart';
+
 void main() {
   // Initialize timezone data
   tz.initializeTimeZones();
@@ -22,6 +24,8 @@ void main() {
               DateTimeProvider()..updateDateTime(DevConstant.dev_usa),
         ),
 
+        ChangeNotifierProvider(create: (_) => ThemeViewModel()),
+
         // All strategy related providers from tiebanshenshu
         ...StrategyProviders.providers,
       ],
@@ -35,19 +39,20 @@ class TieBanShenShuExampleApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: '铁版神数示例程序',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
-        useMaterial3: true,
-      ),
-      // Use the navigator generator from the tiebanshenshu module
-      initialRoute: '/dev',
-      onGenerateRoute: NavigatorGenerator.generateRoute,
-      builder: (context, child) {
-        // You can add global overlays or wrappers here if needed
-        return child!;
+    return Consumer<ThemeViewModel>(
+      builder: (context, themeViewModel, child) {
+        return MaterialApp(
+          title: '铁版神数示例程序',
+          debugShowCheckedModeBanner: false,
+          theme: themeViewModel.materialThemeData,
+          // Use the navigator generator from the tiebanshenshu module
+          initialRoute: '/tiebanshenshu/home',
+          onGenerateRoute: NavigatorGenerator.generateRoute,
+          builder: (context, child) {
+            // You can add global overlays or wrappers here if needed
+            return child!;
+          },
+        );
       },
     );
   }

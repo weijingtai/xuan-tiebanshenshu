@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tiebanshenshu/presentation/components/gradient_card.dart';
 import '../models/ba_gua_jia_ze_ui_model.dart';
 
 /// 八卦加则结果卡片组件
@@ -24,17 +25,15 @@ class BaGuaJiaZeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: margin ?? const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-      child: Card(
-        elevation: 1.0,
+    return Padding(
+      padding:
+          margin ?? const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+      child: GradientCard(
         child: ExpansionTile(
+          shape: const Border(), // Remove borders
           title: Text(
             model.fullTitle,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 16.0,
-            ),
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
           ),
           subtitle: Text(
             '条文: ${model.tiaoWenNumber}',
@@ -125,11 +124,7 @@ class BaGuaJiaZeCard extends StatelessWidget {
           children: [
             Row(
               children: [
-                Icon(
-                  Icons.calculate,
-                  size: 20.0,
-                  color: Colors.blue.shade700,
-                ),
+                Icon(Icons.calculate, size: 20.0, color: Colors.blue.shade700),
                 const SizedBox(width: 8.0),
                 Text(
                   '计算公式',
@@ -186,52 +181,54 @@ class BaGuaJiaZeCard extends StatelessWidget {
             ),
             const Divider(height: 16.0),
             // 显示六爻，从上到下（索引从5到0）
-            ...model.yaoList.reversed.map((yao) => Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 2.0),
-                  child: Row(
-                    children: [
-                      SizedBox(
-                        width: 50.0,
-                        child: Text(
-                          '${yao.positionLabel}爻',
-                          style: const TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 14.0,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 8.0,
-                          vertical: 2.0,
-                        ),
-                        decoration: BoxDecoration(
-                          color: yao.yinYang == '阳'
-                              ? Colors.orange.shade100
-                              : Colors.purple.shade100,
-                          borderRadius: BorderRadius.circular(4.0),
-                        ),
-                        child: Text(
-                          yao.yinYang,
-                          style: TextStyle(
-                            fontSize: 12.0,
-                            color: yao.yinYang == '阳'
-                                ? Colors.orange.shade900
-                                : Colors.purple.shade900,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 12.0),
-                      Text(
-                        '${yao.diZhi}(${yao.number})',
+            ...model.yaoList.reversed.map(
+              (yao) => Padding(
+                padding: const EdgeInsets.symmetric(vertical: 2.0),
+                child: Row(
+                  children: [
+                    SizedBox(
+                      width: 50.0,
+                      child: Text(
+                        '${yao.positionLabel}爻',
                         style: const TextStyle(
+                          fontWeight: FontWeight.w500,
                           fontSize: 14.0,
-                          fontFamily: 'monospace',
                         ),
                       ),
-                    ],
-                  ),
-                )),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8.0,
+                        vertical: 2.0,
+                      ),
+                      decoration: BoxDecoration(
+                        color: yao.yinYang == '阳'
+                            ? Colors.orange.shade100
+                            : Colors.purple.shade100,
+                        borderRadius: BorderRadius.circular(4.0),
+                      ),
+                      child: Text(
+                        yao.yinYang,
+                        style: TextStyle(
+                          fontSize: 12.0,
+                          color: yao.yinYang == '阳'
+                              ? Colors.orange.shade900
+                              : Colors.purple.shade900,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 12.0),
+                    Text(
+                      '${yao.diZhi}(${yao.number})',
+                      style: const TextStyle(
+                        fontSize: 14.0,
+                        fontFamily: 'monospace',
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),
@@ -269,10 +266,7 @@ class BaGuaJiaZeCard extends StatelessWidget {
             if (model.hasTiaoWenContent) ...[
               Text(
                 model.tiaoWenDisplayText,
-                style: const TextStyle(
-                  fontSize: 14.0,
-                  height: 1.5,
-                ),
+                style: const TextStyle(fontSize: 14.0, height: 1.5),
               ),
               if (model.tiaoWenAgeInfo != null) ...[
                 const SizedBox(height: 8.0),
@@ -327,10 +321,7 @@ class BaGuaJiaZeCard extends StatelessWidget {
         Expanded(
           child: Text(
             value,
-            style: const TextStyle(
-              fontSize: 14.0,
-              fontWeight: FontWeight.w500,
-            ),
+            style: const TextStyle(fontSize: 14.0, fontWeight: FontWeight.w500),
           ),
         ),
       ],
@@ -362,10 +353,7 @@ class BaGuaJiaZeResultsList extends StatelessWidget {
   Widget build(BuildContext context) {
     if (models.isEmpty) {
       return const Center(
-        child: Padding(
-          padding: EdgeInsets.all(32.0),
-          child: Text('暂无结果'),
-        ),
+        child: Padding(padding: EdgeInsets.all(32.0), child: Text('暂无结果')),
       );
     }
 

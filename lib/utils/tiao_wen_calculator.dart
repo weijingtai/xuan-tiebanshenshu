@@ -1,6 +1,6 @@
 import 'package:common/enums.dart';
 
-import '../features/six_yao_gua/pure_six_yao_gua.dart';
+import 'package:tiebanshenshu/features/six_yao_gua/pure_six_yao_gua.dart';
 import 'utils.dart' as GuaUtils;
 
 import '../constant/constants.dart' as NumberMaps;

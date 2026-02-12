@@ -15,7 +15,7 @@ dependencies:
   tiebanshenshu:
     path: ..
   common:
-    path: ../../common
+    path: ../../xuan-common
   provider: ^6.1.5+1
   timezone: ^0.11.0
   drift: ^2.30.1

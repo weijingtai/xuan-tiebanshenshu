@@ -12,6 +12,7 @@ import 'presentation/pages/tai_xuan_interactive_page.dart';
 
 import 'providers/datetime_provider.dart';
 import 'infrastructure/di/strategy_providers.dart';
+import 'presentation/viewmodels/theme_view_model.dart';
 
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
@@ -26,24 +27,9 @@ void main() {
           create: (_) =>
               DateTimeProvider()..updateDateTime(DevConstant.dev_usa),
         ),
+        ChangeNotifierProvider(create: (_) => ThemeViewModel()),
         // Strategy相关的Provider配置
         ...StrategyProviders.providers,
-        // ...AppProviders.providers,
-        // ChangeNotifierProvider(create: (_) => DataPanelViewModel()),
-        // ChangeNotifierProvider(
-        //   create: (context) {
-        //     final algorithmViewModel = AlgorithmEditorViewModel();
-        //     final dataPanelViewModel = context.read<DataPanelViewModel>();
-        //     algorithmViewModel.setDataPanelViewModel(dataPanelViewModel);
-        //     return algorithmViewModel;
-        //   },
-        // ),
-        // Provider<AlgorithmRepository>(create: (_) => MockAlgorithmRepository()),
-        // Provider<AtomicOperationRepository>(
-        //   create: (_) => ProductionAtomicOperationRepository(),
-        // ),
-        // ChangeNotifierProvider(create: (_) => AlgorithmEditorViewModel()),
-        // ChangeNotifierProvider(create: (_) => DataPanelViewModel()),
       ],
       child: const AlgorithmEditorApp(),
     ),
@@ -56,67 +42,16 @@ class AlgorithmEditorApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [
-        Provider<String>.value(value: 'example2'),
-        // Provider<AlgorithmRepository>(create: (_) => MockAlgorithmRepository()),
-        // Provider<AtomicOperationRepository>(
-        //   create: (_) => ProductionAtomicOperationRepository(),
-        // ),
-      ],
-      child: MaterialApp(
-        title: 'Algorithm Editor Prototype',
-        theme: ThemeData(
-          primarySwatch: Colors.indigo,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
-        initialRoute: '/dev',
-        onGenerateRoute: NavigatorGenerator.generateRoute,
-
-        // onGenerateRoute: (settings) {
-        //   switch (settings.name) {
-        //     case "/tiebanshenshu/multi_selection":
-        //       return MaterialPageRoute(
-        //         builder: (context) => MultiBaseNumberSelectionPage(
-        //           yuanHuiYunShi: YuanHuiYunShi.fromEightChars(
-        //             EightChars(
-        //               year: JiaZi.GUI_SI, // 癸巳
-        //               month: JiaZi.JIA_ZI, // 甲子
-        //               day: JiaZi.DING_YOU, // 丁酉
-        //               time: JiaZi.GUI_MAO, // 癸卯
-        //             ),
-        //           ),
-        //           requiredTypes: [
-        //             BaseNumberSelectionType.yuanHui,
-        //             BaseNumberSelectionType.yunShi,
-        //           ],
-        //         ),
-        //       );
-        //     case '/dev':
-        //       return MaterialPageRoute(builder: (_) => DevPage());
-
-        //     case '/strategy-demo':
-        //       return MaterialPageRoute(
-        //         builder: (_) => const StrategyDemoPage(),
-        //       );
-
-        //     case '/tai-xuan-interactive':
-        //       return MaterialPageRoute(
-        //         builder: (_) => const TaiXuanInteractivePage(),
-        //       );
-
-        //     case '/huang-ji-interactive':
-        //       return MaterialPageRoute(
-        //         builder: (_) => const HuangJiInteractivePage(),
-        //       );
-
-        //     default:
-        //       return MaterialPageRoute(
-        //         builder: (_) => const Scaffold(
-        //           body: Center(child: Text('Route not found')),
-        //         ),
-        //       );
-        //   }
-        // },
+      providers: [Provider<String>.value(value: 'example2')],
+      child: Consumer<ThemeViewModel>(
+        builder: (context, themeViewModel, child) {
+          return MaterialApp(
+            title: 'Algorithm Editor Prototype',
+            theme: themeViewModel.materialThemeData,
+            initialRoute: '/dev',
+            onGenerateRoute: NavigatorGenerator.generateRoute,
+          );
+        },
       ),
     );
   }
