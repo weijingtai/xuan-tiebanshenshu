@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>铁板神数 - 统一排盘系统</title>
+    <style>
+        /* --- 核心变量定义 --- */
+        :root {
+            --header-black: #1A1A1B;
+            /* 图片顶栏黑色 */
+            --paper-bg: #F7F3ED;
+            /* 图片背景宣纸色 */
+            --cinnabar: #A62B1F;
+            /* 朱砂红 */
+            --ink-deep: #2C2C2C;
+            /* 浓墨正文 */
+            --ink-light: #8E8E8E;
+            /* 淡墨标注 */
+            --gold-age: #967131;
+            /* 岁数金 */
+            --divider: rgba(0, 0, 0, 0.08);
+            /* 极细界格线 */
+        }
+
+        /* --- 基础布局 --- */
+        body {
+            background-color: #E0DDD7;
+            margin: 0;
+            padding: 0;
+            font-family: "Noto Serif SC", "Source Han Serif SC", "SimSun", serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* --- 区域一：全景算法矩阵 (Algorithm Matrix) --- */
+        .algo-matrix {
+            background: #EBE8E3;
+            padding: 12px 16px;
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            border-bottom: 1px solid var(--divider);
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .matrix-seal {
+            border: 1px solid var(--cinnabar);
+            color: var(--cinnabar);
+            padding: 2px 8px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            background: transparent;
+            transition: all 0.2s;
+        }
+
+        .matrix-seal:hover {
+            background: var(--cinnabar);
+            color: white;
+        }
+
+        /* --- 区域二：主轴滚动区 --- */
+        .main-scroll {
+            flex: 1;
+            overflow-y: auto;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            align-items: center;
+        }
+
+        /* --- 条文组件 (完全参考图片三段式) --- */
+        .verse-card {
+            width: 100%;
+            max-width: 420px;
+            background: var(--paper-bg);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border: 0.5px solid var(--divider);
+        }
+
+        /* 1. 卡片页眉 (Black Header) */
+        .card-header {
+            background: var(--header-black);
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .header-year {
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin: 0;
+        }
+
+        .header-age {
+            font-size: 12px;
+            opacity: 0.8;
+            margin-top: 2px;
+        }
+
+        /* 2. 卡片正文 (Main Body with Red Line) */
+        .card-body {
+            display: flex;
+            padding: 16px;
+            min-height: 80px;
+        }
+
+        .cinnabar-line {
+            width: 2px;
+            background: var(--cinnabar);
+            margin-right: 14px;
+            flex-shrink: 0;
+        }
+
+        .content-area {
+            flex: 1;
+        }
+
+        .meta-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        /* 算法 Chip 设计 */
+        .algo-chip {
+            border: 1px solid var(--cinnabar);
+            color: var(--cinnabar);
+            font-size: 11px;
+            padding: 0 4px;
+            font-weight: bold;
+            line-height: 1.4;
+            letter-spacing: 1px;
+        }
+
+        .age-bracket {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 13px;
+            color: var(--gold-age);
+            font-weight: bold;
+        }
+
+        .verse-text {
+            font-size: 18px;
+            line-height: 1.6;
+            color: var(--ink-deep);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* 3. 卡片页脚 (Three-column Footer) */
+        .card-footer {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            border-top: 1px solid var(--divider);
+            padding: 10px 0;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .footer-col {
+            text-align: center;
+            position: relative;
+        }
+
+        .footer-col:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 15%;
+            height: 70%;
+            width: 1px;
+            border-right: 1px dashed var(--divider);
+        }
+
+        .footer-val {
+            font-size: 15px;
+            color: var(--ink-deep);
+            font-weight: bold;
+        }
+
+        .footer-lbl {
+            font-size: 10px;
+            color: var(--cinnabar);
+            margin-top: 2px;
+        }
+
+        /* --- 区域三：底部统计栏 --- */
+        .app-footer {
+            height: 34px;
+            background: var(--header-black);
+            color: #888;
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            font-size: 11px;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="algo-matrix">
+        <div class="matrix-seal">太玄</div>
+        <div class="matrix-seal">元堂</div>
+        <div class="matrix-seal">日柱</div>
+        <div class="matrix-seal">八卦</div>
+        <div class="matrix-seal">四门</div>
+        <div class="matrix-seal">先后天</div>
+        <div class="matrix-seal">六爻和</div>
+        <div class="matrix-seal">生命卦</div>
+    </div>
+
+    <div class="main-scroll">
+
+        <div class="verse-card">
+            <div class="card-header">
+                <div class="header-year">2024</div>
+                <div class="header-age">廿八岁</div>
+            </div>
+            <div class="card-body">
+                <div class="cinnabar-line"></div>
+                <div class="content-area">
+                    <div class="meta-row">
+                        <span class="algo-chip">太玄</span>
+                        <span class="age-bracket">(28, 37)</span>
+                    </div>
+                    <div class="verse-text">命有定数，运有变数，知命而改运，方为上乘。</div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="footer-col">
+                    <div class="footer-val">中平</div>
+                    <div class="lbl footer-lbl">吉凶</div>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-val">正财</div>
+                    <div class="lbl footer-lbl">象义</div>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-val">参考</div>
+                    <div class="lbl footer-lbl">备注</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="verse-card">
+            <div class="card-header">
+                <div class="header-year">本命</div>
+                <div class="header-age">终身常占</div>
+            </div>
+            <div class="card-body">
+                <div class="cinnabar-line"></div>
+                <div class="content-area">
+                    <div class="meta-row">
+                        <span class="algo-chip">元堂</span>
+                        <span class="age-bracket"></span>
+                    </div>
+                    <div class="verse-text">金石为开，大器晚成。宜守不宜进，静待春风。</div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="footer-col">
+                    <div class="footer-val">大吉</div>
+                    <div class="lbl footer-lbl">吉凶</div>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-val">偏财</div>
+                    <div class="lbl footer-lbl">象义</div>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-val">源自元堂</div>
+                    <div class="lbl footer-lbl">源起</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="app-footer">
+        <span>当前盘：甲辰年 丙寅月 ...</span>
+        <span>共计 428 条条文</span>
+    </div>
+
+</body>
+
+</html>

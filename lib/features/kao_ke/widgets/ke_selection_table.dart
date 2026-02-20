@@ -17,19 +17,17 @@ class KeSelectionTable extends StatelessWidget {
   final Function(KaoEigthKeNumber) onKeSelected;
 
   const KeSelectionTable({
-    Key? key,
+    super.key,
     required this.keData,
     required this.birthShiChen,
     required this.onKeSelected,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
-      child: SingleChildScrollView(
-        child: _buildTable(context),
-      ),
+      child: SingleChildScrollView(child: _buildTable(context)),
     );
   }
 
@@ -63,13 +61,15 @@ class KeSelectionTable extends StatelessWidget {
     ];
 
     return DataTable(
-      headingRowColor: MaterialStateProperty.all(
+      headingRowColor: WidgetStateProperty.all(
         Theme.of(context).colorScheme.primaryContainer,
       ),
       columnSpacing: 16,
       horizontalMargin: 16,
       columns: [
-        const DataColumn(label: Text('时辰', style: TextStyle(fontWeight: FontWeight.bold))),
+        const DataColumn(
+          label: Text('时辰', style: TextStyle(fontWeight: FontWeight.bold)),
+        ),
         ...keOrder.map(
           (ke) => DataColumn(
             label: Text(
@@ -88,9 +88,11 @@ class KeSelectionTable extends StatelessWidget {
         final keList = keData[shiChen] ?? [];
 
         return DataRow(
-          color: MaterialStateProperty.all(
+          color: WidgetStateProperty.all(
             isUserBirthShiChen
-                ? Theme.of(context).colorScheme.secondaryContainer.withOpacity(0.3)
+                ? Theme.of(
+                    context,
+                  ).colorScheme.secondaryContainer.withOpacity(0.3)
                 : null,
           ),
           cells: [
@@ -100,7 +102,9 @@ class KeSelectionTable extends StatelessWidget {
                 shiChen.name,
                 style: TextStyle(
                   color: rowColor,
-                  fontWeight: isUserBirthShiChen ? FontWeight.bold : FontWeight.normal,
+                  fontWeight: isUserBirthShiChen
+                      ? FontWeight.bold
+                      : FontWeight.normal,
                 ),
               ),
             ),
@@ -131,7 +135,9 @@ class KeSelectionTable extends StatelessWidget {
                           style: TextStyle(
                             color: rowColor,
                             fontSize: 12,
-                            fontWeight: isUserBirthShiChen ? FontWeight.w600 : FontWeight.normal,
+                            fontWeight: isUserBirthShiChen
+                                ? FontWeight.w600
+                                : FontWeight.normal,
                           ),
                         ),
                         const SizedBox(height: 2),
@@ -140,7 +146,9 @@ class KeSelectionTable extends StatelessWidget {
                           style: TextStyle(
                             color: rowColor,
                             fontSize: 11,
-                            fontWeight: isUserBirthShiChen ? FontWeight.w600 : FontWeight.normal,
+                            fontWeight: isUserBirthShiChen
+                                ? FontWeight.w600
+                                : FontWeight.normal,
                           ),
                         ),
                         const SizedBox(height: 2),
@@ -151,7 +159,9 @@ class KeSelectionTable extends StatelessWidget {
                           style: TextStyle(
                             color: rowColor.withOpacity(0.8),
                             fontSize: 10,
-                            fontWeight: isUserBirthShiChen ? FontWeight.w500 : FontWeight.normal,
+                            fontWeight: isUserBirthShiChen
+                                ? FontWeight.w500
+                                : FontWeight.normal,
                           ),
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,

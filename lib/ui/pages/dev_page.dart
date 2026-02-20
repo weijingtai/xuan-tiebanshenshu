@@ -123,6 +123,22 @@ class _DevPageState extends State<DevPage> {
                 foregroundColor: Colors.white,
               ),
             ),
+            const SizedBox(height: 16),
+            ElevatedButton.icon(
+              onPressed: () {
+                Navigator.of(context).pushNamed('/tiebanshenshu/base18');
+              },
+              icon: const Icon(Icons.table_rows),
+              label: const Text('Base 18 垂直布局'),
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 16,
+                ),
+                backgroundColor: Colors.brown,
+                foregroundColor: Colors.white,
+              ),
+            ),
           ],
         ),
       ),

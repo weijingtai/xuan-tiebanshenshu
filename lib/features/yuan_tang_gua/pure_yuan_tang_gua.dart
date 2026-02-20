@@ -39,8 +39,8 @@ class YuanTangYao extends GuaYao {
     final next = YuanTangYao(
       order: order ?? this.order,
       yinYang: yinYang ?? this.yinYang,
-      yangTangZhiList: this.yangTangZhiList,
-      isYuanTang: this.isYuanTang,
+      yangTangZhiList: yangTangZhiList,
+      isYuanTang: isYuanTang,
     );
     // 继承字段拷贝（保持与父类一致的行为）
     next.naJia = naJia ?? this.naJia;
@@ -87,6 +87,7 @@ class YuanTangYao extends GuaYao {
   factory YuanTangYao.fromJson(Map<String, dynamic> json) =>
       _$YuanTangYaoFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() => _$YuanTangYaoToJson(this);
 
   @override
@@ -112,10 +113,10 @@ class PureYuanTangGua extends PureSixYaoGua {
   List<YuanTangYao> get yuanTangYaoList => super.yaoList.cast<YuanTangYao>();
 
   PureYuanTangGua({
-    required Enum64Gua gua,
-    required List<YuanTangYao> yaoList,
+    required super.gua,
+    required List<YuanTangYao> super.yaoList,
     required this.yuanTangYao,
-  }) : super(gua: gua, yaoList: yaoList);
+  });
 
   /// 地支列表（上→下 / 下→上）
   List<List<DiZhi>> get topBottomDiZhiList =>
@@ -181,6 +182,7 @@ class PureYuanTangGua extends PureSixYaoGua {
 
   factory PureYuanTangGua.fromJson(Map<String, dynamic> json) =>
       _$PureYuanTangGuaFromJson(json);
+  @override
   Map<String, dynamic> toJson() => _$PureYuanTangGuaToJson(this);
 }
 
@@ -235,7 +237,7 @@ class YuanTangDaYunPeriod {
   @override
   String toString() {
     final diZhiStr = diZhiList?.isEmpty ?? true ? '未配' : diZhiList!.join('、');
-    return '${order.name}($yinYang-${years}年): $ageRange岁 [$diZhiStr]';
+    return '${order.name}($yinYang-$years年): $ageRange岁 [$diZhiStr]';
   }
 
   factory YuanTangDaYunPeriod.fromJson(Map<String, dynamic> json) =>
@@ -331,7 +333,7 @@ class YuanTangLiuYearGua {
 
   @override
   String toString() {
-    return '$age岁: $gua (${guaSource}卦, 变${yaoLabel}爻)';
+    return '$age岁: $gua ($guaSource卦, 变$yaoLabel爻)';
   }
 
   @override
@@ -405,10 +407,10 @@ class YuanTangLiuMonthGua {
   /// 获取变化描述
   String get changeDescription {
     if (isYangMonth) {
-      return '变${yaoLabel}爻';
+      return '变$yaoLabel爻';
     } else {
       final yingYaoLabel = _getYaoPositionLabel(yingYaoIndex!);
-      return '由${month - 1}月卦应爻变换(变${yingYaoLabel}爻)';
+      return '由${month - 1}月卦应爻变换(变$yingYaoLabel爻)';
     }
   }
 

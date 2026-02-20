@@ -77,7 +77,9 @@ class BaGuaJiaZeCard extends StatelessWidget {
   /// 构建卦象信息
   Widget _buildGuaInfo(BuildContext context) {
     return Card(
-      color: Theme.of(context).colorScheme.surfaceVariant.withOpacity(0.5),
+      color: Theme.of(
+        context,
+      ).colorScheme.surfaceContainerHighest.withOpacity(0.5),
       child: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Column(

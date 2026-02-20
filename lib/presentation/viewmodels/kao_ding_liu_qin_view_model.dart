@@ -40,13 +40,14 @@ class KaoDingLiuQinViewModel extends ChangeNotifier {
   Map<LiuQinType, KaoDingLiuQinResult> _allResults = {};
 
   /// 所有六亲类型的流度表条目（带条文内容）
-  Map<LiuQinType, List<LiuDuEntryWithTiaoWen>> _allEntriesWithTiaoWen = {};
+  final Map<LiuQinType, List<LiuDuEntryWithTiaoWen>> _allEntriesWithTiaoWen =
+      {};
 
   /// 兄弟乙表的流度表条目（带条文内容）
   List<LiuDuEntryWithTiaoWen> _siblingYiEntriesWithTiaoWen = [];
 
   /// 用户选择的条文（每个六亲类型对应一个条文编号）
-  Map<LiuQinType, int> _selectedTiaoWenNumbers = {};
+  final Map<LiuQinType, int> _selectedTiaoWenNumbers = {};
 
   /// 化卦结果（每个六亲类型对应一个化卦结果）
   Map<LiuQinType, GuaCalculationResult>? _huaGuaResults;
@@ -97,7 +98,8 @@ class KaoDingLiuQinViewModel extends ChangeNotifier {
       _allEntriesWithTiaoWen;
 
   /// 兄弟乙表的流度表条目（带条文内容）
-  List<LiuDuEntryWithTiaoWen> get siblingYiEntriesWithTiaoWen => _siblingYiEntriesWithTiaoWen;
+  List<LiuDuEntryWithTiaoWen> get siblingYiEntriesWithTiaoWen =>
+      _siblingYiEntriesWithTiaoWen;
 
   /// 用户选择的条文
   Map<LiuQinType, int> get selectedTiaoWenNumbers => _selectedTiaoWenNumbers;
@@ -165,7 +167,11 @@ class KaoDingLiuQinViewModel extends ChangeNotifier {
       _currentEightChars = eightChars;
       notifyListeners();
 
-      final results = await _useCase.executeMultiple(eightChars, liuQinTypes, spouseOrdinals: _spouseOrdinals);
+      final results = await _useCase.executeMultiple(
+        eightChars,
+        liuQinTypes,
+        spouseOrdinals: _spouseOrdinals,
+      );
 
       // 设置最后一个结果为当前结果
       if (results.isNotEmpty) {
@@ -208,8 +214,9 @@ class KaoDingLiuQinViewModel extends ChangeNotifier {
         final liuQinType = entry.key;
         final result = entry.value;
 
-        final entriesWithTiaoWen =
-            await _useCase.getLiuDuEntriesWithTiaoWen(result);
+        final entriesWithTiaoWen = await _useCase.getLiuDuEntriesWithTiaoWen(
+          result,
+        );
         _allEntriesWithTiaoWen[liuQinType] = entriesWithTiaoWen;
 
         // 如果有目标条目，自动选择它
@@ -226,8 +233,8 @@ class KaoDingLiuQinViewModel extends ChangeNotifier {
         (t) => t.type == LiuDuTableType.naBiGuaYi,
         orElse: () => siblingTables.last,
       );
-      _siblingYiEntriesWithTiaoWen =
-          await _useCase.getLiuDuEntriesWithTiaoWenForTable(yiTable);
+      _siblingYiEntriesWithTiaoWen = await _useCase
+          .getLiuDuEntriesWithTiaoWenForTable(yiTable);
 
       // 设置最后一个结果为当前结果
       if (results.isNotEmpty) {
@@ -398,8 +405,9 @@ class KaoDingLiuQinViewModel extends ChangeNotifier {
       final result = await _useCase.execute(params);
       _allResults[type] = result;
 
-      final entriesWithTiaoWen =
-          await _useCase.getLiuDuEntriesWithTiaoWen(result);
+      final entriesWithTiaoWen = await _useCase.getLiuDuEntriesWithTiaoWen(
+        result,
+      );
       _allEntriesWithTiaoWen[type] = entriesWithTiaoWen;
 
       if (result.targetEntry != null) {
@@ -415,10 +423,5 @@ class KaoDingLiuQinViewModel extends ChangeNotifier {
       notifyListeners();
       rethrow;
     }
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
   }
 }

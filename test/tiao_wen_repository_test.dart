@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/services.dart';
-import '../lib/repository/tiao_wen_repository_impl.dart';
-import '../lib/repository/datamodels/tiao_wen_datamodel.dart';
+import 'package:tiebanshenshu/repository/tiao_wen_repository_impl.dart';
+import 'package:tiebanshenshu/repository/datamodels/tiao_wen_datamodel.dart';
 import 'package:common/enums.dart';
 
 /// 条文数据仓库测试

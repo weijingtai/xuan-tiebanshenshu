@@ -298,7 +298,7 @@ class YuanTangCalculator {
     PureYuanTangGua xianTianGua,
     YinYang monthYingYang,
   ) {
-    var gua;
+    Enum64Gua gua;
     // 三至尊卦检测
     if ({
       Enum64Gua.kan_wei_shui,
@@ -593,7 +593,7 @@ class YuanTangCalculator {
         if (tmp[allYangSlotIndices[i]] == null) {
           tmp[allYangSlotIndices[i]] = [];
         }
-        tmp[allYangSlotIndices[i]]!.add(tmpList[i]!);
+        tmp[allYangSlotIndices[i]]!.add(tmpList[i]);
       }
       List<DiZhi> leftZhiForYinList = tmpList
           .skip(allYangSlotIndices.length)
@@ -611,7 +611,7 @@ class YuanTangCalculator {
         if (tmp[allYinSlotIndices[i]] == null) {
           tmp[allYinSlotIndices[i]] = [];
         }
-        tmp[allYinSlotIndices[i]]!.add(tmpList[i]!);
+        tmp[allYinSlotIndices[i]]!.add(tmpList[i]);
       }
       List<DiZhi> leftZhiForYangList = tmpList
           .skip(allYinSlotIndices.length)

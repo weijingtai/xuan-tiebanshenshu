@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>铁板神数 - 编号设计版 (Base 10)</title>
+    <style>
+        :root {
+            --bg-color: #E8E4DD;
+            --paper: #FAF8F5;
+            --taixuan-red: #A62B1F;
+            --yuantang-blue: #2A4056;
+            --huangji-purple: #512E5F;
+            --heluo-green: #145A32;
+            --neutral-black: #1A1A1B;
+            --line-light: rgba(0, 0, 0, 0.05);
+            --ink-text: #2B2B2B;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 32px 16px;
+            font-family: "Noto Serif SC", "Songti SC", serif;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .algo-card {
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+            background: transparent;
+            --theme-color: var(--neutral-black);
+        }
+
+        .theme-taixuan {
+            --theme-color: var(--taixuan-red);
+        }
+
+        .theme-yuantang {
+            --theme-color: var(--yuantang-blue);
+        }
+
+        .theme-huangji {
+            --theme-color: var(--huangji-purple);
+        }
+
+        .theme-heluo {
+            --theme-color: var(--heluo-green);
+        }
+
+        /* --- 1. 头部 --- */
+        .card-head {
+            background-color: var(--theme-color);
+            color: #FFFFFF;
+            padding: 16px 20px;
+            border-radius: 12px 12px 0 0;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            position: relative;
+            align-items: center;
+        }
+
+        .head-title {
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin: 0;
+            line-height: 1.2;
+            opacity: 0.95;
+        }
+
+        .head-formula {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 2px 8px;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- 2. 躯干 --- */
+        .card-body {
+            background-color: var(--paper);
+            padding: 2px 0;
+        }
+
+        .verse-row {
+            display: flex;
+            padding: 18px 20px;
+            border-bottom: 1px dashed var(--line-light);
+            position: relative;
+            /* 编号水印定位基础 */
+            overflow: hidden;
+            /* 防止水印溢出 */
+        }
+
+        .verse-row:last-child {
+            border-bottom: none;
+        }
+
+        /* --- 新增：条文编号水印 (Verse ID Watermark) --- */
+        .verse-id-watermark {
+            position: absolute;
+            right: -8px;
+            bottom: -5px;
+            font-family: "Noto Serif SC", serif;
+            font-size: 42px;
+            /* 足够大才有冲击力 */
+            font-weight: 900;
+            color: var(--theme-color);
+            opacity: 0.04;
+            /* 极淡水印 */
+            pointer-events: none;
+            user-select: none;
+            line-height: 1;
+            z-index: 0;
+            white-space: nowrap;
+        }
+
+        /* 实体编号小注 - 移动到右下角 */
+        .verse-id-text {
+            position: absolute;
+            right: 12px;
+            bottom: 10px;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 9px;
+            letter-spacing: 1px;
+            color: color-mix(in srgb, var(--theme-color) 40%, transparent);
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        .left-accent {
+            width: 3px;
+            margin-right: 14px;
+            background-color: var(--theme-color);
+            border-radius: 2px;
+            flex-shrink: 0;
+            opacity: 0.8;
+            z-index: 1;
+        }
+
+        .content-wrap {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            z-index: 1;
+        }
+
+        .meta-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .meta-left {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .sub-tag {
+            font-size: 10px;
+            padding: 1px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+            color: var(--theme-color);
+            background-color: color-mix(in srgb, var(--theme-color) 8%, white);
+            border: 0.5px solid color-mix(in srgb, var(--theme-color) 12%, transparent);
+        }
+
+        .age-badge {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+            color: #967131;
+            font-weight: bold;
+            background: rgba(150, 113, 49, 0.08);
+            padding: 1px 5px;
+            border-radius: 3px;
+        }
+
+        .seal-tag {
+            font-size: 10.5px;
+            border: 1px solid;
+            padding: 0 4px;
+            border-radius: 2px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        /* 模式一：语义化颜色 (绿吉红凶) */
+        .seal-great-good {
+            color: #1B5E20;
+            border-color: #1B5E20;
+            background: rgba(27, 94, 32, 0.05);
+        }
+
+        .seal-good {
+            color: #43A047;
+            border-color: #43A047;
+            background: rgba(67, 160, 71, 0.05);
+        }
+
+        .seal-neutral {
+            color: #757575;
+            border-color: #757575;
+            background: rgba(117, 117, 117, 0.05);
+        }
+
+        .seal-bad {
+            color: #E53935;
+            border-color: #E53935;
+            background: rgba(229, 57, 53, 0.05);
+        }
+
+        .seal-great-bad {
+            color: #B71C1C;
+            border-color: #B71C1C;
+            background: rgba(183, 28, 28, 0.05);
+        }
+
+        .verse-text {
+            font-size: 16.5px;
+            line-height: 1.6;
+            color: var(--ink-text);
+            text-align: justify;
+            font-weight: 500;
+        }
+
+        .card-foot {
+            background-color: var(--theme-color);
+            height: 24px;
+            border-radius: 0 0 16px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .foot-dot {
+            width: 4px;
+            height: 4px;
+            background-color: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            margin: 0 3px;
+        }
+
+        /* 控制器样式 */
+        .controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 8px 12px;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .switch-label {
+            font-size: 12px;
+            color: #666;
+            font-weight: bold;
+        }
+
+        .switch-btn {
+            position: relative;
+            width: 44px;
+            height: 22px;
+            background: #DDD;
+            border-radius: 11px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .switch-btn::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 18px;
+            height: 18px;
+            background: white;
+            border-radius: 50%;
+            transition: left 0.3s;
+        }
+
+        .theme-seal-active .switch-btn {
+            background: var(--huangji-purple);
+        }
+
+        .theme-seal-active .switch-btn::after {
+            left: 24px;
+        }
+
+        .theme-seal-active .seal-tag {
+            color: var(--theme-color) !important;
+            border-color: var(--theme-color) !important;
+            background: rgba(0, 0, 0, 0.02) !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="controls">
+        <span class="switch-label">主题联动模式</span>
+        <div class="switch-btn" onclick="toggleSealStyle()"></div>
+    </div>
+
+    <!-- 皇极经世 · 方案一 -->
+    <div class="algo-card theme-huangji">
+        <div class="card-head">
+            <div class="head-title">皇极经世 · 方案一</div>
+            <div class="head-formula">(年干 × 12 + 月支) ÷ 360</div>
+        </div>
+
+        <div class="card-body">
+            <!-- 条文 1 -->
+            <div class="verse-row">
+                <div class="verse-id-text">NO. 1245</div>
+                <div class="verse-id-watermark">壹貳肆伍</div>
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag">皇极经世</span>
+                            <span class="sub-tag">元会运世</span>
+                            <span class="age-badge">45-54 岁</span>
+                        </div>
+                        <span class="seal-tag seal-great-good">大吉</span>
+                    </div>
+                    <div class="verse-text">宏图大展在此时，四海昇平见太平。云开见日，君子有为。</div>
+                </div>
+            </div>
+            <!-- 条文 2 -->
+            <div class="verse-row">
+                <div class="verse-id-text">NO. 3870</div>
+                <div class="verse-id-watermark">叁捌柒零</div>
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag">皇极经世</span>
+                            <span class="sub-tag">值年卦</span>
+                            <span class="age-badge">2024 甲辰</span>
+                        </div>
+                        <span class="seal-tag seal-neutral">中平</span>
+                    </div>
+                    <div class="verse-text">亢龙有悔，盈不可久。凡事留有余地，方能长久。</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-foot">
+            <div class="foot-dot"></div>
+            <div class="foot-dot"></div>
+            <div class="foot-dot"></div>
+        </div>
+    </div>
+
+    <!-- 太玄数 · 方案一 -->
+    <div class="algo-card theme-taixuan">
+        <div class="card-head">
+            <div class="head-title">太玄数 · 方案一</div>
+            <div class="head-formula">(先天 + 后天) % 12 + 1000</div>
+        </div>
+        <div class="card-body">
+            <div class="verse-row">
+                <div class="verse-id-text">NO. 5621</div>
+                <div class="verse-id-watermark">伍陸貳壹</div>
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag">太玄数</span>
+                            <span class="sub-tag">先天</span>
+                            <span class="age-badge">28-37 岁</span>
+                        </div>
+                        <span class="seal-tag seal-good">小吉</span>
+                    </div>
+                    <div class="verse-text">命有定数，运有变数。知命而改运，方为上乘。</div>
+                </div>
+            </div>
+            <div class="verse-row">
+                <div class="verse-id-text">NO. 10452</div>
+                <div class="verse-id-watermark">壹萬零肆佰伍貳</div>
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag">太玄数</span>
+                            <span class="sub-tag">流年</span>
+                        </div>
+                        <span class="seal-tag seal-bad">凶</span>
+                    </div>
+                    <div class="verse-text">风雨袭来莫惊慌，定心坐禅避祸殃。</div>
+                </div>
+            </div>
+        </div>
+        <div class="card-foot">
+            <div class="foot-dot"></div>
+            <div class="foot-dot"></div>
+            <div class="foot-dot"></div>
+        </div>
+    </div>
+
+    <!-- 河洛数 -->
+    <div class="algo-card theme-heluo">
+        <div class="card-head">
+            <div class="head-title">河洛数</div>
+            <div class="head-formula">(天地总数 - 阳数) % 384</div>
+        </div>
+        <div class="card-body">
+            <div class="verse-row">
+                <div class="verse-id-text">NO. 12891</div>
+                <div class="verse-id-watermark">壹萬貳捌玖壹</div>
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag">河洛数</span>
+                            <span class="sub-tag">阳数</span>
+                            <span class="age-badge">24 岁</span>
+                        </div>
+                        <span class="seal-tag seal-great-good">大吉</span>
+                    </div>
+                    <div class="verse-text">龙腾四海势不凡，功成名就指日看。天赐良缘在此际。</div>
+                </div>
+            </div>
+        </div>
+        <div class="card-foot">
+            <div class="foot-dot"></div>
+            <div class="foot-dot"></div>
+            <div class="foot-dot"></div>
+        </div>
+    </div>
+
+    <script>
+        function toggleSealStyle() {
+            document.body.classList.toggle('theme-seal-active');
+        }
+    </script>
+</body>
+
+</html>

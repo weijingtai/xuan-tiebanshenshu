@@ -1,6 +1,5 @@
 import 'package:common/enums.dart';
 import 'package:tiebanshenshu/constant/constants.dart' as constants;
-import 'package:tiebanshenshu/features/six_yao_gua/enum_6_shou.dart';
 import 'package:tiebanshenshu/features/six_yao_gua/pure_six_yao_gua.dart';
 import 'package:tiebanshenshu/features/six_yao_gua/six_yao_calculator.dart';
 

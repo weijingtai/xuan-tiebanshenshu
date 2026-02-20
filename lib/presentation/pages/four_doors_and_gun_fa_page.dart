@@ -413,7 +413,7 @@ class _FourDoorsAndGunFaPageState extends State<FourDoorsAndGunFaPage>
               subtitle: subtitle,
             ),
           );
-        }).toList(),
+        }),
       ],
     );
   }
@@ -661,7 +661,7 @@ class _FourDoorsAndGunFaPageState extends State<FourDoorsAndGunFaPage>
               subtitle: subtitle,
             ),
           );
-        }).toList(),
+        }),
       ],
     );
   }

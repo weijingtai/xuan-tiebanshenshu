@@ -2,31 +2,25 @@ import 'package:flutter/material.dart';
 import '../models/ui_tiao_wen_list_result_model.dart';
 
 /// 计算结果摘要组件
-/// 
+///
 /// 显示计算方法、条文数量等摘要信息
 class CalculationSummary extends StatelessWidget {
   /// UI结果模型
   final UITiaoWenListResultModel result;
 
-  const CalculationSummary({
-    super.key,
-    required this.result,
-  });
+  const CalculationSummary({super.key, required this.result});
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    
+
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
-        color: theme.colorScheme.surfaceVariant.withOpacity(0.3),
+        color: theme.colorScheme.surfaceContainerHighest.withOpacity(0.3),
         border: Border(
-          bottom: BorderSide(
-            color: theme.dividerColor,
-            width: 0.5,
-          ),
+          bottom: BorderSide(color: theme.dividerColor, width: 0.5),
         ),
       ),
       child: Column(
@@ -56,17 +50,13 @@ class CalculationSummary extends StatelessWidget {
               ),
             ],
           ),
-          
+
           const SizedBox(height: 8.0),
-          
+
           // 条文统计
           Row(
             children: [
-              Icon(
-                Icons.article,
-                size: 16.0,
-                color: theme.colorScheme.primary,
-              ),
+              Icon(Icons.article, size: 16.0, color: theme.colorScheme.primary),
               const SizedBox(width: 8.0),
               Text(
                 '条文数量',
@@ -84,7 +74,7 @@ class CalculationSummary extends StatelessWidget {
               ),
             ],
           ),
-          
+
           // 源数据信息
           if (result.sourceData.isNotEmpty) ...[
             const SizedBox(height: 8.0),
@@ -126,11 +116,11 @@ class CalculationSummary extends StatelessWidget {
     if (result.hasTiaoWenData) {
       final entities = result.tiaoWenEntities;
       final firstEntity = entities.first;
-      final setNames = entities.map((e) => e.setName?.name ?? '未知').toSet();
-      
+      final setNames = entities.map((e) => e.setName.name ?? '未知').toSet();
+
       return '条文数量: ${entities.length} | 地支: ${setNames.join(', ')} | 首条: ${firstEntity.content1 ?? '无内容'}';
     }
-    
+
     // 如果没有条文数据，回退到源数据显示
     return _formatSourceData(result.sourceData);
   }
@@ -140,10 +130,10 @@ class CalculationSummary extends StatelessWidget {
     if (sourceData.isEmpty) {
       return '无数据';
     }
-    
+
     // 提取关键信息进行显示
     final List<String> keyInfo = [];
-    
+
     // 添加一些常见的关键字段
     if (sourceData.containsKey('calculationMethod')) {
       keyInfo.add('方法: ${sourceData['calculationMethod']}');
@@ -154,12 +144,12 @@ class CalculationSummary extends StatelessWidget {
     if (sourceData.containsKey('inputData')) {
       keyInfo.add('输入数据');
     }
-    
+
     // 如果没有找到关键信息，显示字段数量
     if (keyInfo.isEmpty) {
       keyInfo.add('${sourceData.length} 个数据字段');
     }
-    
+
     return keyInfo.join(', ');
   }
 }

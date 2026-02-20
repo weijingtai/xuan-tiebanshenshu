@@ -565,7 +565,7 @@ class _KaoKeInteractivePageState extends State<KaoKeInteractivePage> {
 
     setState(() {
       _douJiaYiPreviewText =
-          '${birthShiChen.name}时${matched!.ke.name}刻（序 ${matched!.order}）';
+          '${birthShiChen.name}时${matched!.ke.name}刻（序 ${matched.order}）';
     });
   }
 

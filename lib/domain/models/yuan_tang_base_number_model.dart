@@ -178,7 +178,7 @@ class YuanTangDayunPeriod {
   @override
   String toString() {
     final diZhiStr = diZhiList.isEmpty ? '未配' : diZhiList.join('、');
-    return '$yaoLabel爻($yinYang-${years}年): $ageRange岁 [$diZhiStr]';
+    return '$yaoLabel爻($yinYang-$years年): $ageRange岁 [$diZhiStr]';
   }
 
   @override
@@ -318,7 +318,7 @@ class YuanTangLiunianGua {
     if (changedYaoIndex == -1) {
       return '$age岁: $gua ($guaSource, 未变换)';
     }
-    return '$age岁: $gua ($guaSource, 变${yaoLabel}爻)';
+    return '$age岁: $gua ($guaSource, 变$yaoLabel爻)';
   }
 
   @override
@@ -389,10 +389,10 @@ class YuanTangLiuyueGua {
   /// 获取变化描述
   String get changeDescription {
     if (isYangMonth) {
-      return '变${yaoLabel}爻';
+      return '变$yaoLabel爻';
     } else {
       final yingYaoLabel = _getYaoPositionLabel(yingYaoIndex!);
-      return '由${month - 1}月卦应爻变换(变${yingYaoLabel}爻)';
+      return '由${month - 1}月卦应爻变换(变$yingYaoLabel爻)';
     }
   }
 

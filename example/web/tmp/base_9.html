@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>铁板神数 - 紧凑优化版 (Base 9 Updated)</title>
+    <style>
+        :root {
+            --bg-color: #E8E4DD;
+            --paper: #FAF8F5;
+            --taixuan-red: #A62B1F;
+            --yuantang-blue: #2A4056;
+            --huangji-purple: #512E5F;
+            --heluo-green: #145A32;
+            /* 河洛绿 */
+            --neutral-black: #1A1A1B;
+            --line-light: rgba(0, 0, 0, 0.05);
+            --ink-text: #2B2B2B;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 32px 16px;
+            font-family: "Noto Serif SC", "Songti SC", serif;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .algo-card {
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+            background: transparent;
+            --theme-color: var(--neutral-black);
+        }
+
+        .theme-taixuan {
+            --theme-color: var(--taixuan-red);
+        }
+
+        .theme-yuantang {
+            --theme-color: var(--yuantang-blue);
+        }
+
+        .theme-huangji {
+            --theme-color: var(--huangji-purple);
+        }
+
+        .theme-heluo {
+            --theme-color: var(--heluo-green);
+        }
+
+        /* --- 1. 头部修整：更紧凑、更精致 --- */
+        .card-head {
+            background-color: var(--theme-color);
+            color: #FFFFFF;
+            padding: 16px 20px;
+            /* 大幅缩小填充 */
+            border-radius: 12px 12px 0 0;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            position: relative;
+            align-items: center;
+        }
+
+        .head-title {
+            font-size: 18px;
+            /* 减小字号，更显精致 */
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin: 0;
+            line-height: 1.2;
+            opacity: 0.95;
+        }
+
+        .head-formula {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 10px;
+            /* 极小字号 */
+            color: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 2px 8px;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- 2. 躯干 --- */
+        .card-body {
+            background-color: var(--paper);
+            padding: 2px 0;
+        }
+
+        .verse-row {
+            display: flex;
+            padding: 14px 20px;
+            border-bottom: 1px dashed var(--line-light);
+        }
+
+        .verse-row:last-child {
+            border-bottom: none;
+        }
+
+        .left-accent {
+            width: 3px;
+            margin-right: 14px;
+            background-color: var(--theme-color);
+            border-radius: 2px;
+            flex-shrink: 0;
+            opacity: 0.8;
+        }
+
+        .content-wrap {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .meta-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .meta-left {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .sub-tag {
+            font-size: 10px;
+            padding: 1px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+            color: var(--theme-color);
+            background-color: color-mix(in srgb, var(--theme-color) 8%, white);
+            border: 0.5px solid color-mix(in srgb, var(--theme-color) 12%, transparent);
+        }
+
+        /* 年龄回到标签行，保持精致样式 */
+        .age-badge {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+            color: #967131;
+            font-weight: bold;
+            background: rgba(150, 113, 49, 0.08);
+            padding: 1px 5px;
+            border-radius: 3px;
+        }
+
+        /* --- 新增：Switcher Widget 样式 --- */
+        .controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 8px 12px;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .switch-label {
+            font-size: 12px;
+            color: #666;
+            font-weight: bold;
+        }
+
+        .switch-btn {
+            position: relative;
+            width: 44px;
+            height: 22px;
+            background: #DDD;
+            border-radius: 11px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .switch-btn::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 18px;
+            height: 18px;
+            background: white;
+            border-radius: 50%;
+            transition: left 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .theme-seal-active .switch-btn {
+            background: var(--huangji-purple);
+        }
+
+        .theme-seal-active .switch-btn::after {
+            left: 24px;
+        }
+
+        /* --- 吉凶 Tag 升级版 --- */
+        .seal-tag {
+            font-size: 10.5px;
+            border: 1px solid;
+            padding: 0 4px;
+            border-radius: 2px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        /* 策略：默认使用语义色，激活 theme-seal-active 时覆盖为主题色 */
+
+        /* 模式一：语义化颜色 (绿吉红凶) */
+        .seal-great-good {
+            color: #1B5E20;
+            border-color: #1B5E20;
+            background: rgba(27, 94, 32, 0.05);
+        }
+
+        .seal-good {
+            color: #43A047;
+            border-color: #43A047;
+            background: rgba(67, 160, 71, 0.05);
+        }
+
+        .seal-neutral {
+            color: #757575;
+            border-color: #757575;
+            background: rgba(117, 117, 117, 0.05);
+        }
+
+        .seal-bad {
+            color: #E53935;
+            border-color: #E53935;
+            background: rgba(229, 57, 53, 0.05);
+        }
+
+        .seal-great-bad {
+            color: #B71C1C;
+            border-color: #B71C1C;
+            background: rgba(183, 28, 28, 0.05);
+        }
+
+        /* 模式二：强制跟随主题色 (通过父级 class 控制) */
+        .theme-seal-active .seal-tag {
+            color: var(--theme-color) !important;
+            border-color: var(--theme-color) !important;
+            background: rgba(0, 0, 0, 0.02) !important;
+        }
+
+        .verse-text {
+            font-size: 16.5px;
+            line-height: 1.6;
+            color: var(--ink-text);
+            text-align: justify;
+            font-weight: 500;
+        }
+
+        .card-foot {
+            background-color: var(--theme-color);
+            height: 24px;
+            border-radius: 0 0 16px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .foot-dot {
+            width: 4px;
+            height: 4px;
+            background-color: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            margin: 0 3px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Switcher Widget -->
+    <div class="controls">
+        <span class="switch-label">主题联动模式</span>
+        <div class="switch-btn" onclick="toggleSealStyle()"></div>
+    </div>
+
+    <!-- 皇极经世 · 方案一 -->
+    <div class="algo-card theme-huangji">
+        <div class="card-head">
+            <div class="head-title">皇极经世 · 方案一</div>
+            <div class="head-formula">(年干 × 12 + 月支) ÷ 360</div>
+        </div>
+
+        <div class="card-body">
+            <!-- 条文 1 -->
+            <div class="verse-row">
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag">皇极经世</span>
+                            <span class="sub-tag">元会运世</span>
+                            <span class="age-badge">45-54 岁</span>
+                        </div>
+                        <span class="seal-tag seal-great-good">大吉</span>
+                    </div>
+                    <div class="verse-text">宏图大展在此时，四海昇平见太平。云开见日，君子有为。</div>
+                </div>
+            </div>
+            <!-- 条文 2 -->
+            <div class="verse-row">
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag">皇极经世</span>
+                            <span class="sub-tag">值年卦</span>
+                            <span class="age-badge">2024 甲辰</span>
+                        </div>
+                        <span class="seal-tag seal-neutral">中平</span>
+                    </div>
+                    <div class="verse-text">亢龙有悔，盈不可久。凡事留有余地，方能长久。</div>
+                </div>
+            </div>
+            <!-- 条文 3 -->
+            <div class="verse-row">
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag">皇极经世</span>
+                            <span class="sub-tag">动爻</span>
+                            <span class="age-badge">31 岁</span>
+                        </div>
+                        <span class="seal-tag seal-good">小吉</span>
+                    </div>
+                    <div class="verse-text">金石为开，大器晚成。此去经年，必有回响。</div>
+                </div>
+            </div>
+            <!-- 条文 4 -->
+            <div class="verse-row">
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag">皇极经世</span>
+                            <span class="sub-tag">体卦</span>
+                        </div>
+                        <span class="seal-tag">吉</span> <!-- 默认跟随主题色 -->
+                    </div>
+                    <div class="verse-text">乾坤定矣，利见大人。往来无阻，事事称心。</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-foot">
+            <div class="foot-dot"></div>
+            <div class="foot-dot"></div>
+            <div class="foot-dot"></div>
+        </div>
+    </div>
+
+    <!-- 皇极经世 · 方案二 -->
+    <div class="algo-card theme-huangji">
+        <div class="card-head">
+            <div class="head-title">皇极经世 · 方案二</div>
+            <div class="head-formula">(值年卦 × 卦象) % 384</div>
+        </div>
+
+        <div class="card-body">
+            <div class="verse-row">
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag">皇极经世</span>
+                            <span class="sub-tag">变卦</span>
+                            <span class="age-badge">2025</span>
+                        </div>
+                        <span class="seal-tag">平</span>
+                    </div>
+                    <div class="verse-text">云深不知处，静待有缘人。此时宜静不宜动，修德为上。</div>
+                </div>
+            </div>
+            <div class="verse-row">
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag">皇极经世</span>
+                            <span class="sub-tag">算法二</span>
+                            <span class="age-badge">42 岁</span>
+                        </div>
+                        <span class="seal-tag">小凶</span>
+                    </div>
+                    <div class="verse-text">石中藏美玉，淘沙见真金。此十年间，莫管他人闲事。</div>
+                </div>
+            </div>
+            <div class="verse-row">
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag">皇极经世</span>
+                            <span class="sub-tag">互卦</span>
+                        </div>
+                        <span class="seal-tag">中平</span>
+                    </div>
+                    <div class="verse-text">进德修业，水到渠成。莫道前路多艰险，守得云开见月明。</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-foot">
+            <div class="foot-dot"></div>
+            <div class="foot-dot"></div>
+            <div class="foot-dot"></div>
+        </div>
+    </div>
+
+    <!-- 太玄数 · 方案一 -->
+    <div class="algo-card theme-taixuan">
+        <div class="card-head">
+            <div class="head-title">太玄数 · 方案一</div>
+            <div class="head-formula">(先天 + 后天) % 12 + 1000</div>
+        </div>
+        <div class="card-body">
+            <div class="verse-row">
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag">太玄数</span>
+                            <span class="sub-tag">先天</span>
+                            <span class="age-badge">28-37 岁</span>
+                        </div>
+                        <span class="seal-tag">小吉</span>
+                    </div>
+                    <div class="verse-text">命有定数，运有变数。知命而改运，方为上乘。</div>
+                </div>
+            </div>
+            <div class="verse-row">
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag">太玄数</span>
+                            <span class="sub-tag">地数</span>
+                        </div>
+                        <span class="seal-tag">中平</span>
+                    </div>
+                    <div class="verse-text">金石为开，大器晚成。宜守不宜进，静待时机。</div>
+                </div>
+            </div>
+            <div class="verse-row">
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag">太玄数</span>
+                            <span class="sub-tag">流年</span>
+                            <span class="age-badge">2024</span>
+                        </div>
+                        <span class="seal-tag">吉</span>
+                    </div>
+                    <div class="verse-text">云开雾散见青天，枯木逢春发新枝。</div>
+                </div>
+            </div>
+        </div>
+        <div class="card-foot">
+            <div class="foot-dot"></div>
+            <div class="foot-dot"></div>
+            <div class="foot-dot"></div>
+        </div>
+    </div>
+
+    <!-- 太玄数 · 方案二 -->
+    <div class="algo-card theme-taixuan">
+        <div class="card-head">
+            <div class="head-title">太玄数 · 方案二</div>
+            <div class="head-formula">(日柱干支 × 月令) % 9</div>
+        </div>
+        <div class="card-body">
+            <div class="verse-row">
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag">太玄数</span>
+                            <span class="sub-tag">乾元</span>
+                            <span class="age-badge">1-10 岁</span>
+                        </div>
+                        <span class="seal-tag">吉</span>
+                    </div>
+                    <div class="verse-text">锦绣前程从此始，天生聪颖异凡人。</div>
+                </div>
+            </div>
+            <div class="verse-row">
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag">太玄数</span>
+                            <span class="sub-tag">月令</span>
+                        </div>
+                        <span class="seal-tag seal-bad">凶</span>
+                    </div>
+                    <div class="verse-text">风雨袭来莫惊慌，定心坐禅避祸殃。</div>
+                </div>
+            </div>
+            <div class="verse-row">
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag">太玄数</span>
+                            <span class="sub-tag">算法二</span>
+                            <span class="age-badge">56 岁</span>
+                        </div>
+                        <span class="seal-tag seal-great-bad">大凶</span>
+                    </div>
+                    <div class="verse-text">安享晚年福寿康，子孙满堂绕膝旁。</div>
+                </div>
+            </div>
+        </div>
+        <div class="card-foot">
+            <div class="foot-dot"></div>
+            <div class="foot-dot"></div>
+            <div class="foot-dot"></div>
+        </div>
+    </div>
+
+    <!-- 河洛数 -->
+    <div class="algo-card theme-heluo">
+        <div class="card-head">
+            <div class="head-title">河洛数</div>
+            <div class="head-formula">(天地总数 - 阳数) % 384</div>
+        </div>
+        <div class="card-body">
+            <div class="verse-row">
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag">河洛数</span>
+                            <span class="sub-tag">阳数</span>
+                            <span class="age-badge">24 岁</span>
+                        </div>
+                        <span class="seal-tag">大吉</span>
+                    </div>
+                    <div class="verse-text">龙腾四海势不凡，功成名就指日看。</div>
+                </div>
+            </div>
+            <div class="verse-row">
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag">河洛数</span>
+                            <span class="sub-tag">阴数</span>
+                        </div>
+                        <span class="seal-tag">平</span>
+                    </div>
+                    <div class="verse-text">静思己过修正道，莫在人前论是非。</div>
+                </div>
+            </div>
+            <div class="verse-row">
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag">河洛数</span>
+                            <span class="sub-tag">爻位</span>
+                            <span class="age-badge">33 岁</span>
+                        </div>
+                        <span class="seal-tag">小凶</span>
+                    </div>
+                    <div class="verse-text">谨防口舌招灾祸，退后一步海天宽。</div>
+                </div>
+            </div>
+            <div class="verse-row">
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag">河洛数</span>
+                            <span class="sub-tag">河洛精蕴</span>
+                        </div>
+                        <span class="seal-tag">大吉</span>
+                    </div>
+                    <div class="verse-text">天赐良缘在此际，百子千孙万代昌。</div>
+                </div>
+            </div>
+        </div>
+        <div class="card-foot">
+            <div class="foot-dot"></div>
+            <div class="foot-dot"></div>
+            <div class="foot-dot"></div>
+        </div>
+    </div>
+
+    <script>
+        function toggleSealStyle() {
+            document.body.classList.toggle('theme-seal-active');
+        }
+    </script>
+</body>
+
+</html>

@@ -320,6 +320,7 @@ class DataPredefinedBaseNumber extends DataBaseNumberDefinition {
 
   factory DataPredefinedBaseNumber.fromJson(Map<String, dynamic> json) =>
       _$DataPredefinedBaseNumberFromJson(json);
+  @override
   Map<String, dynamic> toJson() => _$DataPredefinedBaseNumberToJson(this);
 }
 
@@ -359,6 +360,7 @@ class DataDerivedBaseNumber extends DataBaseNumberDefinition {
 
   factory DataDerivedBaseNumber.fromJson(Map<String, dynamic> json) =>
       _$DataDerivedBaseNumberFromJson(json);
+  @override
   Map<String, dynamic> toJson() => _$DataDerivedBaseNumberToJson(this);
 
   // 静态辅助方法用于序列化 calculationParts
@@ -412,5 +414,6 @@ class DataSelectableBaseNumber extends DataBaseNumberDefinition {
 
   factory DataSelectableBaseNumber.fromJson(Map<String, dynamic> json) =>
       _$DataSelectableBaseNumberFromJson(json);
+  @override
   Map<String, dynamic> toJson() => _$DataSelectableBaseNumberToJson(this);
 }

@@ -165,7 +165,7 @@ class TiaoWenSourceInfo {
 
   @override
   String toString() {
-    return 'TiaoWenSourceInfo(number: $tiaoWenNumber, ${fullDescription})';
+    return 'TiaoWenSourceInfo(number: $tiaoWenNumber, $fullDescription)';
   }
 
   /// 转换为Map

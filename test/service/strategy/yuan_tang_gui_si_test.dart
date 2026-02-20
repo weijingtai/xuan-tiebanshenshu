@@ -244,17 +244,21 @@ void main() {
       bool checkZhiNumList() {
         if (model.zhiNumList.length != 4) return false;
         if (!model.zhiNumList[0].toSet().containsAll([2, 7]) ||
-            model.zhiNumList[0].length != 2)
+            model.zhiNumList[0].length != 2) {
           return false;
+        }
         if (!model.zhiNumList[1].toSet().containsAll([1, 6]) ||
-            model.zhiNumList[1].length != 2)
+            model.zhiNumList[1].length != 2) {
           return false;
+        }
         if (!model.zhiNumList[2].toSet().containsAll([4, 9]) ||
-            model.zhiNumList[2].length != 2)
+            model.zhiNumList[2].length != 2) {
           return false;
+        }
         if (!model.zhiNumList[3].toSet().containsAll([3, 8]) ||
-            model.zhiNumList[3].length != 2)
+            model.zhiNumList[3].length != 2) {
           return false;
+        }
         return true;
       }
 

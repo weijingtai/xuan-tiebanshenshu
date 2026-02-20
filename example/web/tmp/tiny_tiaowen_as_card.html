@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>铁板神数 - 极限压缩版 (Tiaowen Card)</title>
+    <style>
+        :root {
+            --bg-color: #E6E2DA;
+            /* 更加温润的米灰底色 */
+            --paper: #F9F7F5;
+            /* 暖调纸张白 */
+            --taixuan-red: #A62B1F;
+            --yuantang-blue: #2A4056;
+            --huangji-purple: #512E5F;
+            --heluo-green: #145A32;
+            --neutral-black: #1A1A1B;
+            --line-light: rgba(0, 0, 0, 0.05);
+            --ink-text: #2B2B2B;
+            --id-watermark-color: #B71C1C;
+            --id-text-color: #566573;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 40px 16px;
+            font-family: "Noto Serif SC", "Songti SC", serif;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .algo-card {
+            width: 100%;
+            max-width: 420px;
+            /* 略微拓宽 */
+            display: flex;
+            flex-direction: column;
+            background: transparent;
+            --theme-color: var(--neutral-black);
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.1));
+            /* 增加深度 */
+        }
+
+        .theme-taixuan {
+            --theme-color: var(--taixuan-red);
+        }
+
+        .theme-yuantang {
+            --theme-color: var(--yuantang-blue);
+        }
+
+        .theme-huangji {
+            --theme-color: var(--huangji-purple);
+        }
+
+        .theme-heluo {
+            --theme-color: var(--heluo-green);
+        }
+
+        /* --- 头部 (Compact Elegance) --- */
+        .card-head {
+            background-color: var(--theme-color);
+            color: #FFFFFF;
+            padding: 14px 20px;
+            border-radius: 12px 12px 0 0;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            align-items: center;
+            position: relative;
+            box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .head-title {
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            margin: 0;
+            opacity: 0.95;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .head-formula {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.6);
+            background: rgba(0, 0, 0, 0.15);
+            /* 加深背景 */
+            padding: 2px 8px;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- 躯干 (Strip Container) --- */
+        .card-body {
+            padding: 16px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* 极简条带 (Refined Layout) */
+        .verse-strip {
+            background-color: var(--paper);
+            padding: 6px 12px;
+            /* 高度压缩：减少垂直内边距 */
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0, 0, 0, 0.02);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            /* 减小间距 */
+            min-height: 48px;
+            /* 减小最小高度 */
+            transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.2s;
+        }
+
+        .verse-strip:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.03);
+        }
+
+        .verse-strip:active {
+            transform: scale(0.99);
+        }
+
+        /* 左侧装饰线 (Detached Accent) */
+        .left-accent {
+            position: absolute;
+            left: 4px;
+            top: 10px;
+            bottom: 10px;
+            width: 3px;
+            background-color: var(--theme-color);
+            border-radius: 2px;
+            opacity: 0.8;
+            box-shadow: 1px 0 2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* 内容区：调整右侧留白 */
+        .content-main {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            /* 更加紧凑 */
+            flex: 1;
+            margin-left: 8px;
+            margin-right: 40px;
+            z-index: 1;
+        }
+
+        /* 第一行：元数据行 (Meta Row) */
+        .meta-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .sub-tag {
+            font-size: 10px;
+            padding: 0px 4px;
+            /* 更为紧凑 */
+            border-radius: 3px;
+            font-weight: bold;
+            color: var(--theme-color);
+            background-color: color-mix(in srgb, var(--theme-color) 6%, white);
+            border: 1px solid color-mix(in srgb, var(--theme-color) 10%, transparent);
+            line-height: 1.2;
+        }
+
+        .age-badge {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 10px;
+            color: #8D6E63;
+            font-weight: 600;
+            background: transparent;
+            padding: 0 2px;
+            border-radius: 2px;
+            line-height: 1.2;
+        }
+
+        /* 第二行：正文 (Verse Text) */
+        .verse-text {
+            font-size: 15px;
+            line-height: 1.4;
+            /* 稍微减小行高以配合整体压缩 */
+            color: var(--ink-text);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            white-space: normal;
+            margin-bottom: 2px;
+        }
+
+        /* 右侧区域容器 (已废弃，改为绝对定位，但保留 HTML 结构兼容) */
+        .right-section {
+            display: contents;
+        }
+
+        /* 印章 (Top-Right Absolute) */
+        .stamp-mini {
+            position: absolute;
+            top: 6px;
+            right: 10px;
+            font-size: 11px;
+            font-weight: 900;
+            border: 1.5px solid;
+            padding: 1px 3px;
+            border-radius: 3px;
+            transform: rotate(0deg);
+            /* 摆正 */
+            line-height: 1;
+            background-image: url("data:image/svg+xml,%3Csvg width='4' height='4' viewBox='0 0 4 4' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 3h1v1H1V3zm2-2h1v1H3V1z' fill='%23000' fill-opacity='0.03'/%3E%3C/svg%3E");
+            z-index: 2;
+        }
+
+        .stamp-great-good {
+            color: #1B5E20;
+            border-color: #1B5E20;
+            background-color: rgba(27, 94, 32, 0.04);
+        }
+
+        .stamp-good {
+            color: #388E3C;
+            border-color: #388E3C;
+            background-color: rgba(56, 142, 60, 0.04);
+        }
+
+        .stamp-neutral {
+            color: #616161;
+            border-color: #616161;
+            background-color: rgba(97, 97, 97, 0.04);
+        }
+
+        .stamp-bad {
+            color: #D32F2F;
+            border-color: #D32F2F;
+            background-color: rgba(211, 47, 47, 0.04);
+        }
+
+        .stamp-great-bad {
+            color: #B71C1C;
+            border-color: #B71C1C;
+            background-color: rgba(183, 28, 28, 0.04);
+        }
+
+        /* 数字ID (Bottom-Right Absolute) */
+        .id-text-mini {
+            position: absolute;
+            bottom: 6px;
+            right: 10px;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 9px;
+            color: var(--id-text-color);
+            opacity: 0.6;
+            font-weight: 600;
+            line-height: 1;
+            letter-spacing: 0.5px;
+            z-index: 2;
+        }
+
+        /* 背景水印 (Bleed Watermark) */
+        .watermark-mini {
+            position: absolute;
+            right: -8px;
+            /* 裁切右侧约 1/4 (32px * 0.25) */
+            bottom: -8px;
+            /* 裁切底部约 1/4 (32px * 0.25) */
+            font-family: "Noto Serif SC", serif;
+            font-size: 32px;
+            /* 缩小至原 48px 的 2/3 */
+            font-weight: 900;
+            color: var(--id-watermark-color);
+            opacity: 0.06;
+            pointer-events: none;
+            z-index: 0;
+            white-space: nowrap;
+            mix-blend-mode: multiply;
+            letter-spacing: -3px;
+            /* 调整字距 */
+        }
+
+        /* 底部 (Hidden) */
+        .card-foot {
+            height: 4px;
+            background-color: var(--theme-color);
+            border-radius: 0 0 8px 8px;
+            opacity: 0.4;
+        }
+
+        /* 控制器样式 */
+        .controls {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 4px 8px;
+            border-radius: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .switch-btn {
+            width: 30px;
+            height: 16px;
+            background: #DDD;
+            border-radius: 8px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .switch-btn::after {
+            content: '';
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            width: 14px;
+            height: 14px;
+            background: white;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .theme-seal-active .switch-btn {
+            background: var(--huangji-purple);
+        }
+
+        .theme-seal-active .switch-btn::after {
+            left: 15px;
+        }
+
+        .theme-seal-active .stamp-mini {
+            color: var(--theme-color) !important;
+            border-color: var(--theme-color) !important;
+            background: transparent !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="controls">
+        <span style="font-size:10px; font-weight:bold; color:#666;">主题联动</span>
+        <div class="switch-btn" onclick="toggleSealStyle()"></div>
+    </div>
+
+    <!-- 皇极经世 · 方案一 -->
+    <div class="algo-card theme-huangji">
+        <div class="card-head">
+            <div class="head-title">皇极经世 · 方案一</div>
+            <div class="head-formula">(年干 × 12 + 月支) ÷ 360</div>
+        </div>
+
+        <div class="card-body">
+            <!-- 压缩条 1 -->
+            <div class="verse-strip">
+                <div class="left-accent"></div>
+                <div class="watermark-mini">壹貳肆伍</div>
+
+                <div class="content-main">
+                    <div class="meta-row">
+                        <span class="sub-tag">皇极经世</span>
+                        <span class="sub-tag">元会运世</span>
+                        <span class="age-badge">45-54 岁</span>
+                    </div>
+                    <div class="verse-text">宏图大展在此时，四海昇平见太平。</div>
+                </div>
+
+                <div class="right-section">
+                    <div class="stamp-mini stamp-great-good">大吉</div>
+                    <div class="id-text-mini">1245</div>
+                </div>
+            </div>
+
+            <!-- 压缩条 2 -->
+            <div class="verse-strip">
+                <div class="left-accent"></div>
+                <div class="watermark-mini">叁捌柒零</div>
+                <div class="content-main">
+                    <div class="meta-row">
+                        <span class="sub-tag">皇极经世</span>
+                        <span class="sub-tag">值年卦</span>
+                        <span class="age-badge">2024</span>
+                    </div>
+                    <div class="verse-text">亢龙有悔，盈不可久。</div>
+                </div>
+                <div class="right-section">
+                    <div class="stamp-mini stamp-neutral">中平</div>
+                    <div class="id-text-mini">3870</div>
+                </div>
+            </div>
+
+            <!-- 压缩条 3 -->
+            <div class="verse-strip">
+                <div class="left-accent"></div>
+                <div class="watermark-mini">伍肆叁貳</div>
+                <div class="content-main">
+                    <div class="meta-row">
+                        <span class="sub-tag">皇极经世</span>
+                        <span class="sub-tag">动爻</span>
+                    </div>
+                    <div class="verse-text">时来天地皆同力，运去英雄不自由。</div>
+                </div>
+                <div class="right-section">
+                    <div class="stamp-mini stamp-good">吉</div>
+                    <div class="id-text-mini">5432</div>
+                </div>
+            </div>
+
+            <!-- 压缩条 4 -->
+            <div class="verse-strip">
+                <div class="left-accent"></div>
+                <div class="watermark-mini">玖壹零捌</div>
+                <div class="content-main">
+                    <div class="meta-row">
+                        <span class="sub-tag">皇极经世</span>
+                        <span class="sub-tag">变卦</span>
+                    </div>
+                    <div class="verse-text">梅花香自苦寒来，宝剑锋从磨砺出。</div>
+                </div>
+                <div class="right-section">
+                    <div class="stamp-mini stamp-great-good">大吉</div>
+                    <div class="id-text-mini">9108</div>
+                </div>
+            </div>
+        </div>
+        <div class="card-foot"></div>
+    </div>
+
+    <!-- 皇极经世 · 方案二 -->
+    <div class="algo-card theme-huangji">
+        <div class="card-head">
+            <div class="head-title">皇极经世 · 方案二</div>
+            <div class="head-formula">(值年卦 × 卦象) % 384</div>
+        </div>
+        <div class="card-body">
+            <div class="verse-strip">
+                <div class="left-accent"></div>
+                <div class="watermark-mini">捌玖壹貳</div>
+                <div class="content-main">
+                    <div class="meta-row">
+                        <span class="sub-tag">皇极经世</span>
+                        <span class="sub-tag">变卦</span>
+                        <span class="age-badge">2025</span>
+                    </div>
+                    <div class="verse-text">云深不知处，静待有缘人。</div>
+                </div>
+                <div class="right-section">
+                    <div class="stamp-mini stamp-neutral">平</div>
+                    <div class="id-text-mini">8912</div>
+                </div>
+            </div>
+            <div class="verse-strip">
+                <div class="left-accent"></div>
+                <div class="watermark-mini">貳貳叁肆</div>
+                <div class="content-main">
+                    <div class="meta-row">
+                        <span class="sub-tag">皇极经世</span>
+                        <span class="sub-tag">算法二</span>
+                        <span class="age-badge">42 岁</span>
+                    </div>
+                    <div class="verse-text">石中藏美玉，淘沙见真金。</div>
+                </div>
+                <div class="right-section">
+                    <div class="stamp-mini stamp-bad">小凶</div>
+                    <div class="id-text-mini">2234</div>
+                </div>
+            </div>
+            <div class="verse-strip">
+                <div class="left-accent"></div>
+                <div class="watermark-mini">壹萬壹伍陸柒</div>
+                <div class="content-main">
+                    <div class="meta-row">
+                        <span class="sub-tag">皇极经世</span>
+                        <span class="sub-tag">互卦</span>
+                    </div>
+                    <div class="verse-text">进德修业，水到渠成。</div>
+                </div>
+                <div class="right-section">
+                    <div class="stamp-mini stamp-neutral">中平</div>
+                    <div class="id-text-mini">11567</div>
+                </div>
+            </div>
+            <div class="verse-strip">
+                <div class="left-accent"></div>
+                <div class="watermark-mini">肆伍陸柒</div>
+                <div class="content-main">
+                    <div class="meta-row">
+                        <span class="sub-tag">皇极经世</span>
+                        <span class="sub-tag">体卦</span>
+                    </div>
+                    <div class="verse-text">海阔凭鱼跃，天高任鸟飞。</div>
+                </div>
+                <div class="right-section">
+                    <div class="stamp-mini stamp-good">小吉</div>
+                    <div class="id-text-mini">4567</div>
+                </div>
+            </div>
+        </div>
+        <div class="card-foot"></div>
+    </div>
+
+    <!-- 太玄数 -->
+    <div class="algo-card theme-taixuan">
+        <div class="card-head">
+            <div class="head-title">太玄数 · 方案一</div>
+            <div class="head-formula">(先天 + 后天) % 12 + 1000</div>
+        </div>
+        <div class="card-body">
+            <div class="verse-strip">
+                <div class="left-accent"></div>
+                <div class="watermark-mini">伍陸貳壹</div>
+                <div class="content-main">
+                    <div class="meta-row">
+                        <span class="sub-tag">太玄数</span>
+                        <span class="sub-tag">先天</span>
+                        <span class="age-badge">28-37 岁</span>
+                    </div>
+                    <div class="verse-text">命有定数，运有变数。</div>
+                </div>
+                <div class="right-section">
+                    <div class="stamp-mini stamp-good">小吉</div>
+                    <div class="id-text-mini">5621</div>
+                </div>
+            </div>
+
+            <div class="verse-strip">
+                <div class="left-accent"></div>
+                <div class="watermark-mini">壹萬零肆貳</div>
+                <div class="content-main">
+                    <div class="meta-row">
+                        <span class="sub-tag">太玄数</span>
+                        <span class="sub-tag">流年</span>
+                    </div>
+                    <div class="verse-text">风雨袭来莫惊慌，定心坐禅避祸殃。</div>
+                </div>
+                <div class="right-section">
+                    <div class="stamp-mini stamp-bad">凶</div>
+                    <div class="id-text-mini">10452</div>
+                </div>
+            </div>
+
+            <div class="verse-strip">
+                <div class="left-accent"></div>
+                <div class="watermark-mini">柒捌玖零</div>
+                <div class="content-main">
+                    <div class="meta-row">
+                        <span class="sub-tag">太玄数</span>
+                        <span class="sub-tag">困局</span>
+                    </div>
+                    <div class="verse-text">山重水复疑无路，柳暗花明又一村。</div>
+                </div>
+                <div class="right-section">
+                    <div class="stamp-mini stamp-bad">凶</div>
+                    <div class="id-text-mini">7890</div>
+                </div>
+            </div>
+
+            <div class="verse-strip">
+                <div class="left-accent"></div>
+                <div class="watermark-mini">壹貳叁肆</div>
+                <div class="content-main">
+                    <div class="meta-row">
+                        <span class="sub-tag">太玄数</span>
+                        <span class="sub-tag">学业</span>
+                    </div>
+                    <div class="verse-text">读书破万卷，下笔如有神。</div>
+                </div>
+                <div class="right-section">
+                    <div class="stamp-mini stamp-good">吉</div>
+                    <div class="id-text-mini">1234</div>
+                </div>
+            </div>
+        </div>
+        <div class="card-foot"></div>
+    </div>
+
+    <!-- 河洛数 -->
+    <div class="algo-card theme-heluo">
+        <div class="card-head">
+            <div class="head-title">河洛数</div>
+            <div class="head-formula">(天地总数 - 阳数) % 384</div>
+        </div>
+        <div class="card-body">
+            <div class="verse-strip">
+                <div class="left-accent"></div>
+                <div class="watermark-mini">壹貳捌玖壹</div>
+                <div class="content-main">
+                    <div class="meta-row">
+                        <span class="sub-tag">河洛数</span>
+                        <span class="sub-tag">阳数</span>
+                        <span class="age-badge">24 岁</span>
+                    </div>
+                    <div class="verse-text">龙腾四海势不凡，功成名就指日看。</div>
+                </div>
+                <div class="right-section">
+                    <div class="stamp-mini stamp-great-good">大吉</div>
+                    <div class="id-text-mini">12891</div>
+                </div>
+            </div>
+
+            <div class="verse-strip">
+                <div class="left-accent"></div>
+                <div class="watermark-mini">叁叁肆肆</div>
+                <div class="content-main">
+                    <div class="meta-row">
+                        <span class="sub-tag">河洛数</span>
+                        <span class="sub-tag">先机</span>
+                    </div>
+                    <div class="verse-text">春江水暖鸭先知，细察秋毫得先机。</div>
+                </div>
+                <div class="right-section">
+                    <div class="stamp-mini stamp-good">吉</div>
+                    <div class="id-text-mini">3344</div>
+                </div>
+            </div>
+
+            <div class="verse-strip">
+                <div class="left-accent"></div>
+                <div class="watermark-mini">柒柒捌捌</div>
+                <div class="content-main">
+                    <div class="meta-row">
+                        <span class="sub-tag">河洛数</span>
+                        <span class="sub-tag">立根</span>
+                    </div>
+                    <div class="verse-text">千里之行，始于足下。</div>
+                </div>
+                <div class="right-section">
+                    <div class="stamp-mini stamp-neutral">平</div>
+                    <div class="id-text-mini">7788</div>
+                </div>
+            </div>
+
+            <div class="verse-strip">
+                <div class="left-accent"></div>
+                <div class="watermark-mini">壹萬壹貳貳叁</div>
+                <div class="content-main">
+                    <div class="meta-row">
+                        <span class="sub-tag">河洛数</span>
+                        <span class="sub-tag">修身</span>
+                    </div>
+                    <div class="verse-text">宁静致远，淡泊明志。</div>
+                </div>
+                <div class="right-section">
+                    <div class="stamp-mini stamp-good">小吉</div>
+                    <div class="id-text-mini">11223</div>
+                </div>
+            </div>
+        </div>
+        <div class="card-foot"></div>
+    </div>
+
+    <script>
+        function toggleSealStyle() {
+            document.body.classList.toggle('theme-seal-active');
+        }
+    </script>
+</body>
+
+</html>

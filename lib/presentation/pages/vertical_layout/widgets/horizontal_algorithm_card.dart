@@ -9,6 +9,13 @@ class HorizontalAlgorithmCard extends StatefulWidget {
   final bool isTinyMode;
   final List<VerseRowData> verses;
 
+  /// The scope of this card. Determines header layout details.
+  final TemporalScope temporalScope;
+
+  /// The specific timeline node for this card, if it represents a flow of time.
+  /// Used as the main title for [TemporalScope.decadeLuck] and [TemporalScope.yearlyLuck].
+  final String? temporalNodeText;
+
   const HorizontalAlgorithmCard({
     super.key,
     required this.title,
@@ -16,6 +23,8 @@ class HorizontalAlgorithmCard extends StatefulWidget {
     required this.themeColor,
     required this.isTinyMode,
     required this.verses,
+    this.temporalScope = TemporalScope.natal,
+    this.temporalNodeText,
   });
 
   @override
@@ -146,42 +155,61 @@ class _HorizontalAlgorithmCardState extends State<HorizontalAlgorithmCard>
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                widget.title,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.white,
-                  letterSpacing: 2,
-                  fontFamily: "Noto Serif SC",
-                ),
-              ),
-              const SizedBox(height: 8),
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 4,
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.white.withValues(alpha: 0.15),
-                  borderRadius: BorderRadius.circular(6),
-                ),
-                child: Text(
-                  widget.formula,
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.white.withValues(alpha: 0.9),
-                    fontFamily: "JetBrains Mono",
-                  ),
-                ),
-              ),
-            ],
+            children: _buildHeaderContent(),
           ),
         ),
       ),
     );
+  }
+
+  List<Widget> _buildHeaderContent() {
+    // If it's a temporal card (Decade or Yearly), the focus shifts:
+    // the main title becomes the Temporal Node (e.g., "大运 戊戌", "2024 甲辰年"),
+    // and the subtitle becomes the age/year range description.
+    final isTemporal =
+        widget.temporalScope == TemporalScope.decadeLuck ||
+        widget.temporalScope == TemporalScope.yearlyLuck;
+
+    final mainTitle = isTemporal && widget.temporalNodeText != null
+        ? widget.temporalNodeText!
+        : widget.title;
+
+    final subTitle = isTemporal
+        ? widget
+              .formula // Often used for ranges in temporal
+        : widget.formula;
+
+    return [
+      Text(
+        mainTitle,
+        textAlign: TextAlign.center,
+        style: const TextStyle(
+          fontSize: 24,
+          fontWeight: FontWeight.w400,
+          color: Colors.white,
+          letterSpacing: 2,
+          fontFamily: "Noto Serif SC",
+        ),
+      ),
+      if (subTitle.isNotEmpty) ...[
+        const SizedBox(height: 8),
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+          decoration: BoxDecoration(
+            color: Colors.white.withValues(alpha: 0.15),
+            borderRadius: BorderRadius.circular(6),
+          ),
+          child: Text(
+            subTitle,
+            style: TextStyle(
+              fontSize: 12,
+              color: Colors.white.withValues(alpha: 0.9),
+              fontFamily: "JetBrains Mono",
+            ),
+          ),
+        ),
+      ],
+    ];
   }
 
   // ─────────────────────────────────────────────────────────────
@@ -273,6 +301,7 @@ class _HorizontalAlgorithmCardState extends State<HorizontalAlgorithmCard>
           sealColor: v.sealColor,
           themeColor: widget.themeColor,
           isTinyMode: widget.isTinyMode,
+          temporalScope: widget.temporalScope,
           animationValue: _animation.value,
         ),
       );

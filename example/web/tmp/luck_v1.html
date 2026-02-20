@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>铁板神数 - 运流设计方案 (Luck V1)</title>
+    <style>
+        :root {
+            --bg-color: #E6E2D3;
+            --paper: #FAF8F5;
+            --taixuan-red: #8B1E15;
+            --yuantang-blue: #2A4056;
+            --huangji-purple: #462A5A;
+            --heluo-green: #145A32;
+            --ink-text: #2B2B2B;
+            --ink-wash: rgba(0, 0, 0, 0.03);
+            --anim-curve: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+            font-family: "Songti SC", "Noto Serif SC", serif;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            height: 100vh;
+            overflow: hidden;
+            background-image:
+                radial-gradient(circle at 10% 20%, var(--ink-wash) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, var(--ink-wash) 0%, transparent 40%);
+        }
+
+        /* 顶部导航：切换大运十年 */
+        .decade-nav {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding: 10px 0;
+            flex-shrink: 0;
+            scrollbar-width: none;
+        }
+
+        .decade-tab {
+            padding: 6px 16px;
+            background: rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+            color: var(--ink-text);
+        }
+
+        .decade-tab.active {
+            background: var(--yuantang-blue);
+            color: white;
+            border-color: var(--yuantang-blue);
+            box-shadow: 0 4px 12px rgba(42, 64, 86, 0.2);
+        }
+
+        /* 卡片容器 */
+        .cards-container {
+            display: flex;
+            gap: 32px;
+            overflow-x: auto;
+            padding: 10px 0 40px 0;
+            flex: 1;
+            align-items: flex-start;
+            scrollbar-width: thin;
+        }
+
+        /* 大运卡片 (十年) */
+        .luck-card {
+            flex: 0 0 auto;
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+            background: #FDFBF7;
+            border-radius: 16px;
+            overflow: hidden;
+            --theme-color: var(--yuantang-blue);
+            transition: transform 0.3s;
+            position: relative;
+        }
+
+        .luck-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        /* 大运头部：显示十年跨度 */
+        .luck-head {
+            background-color: var(--theme-color);
+            color: #FFFFFF;
+            padding: 32px 20px;
+            writing-mode: vertical-rl;
+            min-width: 80px;
+            display: flex;
+            flex-direction: column-reverse;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            z-index: 10;
+        }
+
+        .luck-title {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 8px;
+            line-height: 1.1;
+        }
+
+        .luck-range {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 12px;
+            opacity: 0.9;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 8px 4px;
+            border-radius: 6px;
+            letter-spacing: 2px;
+        }
+
+        /* 卡片主体：包含各流年竖条 */
+        .luck-body {
+            flex: 1;
+            padding: 24px;
+            display: flex;
+            flex-direction: row;
+            gap: 16px;
+            overflow-x: visible;
+            align-items: flex-start;
+        }
+
+        /* 流年竖条 (Strip) */
+        .year-strip {
+            flex: 0 0 auto;
+            width: 80px;
+            height: 420px;
+            background-color: white;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 8px;
+            position: relative;
+            padding: 24px 10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: flex-start;
+            transition: all 0.3s var(--anim-curve);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+        }
+
+        .year-strip:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            border-color: var(--theme-color);
+        }
+
+        .content-wrap {
+            writing-mode: vertical-rl;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            position: relative;
+            z-index: 5;
+        }
+
+        /* 流年元数据：西元、干支、虚岁 */
+        .year-meta {
+            display: flex;
+            flex-direction: row;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .ganzhi-tag {
+            font-size: 14px;
+            font-weight: 900;
+            color: var(--theme-color);
+            border: 1.5px solid var(--theme-color);
+            padding: 4px 2px;
+            border-radius: 4px;
+            line-height: 1;
+        }
+
+        .age-badge {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+            background: rgba(0, 0, 0, 0.05);
+            padding: 4px 2px;
+            border-radius: 2px;
+            color: #666;
+        }
+
+        .year-label {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 10px;
+            opacity: 0.6;
+            margin-top: 4px;
+        }
+
+        /* 流年条文 */
+        .verse-text {
+            color: var(--ink-text);
+            font-size: 19px;
+            line-height: 1.35;
+            letter-spacing: 3px;
+            font-weight: 600;
+            text-align: justify;
+            flex-grow: 1;
+            margin-top: 10px;
+        }
+
+        /* 吉凶评价：印章感 */
+        .seal-luck {
+            align-self: flex-end;
+            width: 32px;
+            height: 32px;
+            border: 2px solid;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 12px;
+            border-radius: 4px;
+            transform: rotate(-5deg);
+            margin-bottom: 5px;
+        }
+
+        .seal-great-good {
+            color: #1B5E20;
+            border-color: #1B5E20;
+            background: rgba(27, 94, 32, 0.05);
+        }
+
+        .seal-good {
+            color: #43A047;
+            border-color: #43A047;
+        }
+
+        .seal-neutral {
+            color: #795548;
+            border-color: #795548;
+        }
+
+        .seal-bad {
+            color: #B71C1C;
+            border-color: #B71C1C;
+            background: rgba(183, 28, 28, 0.05);
+        }
+
+        /* 水印背景 */
+        .watermark {
+            position: absolute;
+            font-size: 60px;
+            font-weight: 900;
+            opacity: 0.04;
+            bottom: -10px;
+            left: -10px;
+            pointer-events: none;
+            z-index: 1;
+            color: var(--theme-color);
+        }
+
+        /* 条文编号 */
+        .verse-id {
+            position: absolute;
+            bottom: 4px;
+            right: 4px;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 8px;
+            opacity: 0.3;
+        }
+
+        /* 响应式调整 */
+        @media (max-height: 600px) {
+            .year-strip {
+                height: 320px;
+            }
+
+            .verse-text {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 十年大运导航 -->
+    <div class="decade-nav">
+        <div class="decade-tab">二至十一岁</div>
+        <div class="decade-tab active">十二至廿一岁</div>
+        <div class="decade-tab">廿二至卅一岁</div>
+        <div class="decade-tab">卅二至四一岁</div>
+        <div class="decade-tab">四二至五一岁</div>
+    </div>
+
+    <div class="cards-container">
+
+        <!-- 元堂大运：十二至廿一 -->
+        <div class="luck-card">
+            <div class="luck-head">
+                <div class="luck-title">元堂 · 大运</div>
+                <div class="luck-range">12 - 21 岁</div>
+            </div>
+            <div class="luck-body">
+
+                <!-- 流年一 -->
+                <div class="year-strip">
+                    <div class="watermark">丙戌</div>
+                    <div class="content-wrap">
+                        <div class="year-meta">
+                            <span class="ganzhi-tag">丙戌</span>
+                            <span class="age-badge">12 岁</span>
+                            <span class="year-label">2006</span>
+                        </div>
+                        <div class="verse-text">早岁已知愁滋味，寒窗苦读待时飞。</div>
+                        <div class="seal-luck seal-neutral">中平</div>
+                    </div>
+                    <div class="verse-id">#3412</div>
+                </div>
+
+                <!-- 流年二 -->
+                <div class="year-strip">
+                    <div class="watermark">丁亥</div>
+                    <div class="content-wrap">
+                        <div class="year-meta">
+                            <span class="ganzhi-tag">丁亥</span>
+                            <span class="age-badge">13 岁</span>
+                            <span class="year-label">2007</span>
+                        </div>
+                        <div class="verse-text">瑞气盈门家业盛，小荷才露尖尖角。</div>
+                        <div class="seal-luck seal-good">小吉</div>
+                    </div>
+                    <div class="verse-id">#8821</div>
+                </div>
+
+                <!-- 流年三 -->
+                <div class="year-strip">
+                    <div class="watermark">戊子</div>
+                    <div class="content-wrap">
+                        <div class="year-meta">
+                            <span class="ganzhi-tag">戊子</span>
+                            <span class="age-badge">14 岁</span>
+                            <span class="year-label">2008</span>
+                        </div>
+                        <div class="verse-text">文昌星照才学显，金榜题名在此时。</div>
+                        <div class="seal-luck seal-great-good">大吉</div>
+                    </div>
+                    <div class="verse-id">#1056</div>
+                </div>
+
+                <!-- 流年四 -->
+                <div class="year-strip">
+                    <div class="watermark">己丑</div>
+                    <div class="content-wrap">
+                        <div class="year-meta">
+                            <span class="ganzhi-tag">己丑</span>
+                            <span class="age-badge">15 岁</span>
+                            <span class="year-label">2009</span>
+                        </div>
+                        <div class="verse-text">山重水复疑无路，静待春风过柳堤。</div>
+                        <div class="seal-luck seal-bad">不宜</div>
+                    </div>
+                    <div class="verse-id">#5543</div>
+                </div>
+
+                <!-- 更多流年省略... -->
+                <div class="year-strip" style="background: rgba(0,0,0,0.02); border-style: dashed; opacity: 0.5;">
+                    <div class="content-wrap" style="justify-content: center; align-items: center;">
+                        <div style="writing-mode: vertical-rl; letter-spacing: 4px; color: #999;">后续流年待展</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 下一个大运预览 -->
+        <div class="luck-card" style="--theme-color: var(--huangji-purple); opacity: 0.8;">
+            <div class="luck-head">
+                <div class="luck-title">皇极 · 大运</div>
+                <div class="luck-range">22 - 31 岁</div>
+            </div>
+            <div class="luck-body">
+                <div class="year-strip">
+                    <div class="watermark">乙未</div>
+                    <div class="content-wrap">
+                        <div class="year-meta">
+                            <span class="ganzhi-tag">乙未</span>
+                            <span class="age-badge">22 岁</span>
+                        </div>
+                        <div class="verse-text">意气风发步青云，壮志凌云四海闻。</div>
+                        <div class="seal-luck seal-great-good">大吉</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // 未来可以添加点击导航切换大运的逻辑
+    </script>
+</body>
+
+</html>

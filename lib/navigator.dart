@@ -1,7 +1,6 @@
 import 'package:common/enums.dart';
 import 'package:common/models/eight_chars.dart';
 import 'package:flutter/material.dart';
-import 'package:tiebanshenshu/domain/models/yuan_hui_yun_shi.dart';
 import 'package:tiebanshenshu/features/huang_ji/huang_ji_v2_demo_page.dart';
 import 'package:tiebanshenshu/presentation/home/home_page.dart';
 import 'package:tiebanshenshu/presentation/pages/strategy_demo_page.dart';
@@ -12,6 +11,8 @@ import 'infrastructure/di/strategy_providers.dart';
 import 'features/liuqinkaoke/pages/liuqinkaoke_selection_page.dart';
 import 'features/kao_ke/kao_ke_interactive_page.dart';
 import 'features/kao_ding_liu_qin/pages/kao_ding_liu_qin_page.dart';
+import 'package:tiebanshenshu/presentation/pages/vertical_layout/vertical_layout_page.dart';
+import 'package:tiebanshenshu/presentation/pages/vertical_layout/base_18_page.dart';
 
 class NavigatorGenerator {
   static final RouteObserver<PageRoute> routeObserver =
@@ -34,6 +35,11 @@ class NavigatorGenerator {
         const StrategyDemoPage(),
     "/tiebanshenshu/four_doors_and_gun_fa": (context, {arguments}) =>
         const FourDoorsAndGunFaPage(),
+
+    "/tiebanshenshu/vertical_layout": (context, {arguments}) =>
+        const VerticalLayoutPage(),
+
+    "/tiebanshenshu/base18": (context, {arguments}) => const Base18Page(),
 
     // 六亲考刻：取数候选选择页
     "/tiebanshenshu/liuqinkaoke/selection": (context, {arguments}) {

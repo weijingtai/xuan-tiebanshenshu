@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>铁板神数 - 全量演示 (Base 15)</title>
+    <style>
+        :root {
+            --bg-color: #E8E4DD;
+            --paper: #FAF8F5;
+            --taixuan-red: #A62B1F;
+            --yuantang-blue: #2A4056;
+            --huangji-purple: #512E5F;
+            --heluo-green: #145A32;
+            --neutral-black: #1A1A1B;
+            --line-light: rgba(0, 0, 0, 0.05);
+            --ink-text: #2B2B2B;
+
+            --id-watermark-color: #B71C1C;
+            --id-text-color: #424242;
+
+            /* 动画曲线 */
+            --anim-curve: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --anim-duration: 0.5s;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 32px 16px;
+            font-family: "Noto Serif SC", "Songti SC", serif;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .algo-card {
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+            background: transparent;
+            --theme-color: var(--neutral-black);
+            transition: max-width var(--anim-duration) var(--anim-curve);
+        }
+
+        .theme-huangji {
+            --theme-color: var(--huangji-purple);
+        }
+
+        .theme-taixuan {
+            --theme-color: var(--taixuan-red);
+        }
+
+        .theme-heluo {
+            --theme-color: var(--heluo-green);
+        }
+
+        /* --- 头部 --- */
+        .card-head {
+            background-color: var(--theme-color);
+            color: #FFFFFF;
+            padding: 16px 20px;
+            border-radius: 12px 12px 0 0;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            position: relative;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .head-title {
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin: 0;
+            line-height: 1.2;
+            opacity: 0.95;
+        }
+
+        .head-formula {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 2px 8px;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- Body --- */
+        .card-body {
+            background-color: transparent;
+            padding: 2px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            transition: gap var(--anim-duration) var(--anim-curve), padding var(--anim-duration) var(--anim-curve);
+        }
+
+        .mode-tiny .card-body {
+            gap: 12px;
+            padding: 16px 0;
+        }
+
+        /* ===== Verse Row (Unified) ===== */
+        .verse-row {
+            position: relative;
+            background-color: var(--paper);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+
+            /* Expanded Layout (Strict Tiaowen Px) */
+            padding: 18px 20px;
+            border-bottom: 1px dashed var(--line-light);
+            border-radius: 0;
+            box-shadow: none;
+            border: none;
+            border-bottom: 1px dashed var(--line-light);
+
+            min-height: auto;
+
+            transition:
+                padding var(--anim-duration) var(--anim-curve),
+                border-radius var(--anim-duration) var(--anim-curve),
+                box-shadow var(--anim-duration) var(--anim-curve),
+                background-color 0.3s,
+                transform 0.2s,
+                min-height var(--anim-duration) var(--anim-curve);
+        }
+
+        .verse-row:last-child {
+            border-bottom: none;
+        }
+
+        /* Tiny Layout */
+        .mode-tiny .verse-row {
+            padding: 6px 12px;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0, 0, 0, 0.02) !important;
+            min-height: 48px;
+        }
+
+        .mode-tiny .verse-row:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.03);
+        }
+
+        /* --- 1. Left Accent --- */
+        .left-accent {
+            position: absolute;
+            background-color: var(--theme-color);
+            opacity: 0.8;
+            border-radius: 2px;
+            width: 3px;
+
+            left: 10px;
+            /* Unified Position */
+            top: 18px;
+            bottom: 18px;
+
+            transition: all var(--anim-duration) var(--anim-curve);
+        }
+
+        .mode-tiny .left-accent {
+            top: 10px;
+            bottom: 10px;
+        }
+
+        /* --- 2. Watermark --- */
+        .verse-id-watermark {
+            position: absolute;
+            font-family: "Noto Serif SC", serif;
+            font-weight: 900;
+            color: var(--id-watermark-color);
+            pointer-events: none;
+            z-index: 0;
+            white-space: nowrap;
+            mix-blend-mode: multiply;
+
+            /* Expanded */
+            right: -8px;
+            bottom: -5px;
+            font-size: 42px;
+            opacity: 0.08;
+            letter-spacing: 0;
+
+            transition: all var(--anim-duration) var(--anim-curve);
+        }
+
+        .mode-tiny .verse-id-watermark {
+            /* Tiny Layout: Aggressive Bottom Clipping */
+            right: -8px;
+            bottom: -12px;
+            /* Clipped bottom 1/3 */
+            font-size: 32px;
+            opacity: 0.06;
+            letter-spacing: -3px;
+        }
+
+        /* --- 3. Content Wrap --- */
+        .content-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            z-index: 1;
+            margin-left: 18px;
+            /* Offset for accent */
+            margin-right: 0;
+            transition: all var(--anim-duration) var(--anim-curve);
+        }
+
+        .mode-tiny .content-wrap {
+            gap: 2px;
+            margin-left: 8px;
+            /* Reduced offset for tiny */
+            margin-right: 40px;
+            /* Space for stamp */
+        }
+
+        /* --- 4. Meta Top --- */
+        .meta-top {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            height: 20px;
+            transition: all var(--anim-duration) var(--anim-curve);
+        }
+
+        .meta-left {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0;
+            /* Allow wrapping for Age in Normal Mode */
+        }
+
+        .mode-tiny .meta-left {
+            flex-wrap: nowrap;
+        }
+
+        .meta-left> :last-child {
+            margin-right: 0 !important;
+        }
+
+        /* Algorithm Tag: The Sliding Door */
+        .sub-tag.algo-name,
+        .sub-tag.scheme-name {
+            font-size: 10px;
+            border-radius: 3px;
+            font-weight: bold;
+            line-height: 1.2;
+            white-space: nowrap;
+            overflow: hidden;
+            display: inline-block;
+
+            /* Hidden State (Expanded) */
+            max-width: 0;
+            padding: 0;
+            opacity: 0;
+            margin-right: 0;
+
+            background-color: var(--theme-color);
+            color: rgba(255, 255, 255, 0.95);
+            border: 0;
+
+            transition:
+                max-width var(--anim-duration) var(--anim-curve),
+                padding var(--anim-duration) var(--anim-curve),
+                opacity 0.3s ease-in 0.1s,
+                margin-right var(--anim-duration) var(--anim-curve),
+                border-width var(--anim-duration) var(--anim-curve);
+        }
+
+        .mode-tiny .sub-tag.algo-name,
+        .mode-tiny .sub-tag.scheme-name {
+            /* Visible State (Tiny) */
+            max-width: 70px;
+            /* Sufficient width */
+            padding: 1px 5px;
+            opacity: 1;
+            margin-right: 6px;
+            border: 1px solid transparent;
+        }
+
+        /* Other Sub Tags */
+        .sub-tag:not(.algo-name):not(.scheme-name) {
+            font-size: 10px;
+            border-radius: 3px;
+            font-weight: bold;
+            color: var(--theme-color);
+            padding: 1px 5px;
+            margin-right: 6px;
+            background-color: color-mix(in srgb, var(--theme-color) 8%, white);
+            border: 0.5px solid color-mix(in srgb, var(--theme-color) 12%, transparent);
+            transition: all var(--anim-duration) var(--anim-curve);
+        }
+
+        .mode-tiny .sub-tag:not(.algo-name):not(.scheme-name) {
+            padding: 0px 4px;
+            background-color: color-mix(in srgb, var(--theme-color) 6%, white);
+            border: 1px solid color-mix(in srgb, var(--theme-color) 10%, transparent);
+        }
+
+        .age-container {
+            width: 100%;
+            margin-top: 4px;
+            display: flex;
+            align-items: center;
+        }
+
+        .mode-tiny .age-container {
+            width: auto;
+            margin-top: 0;
+        }
+
+        .age-badge {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+            color: #967131;
+            font-weight: bold;
+            background: rgba(150, 113, 49, 0.08);
+            padding: 1px 5px;
+            border-radius: 3px;
+            margin-right: 6px;
+            transition: all var(--anim-duration) var(--anim-curve);
+        }
+
+        .mode-tiny .age-badge {
+            font-size: 10px;
+            color: #8D6E63;
+            background: transparent;
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+
+        .year-text {
+            font-size: 11px;
+            color: #967131;
+            opacity: 0.8;
+            font-weight: normal;
+            margin-left: 4px;
+            transition: opacity 0.3s;
+        }
+
+        .mode-tiny .year-text {
+            display: none;
+        }
+
+        /* --- 5. Seal Tag (Stamp) --- */
+        .seal-tag {
+            position: absolute;
+            z-index: 2;
+            font-size: 10.5px;
+            font-weight: bold;
+            border: 1px solid;
+            padding: 0 4px;
+            border-radius: 2px;
+
+            /* Expanded */
+            top: 18px;
+            right: 20px;
+            transform: rotate(0deg);
+            background: rgba(255, 255, 255, 0.01);
+
+            transition: all var(--anim-duration) var(--anim-curve);
+        }
+
+        .mode-tiny .seal-tag {
+            /* Tiny */
+            top: 6px;
+            right: 10px;
+            background: transparent;
+            font-size: 11px;
+            padding: 1px 3px;
+            font-weight: 900;
+            border-width: 1.5px;
+        }
+
+        .seal-great-good {
+            color: #1B5E20;
+            border-color: #1B5E20;
+            background: rgba(27, 94, 32, 0.05);
+        }
+
+        .seal-good {
+            color: #43A047;
+            border-color: #43A047;
+            background: rgba(67, 160, 71, 0.05);
+        }
+
+        .seal-neutral {
+            color: #757575;
+            border-color: #757575;
+            background: rgba(117, 117, 117, 0.05);
+        }
+
+        .seal-bad {
+            color: #E53935;
+            border-color: #E53935;
+            background: rgba(229, 57, 53, 0.05);
+        }
+
+        .mode-tiny .seal-great-good {
+            background-color: rgba(27, 94, 32, 0.04);
+        }
+
+        /* --- 6. Verse Text --- */
+        .verse-text {
+            color: var(--ink-text);
+            font-weight: 500;
+            font-size: 16.5px;
+            line-height: 1.6;
+            margin-bottom: 0;
+            transition: all var(--anim-duration) var(--anim-curve);
+        }
+
+        .mode-tiny .verse-text {
+            font-size: 15px;
+            line-height: 1.4;
+            margin-bottom: 2px;
+        }
+
+        /* --- 7. ID Text --- */
+        .verse-id-text {
+            position: absolute;
+            font-family: "JetBrains Mono", monospace;
+            color: var(--id-text-color);
+            z-index: 2;
+            /* Expanded */
+            right: 12px;
+            bottom: 10px;
+            font-size: 9px;
+            letter-spacing: 1px;
+            font-weight: bold;
+            opacity: 0.6;
+            transition: all var(--anim-duration) var(--anim-curve);
+        }
+
+        .mode-tiny .verse-id-text {
+            /* Tiny */
+            right: 10px;
+            bottom: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .no-prefix {
+            display: inline-block;
+            max-width: 30px;
+            opacity: 1;
+            transition: all var(--anim-duration) var(--anim-curve);
+        }
+
+        .mode-tiny .no-prefix {
+            max-width: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+
+        /* Controls */
+        .controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 8px 16px;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+
+        .controls:active {
+            transform: scale(0.98);
+        }
+
+        /* Card Foot */
+        .card-foot {
+            background-color: var(--theme-color);
+            height: 24px;
+            border-radius: 0 0 16px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+            transition: all var(--anim-duration) var(--anim-curve);
+        }
+
+        .mode-tiny .card-foot {
+            height: 4px;
+            border-radius: 0 0 8px 8px;
+            opacity: 0.4;
+        }
+
+        .foot-dot {
+            width: 4px;
+            height: 4px;
+            background-color: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            margin: 0 3px;
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+
+        .mode-tiny .foot-dot {
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="controls" onclick="toggleMode()">
+        <span>全量切换 (Switch All)</span>
+        <div style="font-size: 18px">✨</div>
+    </div>
+
+    <!-- 皇极经世 · 方案一 -->
+    <div class="algo-card theme-huangji">
+        <div class="card-head">
+            <div class="head-title">皇极经世 · 方案一</div>
+            <div class="head-formula">(年干 × 12 + 月支) ÷ 360</div>
+        </div>
+        <div class="card-body">
+            <!-- 1 -->
+            <div class="verse-row">
+                <div class="verse-id-text"><span class="no-prefix">NO. </span>1245</div>
+                <div class="verse-id-watermark">壹貳肆伍</div>
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag algo-name">皇极经世</span>
+                            <span class="sub-tag scheme-name">方案一</span>
+                            <span class="sub-tag">月支</span>
+                            <div class="age-container">
+                                <span class="age-badge">45-54 岁</span>
+                            </div>
+                        </div>
+                        <span class="seal-tag seal-great-good">大吉</span>
+                    </div>
+                    <div class="verse-text">宏图大展在此时，四海昇平见太平。</div>
+                </div>
+            </div>
+            <!-- 2 -->
+            <div class="verse-row">
+                <div class="verse-id-text"><span class="no-prefix">NO. </span>3870</div>
+                <div class="verse-id-watermark">叁捌柒零</div>
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag algo-name">皇极经世</span>
+                            <span class="sub-tag scheme-name">方案一</span>
+                            <span class="sub-tag">月支</span>
+                            <div class="age-container">
+                                <span class="age-badge">2024</span>
+                            </div>
+                        </div>
+                        <span class="seal-tag seal-neutral">中平</span>
+                    </div>
+                    <div class="verse-text">亢龙有悔，盈不可久。</div>
+                </div>
+            </div>
+            <!-- 3 -->
+            <div class="verse-row">
+                <div class="verse-id-text"><span class="no-prefix">NO. </span>5432</div>
+                <div class="verse-id-watermark">伍肆叁貳</div>
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag algo-name">皇极经世</span>
+                            <span class="sub-tag scheme-name">方案一</span>
+                            <span class="sub-tag">月支</span>
+                        </div>
+                        <span class="seal-tag seal-good">吉</span>
+                    </div>
+                    <div class="verse-text">时来天地皆同力，运去英雄不自由。</div>
+                </div>
+            </div>
+            <!-- 4 -->
+            <div class="verse-row">
+                <div class="verse-id-text"><span class="no-prefix">NO. </span>9108</div>
+                <div class="verse-id-watermark">玖壹零捌</div>
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag algo-name">皇极经世</span>
+                            <span class="sub-tag scheme-name">方案一</span>
+                            <span class="sub-tag">月支</span>
+                        </div>
+                        <span class="seal-tag seal-great-good">大吉</span>
+                    </div>
+                    <div class="verse-text">梅花香自苦寒来，宝剑锋从磨砺出。</div>
+                </div>
+            </div>
+        </div>
+        <div class="card-foot">
+            <div class="foot-dot"></div>
+            <div class="foot-dot"></div>
+            <div class="foot-dot"></div>
+        </div>
+    </div>
+
+    <!-- 皇极经世 · 方案二 -->
+    <div class="algo-card theme-huangji">
+        <div class="card-head">
+            <div class="head-title">皇极经世 · 方案二</div>
+            <div class="head-formula">(值年卦 × 卦象) % 384</div>
+        </div>
+        <div class="card-body">
+            <!-- 1 -->
+            <div class="verse-row">
+                <div class="verse-id-text"><span class="no-prefix">NO. </span>8912</div>
+                <div class="verse-id-watermark">捌玖壹貳</div>
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag algo-name">皇极经世</span>
+                            <span class="sub-tag scheme-name">方案二</span>
+                            <span class="sub-tag">月支</span>
+                            <div class="age-container">
+                                <span class="age-badge">2025</span>
+                            </div>
+                        </div>
+                        <span class="seal-tag seal-neutral">平</span>
+                    </div>
+                    <div class="verse-text">云深不知处，静待有缘人。</div>
+                </div>
+            </div>
+            <!-- 2 -->
+            <div class="verse-row">
+                <div class="verse-id-text"><span class="no-prefix">NO. </span>2234</div>
+                <div class="verse-id-watermark">貳貳叁肆</div>
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag algo-name">皇极经世</span>
+                            <span class="sub-tag scheme-name">方案二</span>
+                            <span class="sub-tag">月支</span>
+                            <div class="age-container">
+                                <span class="age-badge">42 岁</span>
+                            </div>
+                        </div>
+                        <span class="seal-tag seal-bad">小凶</span>
+                    </div>
+                    <div class="verse-text">石中藏美玉，淘沙见真金。</div>
+                </div>
+            </div>
+            <!-- 3 -->
+            <div class="verse-row">
+                <div class="verse-id-text"><span class="no-prefix">NO. </span>11567</div>
+                <div class="verse-id-watermark">壹万壹伍陸柒</div>
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag algo-name">皇极经世</span>
+                            <span class="sub-tag scheme-name">方案二</span>
+                            <span class="sub-tag">月支</span>
+                        </div>
+                        <span class="seal-tag seal-neutral">中平</span>
+                    </div>
+                    <div class="verse-text">进德修业，水到渠成。</div>
+                </div>
+            </div>
+            <!-- 4 -->
+            <div class="verse-row">
+                <div class="verse-id-text"><span class="no-prefix">NO. </span>4567</div>
+                <div class="verse-id-watermark">肆伍陸柒</div>
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag algo-name">皇极经世</span>
+                            <span class="sub-tag scheme-name">方案二</span>
+                            <span class="sub-tag">月支</span>
+                        </div>
+                        <span class="seal-tag seal-good">小吉</span>
+                    </div>
+                    <div class="verse-text">海阔凭鱼跃，天高任鸟飞。</div>
+                </div>
+            </div>
+        </div>
+        <div class="card-foot">
+            <div class="foot-dot"></div>
+            <div class="foot-dot"></div>
+            <div class="foot-dot"></div>
+        </div>
+    </div>
+
+    <!-- 太玄数 -->
+    <div class="algo-card theme-taixuan">
+        <div class="card-head">
+            <div class="head-title">太玄数 · 方案一</div>
+            <div class="head-formula">(先天 + 后天) % 12 + 1000</div>
+        </div>
+        <div class="card-body">
+            <!-- 1 -->
+            <div class="verse-row">
+                <div class="verse-id-text"><span class="no-prefix">NO. </span>5621</div>
+                <div class="verse-id-watermark">伍陸貳壹</div>
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag algo-name">太玄数</span>
+                            <span class="sub-tag scheme-name">方案一</span>
+                            <span class="sub-tag">月支</span>
+                            <div class="age-container">
+                                <span class="age-badge">28-37 岁</span>
+                            </div>
+                        </div>
+                        <span class="seal-tag seal-good">小吉</span>
+                    </div>
+                    <div class="verse-text">命有定数，运有变数。</div>
+                </div>
+            </div>
+            <!-- 2 -->
+            <div class="verse-row">
+                <div class="verse-id-text"><span class="no-prefix">NO. </span>10452</div>
+                <div class="verse-id-watermark">壹萬零肆貳</div>
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag algo-name">太玄数</span>
+                            <span class="sub-tag scheme-name">方案一</span>
+                            <span class="sub-tag">月支</span>
+                        </div>
+                        <span class="seal-tag seal-bad">凶</span>
+                    </div>
+                    <div class="verse-text">风雨袭来莫惊慌，定心坐禅避祸殃。</div>
+                </div>
+            </div>
+            <!-- 3 -->
+            <div class="verse-row">
+                <div class="verse-id-text"><span class="no-prefix">NO. </span>7890</div>
+                <div class="verse-id-watermark">柒捌玖零</div>
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag algo-name">太玄数</span>
+                            <span class="sub-tag scheme-name">方案一</span>
+                            <span class="sub-tag">月支</span>
+                        </div>
+                        <span class="seal-tag seal-bad">凶</span>
+                    </div>
+                    <div class="verse-text">山重水复疑无路，柳暗花明又一村。</div>
+                </div>
+            </div>
+            <!-- 4 -->
+            <div class="verse-row">
+                <div class="verse-id-text"><span class="no-prefix">NO. </span>1234</div>
+                <div class="verse-id-watermark">壹貳叁肆</div>
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag algo-name">太玄数</span>
+                            <span class="sub-tag scheme-name">方案一</span>
+                            <span class="sub-tag">月支</span>
+                        </div>
+                        <span class="seal-tag seal-good">吉</span>
+                    </div>
+                    <div class="verse-text">读书破万卷，下笔如有神。</div>
+                </div>
+            </div>
+        </div>
+        <div class="card-foot">
+            <div class="foot-dot"></div>
+            <div class="foot-dot"></div>
+            <div class="foot-dot"></div>
+        </div>
+    </div>
+
+    <!-- 河洛数 -->
+    <div class="algo-card theme-heluo">
+        <div class="card-head">
+            <div class="head-title">河洛数</div>
+            <div class="head-formula">(天地总数 - 阳数) % 384</div>
+        </div>
+        <div class="card-body">
+            <!-- 1 -->
+            <div class="verse-row">
+                <div class="verse-id-text"><span class="no-prefix">NO. </span>12891</div>
+                <div class="verse-id-watermark">壹萬貳捌玖壹</div>
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag algo-name">河洛数</span>
+                            <span class="sub-tag">月支</span>
+                            <div class="age-container">
+                                <span class="age-badge">24 岁</span>
+                            </div>
+                        </div>
+                        <span class="seal-tag seal-great-good">大吉</span>
+                    </div>
+                    <div class="verse-text">龙腾四海势不凡，功成名就指日看。</div>
+                </div>
+            </div>
+            <!-- 2 -->
+            <div class="verse-row">
+                <div class="verse-id-text"><span class="no-prefix">NO. </span>3344</div>
+                <div class="verse-id-watermark">叁叁肆肆</div>
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag algo-name">河洛数</span>
+                            <span class="sub-tag">月支</span>
+
+                        </div>
+                        <span class="seal-tag seal-good">吉</span>
+                    </div>
+                    <div class="verse-text">春江水暖鸭先知，细察秋毫得先机。</div>
+                </div>
+            </div>
+            <!-- 3 -->
+            <div class="verse-row">
+                <div class="verse-id-text"><span class="no-prefix">NO. </span>7788</div>
+                <div class="verse-id-watermark">柒柒捌捌</div>
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag algo-name">河洛数</span>
+                            <span class="sub-tag">月支</span>
+
+                        </div>
+                        <span class="seal-tag seal-neutral">平</span>
+                    </div>
+                    <div class="verse-text">千里之行，始于足下。</div>
+                </div>
+            </div>
+            <!-- 4 -->
+            <div class="verse-row">
+                <div class="verse-id-text"><span class="no-prefix">NO. </span>11223</div>
+                <div class="verse-id-watermark">壹萬壹貳貳叁</div>
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag algo-name">河洛数</span>
+                            <span class="sub-tag">月支</span>
+
+                        </div>
+                        <span class="seal-tag seal-good">小吉</span>
+                    </div>
+                    <div class="verse-text">宁静致远，淡泊明志。</div>
+                </div>
+            </div>
+        </div>
+        <div class="card-foot">
+            <div class="foot-dot"></div>
+            <div class="foot-dot"></div>
+            <div class="foot-dot"></div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMode() {
+            document.querySelectorAll('.algo-card').forEach(card => {
+                card.classList.toggle('mode-tiny');
+            });
+        }
+
+        function calculateYears() {
+            const birthYear = 1995;
+            document.querySelectorAll('.age-badge').forEach(badge => {
+                const text = badge.innerText.trim();
+                let yearInfo = '';
+
+                // Case 1: Range "45-54 岁"
+                if (text.includes('-') && text.includes('岁')) {
+                    const parts = text.replace('岁', '').split('-');
+                    if (parts.length === 2) {
+                        const startAge = parseInt(parts[0].trim());
+                        const endAge = parseInt(parts[1].trim());
+                        if (!isNaN(startAge) && !isNaN(endAge)) {
+                            const startYear = birthYear + startAge;
+                            const endYear = birthYear + endAge;
+                            yearInfo = `(${startYear}-${endYear})`;
+                        }
+                    }
+                }
+                // Case 2: Single Age "42 岁"
+                else if (text.includes('岁')) {
+                    const age = parseInt(text.replace('岁', '').trim());
+                    if (!isNaN(age)) {
+                        const year = birthYear + age;
+                        yearInfo = `(${year})`;
+                    }
+                }
+                // Case 3: Already a Year "2024" -> show Age?
+                // The prompt specifically asked for Age -> Year.
+                // If the badge is just "2024", we assume it implies a year already,
+                // but if we interpreted it as "2024 age" (impossible), we'd calculate.
+                // For now, if it's 4 digits, we assume it's a year and maybe show relative age?
+                // Let's stick to the prompt: "if (10,11) -> 2005, 2006".
+                // We'll leave "2024" alone or add (29岁)?
+                // Let's just implement the requested Age -> Year logic.
+                else if (/^\d{4}$/.test(text)) {
+                    // It's a year, maybe show nothing or the age?
+                    // User asked: "Age" on new line, calculate "Year".
+                    // If text is "2024", it's likely a year tag, not age.
+                    // So we do nothing or calculate age?
+                    // Let's assume only "X 岁" needs year.
+                }
+
+                if (yearInfo) {
+                    const span = document.createElement('span');
+                    span.className = 'year-text';
+                    span.innerText = yearInfo;
+                    badge.parentElement.appendChild(span);
+                }
+            });
+        }
+
+        // Run on load
+        calculateYears();
+    </script>
+</body>
+
+</html>

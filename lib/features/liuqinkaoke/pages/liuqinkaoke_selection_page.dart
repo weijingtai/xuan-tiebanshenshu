@@ -5,7 +5,7 @@ import 'package:tiebanshenshu/features/liuqinkaoke/viewmodels/liuqinkaoke_view_m
 import 'package:common/enums.dart';
 
 class LiuQinKaoKeSelectionPage extends StatefulWidget {
-  const LiuQinKaoKeSelectionPage({Key? key}) : super(key: key);
+  const LiuQinKaoKeSelectionPage({super.key});
 
   @override
   _LiuQinKaoKeSelectionPageState createState() =>
@@ -20,10 +20,12 @@ class _LiuQinKaoKeSelectionPageState extends State<LiuQinKaoKeSelectionPage> {
   void initState() {
     super.initState();
     // 使用 postFrameCallback 确保 ViewModel 在 build 之后被调用
-    WidgetsBinding.instance?.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       // 假定以男性开始，实际应用中应由外部传入
-      Provider.of<LiuQinKaoKeViewModel>(context, listen: false)
-          .initialize(gender: Gender.male);
+      Provider.of<LiuQinKaoKeViewModel>(
+        context,
+        listen: false,
+      ).initialize(gender: Gender.male);
     });
   }
 

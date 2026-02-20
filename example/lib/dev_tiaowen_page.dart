@@ -17,6 +17,10 @@ class _DevTiaoWenPageState extends State<DevTiaoWenPage> {
   static const _taixuanRed = Color(0xFFA62B1F);
   static const _heluoGreen = Color(0xFF145A32);
 
+  // Temporal Colors
+  static const _decadeCyan = Color(0xFF264653); // 深邃黛青 for Decade
+  static const _yearlyAmber = Color(0xFFB7791F); // 琉璃金 for Yearly
+
   // ─── Seal Colors ───
   static const _sealGreatGood = Color(0xFF1B5E20);
   static const _sealGood = Color(0xFF43A047);
@@ -274,6 +278,95 @@ class _DevTiaoWenPageState extends State<DevTiaoWenPage> {
                 seal: "小吉",
                 sealColor: _sealGood,
                 algorithm: "河洛数",
+                description: "",
+              ),
+            ],
+          ),
+
+          const SizedBox(height: 32),
+
+          // ━━━ Card 5: 流运 - 大运 (Decade Luck) ━━━
+          HorizontalAlgorithmCard(
+            title: "大运", // Ignored due to temporalScope
+            formula: "34岁 - 43岁 (2018 - 2027)",
+            themeColor: _decadeCyan,
+            isTinyMode: _isTinyState,
+            temporalScope: TemporalScope.decadeLuck,
+            temporalNodeText: "大运 戊戌",
+            verses: const [
+              VerseRowData(
+                id: "6872",
+                watermark: "戊戌",
+                verseText: "十年利甲在寅申，正是鹏程万里时。",
+                tags: ["大运"],
+                seal: "大吉",
+                sealColor: _sealGreatGood,
+                algorithm: "皇极经世",
+                subAlgorithm: "大运",
+                temporalScope: TemporalScope.decadeLuck,
+                description: "",
+              ),
+              VerseRowData(
+                id: "3510",
+                watermark: "戊戌",
+                verseText: "根深叶茂，源远流长。",
+                tags: ["大运"],
+                seal: "吉",
+                sealColor: _sealGood,
+                algorithm: "太玄数",
+                subAlgorithm: "大运",
+                temporalScope: TemporalScope.decadeLuck,
+                description: "",
+              ),
+            ],
+          ),
+
+          const SizedBox(height: 24),
+
+          // ━━━ Card 6: 流运 - 流年 (Yearly Luck) with Sub-verses ━━━
+          HorizontalAlgorithmCard(
+            title: "流年",
+            formula: "35岁",
+            themeColor: _yearlyAmber,
+            isTinyMode: _isTinyState,
+            temporalScope: TemporalScope.yearlyLuck,
+            temporalNodeText: "2019 已亥年",
+            verses: const [
+              // 1. A general yearly verse
+              VerseRowData(
+                id: "9012",
+                watermark: "已亥",
+                verseText: "平地一声雷，风云际会时。",
+                tags: ["流年"],
+                seal: "中平",
+                sealColor: _sealNeutral,
+                algorithm: "皇极经世",
+                temporalScope: TemporalScope.yearlyLuck,
+                description: "",
+              ),
+              // 2. A monthly verse nested within the yearly card
+              VerseRowData(
+                id: "1024",
+                watermark: "正月",
+                verseText: "初春雪消融，枯木又逢春。",
+                tags: ["流月", "孟春"],
+                ageBadge: "正月", // Reusing AgeBadge position to denote sub-time
+                seal: "吉",
+                sealColor: _sealGood,
+                algorithm: "河洛数",
+                temporalScope: TemporalScope.yearlyLuck,
+                description: "",
+              ),
+              // 3. Another related verse
+              VerseRowData(
+                id: "2048",
+                watermark: "已亥",
+                verseText: "勿以善小而不为，勿以恶小而为之。",
+                tags: ["流年", "箴言"],
+                seal: "平",
+                sealColor: _sealNeutral,
+                algorithm: "太玄数",
+                temporalScope: TemporalScope.yearlyLuck,
                 description: "",
               ),
             ],

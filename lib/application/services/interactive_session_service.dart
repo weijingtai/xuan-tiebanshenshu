@@ -5,7 +5,6 @@ library;
 
 import 'dart:math';
 import '../../domain/models/interactive_session.dart';
-import '../../domain/models/tiao_wen_candidate.dart';
 
 /// 交互式会话服务接口
 abstract class InteractiveSessionService {

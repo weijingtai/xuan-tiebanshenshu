@@ -356,7 +356,7 @@ class _HuangJiV2DemoPageState extends State<HuangJiV2DemoPage> {
                   dense: false,
                 ),
               );
-            }).toList(),
+            }),
           ],
         ),
       ),

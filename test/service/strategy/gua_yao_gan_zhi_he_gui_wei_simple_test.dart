@@ -54,10 +54,11 @@ void main() {
         final guaType = i < 3 ? 'LOWER' : 'UPPER';
         print('  Position $i [$guaType]: ${yao.toString()}');
         if (!yao.isFiltered) {
-          if (i < 3)
+          if (i < 3) {
             lowerCalc += yao.yaoSum;
-          else
+          } else {
             upperCalc += yao.yaoSum;
+          }
         }
       }
       print('\nManual calculation:');

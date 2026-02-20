@@ -306,7 +306,7 @@ class _CandidateSelectionWidgetState extends State<CandidateSelectionWidget>
       chipColor = theme.colorScheme.primary.withOpacity(0.2);
       chipTextColor = theme.colorScheme.primary;
     } else {
-      chipColor = theme.colorScheme.surfaceVariant;
+      chipColor = theme.colorScheme.surfaceContainerHighest;
       chipTextColor = theme.colorScheme.onSurfaceVariant;
     }
 

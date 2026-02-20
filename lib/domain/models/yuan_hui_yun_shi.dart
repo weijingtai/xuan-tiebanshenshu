@@ -75,27 +75,27 @@ class YuanHuiYunShi extends EightChars {
     timeGanNumber = ganMapper[time.tianGan]!;
 
     // 计算结果初始化
-    int _yuanNumber = ganMapper[year.tianGan]! + zhiMapper[year.diZhi]!;
-    yuanNumber = _yuanNumber < 10 ? _yuanNumber * 10 : _yuanNumber;
-    int _huiNumber = ganMapper[month.tianGan]! + zhiMapper[month.diZhi]!;
-    huiNumber = _huiNumber < 10 ? _huiNumber * 10 : _huiNumber;
-    int _yunNumber = ganMapper[day.tianGan]! + zhiMapper[day.diZhi]!;
-    yunNumber = _yunNumber < 10 ? _yunNumber * 10 : _yunNumber;
-    int _shiNumber = ganMapper[time.tianGan]! + zhiMapper[time.diZhi]!;
-    shiNumber = _shiNumber < 10 ? _shiNumber * 10 : _shiNumber;
+    int yuanNumber = ganMapper[year.tianGan]! + zhiMapper[year.diZhi]!;
+    yuanNumber = yuanNumber < 10 ? yuanNumber * 10 : yuanNumber;
+    int huiNumber = ganMapper[month.tianGan]! + zhiMapper[month.diZhi]!;
+    huiNumber = huiNumber < 10 ? huiNumber * 10 : huiNumber;
+    int yunNumber = ganMapper[day.tianGan]! + zhiMapper[day.diZhi]!;
+    yunNumber = yunNumber < 10 ? yunNumber * 10 : yunNumber;
+    int shiNumber = ganMapper[time.tianGan]! + zhiMapper[time.diZhi]!;
+    shiNumber = shiNumber < 10 ? shiNumber * 10 : shiNumber;
 
     // 互合成数初始化
     // 年+月 互合成数顺左旋取数（元会基本数）：如年元数为"9"，月会数为"18"，元会互合成数为9018
     yuanHuiMergeNumber = HuangJiBaseNumber(
       name: "元会基础数",
       description: "元会互合数",
-      orinialNumber: int.parse('${yuanNumber}${huiNumber}'),
+      orinialNumber: int.parse('$yuanNumber$huiNumber'),
       baseNumberType: BaseNumberType.basic,
       numberSource: NumberSource.yuanHui,
     );
     // 日+时 互合成数逆右旋取数（运世基础数）：如日运数为12，时世数为11，逆右旋取数，运世互合成数为2111 并非"1211"
 
-    this.yunShiMergeNumber = HuangJiBaseNumber(
+    yunShiMergeNumber = HuangJiBaseNumber(
       name: "运世基础数",
       description: "运与世互合数(右旋)",
       orinialNumber: int.parse(

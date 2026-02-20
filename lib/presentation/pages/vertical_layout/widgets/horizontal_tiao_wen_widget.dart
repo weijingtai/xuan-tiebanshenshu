@@ -34,6 +34,9 @@ class HorizontalTiaoWenWidget extends StatelessWidget {
   final bool isTinyMode;
   final bool useThemeColorForSeal;
 
+  /// The temporal scope of this verse. Affects layout (e.g., timeline accent).
+  final TemporalScope temporalScope;
+
   /// Animation progress: 0.0 = Normal, 1.0 = Tiny.
   /// When null, snaps to 0.0 or 1.0 based on [isTinyMode].
   final double? animationValue;
@@ -53,6 +56,7 @@ class HorizontalTiaoWenWidget extends StatelessWidget {
     required this.themeColor,
     this.isTinyMode = false,
     this.useThemeColorForSeal = false,
+    this.temporalScope = TemporalScope.natal,
     this.animationValue,
   });
 
@@ -109,19 +113,48 @@ class HorizontalTiaoWenWidget extends StatelessWidget {
             ),
           ),
 
-          // ── 1. Accent Left Bar ──
-          Positioned(
-            left: 10,
-            top: lerpDouble(7, 6, t)!,
-            bottom: lerpDouble(7, 6, t)!,
-            width: 3.0,
-            child: Container(
-              decoration: BoxDecoration(
-                color: themeColor,
-                borderRadius: BorderRadius.circular(2),
+          // ── 1. Accent Left Bar / Timeline Node ──
+          if (temporalScope == TemporalScope.decadeLuck ||
+              temporalScope == TemporalScope.yearlyLuck)
+            // Timeline Style: A dot with a thin line
+            Positioned(
+              left: 10,
+              top: lerpDouble(12, 10, t)!,
+              bottom: lerpDouble(12, 10, t)!,
+              width: 3.0,
+              child: Column(
+                children: [
+                  Container(
+                    width: 3,
+                    height: 3,
+                    decoration: BoxDecoration(
+                      color: themeColor,
+                      shape: BoxShape.circle,
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      width: 1,
+                      color: themeColor.withValues(alpha: 0.3),
+                    ),
+                  ),
+                ],
+              ),
+            )
+          else
+            // Natal Style: Solid Bar
+            Positioned(
+              left: 10,
+              top: lerpDouble(7, 6, t)!,
+              bottom: lerpDouble(7, 6, t)!,
+              width: 3.0,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: themeColor,
+                  borderRadius: BorderRadius.circular(2),
+                ),
               ),
             ),
-          ),
 
           // ── 2. Content ──
           Padding(
@@ -160,18 +193,27 @@ class HorizontalTiaoWenWidget extends StatelessWidget {
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            // Algorithm Name Tag (Hidden in Normal, Visible in Tiny)
-            // Slides in from left via widthFactor = t
-            ClipRect(
-              child: Align(
-                alignment: Alignment.centerLeft,
-                widthFactor: t,
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 8),
-                  child: _buildAlgoNameTag(algoShortName ?? algoName),
+            // Algorithm Name Tag
+            // For Natal: Hidden in Normal, Visible in Tiny (slides in via widthFactor = t)
+            // For Temporal: Always visible (since card header is occupied by Time Node),
+            // but we might want it smaller. Here we just keep it always visible for temporal.
+            if (temporalScope == TemporalScope.decadeLuck ||
+                temporalScope == TemporalScope.yearlyLuck)
+              Padding(
+                padding: const EdgeInsets.only(right: 8),
+                child: _buildAlgoNameTag(algoShortName ?? algoName),
+              )
+            else
+              ClipRect(
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  widthFactor: t,
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 8),
+                    child: _buildAlgoNameTag(algoShortName ?? algoName),
+                  ),
                 ),
               ),
-            ),
 
             // Tags
             ...tags.map(

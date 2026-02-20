@@ -272,6 +272,7 @@ class PredefinedBaseNumber extends BaseNumberDefinition {
   });
   factory PredefinedBaseNumber.fromJson(Map<String, dynamic> json) =>
       _$PredefinedBaseNumberFromJson(json);
+  @override
   Map<String, dynamic> toJson() => _$PredefinedBaseNumberToJson(this);
 
   DataSelectableBaseNumber toSelectableData(YuanHuiYunShi yhys) {
@@ -325,6 +326,7 @@ class DerivedBaseNumber extends BaseNumberDefinition {
   });
   factory DerivedBaseNumber.fromJson(Map<String, dynamic> json) =>
       _$DerivedBaseNumberFromJson(json);
+  @override
   Map<String, dynamic> toJson() => _$DerivedBaseNumberToJson(this);
 
   // 静态辅助方法用于 parts 字段的序列化
@@ -340,6 +342,7 @@ class DerivedBaseNumber extends BaseNumberDefinition {
     return parts.map((e) => converter.toJson(e)).toList();
   }
 
+  @override
   @optionalTypeArgs
   DataDerivedBaseNumber toData(YuanHuiYunShi yhys) {
     var dataParts = parts.map((e) => e.toData(yhys)).toList();
@@ -449,6 +452,7 @@ class SingleNumberPart extends CalculationPart {
     return json;
   }
 
+  @override
   DataCalculationPart toData(YuanHuiYunShi yhys) {
     int raw = yhys.getTaiXuanNumberBy(
       ganZhiType: fourZhuGanZhiType,
@@ -508,6 +512,7 @@ class CompositeNumberPart extends CalculationPart {
     return json;
   }
 
+  @override
   DataCalculationPart toData(YuanHuiYunShi yhys) {
     var dataComp = components.map((e) => e.toData(yhys)).toList();
     return DataCompositeNumberPart(

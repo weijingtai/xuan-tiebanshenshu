@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>铁板神数 - 竖排签条版 (Base 12)</title>
+    <style>
+        :root {
+            --bg-color: #E2DDD5;
+            --paper: #FAF8F5;
+            --taixuan-red: #A62B1F;
+            --yuantang-blue: #2A4056;
+            --huangji-purple: #512E5F;
+            --heluo-green: #145A32;
+            --neutral-black: #1A1A1B;
+            --line-light: rgba(0, 0, 0, 0.08);
+            --ink-text: #2B2B2B;
+            --id-watermark-color: #B71C1C;
+            --id-text-color: #424242;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 40px 16px;
+            font-family: "Noto Serif SC", "Songti SC", serif;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .algo-card {
+            width: 100%;
+            max-width: 440px;
+            /* 略微拓宽以容纳竖排并列 */
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+            background: transparent;
+            --theme-color: var(--neutral-black);
+        }
+
+        .theme-taixuan {
+            --theme-color: var(--taixuan-red);
+        }
+
+        .theme-yuantang {
+            --theme-color: var(--yuantang-blue);
+        }
+
+        .theme-huangji {
+            --theme-color: var(--huangji-purple);
+        }
+
+        .theme-heluo {
+            --theme-color: var(--heluo-green);
+        }
+
+        /* --- 头部 (更加精简) --- */
+        .card-head {
+            background-color: var(--theme-color);
+            color: #FFFFFF;
+            padding: 14px 20px;
+            border-radius: 12px 12px 0 0;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            position: relative;
+            align-items: center;
+        }
+
+        .head-title {
+            font-size: 17px;
+            font-weight: bold;
+            letter-spacing: 4px;
+            margin: 0;
+            opacity: 0.95;
+        }
+
+        .head-formula {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 9px;
+            color: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1px 6px;
+            border-radius: 3px;
+        }
+
+        /* --- 核心：竖排签条容器 (Slip Container) --- */
+        .card-body {
+            background-color: var(--paper);
+            padding: 24px 16px;
+            display: flex;
+            flex-direction: row-reverse;
+            /* 古典习俗：从右向左排列 */
+            overflow-x: auto;
+            /* 允许横向滚动 */
+            gap: 12px;
+            min-height: 380px;
+            scrollbar-width: none;
+            /* 隐藏滚动条 (Firefox) */
+        }
+
+        .card-body::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* 隐藏滚动条 (Chrome/Safari) */
+
+        /* --- 单个签条 (The Slip) --- */
+        .verse-slip {
+            flex-shrink: 0;
+            width: 80px;
+            /* 狭长形态 */
+            height: 340px;
+            background: #FFF;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 4px;
+            box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.03);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            padding: 12px 6px;
+            box-sizing: border-box;
+            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.01) 0%, transparent 10%, transparent 90%, rgba(0, 0, 0, 0.01) 100%);
+        }
+
+        /* 签条左侧装饰细线 */
+        .verse-slip::before {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 10px;
+            bottom: 10px;
+            width: 1px;
+            background: var(--theme-color);
+            opacity: 0.2;
+        }
+
+        /* 竖排文字 (Vertical Text) */
+        .verse-text {
+            writing-mode: vertical-rl;
+            /* 纵向：从上到下，从右向左 */
+            text-orientation: mixed;
+            font-size: 16px;
+            line-height: 1.5;
+            color: var(--ink-text);
+            height: 200px;
+            /* 固定高度确保整齐 */
+            margin-top: 10px;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        /* 签条顶部的标签组 */
+        .slip-meta-top {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            margin-bottom: 8px;
+        }
+
+        .sub-tag {
+            font-size: 9px;
+            padding: 2px 1px;
+            writing-mode: vertical-rl;
+            /* 标签也竖排 */
+            border-radius: 2px;
+            font-weight: bold;
+            color: var(--theme-color);
+            background-color: color-mix(in srgb, var(--theme-color) 8%, white);
+            border: 0.5px solid color-mix(in srgb, var(--theme-color) 12%, transparent);
+        }
+
+        .age-badge {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 10px;
+            color: #967131;
+            font-weight: bold;
+            background: rgba(150, 113, 49, 0.08);
+            padding: 4px 2px;
+            writing-mode: vertical-rl;
+            border-radius: 2px;
+        }
+
+        /* 吉凶印章 (Stamp Style) */
+        .stamp-tag {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1.5px solid;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: 900;
+            margin-top: auto;
+            /* 压在最底部 */
+            position: relative;
+            transform: rotate(-5deg);
+            /* 模拟盖印的不规则感 */
+        }
+
+        .stamp-great-good {
+            color: #1B5E20;
+            border-color: #1B5E20;
+            background: rgba(27, 94, 32, 0.03);
+        }
+
+        .stamp-good {
+            color: #43A047;
+            border-color: #43A047;
+            background: rgba(67, 160, 71, 0.03);
+        }
+
+        .stamp-neutral {
+            color: #757575;
+            border-color: #757575;
+            background: rgba(117, 117, 117, 0.03);
+        }
+
+        .stamp-bad {
+            color: #E53935;
+            border-color: #E53935;
+            background: rgba(229, 57, 53, 0.03);
+        }
+
+        .stamp-great-bad {
+            color: #B71C1C;
+            border-color: #B71C1C;
+            background: rgba(183, 28, 28, 0.03);
+        }
+
+        /* 编号设计：纵向居中背景 */
+        .verse-id-watermark {
+            position: absolute;
+            left: 50%;
+            top: 55%;
+            transform: translate(-50%, -50%);
+            writing-mode: vertical-rl;
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--id-watermark-color);
+            opacity: 0.07;
+            pointer-events: none;
+            z-index: 0;
+            white-space: nowrap;
+        }
+
+        .verse-id-text {
+            position: absolute;
+            bottom: 35px;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 8px;
+            color: var(--id-text-color);
+            opacity: 0.5;
+            font-weight: bold;
+            transform: rotate(-90deg);
+            /* 数字横过来更好看 */
+        }
+
+        /* 底部 */
+        .card-foot {
+            background-color: var(--theme-color);
+            height: 10px;
+            /* 极简底部 */
+            border-radius: 0 0 12px 12px;
+        }
+
+        /* 模式切换 */
+        .controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 8px 12px;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .switch-btn {
+            width: 40px;
+            height: 20px;
+            background: #DDD;
+            border-radius: 10px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .switch-btn::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 16px;
+            height: 16px;
+            background: white;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .theme-seal-active .switch-btn {
+            background: var(--huangji-purple);
+        }
+
+        .theme-seal-active .switch-btn::after {
+            left: 22px;
+        }
+
+        .theme-seal-active .stamp-tag {
+            color: var(--theme-color) !important;
+            border-color: var(--theme-color) !important;
+            background: transparent !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="controls">
+        <span style="font-size:12px">主题联动</span>
+        <div class="switch-btn" onclick="toggleSealStyle()"></div>
+    </div>
+
+    <!-- 皇极经世 · 方案一 -->
+    <div class="algo-card theme-huangji">
+        <div class="card-head">
+            <div class="head-title">皇极经世 · 方案一</div>
+            <div class="head-formula">(年干 × 12 + 月支) ÷ 360</div>
+        </div>
+
+        <div class="card-body">
+            <!-- 签条 1 -->
+            <div class="verse-slip">
+                <div class="verse-id-watermark">壹貳肆伍</div>
+                <div class="slip-meta-top">
+                    <span class="sub-tag">元会运世</span>
+                    <span class="age-badge">45-54</span>
+                </div>
+                <div class="verse-text">宏图大展在此时，四海昇平见太平。</div>
+                <div class="verse-id-text">1245</div>
+                <div class="stamp-tag stamp-great-good">大吉</div>
+            </div>
+            <!-- 签条 2 -->
+            <div class="verse-slip">
+                <div class="verse-id-watermark">叁捌柒零</div>
+                <div class="slip-meta-top">
+                    <span class="sub-tag">值年卦</span>
+                    <span class="age-badge">2024</span>
+                </div>
+                <div class="verse-text">亢龙有悔，盈不可久。凡事留有余地。</div>
+                <div class="verse-id-text">3870</div>
+                <div class="stamp-tag stamp-neutral">中平</div>
+            </div>
+            <!-- 签条 3 -->
+            <div class="verse-slip">
+                <div class="verse-id-watermark">伍肆叁貳</div>
+                <div class="slip-meta-top">
+                    <span class="sub-tag">动爻</span>
+                </div>
+                <div class="verse-text">时来天地皆同力，运去英雄不自由。</div>
+                <div class="verse-id-text">5432</div>
+                <div class="stamp-tag stamp-good">吉</div>
+            </div>
+            <!-- 签条 4 -->
+            <div class="verse-slip">
+                <div class="verse-id-watermark">玖壹零捌</div>
+                <div class="slip-meta-top">
+                    <span class="sub-tag">变卦</span>
+                </div>
+                <div class="verse-text">梅花香自苦寒来，宝剑锋从磨砺出。</div>
+                <div class="verse-id-text">9108</div>
+                <div class="stamp-tag stamp-great-good">大吉</div>
+            </div>
+        </div>
+        <div class="card-foot"></div>
+    </div>
+
+    <!-- 太玄数 -->
+    <div class="algo-card theme-taixuan">
+        <div class="card-head">
+            <div class="head-title">太玄数 · 方案一</div>
+            <div class="head-formula">(先天 + 后天) % 12 + 1000</div>
+        </div>
+        <div class="card-body">
+            <div class="verse-slip">
+                <div class="verse-id-watermark">伍陸貳壹</div>
+                <div class="slip-meta-top">
+                    <span class="sub-tag">先天</span>
+                    <span class="age-badge">28-37</span>
+                </div>
+                <div class="verse-text">命有定数，运有变数。知命而改运。</div>
+                <div class="verse-id-text">5621</div>
+                <div class="stamp-tag stamp-good">小吉</div>
+            </div>
+            <div class="verse-slip">
+                <div class="verse-id-watermark">壹萬零肆貳</div>
+                <div class="slip-meta-top">
+                    <span class="sub-tag">流年</span>
+                </div>
+                <div class="verse-text">风雨袭来莫惊慌，定心坐禅避祸殃。</div>
+                <div class="verse-id-text">10452</div>
+                <div class="stamp-tag stamp-bad">凶</div>
+            </div>
+            <div class="verse-slip">
+                <div class="verse-id-watermark">柒捌玖零</div>
+                <div class="slip-meta-top">
+                    <span class="sub-tag">困局</span>
+                </div>
+                <div class="verse-text">山重水复疑无路，柳暗花明又一村。</div>
+                <div class="verse-id-text">7890</div>
+                <div class="stamp-tag stamp-bad">凶</div>
+            </div>
+            <div class="verse-slip">
+                <div class="verse-id-watermark">壹貳叁肆</div>
+                <div class="slip-meta-top">
+                    <span class="sub-tag">学业</span>
+                </div>
+                <div class="verse-text">读书破万卷，下笔如有神。晚年好学。</div>
+                <div class="verse-id-text">1234</div>
+                <div class="stamp-tag stamp-good">吉</div>
+            </div>
+        </div>
+        <div class="card-foot"></div>
+    </div>
+
+    <script>
+        function toggleSealStyle() {
+            document.body.classList.toggle('theme-seal-active');
+        }
+    </script>
+</body>
+
+</html>

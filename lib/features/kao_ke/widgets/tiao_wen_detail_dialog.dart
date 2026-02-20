@@ -8,10 +8,7 @@ class TiaoWenDetailDialog extends StatelessWidget {
   /// 选择的刻数据
   final KaoEigthKeNumber keNumber;
 
-  const TiaoWenDetailDialog({
-    Key? key,
-    required this.keNumber,
-  }) : super(key: key);
+  const TiaoWenDetailDialog({super.key, required this.keNumber});
 
   @override
   Widget build(BuildContext context) {
@@ -60,9 +57,9 @@ class TiaoWenDetailDialog extends StatelessWidget {
           Text(
             '条文详情',
             style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                  color: Theme.of(context).colorScheme.onPrimaryContainer,
-                  fontWeight: FontWeight.bold,
-                ),
+              color: Theme.of(context).colorScheme.onPrimaryContainer,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           const Spacer(),
           IconButton(
@@ -98,12 +95,7 @@ class TiaoWenDetailDialog extends StatelessWidget {
         const SizedBox(height: 16),
 
         // 密文
-        _buildInfoRow(
-          context,
-          '密文',
-          keNumber.cipherText,
-          Icons.lock,
-        ),
+        _buildInfoRow(context, '密文', keNumber.cipherText, Icons.lock),
         const SizedBox(height: 16),
 
         const Divider(),
@@ -112,22 +104,20 @@ class TiaoWenDetailDialog extends StatelessWidget {
         // 原文内容
         Text(
           '条文原文',
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
+          style: Theme.of(
+            context,
+          ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 8),
         Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.surfaceVariant,
+            color: Theme.of(context).colorScheme.surfaceContainerHighest,
             borderRadius: BorderRadius.circular(8),
           ),
           child: Text(
             keNumber.originalText,
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  height: 1.6,
-                ),
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(height: 1.6),
           ),
         ),
         const SizedBox(height: 16),
@@ -151,8 +141,8 @@ class TiaoWenDetailDialog extends StatelessWidget {
                 child: Text(
                   '请根据实际情况判断此条文是否符合,确认后将以此条文编号作为基础数进行卦象计算。',
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        color: Theme.of(context).colorScheme.onTertiaryContainer,
-                      ),
+                    color: Theme.of(context).colorScheme.onTertiaryContainer,
+                  ),
                 ),
               ),
             ],
@@ -178,18 +168,18 @@ class TiaoWenDetailDialog extends StatelessWidget {
           child: Text(
             label,
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Theme.of(context).colorScheme.onSurfaceVariant,
-                  fontWeight: FontWeight.w500,
-                ),
+              color: Theme.of(context).colorScheme.onSurfaceVariant,
+              fontWeight: FontWeight.w500,
+            ),
           ),
         ),
         const SizedBox(width: 8),
         Expanded(
           child: Text(
             value,
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  fontWeight: FontWeight.w600,
-                ),
+            style: Theme.of(
+              context,
+            ).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
           ),
         ),
       ],
@@ -200,11 +190,7 @@ class TiaoWenDetailDialog extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        border: Border(
-          top: BorderSide(
-            color: Theme.of(context).dividerColor,
-          ),
-        ),
+        border: Border(top: BorderSide(color: Theme.of(context).dividerColor)),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,

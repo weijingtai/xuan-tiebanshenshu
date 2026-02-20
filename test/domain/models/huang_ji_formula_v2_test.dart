@@ -37,10 +37,7 @@ void main() {
       expect(restored, isA<BaseNumberDefinition>());
       expect(restored.type, equals(BaseNumberDefinitionType.predefined));
       expect(restored.name, equals("元会基础数"));
-      expect(
-        (restored as PredefinedBaseNumber).source,
-        equals(NumberSource.yuanHui),
-      );
+      expect((restored).source, equals(NumberSource.yuanHui));
     });
 
     test('DerivedBaseNumber JSON 序列化和反序列化', () {
@@ -128,10 +125,7 @@ void main() {
       final restored = SingleNumberPart.fromJson(json);
       expect(restored, isA<SingleNumberPart>());
       expect(restored.name, equals("月干百位"));
-      expect(
-        (restored as SingleNumberPart).fourZhuGanZhiType,
-        equals(FourZhuGanZhiType.gan),
-      );
+      expect((restored).fourZhuGanZhiType, equals(FourZhuGanZhiType.gan));
     });
 
     test('CompositeNumberPart JSON 序列化和反序列化', () {
@@ -166,7 +160,7 @@ void main() {
       final restored = CompositeNumberPart.fromJson(json);
       expect(restored, isA<CompositeNumberPart>());
       expect(restored.name, equals("日干支合数"));
-      expect((restored as CompositeNumberPart).components.length, equals(2));
+      expect((restored).components.length, equals(2));
     });
   });
 

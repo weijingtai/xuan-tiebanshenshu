@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>铁板神数 - 高密度一体化卡片</title>
+    <style>
+        :root {
+            --paper: #F7F3ED;
+            /* 宣纸底色 */
+            --ink: #1A1A1B;
+            /* 浓墨 */
+            --taixuan-red: #A62B1F;
+            /* 太玄一体化颜色 */
+            --yuantang-blue: #2C3E50;
+            /* 元堂一体化颜色 */
+            --line-light: rgba(0, 0, 0, 0.05);
+        }
+
+        body {
+            background-color: #E8E4DD;
+            margin: 0;
+            padding: 20px 10px;
+            font-family: "Noto Serif SC", serif;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            align-items: center;
+        }
+
+        /* --- 算法大卡片容器 --- */
+        .algo-group-card {
+            width: 100%;
+            max-width: 420px;
+            background: var(--paper);
+            display: flex;
+            flex-direction: column;
+            /* 关键：整体投影，但不设圆角，圆角由首尾行控制 */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        /* 1. 顶部标题行 (圆角矩形头部) */
+        .card-header {
+            padding: 12px 16px;
+            color: #FFFFFF;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            border-radius: 12px 12px 0 0;
+            /* 顶部圆角 */
+        }
+
+        .header-taixuan {
+            background-color: var(--taixuan-red);
+        }
+
+        .header-yuantang {
+            background-color: var(--yuantang-blue);
+        }
+
+        /* 2. 条文行样式 (高密度紧凑) */
+        .verse-row {
+            display: flex;
+            position: relative;
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--line-light);
+            background: transparent;
+            min-height: 40px;
+        }
+
+        /* 最后一行的底部圆角封装 */
+        .verse-row.last-row {
+            border-bottom: none;
+            border-radius: 0 0 12px 12px;
+            /* 底部圆角 */
+        }
+
+        /* 左侧装饰线：颜色与标题一致 */
+        .left-accent-line {
+            width: 3px;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        .content-wrap {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .meta-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* 算法 Tag：颜色与标题一致 */
+        .algo-tag {
+            font-size: 10px;
+            padding: 0 4px;
+            border: 1px solid;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+
+        .age-text {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 12px;
+            color: #967131;
+            font-weight: bold;
+            margin-left: 6px;
+        }
+
+        /* 吉凶 Tag：放在右上角 */
+        .fortune-tag {
+            font-size: 11px;
+            padding: 2px 6px;
+            background: rgba(0, 0, 0, 0.04);
+            color: var(--ink);
+            border-radius: 2px;
+            font-weight: bold;
+        }
+
+        .verse-body {
+            font-size: 17px;
+            line-height: 1.4;
+            color: var(--ink);
+            font-weight: 500;
+            padding-right: 10px;
+        }
+
+        /* 颜色适配器 */
+        .theme-taixuan .left-accent-line {
+            background-color: var(--taixuan-red);
+        }
+
+        .theme-taixuan .algo-tag {
+            color: var(--taixuan-red);
+            border-color: var(--taixuan-red);
+        }
+
+        .theme-yuantang .left-accent-line {
+            background-color: var(--yuantang-blue);
+        }
+
+        .theme-yuantang .algo-tag {
+            color: var(--yuantang-blue);
+            border-color: var(--yuantang-blue);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="algo-group-card theme-taixuan">
+        <div class="card-header header-taixuan">太玄神数</div>
+
+        <div class="verse-row">
+            <div class="left-accent-line"></div>
+            <div class="content-wrap">
+                <div class="meta-top">
+                    <div>
+                        <span class="algo-tag">太玄</span>
+                        <span class="age-text">(28, 37)</span>
+                    </div>
+                    <span class="fortune-tag">小吉</span>
+                </div>
+                <div class="verse-body">命有定数，运有变数。知命而改运，方为上乘。</div>
+            </div>
+        </div>
+
+        <div class="verse-row">
+            <div class="left-accent-line"></div>
+            <div class="content-wrap">
+                <div class="meta-top">
+                    <div>
+                        <span class="algo-tag">太玄</span>
+                    </div>
+                    <span class="fortune-tag">平</span>
+                </div>
+                <div class="verse-body">金石为开，大器晚成。宜守不宜进。</div>
+            </div>
+        </div>
+
+        <div class="verse-row last-row">
+            <div class="left-accent-line"></div>
+            <div class="content-wrap">
+                <div class="meta-top">
+                    <div>
+                        <span class="algo-tag">太玄</span>
+                        <span class="age-text">(45, 52)</span>
+                    </div>
+                    <span class="fortune-tag">吉</span>
+                </div>
+                <div class="verse-body">春风得意马蹄疾，一日看尽长安花。</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="algo-group-card theme-yuantang">
+        <div class="card-header header-yuantang">元堂大运</div>
+
+        <div class="verse-row last-row">
+            <div class="left-accent-line"></div>
+            <div class="content-wrap">
+                <div class="meta-top">
+                    <div>
+                        <span class="algo-tag">元堂</span>
+                        <span class="age-text">(14, 23)</span>
+                    </div>
+                    <span class="fortune-tag">凶</span>
+                </div>
+                <div class="verse-body">石中藏美玉，淘沙见真金。此十年间，需防口舌。</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

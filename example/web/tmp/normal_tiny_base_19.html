@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>铁板神数 - 竖排全量演示 (Normal/Tiny)</title>
+    <style>
+        :root {
+            --bg-color: #E6E2D3;
+            --paper: #FAF8F5;
+            --taixuan-red: #8B1E15;
+            --yuantang-blue: #2A4056;
+            --huangji-purple: #462A5A;
+            --heluo-green: #145A32;
+            --ink-text: #2B2B2B;
+            --anim-curve: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+            font-family: "Songti SC", "Noto Serif SC", serif;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            height: 100vh;
+            overflow: hidden;
+            transition: background-color 0.3s;
+        }
+
+        /* Tiny Mode Body Reset */
+        body.mode-tiny {
+            height: 100vh;
+            overflow: hidden;
+            align-items: flex-start;
+            background-color: #F0F0F0;
+        }
+
+        .nav-top-bar {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            overflow-x: auto;
+            padding: 10px 0;
+            flex-shrink: 0;
+            transition: opacity 0.3s;
+        }
+
+        /* Tiny Mode Nav: Hide or dim */
+        body.mode-tiny .nav-top-bar {
+            opacity: 0.5;
+        }
+
+        .nav-dot {
+            width: 14px;
+            height: 14px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .nav-dot:hover {
+            transform: scale(1.3);
+            background: var(--theme-color, #462A5A);
+        }
+
+        .nav-dot::after {
+            content: attr(data-label);
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+        }
+
+        .nav-dot:hover::after {
+            opacity: 1;
+        }
+
+        .cards-container {
+            display: flex;
+            gap: 32px;
+            overflow-x: auto;
+            padding: 20px 0 40px 0;
+            flex: 1;
+            align-items: flex-start;
+            scrollbar-width: thin;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        /* Tiny Mode Container: Horizontal Row */
+        body.mode-tiny .cards-container {
+            flex-direction: row;
+            /* Horizontal alignment */
+            gap: 0;
+            /* Reduced Gap between groups (cards) */
+            overflow-x: auto;
+            /* Horizontal Scroll */
+            overflow-y: hidden;
+            align-items: center;
+            /* Center cards vertically or top */
+            padding-top: 60px;
+            width: 100%;
+            max-width: none;
+            /* No max width */
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .algo-card {
+            flex: 0 0 auto;
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+            background: #FDFBF7;
+            border-radius: 12px;
+            overflow: hidden;
+            --theme-color: #462A5A;
+            transition: all 0.3s;
+        }
+
+        /* Tiny Mode Card Style: Transparent, No Shadow, "Ghost" Container */
+        body.mode-tiny .algo-card {
+            flex-direction: row;
+            width: auto;
+            max-width: 480px;
+            background: transparent;
+            /* TRANSPARENT */
+            box-shadow: none;
+            /* NO SHADOW */
+            min-height: 280px;
+            border-radius: 0;
+            overflow: visible;
+            /* Allow shadows of inner verses */
+            margin-right: 16px;
+            /* Spacing between groups */
+        }
+
+        body.mode-tiny .algo-card.layout-flip {
+            flex-direction: row;
+        }
+
+        .theme-huangji {
+            --theme-color: var(--huangji-purple);
+        }
+
+        .theme-taixuan {
+            --theme-color: var(--taixuan-red);
+        }
+
+        .theme-heluo {
+            --theme-color: var(--heluo-green);
+        }
+
+        .card-head {
+            background-color: var(--theme-color);
+            color: #FFFFFF;
+            padding: 24px 16px;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            min-width: 60px;
+            display: flex;
+            flex-direction: column-reverse;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 12px;
+            order: 1;
+            border-radius: 12px 0 0 12px;
+            z-index: 10;
+            transition: all 0.3s;
+        }
+
+        /* Tiny Mode Head: HIDDEN */
+        body.mode-tiny .card-head {
+            display: none;
+        }
+
+        .head-title {
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 6px;
+            line-height: 1.1;
+        }
+
+        .head-formula {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.8);
+            background: rgba(0, 0, 0, 0.2);
+            padding: 8px 4px;
+            border-radius: 4px;
+            writing-mode: vertical-rl;
+            text-orientation: sideways;
+        }
+
+        .card-body {
+            flex: 1;
+            order: 2;
+            padding: 24px;
+            display: flex;
+            flex-direction: row;
+            gap: 16px;
+            overflow-x: auto;
+            align-items: flex-start;
+            scrollbar-width: thin;
+        }
+
+        /* Tiny Mode Card Body: Wrap, No Padding */
+        body.mode-tiny .card-body {
+            flex-direction: row;
+            flex-wrap: wrap;
+            /* WRAP items */
+            padding: 0;
+            /* No Padding */
+            gap: 8px;
+            overflow: visible;
+            width: auto;
+            max-width: 400px;
+            align-content: flex-start;
+        }
+
+        .card-foot {
+            background-color: var(--theme-color);
+            width: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            order: 3;
+            border-radius: 0 12px 12px 0;
+            opacity: 0.9;
+        }
+
+        /* Tiny Mode Foot: HIDDEN */
+        body.mode-tiny .card-foot {
+            display: none;
+        }
+
+        .foot-dot {
+            width: 4px;
+            height: 4px;
+            background-color: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+        }
+
+        .verse-row {
+            flex: 0 0 auto;
+            width: 72px;
+            height: 345px;
+            background-color: white;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            padding: 24px 10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: flex-start;
+            transition: all 0.3s;
+        }
+
+        .verse-row:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Tiny Mode Verse Row: Narrow & Tall */
+        body.mode-tiny .verse-row {
+            width: 46px;
+            /* Narrow width */
+            height: 260px;
+            /* Taller height */
+            min-height: 0;
+            flex-direction: row;
+            padding: 12px 6px;
+            margin-bottom: 0px;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            background-color: #FFF;
+            transition: all 0.2s;
+            writing-mode: vertical-lr;
+            gap: 4px;
+        }
+
+        body.mode-tiny .verse-row:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-wrap {
+            writing-mode: vertical-lr;
+            text-orientation: mixed;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 10px;
+            position: relative;
+            z-index: 5;
+        }
+
+        body.mode-tiny .content-wrap {
+            writing-mode: vertical-lr;
+            width: 100%;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            height: 100%;
+            gap: 4px;
+            padding-left: 0;
+        }
+
+        .meta-col {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            flex-shrink: 0;
+            gap: 4px;
+        }
+
+        body.mode-tiny .meta-col {
+            flex-direction: row;
+            width: auto;
+            gap: 4px;
+        }
+
+        /* --- Algorithm Name Tag (Sliding Door) --- */
+        .sub-tag.algo-name {
+            font-size: 10px;
+            border-radius: 3px;
+            font-weight: bold;
+            line-height: 1.2;
+            white-space: nowrap;
+            overflow: hidden;
+            display: inline-block;
+
+            /* Hidden State (Normal Mode) */
+            max-width: 0;
+            padding: 0;
+            opacity: 0;
+            margin-right: 0;
+            margin-bottom: 0;
+
+            background-color: var(--theme-color);
+            color: rgba(255, 255, 255, 0.95);
+            border: 0;
+
+            writing-mode: vertical-rl;
+            /* Matches stack direction but let's see */
+            /* Wait, in vertical-lr layout, items stack vertically in column direction 
+               or horizontally in row direction? 
+               .meta-col is flex-direction:row, so items stack vertically.
+            */
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+
+            transition:
+                max-width 0.3s,
+                padding 0.3s,
+                opacity 0.3s,
+                margin 0.3s;
+        }
+
+        body.mode-tiny .sub-tag.algo-name {
+            /* Visible State (Tiny Mode) */
+            max-width: none;
+            /* Let it grow vertical */
+            max-height: 100px;
+            /* Limit height */
+            padding: 4px 2px;
+            opacity: 1;
+            margin-bottom: 4px;
+            /* Space after tag */
+            border: 1px solid transparent;
+            font-size: 9px;
+            width: auto;
+        }
+
+
+        .left-accent {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background-color: var(--theme-color);
+            z-index: 6;
+        }
+
+        body.mode-tiny .left-accent {
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            border-radius: 2px 2px 0 0;
+        }
+
+        .verse-id-watermark {
+            position: absolute;
+            font-family: "Noto Serif SC", serif;
+            font-weight: 900;
+            color: var(--theme-color);
+            z-index: 1;
+            writing-mode: vertical-rl;
+            font-size: 38px;
+            opacity: 0.12;
+            left: -0.25em;
+            bottom: -0.3em;
+        }
+
+        body.mode-tiny .verse-id-watermark {
+            display: none;
+        }
+
+        .verse-id-text {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 8px;
+            color: rgba(0, 0, 0, 0.4);
+            z-index: 10;
+        }
+
+        body.mode-tiny .verse-id-text {
+            position: absolute;
+            bottom: 4px;
+            right: auto;
+            left: 4px;
+            margin: 0;
+            font-size: 8px;
+            color: #AAA;
+            font-weight: normal;
+        }
+
+        .seal-tag {
+            position: absolute;
+            right: 8px;
+            bottom: 24px;
+            font-size: 11px;
+            border: 1.5px solid;
+            padding: 2px 4px;
+            border-radius: 4px;
+            writing-mode: horizontal-tb;
+            font-weight: bold;
+            z-index: 10;
+            width: 26px;
+            height: 26px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        body.mode-tiny .seal-tag {
+            position: absolute;
+            right: auto;
+            left: 4px;
+            top: auto;
+            bottom: 16px;
+            width: 14px;
+            height: 14px;
+            margin: 0;
+            font-size: 8px;
+            padding: 1px;
+            border-width: 1px;
+            line-height: 1;
+        }
+
+        .sub-tag:not(.algo-name) {
+            font-size: 11px;
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            color: var(--theme-color);
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            border-radius: 2px;
+            padding: 4px 2px;
+            background: rgba(0, 0, 0, 0.03);
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        body.mode-tiny .sub-tag:not(.algo-name) {
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            padding: 2px 1px;
+            font-size: 9px;
+            border-width: 0.5px;
+        }
+
+        .age-badge {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+            color: #8D6E63;
+            writing-mode: vertical-rl;
+            text-orientation: sideways;
+            background: rgba(141, 110, 99, 0.08);
+            padding: 4px 2px;
+            border-radius: 2px;
+            font-weight: 500;
+        }
+
+        body.mode-tiny .age-badge {
+            writing-mode: vertical-rl;
+            text-orientation: sideways;
+            padding: 2px 1px;
+            font-size: 9px;
+        }
+
+        .verse-text {
+            color: var(--ink-text);
+            font-size: 20px;
+            line-height: 1.4;
+            letter-spacing: 4px;
+            font-family: "Songti SC", serif;
+            font-weight: 600;
+            text-align: justify;
+        }
+
+        body.mode-tiny .verse-text {
+            writing-mode: vertical-rl;
+            font-size: 15px;
+            letter-spacing: 1px;
+            line-height: 1.4;
+            flex: 1;
+            text-align: justify;
+            margin: 0;
+            width: auto;
+        }
+
+        .seal-great-good {
+            color: #1B5E20;
+            border-color: #1B5E20;
+            background: rgba(27, 94, 32, 0.08);
+        }
+
+        .seal-good {
+            color: #43A047;
+            border-color: #43A047;
+            background: rgba(67, 160, 71, 0.08);
+        }
+
+        .seal-neutral {
+            color: #5D4037;
+            border-color: #5D4037;
+            background: rgba(93, 64, 55, 0.08);
+        }
+
+        .seal-bad {
+            color: #C62828;
+            border-color: #C62828;
+            background: rgba(198, 40, 40, 0.08);
+        }
+
+        /* Flip Layout Logic - Less relevant without Card Head/Foot in Tiny, but still changes internal order */
+        .layout-flip .card-head {
+            order: 3;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .layout-flip .card-foot {
+            order: 1;
+            border-radius: 12px 0 0 12px;
+        }
+
+        .layout-flip .verse-id-watermark {
+            left: auto;
+            right: -0.25em;
+        }
+
+        .layout-flip .verse-id-text,
+        .layout-flip .seal-tag {
+            right: auto;
+            left: 8px;
+        }
+
+        .layout-flip .card-body {
+            direction: rtl;
+        }
+
+        .layout-flip .card-body>* {
+            direction: ltr;
+        }
+
+        .layout-flip .content-wrap {
+            writing-mode: vertical-rl;
+            flex-direction: column;
+        }
+
+        .controls-container {
+            position: fixed;
+            top: 15px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+        }
+
+        .control-btn {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px 16px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .control-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="controls-container">
+        <div class="control-btn" onclick="toggleLayout()">⇄ 布局翻转 (Flip Layout)</div>
+        <div class="control-btn" onclick="toggleMode()">≣ 极简模式 (Tiny Mode)</div>
+    </div>
+
+    <div class="nav-top-bar">
+        <div class="nav-dot" style="background:var(--huangji-purple);" data-label="皇极经世"
+            onclick="scrollToGroup('huangji')"></div>
+        <div class="nav-dot" style="background:var(--taixuan-red);" data-label="太玄数" onclick="scrollToGroup('taixuan')">
+        </div>
+        <div class="nav-dot" style="background:var(--heluo-green);" data-label="河洛数" onclick="scrollToGroup('heluo')">
+        </div>
+    </div>
+
+    <div class="cards-container">
+
+        <!-- 皇极经世 · 方案一 -->
+        <div class="algo-card theme-huangji group-huangji" id="group-huangji" data-algo-name="皇极经世 · 方案一">
+            <div class="card-head">
+                <div class="head-title">皇极经世 · 方案一</div>
+                <div class="head-formula">(年干 × 12 + 月支) ÷ 360</div>
+            </div>
+            <div class="card-body">
+                <div class="verse-row">
+                    <div class="left-accent"></div>
+                    <div class="verse-id-watermark">壹貳肆伍</div>
+
+                    <div class="content-wrap">
+                        <div class="meta-col">
+                            <span class="sub-tag algo-name">皇极 · 方案一</span>
+                            <span class="sub-tag">年支</span>
+                            <span class="age-badge">45 岁</span>
+                        </div>
+                        <div class="verse-text">宏图大展在此时，四海昇平见太平。</div>
+                    </div>
+
+                    <div class="verse-id-text">1245</div>
+                    <div class="seal-tag seal-great-good">大吉</div>
+                </div>
+                <div class="verse-row">
+                    <div class="left-accent"></div>
+                    <div class="verse-id-watermark">叁捌柒零</div>
+
+                    <div class="content-wrap">
+                        <div class="meta-col">
+                            <span class="sub-tag algo-name">皇极 · 方案一</span>
+                            <span class="sub-tag">月支</span>
+                            <span class="age-badge">2024</span>
+                        </div>
+                        <div class="verse-text">亢龙有悔，盈不可久。</div>
+                    </div>
+                    <div class="verse-id-text">3870</div>
+                    <div class="seal-tag seal-neutral">中平</div>
+                </div>
+                <div class="verse-row">
+                    <div class="left-accent"></div>
+                    <div class="verse-id-watermark">伍肆叁貳</div>
+
+                    <div class="content-wrap">
+                        <div class="meta-col">
+                            <span class="sub-tag algo-name">皇极 · 方案一</span>
+                            <span class="sub-tag">月支</span>
+                            <span class="age-badge">32 岁</span>
+                        </div>
+                        <div class="verse-text">时来天地皆同力，运去英雄不自由。</div>
+                    </div>
+                    <div class="verse-id-text">5432</div>
+                    <div class="seal-tag seal-good">吉</div>
+                </div>
+                <div class="verse-row">
+                    <div class="left-accent"></div>
+                    <div class="verse-id-watermark">玖壹零捌</div>
+
+                    <div class="content-wrap">
+                        <div class="meta-col">
+                            <span class="sub-tag algo-name">皇极 · 方案一</span>
+                            <span class="sub-tag">月支</span>
+                            <span class="age-badge">甲辰</span>
+                        </div>
+                        <div class="verse-text">梅花香自苦寒来，宝剑锋从磨砺出。</div>
+                    </div>
+                    <div class="verse-id-text">9108</div>
+                    <div class="seal-tag seal-great-good">大吉</div>
+                </div>
+            </div>
+            <div class="card-foot">
+                <div class="foot-dot"></div>
+                <div class="foot-dot"></div>
+                <div class="foot-dot"></div>
+            </div>
+        </div>
+
+        <!-- 皇极经世 · 方案二 -->
+        <div class="algo-card theme-huangji" data-algo-name="皇极经世 · 方案二">
+            <div class="card-head">
+                <div class="head-title">皇极经世 · 方案二</div>
+                <div class="head-formula">(值年卦 × 卦象) % 384</div>
+            </div>
+            <div class="card-body">
+                <div class="verse-row">
+                    <div class="left-accent"></div>
+                    <div class="verse-id-watermark">捌玖壹貳</div>
+
+                    <div class="content-wrap">
+                        <div class="meta-col">
+                            <span class="sub-tag algo-name">皇极 · 方案二</span>
+                            <span class="sub-tag">值年</span>
+                            <span class="age-badge">2025</span>
+                        </div>
+                        <div class="verse-text">云深不知处，静待有缘人。</div>
+                    </div>
+                    <div class="verse-id-text">8912</div>
+                    <div class="seal-tag seal-neutral">平</div>
+                </div>
+                <div class="verse-row">
+                    <div class="left-accent"></div>
+                    <div class="verse-id-watermark">貳貳叁肆</div>
+
+                    <div class="content-wrap">
+                        <div class="meta-col">
+                            <span class="sub-tag algo-name">皇极 · 方案二</span>
+                            <span class="sub-tag">卦象</span>
+                            <span class="age-badge">42 岁</span>
+                        </div>
+                        <div class="verse-text">石中藏美玉，淘沙见真金。</div>
+                    </div>
+                    <div class="verse-id-text">2234</div>
+                    <div class="seal-tag seal-bad">小凶</div>
+                </div>
+                <div class="verse-row">
+                    <div class="left-accent"></div>
+                    <div class="verse-id-watermark">壹万壹貳</div>
+
+                    <div class="content-wrap">
+                        <div class="meta-col">
+                            <span class="sub-tag algo-name">皇极 · 方案二</span>
+                            <span class="sub-tag">月支</span>
+                        </div>
+                        <div class="verse-text">进德修业，水到渠成。</div>
+                    </div>
+                    <div class="verse-id-text">11567</div>
+                    <div class="seal-tag seal-neutral">中平</div>
+                </div>
+                <div class="verse-row">
+                    <div class="left-accent"></div>
+                    <div class="verse-id-watermark">肆伍陸柒</div>
+
+                    <div class="content-wrap">
+                        <div class="meta-col">
+                            <span class="sub-tag algo-name">皇极 · 方案二</span>
+                            <span class="sub-tag">月支</span>
+                        </div>
+                        <div class="verse-text">海阔凭鱼跃，天高任鸟飞。</div>
+                    </div>
+                    <div class="verse-id-text">4567</div>
+                    <div class="seal-tag seal-good">小吉</div>
+                </div>
+            </div>
+            <div class="card-foot">
+                <div class="foot-dot"></div>
+                <div class="foot-dot"></div>
+                <div class="foot-dot"></div>
+            </div>
+        </div>
+
+        <!-- 太玄数 -->
+        <div class="algo-card theme-taixuan group-taixuan" id="group-taixuan" data-algo-name="太玄数 · 方案一">
+            <div class="card-head">
+                <div class="head-title">太玄数 · 方案一</div>
+                <div class="head-formula">(先天 + 后天) % 12 + 1000</div>
+            </div>
+            <div class="card-body">
+                <div class="verse-row">
+                    <div class="left-accent"></div>
+                    <div class="verse-id-watermark">伍陸貳壹</div>
+
+                    <div class="content-wrap">
+                        <div class="meta-col">
+                            <span class="sub-tag algo-name">太玄 · 方案一</span>
+                            <span class="sub-tag">先天</span>
+                            <span class="age-badge">28 岁</span>
+                        </div>
+                        <div class="verse-text">命有定数，运有变数。</div>
+                    </div>
+                    <div class="verse-id-text">5621</div>
+                    <div class="seal-tag seal-good">小吉</div>
+                </div>
+                <div class="verse-row">
+                    <div class="left-accent"></div>
+                    <div class="verse-id-watermark">壹万零肆</div>
+
+                    <div class="content-wrap">
+                        <div class="meta-col">
+                            <span class="sub-tag algo-name">太玄 · 方案一</span>
+                            <span class="sub-tag">后天</span>
+                            <span class="age-badge">庚寅</span>
+                        </div>
+                        <div class="verse-text">风雨袭来莫惊慌，定心坐禅避祸殃。</div>
+                    </div>
+                    <div class="verse-id-text">10452</div>
+                    <div class="seal-tag seal-bad">凶</div>
+                </div>
+                <div class="verse-row">
+                    <div class="left-accent"></div>
+                    <div class="verse-id-watermark">柒捌玖零</div>
+
+                    <div class="content-wrap">
+                        <div class="meta-col">
+                            <span class="sub-tag algo-name">太玄 · 方案一</span>
+                            <span class="sub-tag">月支</span>
+                        </div>
+                        <div class="verse-text">山重水复疑无路，柳暗花明又一村。</div>
+                    </div>
+                    <div class="verse-id-text">7890</div>
+                    <div class="seal-tag seal-bad">凶</div>
+                </div>
+                <div class="verse-row">
+                    <div class="left-accent"></div>
+                    <div class="verse-id-watermark">壹貳叁肆</div>
+
+                    <div class="content-wrap">
+                        <div class="meta-col">
+                            <span class="sub-tag algo-name">太玄 · 方案一</span>
+                            <span class="sub-tag">月支</span>
+                        </div>
+                        <div class="verse-text">读书破万卷，下笔如有神。</div>
+                    </div>
+                    <div class="verse-id-text">1234</div>
+                    <div class="seal-tag seal-good">吉</div>
+                </div>
+            </div>
+            <div class="card-foot">
+                <div class="foot-dot"></div>
+                <div class="foot-dot"></div>
+                <div class="foot-dot"></div>
+            </div>
+        </div>
+
+        <!-- 河洛数 -->
+        <div class="algo-card theme-heluo group-heluo" id="group-heluo" data-algo-name="河洛数">
+            <div class="card-head">
+                <div class="head-title">河洛数</div>
+                <div class="head-formula">(天地总数 - 阳数) % 384</div>
+            </div>
+            <div class="card-body">
+                <div class="verse-row">
+                    <div class="left-accent"></div>
+                    <div class="verse-id-watermark">壹万貳捌</div>
+
+                    <div class="content-wrap">
+                        <div class="meta-col">
+                            <span class="sub-tag algo-name">河洛数</span>
+                            <span class="sub-tag">乾元</span>
+                            <span class="age-badge">24 岁</span>
+                        </div>
+                        <div class="verse-text">龙腾四海势不凡，功成名就指日看。</div>
+                    </div>
+                    <div class="verse-id-text">12891</div>
+                    <div class="seal-tag seal-great-good">大吉</div>
+                </div>
+                <div class="verse-row">
+                    <div class="left-accent"></div>
+                    <div class="verse-id-watermark">叁叁肆肆</div>
+
+                    <div class="content-wrap">
+                        <div class="meta-col">
+                            <span class="sub-tag algo-name">河洛数</span>
+                            <span class="sub-tag">坤贞</span>
+                        </div>
+                        <div class="verse-text">春江水暖鸭先知，细察秋毫得先机。</div>
+                    </div>
+                    <div class="verse-id-text">3344</div>
+                    <div class="seal-tag seal-good">吉</div>
+                </div>
+                <div class="verse-row">
+                    <div class="left-accent"></div>
+                    <div class="verse-id-watermark">柒柒捌捌</div>
+
+                    <div class="content-wrap">
+                        <div class="meta-col">
+                            <span class="sub-tag algo-name">河洛数</span>
+                            <span class="sub-tag">月支</span>
+                        </div>
+                        <div class="verse-text">千里之行，始于足下。</div>
+                    </div>
+                    <div class="verse-id-text">7788</div>
+                    <div class="seal-tag seal-neutral">平</div>
+                </div>
+                <div class="verse-row">
+                    <div class="left-accent"></div>
+                    <div class="verse-id-watermark">壹万壹貳</div>
+
+                    <div class="content-wrap">
+                        <div class="meta-col">
+                            <span class="sub-tag algo-name">河洛数</span>
+                            <span class="sub-tag">月支</span>
+                        </div>
+                        <div class="verse-text">宁静致远，淡泊明志。</div>
+                    </div>
+                    <div class="verse-id-text">11223</div>
+                    <div class="seal-tag seal-good">小吉</div>
+                </div>
+            </div>
+            <div class="card-foot">
+                <div class="foot-dot"></div>
+                <div class="foot-dot"></div>
+                <div class="foot-dot"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleLayout() { document.querySelectorAll('.algo-card').forEach(card => card.classList.toggle('layout-flip')); }
+        function toggleMode() { document.body.classList.toggle('mode-tiny'); }
+        function scrollToGroup(groupName) {
+            const target = document.getElementById('group-' + groupName);
+            if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'start' }); }
+        }
+    </script>
+</body>
+
+</html>

@@ -4,33 +4,33 @@
 
 ### 1.1 数据模型 (Data Models)
 
-- [ ] 定义 `DivinationContext` (排盘上下文)
-  - [ ] 包含基本输入 (`EightChars`, `Gender`, 等)
-  - [ ] 支持不可变更新 (`copyWith` / `fork`)
-- [ ] 定义 `DivinationSession` (全局会话)
-  - [ ] 管理 `List<DivinationContext>` (分支历史)
-  - [ ] 实现 `switchBranch(Context)`
-- [ ] 定义 `DivinationResult` (统一结果接口)
-  - [ ] 标准化输出结构 (`title`, `items`, `tags`)
+- [x] 定义 `DivinationContext` (排盘上下文)
+  - [x] 包含基本输入 (`EightChars`, `Gender`, 等)
+  - [x] 支持不可变更新 (`copyWith` / `fork`)
+- [x] 定义 `DivinationSession` (全局会话)
+  - [x] 管理 `List<DivinationContext>` (分支历史)
+  - [x] 实现 `switchBranch(Context)`
+- [x] 定义 `DivinationResult` (统一结果接口)
+  - [x] 标准化输出结构 (`title`, `items`, `tags`)
 
 ### 1.2 协调器 (Orchestrator)
 
-- [ ] 实现 `DivinationOrchestrator`
-  - [ ] 依赖注入所有 16+ 策略
-  - [ ] 实现 `analyzeDependencies()` (计算执行顺序)
-  - [ ] 实现 `execute()` (异步执行流)
+- [x] 实现 `DivinationOrchestrator`
+  - [x] 依赖注入所有 16+ 策略
+  - [x] 实现 `analyzeDependencies()` (计算执行顺序)
+  - [x] 实现 `execute()` (异步执行流)
 
 ## Phase 2: 策略适配 (Strategy Adapters)
 
 ### 2.1 Level 1: 基础层 (Direct)
 
-- [ ] Adapter: `DayGanZhiGua`
-- [ ] Adapter: `FourZhuTianGan`
+- [x] Adapter: `DayGanZhiGua`
+- [x] Adapter: `FourZhuTianGan`
 - [ ] Adapter: `ShengMingGuaCalculation`
 - [ ] Adapter: `BaGuaJiaZe` & `BaGuaGun`
 - [ ] Adapter: `SiMenFa`
 - [ ] Adapter: `QianHouGua`
-- [ ] Adapter: `TaiXuanFourZhu` (Standard)
+- [x] Adapter: `TaiXuanFourZhu` (Standard)
 
 ### 2.2 Level 2: 进阶层 (Dependent)
 

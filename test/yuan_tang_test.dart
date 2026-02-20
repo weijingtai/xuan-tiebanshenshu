@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:common/models/eight_chars.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:common/enums.dart';

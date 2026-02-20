@@ -123,21 +123,18 @@ class HuangJiBaseNumber extends HuangJiNumber {
   BaseNumberType baseNumberType;
   NumberSource numberSource;
   int orinialNumber;
+  @override
   int get number {
     return checkToTiaoWenNumber(orinialNumber);
   }
 
   HuangJiBaseNumber({
-    required String name,
-    required String description,
+    required super.name,
+    required super.description,
     required this.orinialNumber,
     required this.baseNumberType,
     required this.numberSource,
-  }) : super(
-         name: name,
-         description: description,
-         number: HuangJiBaseNumber.checkToTiaoWenNumber(orinialNumber),
-       );
+  }) : super(number: HuangJiBaseNumber.checkToTiaoWenNumber(orinialNumber));
   static int checkToTiaoWenNumber(int originalNumber) {
     if (originalNumber > 13000) {
       return originalNumber - 12000;
@@ -162,7 +159,7 @@ class HuangJiBaseNumber extends HuangJiNumber {
     return HuangJiBaseNumber(
       name: name ?? this.name,
       description: description ?? this.description,
-      orinialNumber: number ?? this.orinialNumber,
+      orinialNumber: number ?? orinialNumber,
       baseNumberType: baseNumberType ?? this.baseNumberType,
       numberSource: numberSource ?? this.numberSource,
     );
@@ -271,6 +268,7 @@ class HuangJiOperatedNumber extends HuangJiNumber {
   factory HuangJiOperatedNumber.fromJson(Map<String, dynamic> json) =>
       _$HuangJiOperatedNumberFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() => _$HuangJiOperatedNumberToJson(this);
 }
 
@@ -295,6 +293,7 @@ class HuangJiEachPart extends HuangJiNumber {
   factory HuangJiEachPart.fromJson(Map<String, dynamic> json) =>
       _$HuangJiEachPartFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() => _$HuangJiEachPartToJson(this);
 
   HuangJiEachPart copyWith({
@@ -316,7 +315,9 @@ class HuangJiEachPart extends HuangJiNumber {
 
 @JsonSerializable()
 class HuangJiTiaoWenNumber extends HuangJiNumber {
+  @override
   String name;
+  @override
   String description;
   int tiaoWenNumber;
   @override
@@ -334,6 +335,7 @@ class HuangJiTiaoWenNumber extends HuangJiNumber {
   factory HuangJiTiaoWenNumber.fromJson(Map<String, dynamic> json) =>
       _$HuangJiTiaoWenNumberFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() => _$HuangJiTiaoWenNumberToJson(this);
 
   HuangJiTiaoWenNumber copyWith({

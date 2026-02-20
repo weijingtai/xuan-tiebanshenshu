@@ -87,6 +87,7 @@ class KaoEigthKeTiaoWen extends KaoEigthKeNumber {
 
   factory KaoEigthKeTiaoWen.fromJson(Map<String, dynamic> json) =>
       _$KaoEigthKeTiaoWenFromJson(json);
+  @override
   Map<String, dynamic> toJson() => _$KaoEigthKeTiaoWenToJson(this);
 }
 
@@ -141,6 +142,7 @@ class DouJiaYiTiaoWen extends DouJiaYiNumber {
 
   factory DouJiaYiTiaoWen.fromJson(Map<String, dynamic> json) =>
       _$DouJiaYiTiaoWenFromJson(json);
+  @override
   Map<String, dynamic> toJson() => _$DouJiaYiTiaoWenToJson(this);
 }
 
@@ -276,6 +278,7 @@ class SixQinGongEachTiaoWen extends SixQinGongEach {
 
   factory SixQinGongEachTiaoWen.fromJson(Map<String, dynamic> json) =>
       _$SixQinGongEachTiaoWenFromJson(json);
+  @override
   Map<String, dynamic> toJson() => _$SixQinGongEachTiaoWenToJson(this);
 }
 

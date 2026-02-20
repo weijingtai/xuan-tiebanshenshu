@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>铁板神数 - 核心算法卡片 (Base 7)</title>
+    <style>
+        :root {
+            /* 基础色板 */
+            --bg-color: #E8E4DD;
+            --paper: #FAF8F5;
+
+            /* 核心装饰色 */
+            --header-black: #1A1A1B;
+            /* 纯正油墨黑 */
+            --ink-text: #2B2B2B;
+            /* 正文墨色 */
+            --taixuan-red: #A62B1F;
+            /* 朱砂红点缀 */
+
+            /* 线条 */
+            --line-light: rgba(0, 0, 0, 0.06);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 24px 16px;
+            font-family: "Noto Serif SC", "Songti SC", serif;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            align-items: center;
+        }
+
+        /* --- 算法卡片容器 --- */
+        .algo-card {
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            /* 悬浮阴影 */
+            background: transparent;
+            /* 卡片本身透明，由头尾体拼接 */
+        }
+
+        /* --- 1. 头部 (Head) : base_3 风格 --- */
+        .card-head {
+            background-color: var(--header-black);
+            color: #FFFFFF;
+            padding: 20px 16px;
+            border-radius: 16px 16px 0 0;
+            /* 顶部圆角 */
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            position: relative;
+        }
+
+        /* 头部内陷装饰线 (可选，增加精致度) */
+        .card-head::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 16px;
+            right: 16px;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .head-title {
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 4px;
+            margin: 0;
+        }
+
+        .head-formula {
+            font-family: "JetBrains Mono", monospace;
+            /* 公式使用等宽字体 */
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.6);
+            /* 淡色显示 */
+            letter-spacing: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+            align-self: center;
+            /* 居中 */
+        }
+
+        /* --- 2. 躯干 (Body) : base_5 列表 --- */
+        .card-body {
+            background-color: var(--paper);
+            padding: 4px 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .verse-row {
+            display: flex;
+            padding: 16px 20px;
+            border-bottom: 1px dashed var(--line-light);
+            /* 虚线分割，保持清爽 */
+        }
+
+        .verse-row:last-child {
+            border-bottom: none;
+        }
+
+        /* 左侧装饰线 */
+        .left-accent {
+            width: 3px;
+            margin-right: 16px;
+            background-color: var(--taixuan-red);
+            border-radius: 2px;
+            flex-shrink: 0;
+            opacity: 0.8;
+        }
+
+        .content-wrap {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        /* Meta 信息行 */
+        .meta-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .meta-left {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        .algo-sub-type {
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--header-black);
+            opacity: 0.7;
+        }
+
+        .age-text {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 12px;
+            color: #967131;
+            font-weight: bold;
+        }
+
+        /* 吉凶：印章风格 */
+        .seal-tag {
+            font-size: 11px;
+            border: 1px solid var(--taixuan-red);
+            color: var(--taixuan-red);
+            padding: 0 4px;
+            border-radius: 2px;
+            font-weight: bold;
+        }
+
+        /* 列表正文 */
+        .verse-text {
+            font-size: 17px;
+            line-height: 1.6;
+            color: var(--ink-text);
+            text-align: justify;
+            font-weight: 500;
+        }
+
+        /* --- 3. 尾部 (Foot) : 底部封口 --- */
+        .card-foot {
+            background-color: var(--header-black);
+            height: 24px;
+            /* 装饰性条状 */
+            border-radius: 0 0 16px 16px;
+            /* 底部圆角 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 底部装饰小点 */
+        .foot-dot {
+            width: 4px;
+            height: 4px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            margin: 0 3px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 卡片 1: 太玄神数 -->
+    <div class="algo-card">
+        <!-- 头部：黑色圆角 + 核心公式 -->
+        <div class="card-head">
+            <div class="head-formula">核心公式：(先天数 + 后天数) % 12 + 1000</div>
+            <div class="head-title">太玄神数</div>
+        </div>
+
+        <!-- 躯干：白纸列表 -->
+        <div class="card-body">
+
+            <div class="verse-row">
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="algo-sub-type">先天</span>
+                            <span class="age-text">28-37</span>
+                        </div>
+                        <span class="seal-tag">小吉</span>
+                    </div>
+                    <div class="verse-text">命有定数，运有变数。知命而改运，方为上乘。春风得意马蹄疾，一日看尽长安花。</div>
+                </div>
+            </div>
+
+            <div class="verse-row">
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="algo-sub-type">后天</span>
+                            <!-- 空年龄 -->
+                        </div>
+                        <span class="seal-tag">中平</span>
+                    </div>
+                    <div class="verse-text">金石为开，大器晚成。宜守不宜进，静待时机。</div>
+                </div>
+            </div>
+
+            <div class="verse-row">
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="algo-sub-type">流年</span>
+                            <span class="age-text">2024</span>
+                        </div>
+                        <span class="seal-tag">大吉</span>
+                    </div>
+                    <div class="verse-text">云开雾散见青天，枯木逢春发新枝。</div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 尾部：黑色圆角封口 -->
+        <div class="card-foot">
+            <div class="foot-dot"></div>
+            <div class="foot-dot"></div>
+            <div class="foot-dot"></div>
+        </div>
+    </div>
+
+
+    <!-- 卡片 2: 元堂大运 -->
+    <div class="algo-card">
+        <div class="card-head">
+            <div class="head-formula">核心公式：(年干 + 月支) ÷ 6</div>
+            <div class="head-title">元堂大运</div>
+        </div>
+
+        <div class="card-body">
+            <div class="verse-row">
+                <div class="left-accent" style="background-color: #2A4056;"></div> <!-- 局部改色示例 -->
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="algo-sub-type">元堂</span>
+                            <span class="age-text">14-23</span>
+                        </div>
+                        <div class="seal-tag" style="border-color: #2A4056; color: #2A4056;">凶</div>
+                    </div>
+                    <div class="verse-text">石中藏美玉，淘沙见真金。此十年间，需防口舌，莫管闲事。</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-foot">
+            <div class="foot-dot"></div>
+            <div class="foot-dot"></div>
+            <div class="foot-dot"></div>
+        </div>
+    </div>
+
+</body>
+
+</html>

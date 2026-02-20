@@ -14,10 +14,7 @@ class KaoDingLiuQinPage extends StatefulWidget {
   /// 八字（可选，默认使用测试数据）
   final EightChars? eightChars;
 
-  const KaoDingLiuQinPage({
-    super.key,
-    this.eightChars,
-  });
+  const KaoDingLiuQinPage({super.key, this.eightChars});
 
   @override
   State<KaoDingLiuQinPage> createState() => _KaoDingLiuQinPageState();
@@ -31,7 +28,8 @@ class _KaoDingLiuQinPageState extends State<KaoDingLiuQinPage> {
   void initState() {
     super.initState();
     // 使用传入的八字或默认测试数据
-    _currentEightChars = widget.eightChars ??
+    _currentEightChars =
+        widget.eightChars ??
         EightChars(
           year: JiaZi.GUI_WEI,
           month: JiaZi.REN_WU,
@@ -105,9 +103,7 @@ class _KaoDingLiuQinPageState extends State<KaoDingLiuQinPage> {
           }
 
           if (!viewModel.isSuccess || !_isCalculated) {
-            return const Center(
-              child: Text('等待计算...'),
-            );
+            return const Center(child: Text('等待计算...'));
           }
 
           return Column(
@@ -116,9 +112,7 @@ class _KaoDingLiuQinPageState extends State<KaoDingLiuQinPage> {
               _buildEightCharsHeader(),
 
               // 流度表网格
-              Expanded(
-                child: _buildLiuDuTablesGrid(viewModel),
-              ),
+              Expanded(child: _buildLiuDuTablesGrid(viewModel)),
 
               // 确认按钮
               _buildConfirmButton(viewModel),
@@ -174,10 +168,7 @@ class _KaoDingLiuQinPageState extends State<KaoDingLiuQinPage> {
 
     return Column(
       children: [
-        Text(
-          label,
-          style: theme.textTheme.labelSmall,
-        ),
+        Text(label, style: theme.textTheme.labelSmall),
         const SizedBox(height: 4),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
@@ -217,9 +208,9 @@ class _KaoDingLiuQinPageState extends State<KaoDingLiuQinPage> {
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: Text(
                 _getGroupTitle(group),
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
               ),
             ),
             // 该分组的流度表
@@ -232,8 +223,10 @@ class _KaoDingLiuQinPageState extends State<KaoDingLiuQinPage> {
                 ],
                 ...group
                     .where((type) => type != LiuQinType.sibling)
-                    .map((type) => Expanded(child: _buildLiuDuTable(viewModel, type)))
-                    .toList(),
+                    .map(
+                      (type) =>
+                          Expanded(child: _buildLiuDuTable(viewModel, type)),
+                    ),
               ],
             ),
             const SizedBox(height: 16),
@@ -299,7 +292,9 @@ class _KaoDingLiuQinPageState extends State<KaoDingLiuQinPage> {
 
     if (liuQinType.isSibling) {
       // 兄弟姐妹：并列展示纳比卦甲表与乙表
-      final selectedNumberSibling = viewModel.getSelectedTiaoWenNumber(LiuQinType.sibling);
+      final selectedNumberSibling = viewModel.getSelectedTiaoWenNumber(
+        LiuQinType.sibling,
+      );
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -339,8 +334,13 @@ class _KaoDingLiuQinPageState extends State<KaoDingLiuQinPage> {
   }
 
   /// 构建兄弟单个子表（甲/乙），用于行内并列展示
-  Widget _buildSiblingTable(KaoDingLiuQinViewModel viewModel, {required bool isYi}) {
-    final selectedNumber = viewModel.getSelectedTiaoWenNumber(LiuQinType.sibling);
+  Widget _buildSiblingTable(
+    KaoDingLiuQinViewModel viewModel, {
+    required bool isYi,
+  }) {
+    final selectedNumber = viewModel.getSelectedTiaoWenNumber(
+      LiuQinType.sibling,
+    );
     final entries = isYi
         ? viewModel.siblingYiEntriesWithTiaoWen
         : (viewModel.allEntriesWithTiaoWen[LiuQinType.sibling] ?? []);
@@ -348,7 +348,10 @@ class _KaoDingLiuQinPageState extends State<KaoDingLiuQinPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(isYi ? '纳比卦（乙表）' : '纳比卦（甲表）', style: Theme.of(context).textTheme.labelLarge),
+        Text(
+          isYi ? '纳比卦（乙表）' : '纳比卦（甲表）',
+          style: Theme.of(context).textTheme.labelLarge,
+        ),
         const SizedBox(height: 8),
         LiuDuTableSelectionWidget(
           liuQinType: LiuQinType.sibling,
@@ -430,9 +433,7 @@ class _KaoDingLiuQinPageState extends State<KaoDingLiuQinPage> {
               ...selections.entries.map((entry) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 4.0),
-                  child: Text(
-                    '${entry.key.displayName}: ${entry.value}',
-                  ),
+                  child: Text('${entry.key.displayName}: ${entry.value}'),
                 );
               }),
               if (gua64Results != null && gua64Results.isNotEmpty) ...[

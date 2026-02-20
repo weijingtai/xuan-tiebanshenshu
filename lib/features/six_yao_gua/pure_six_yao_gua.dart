@@ -396,12 +396,12 @@ class PureSixYaoGua extends Equatable {
     variants["互卦"] = hu;
     for (int i = 0; i < 6; i++) {
       final label = getYaoPositionLabel(i);
-      variants["变${label}爻"] = bianYaoByOrder(i + 1);
+      variants["变$label爻"] = bianYaoByOrder(i + 1);
     }
     return variants;
   }
 
-  PureSixYaoGua({required this.gua, required this.yaoList});
+  const PureSixYaoGua({required this.gua, required this.yaoList});
   factory PureSixYaoGua.by8Gua(Enum8Gua topGua, Enum8Gua bottomGua) {
     final bottomTopBinaryStr =
         "${bottomGua.bottomTopBinaryStr}${topGua.bottomTopBinaryStr}";
@@ -425,7 +425,7 @@ class PureSixYaoGua extends Equatable {
 
   Map<String, dynamic> toJson() => _$PureSixYaoGuaToJson(this);
 
-  copyWith({Enum64Gua? gua, List<GuaYao>? yaoList}) {
+  PureSixYaoGua copyWith({Enum64Gua? gua, List<GuaYao>? yaoList}) {
     return PureSixYaoGua(
       gua: gua ?? this.gua,
       yaoList: yaoList ?? this.yaoList,

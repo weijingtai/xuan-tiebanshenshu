@@ -79,7 +79,9 @@ class UITiaoWenListResultModel {
   }
 
   /// 从MultiBaseNumberResult创建UI模型
-  factory UITiaoWenListResultModel.fromMultiBaseNumberResult(MultiBaseNumberResult multiResult) {
+  factory UITiaoWenListResultModel.fromMultiBaseNumberResult(
+    MultiBaseNumberResult multiResult,
+  ) {
     // 创建一个兼容的TiaoWenListResult
     final tiaoWenListResult = TiaoWenListResult.success(
       tiaoWenNumbers: multiResult.allTiaoWenNumbers,
@@ -213,7 +215,7 @@ class UITiaoWenListResultModel {
     } else {
       final displayNumbers = tiaoWenNumbers.take(maxDisplay).join(', ');
       final remainingCount = tiaoWenNumbers.length - maxDisplay;
-      return '$displayNumbers... (还有${remainingCount}个)';
+      return '$displayNumbers... (还有$remainingCount个)';
     }
   }
 
@@ -233,9 +235,9 @@ class UITiaoWenListResultModel {
   String get debugInfo {
     return '''
 计算方法: $calculationMethod
-状态: ${stateDisplayText}
+状态: $stateDisplayText
 条文数量: $tiaoWenCount
-条文编号: ${tiaoWenNumbersDisplayText}
+条文编号: $tiaoWenNumbersDisplayText
 源数据: $sourceData
 错误信息: ${errorMessage ?? "无"}
 ''';

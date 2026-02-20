@@ -284,7 +284,7 @@ class YuanTangUIModel {
     };
 
     // 收集所有条文编号（去重）
-    final allTiaoWenNumbers = <int>[
+    final allTiaoWenNumbers = <int>{
       baseNumberModel.tiaowenNumberJiazeXiantiangua,
       baseNumberModel.tiaowenNumberJiazeHoutiangua,
       baseNumberModel.tiaowenNumberNajiaTaixuanXiantiangua,
@@ -293,7 +293,7 @@ class YuanTangUIModel {
       baseNumberModel.tiaowenNumberHoutianBenhu,
       ...baseNumberModel.tiaowenNumberListXiantianGuahu,
       ...baseNumberModel.tiaowenNumberListHoutianGuahu,
-    ].toSet().toList();
+    }.toList();
 
     // 如果没有提供条文编号列表，使用基础数构建默认列表
     final finalXiantianTiaoWenNumbers =
@@ -421,13 +421,13 @@ class YuanTangUIModel {
     // 检查是否在先天卦扩展列表中
     if (xiantianTiaoWenNumbers.contains(tiaoWenNumber)) {
       final index = xiantianTiaoWenNumbers.indexOf(tiaoWenNumber);
-      sources.add('先天卦扩展 (${xiantianGua}) - 第${index + 1}个');
+      sources.add('先天卦扩展 ($xiantianGua) - 第${index + 1}个');
     }
 
     // 检查是否在后天卦扩展列表中
     if (houtianTiaoWenNumbers.contains(tiaoWenNumber)) {
       final index = houtianTiaoWenNumbers.indexOf(tiaoWenNumber);
-      sources.add('后天卦扩展 (${houtianGua}) - 第${index + 1}个');
+      sources.add('后天卦扩展 ($houtianGua) - 第${index + 1}个');
     }
 
     // 检查是否在8种方法中
@@ -577,7 +577,7 @@ class YuanTangDayunPeriodUI {
 
   /// 获取完整显示文本
   String get displayText =>
-      '$yaoLabel爻($yinYang-${years}年): $ageRange岁 [$diZhiDisplayText]';
+      '$yaoLabel爻($yinYang-$years年): $ageRange岁 [$diZhiDisplayText]';
 
   @override
   String toString() => displayText;

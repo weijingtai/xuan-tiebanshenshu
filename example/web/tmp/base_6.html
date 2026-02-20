@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>铁板神数 - 清爽雅致版 (Base 6)</title>
+    <style>
+        :root {
+            /* 纸张与背景 */
+            --bg-color: #E8E4DD;
+            /* 整体背景：偏灰尘土色，烘托纸张 */
+            --paper: #FAF8F5;
+            /* 卡片背景：极亮米白，更清爽 */
+
+            /* 传统色彩 */
+            --ink: #2B2B2B;
+            /* 墨色：深灰，比纯黑柔和 */
+            --ink-light: #595959;
+            /* 淡墨：次级信息 */
+
+            /* 主题色 - 降低饱和度，更雅致 */
+            --taixuan-red: #A62B1F;
+            /* 太玄红：朱砂色 */
+            --yuantang-blue: #2A4056;
+            /* 元堂蓝：花青色 */
+
+            /* 装饰与线条 */
+            --line-light: rgba(0, 0, 0, 0.05);
+            /* 极淡分割线 */
+            --seal-border: 1.5px solid;
+            /* 印章边框厚度 */
+        }
+
+        body {
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 24px 16px;
+            font-family: "Noto Serif SC", "Songti SC", serif;
+            /* 强调宋体/衬线 */
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            align-items: center;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- 大卡片容器 --- */
+        .algo-group-card {
+            width: 100%;
+            max-width: 420px;
+            background: var(--paper);
+            display: flex;
+            flex-direction: column;
+            /* 悬浮感：柔和的阴影 */
+            box-shadow: 0 8px 24px rgba(45, 40, 30, 0.06);
+            border-radius: 8px;
+            /* 轻微圆角，不宜过大 */
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            /* 提升质感 */
+        }
+
+        /* --- 1. 雅致头部 (反白设计 + 文武线) --- */
+        .card-header {
+            padding: 16px 20px 12px;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 4px;
+            /* 增加字间距，更有呼吸感 */
+            background: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        /* 头部底部的装饰线：仿古籍书页眉批线 */
+        .card-header::after {
+            content: "";
+            position: absolute;
+            bottom: 4px;
+            left: 20px;
+            right: 20px;
+            height: 1px;
+            opacity: 0.3;
+        }
+
+        /* 主题色适配 */
+        .theme-taixuan .card-header {
+            color: var(--taixuan-red);
+        }
+
+        .theme-taixuan .card-header::after {
+            background-color: var(--taixuan-red);
+        }
+
+        .theme-yuantang .card-header {
+            color: var(--yuantang-blue);
+        }
+
+        .theme-yuantang .card-header::after {
+            background-color: var(--yuantang-blue);
+        }
+
+        /* 头部的辅助文字（如英文翻译或副标），更像书眉 */
+        .header-sub {
+            font-size: 10px;
+            font-family: "Didot", serif;
+            /* 西文衬线体 */
+            opacity: 0.4;
+            letter-spacing: 1px;
+            font-weight: normal;
+        }
+
+        /* --- 2. 条文列表区 --- */
+        .verse-list {
+            padding: 0 0 8px 0;
+        }
+
+        .verse-row {
+            display: flex;
+            position: relative;
+            padding: 16px 20px;
+            /* 虚线分割，模拟宣纸折痕或针脚，比实线更轻 */
+            border-bottom: 1px dashed var(--line-light);
+            transition: background 0.3s;
+        }
+
+        .verse-row:active {
+            background-color: rgba(0, 0, 0, 0.01);
+        }
+
+        .verse-row:last-child {
+            border-bottom: none;
+        }
+
+        /* 左侧装饰线：极细，精致化 */
+        .left-accent {
+            width: 2px;
+            margin-right: 16px;
+            flex-shrink: 0;
+            border-radius: 2px;
+            background-color: currentColor;
+            /* 继承父级颜色 */
+            opacity: 0.6;
+        }
+
+        .content-wrap {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        /* --- 3. 元数据行 (Meta) --- */
+        .meta-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 20px;
+        }
+
+        .meta-left {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        /* 算法标识：单纯文字，去掉边框，极简 */
+        .algo-name {
+            font-size: 12px;
+            font-weight: bold;
+            opacity: 0.8;
+        }
+
+        /* 年龄：使用等宽字体，像打字机效果 */
+        .age-text {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 12px;
+            color: #9C8258;
+            /* 金褐 */
+            font-weight: 600;
+        }
+
+        /* --- 4. 重点：印章风格吉凶标签 --- */
+        /* 
+           设计思路：模拟“闲章”。
+           方框，留白，文字居中。
+        */
+        .seal-tag {
+            font-size: 11px;
+            height: 18px;
+            line-height: 16px;
+            padding: 0 6px;
+            border: 1px solid;
+            /* 实线边框 */
+            border-radius: 2px;
+            /* 极小圆角，近乎直角 */
+            font-weight: bold;
+            writing-mode: horizontal-tb;
+            /* 保持横排，若字多可竖排 */
+            letter-spacing: 2px;
+            margin-right: -2px;
+            /* 视觉微调 */
+
+            /* 模拟印泥的质感 */
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .theme-taixuan .seal-tag {
+            color: var(--taixuan-red);
+            border-color: var(--taixuan-red);
+            box-shadow: inset 0 0 2px rgba(166, 43, 31, 0.1);
+        }
+
+        .theme-yuantang .seal-tag {
+            color: var(--yuantang-blue);
+            border-color: var(--yuantang-blue);
+            box-shadow: inset 0 0 2px rgba(42, 64, 86, 0.1);
+        }
+
+        /* 评级特殊的印章颜色（可选） */
+        .seal-tag.auspicious {
+            /*color: #C0392B; border-color: #C0392B;*/
+            /* 若需区分吉凶色可解开 */
+        }
+
+
+        /* --- 5. 条文正文 --- */
+        .verse-body {
+            font-size: 17px;
+            /* 适度加大，易读 */
+            line-height: 1.6;
+            /* 增加行高，更宽松 */
+            color: var(--ink);
+            text-align: justify;
+            /* 两端对齐，亦显整齐 */
+            font-weight: 500;
+        }
+
+        /* 颜色注入 */
+        .theme-taixuan .left-accent,
+        .theme-taixuan .algo-name {
+            color: var(--taixuan-red);
+        }
+
+        .theme-yuantang .left-accent,
+        .theme-yuantang .algo-name {
+            color: var(--yuantang-blue);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 太玄神数卡片 -->
+    <div class="algo-group-card theme-taixuan">
+        <!-- 头部：反白清爽风格 -->
+        <div class="card-header">
+            <span>太玄神数</span>
+            <span class="header-sub">TAI XUAN</span>
+        </div>
+
+        <div class="verse-list">
+            <!-- 条文 1 -->
+            <div class="verse-row">
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="algo-name">先天</span>
+                            <span class="age-text">28-37</span>
+                        </div>
+                        <!-- 印章：小吉 -->
+                        <div class="seal-tag">小吉</div>
+                    </div>
+                    <div class="verse-body">命有定数，运有变数。知命而改运，方为上乘。春风得意马蹄疾，一日看尽长安花。</div>
+                </div>
+            </div>
+
+            <!-- 条文 2 -->
+            <div class="verse-row">
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="algo-name">后天</span>
+                            <!-- 空年龄 -->
+                        </div>
+                        <!-- 印章：平 -->
+                        <div class="seal-tag">中平</div>
+                    </div>
+                    <div class="verse-body">金石为开，大器晚成。宜守不宜进，静待时机。</div>
+                </div>
+            </div>
+
+            <!-- 条文 3 -->
+            <div class="verse-row">
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="algo-name">流年</span>
+                            <span class="age-text">2024</span>
+                        </div>
+                        <!-- 印章：吉 -->
+                        <div class="seal-tag">大吉</div>
+                    </div>
+                    <div class="verse-body">云开雾散见青天，枯木逢春发新枝。</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 元堂大运卡片 -->
+    <div class="algo-group-card theme-yuantang">
+        <div class="card-header">
+            <span>元堂大运</span>
+            <span class="header-sub">YUAN TANG</span>
+        </div>
+
+        <div class="verse-list">
+            <div class="verse-row">
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="algo-name">元堂</span>
+                            <span class="age-text">14-23</span>
+                        </div>
+                        <div class="seal-tag">凶</div>
+                    </div>
+                    <div class="verse-body">石中藏美玉，淘沙见真金。此十年间，需防口舌，莫管闲事。</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

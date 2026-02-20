@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>铁板神数 - 丝滑切换演示 (Refined Base 14 v2)</title>
+    <style>
+        :root {
+            --bg-color: #E8E4DD;
+            --paper: #FAF8F5;
+            --taixuan-red: #A62B1F;
+            --yuantang-blue: #2A4056;
+            --huangji-purple: #512E5F;
+            --heluo-green: #145A32;
+            --neutral-black: #1A1A1B;
+            --line-light: rgba(0, 0, 0, 0.05);
+            --ink-text: #2B2B2B;
+
+            --id-watermark-color: #B71C1C;
+            --id-text-color: #424242;
+
+            /* 动画曲线 */
+            --anim-curve: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --anim-duration: 0.5s;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 32px 16px;
+            font-family: "Noto Serif SC", "Songti SC", serif;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .algo-card {
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+            background: transparent;
+            --theme-color: var(--neutral-black);
+            transition: max-width var(--anim-duration) var(--anim-curve);
+        }
+
+        .theme-huangji {
+            --theme-color: var(--huangji-purple);
+        }
+
+        /* --- 头部 --- */
+        .card-head {
+            background-color: var(--theme-color);
+            color: #FFFFFF;
+            padding: 16px 20px;
+            border-radius: 12px 12px 0 0;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            position: relative;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .head-title {
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin: 0;
+            line-height: 1.2;
+            opacity: 0.95;
+        }
+
+        .head-formula {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 2px 8px;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- Body --- */
+        .card-body {
+            background-color: transparent;
+            padding: 2px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            transition: gap var(--anim-duration) var(--anim-curve), padding var(--anim-duration) var(--anim-curve);
+        }
+
+        .mode-tiny .card-body {
+            gap: 12px;
+            padding: 16px 0;
+        }
+
+        /* ===== Verse Row ===== */
+        .verse-row {
+            position: relative;
+            background-color: var(--paper);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+
+            /* Expanded Layout */
+            padding: 18px 20px;
+            border-bottom: 1px dashed var(--line-light);
+            border-radius: 0;
+            box-shadow: none;
+            border: none;
+            border-bottom: 1px dashed var(--line-light);
+
+            transition:
+                padding var(--anim-duration) var(--anim-curve),
+                border-radius var(--anim-duration) var(--anim-curve),
+                box-shadow var(--anim-duration) var(--anim-curve),
+                background-color 0.3s,
+                transform 0.2s,
+                min-height var(--anim-duration) var(--anim-curve);
+        }
+
+        .verse-row:last-child {
+            border-bottom: none;
+        }
+
+        /* Tiny Layout */
+        .mode-tiny .verse-row {
+            padding: 6px 12px;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0, 0, 0, 0.02) !important;
+            min-height: 48px;
+        }
+
+        .mode-tiny .verse-row:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.03);
+        }
+
+        /* --- 1. Left Accent --- */
+        .left-accent {
+            position: absolute;
+            background-color: var(--theme-color);
+            opacity: 0.8;
+            border-radius: 2px;
+            width: 3px;
+            left: 10px;
+            /* Unified X-axis Position */
+            top: 18px;
+            bottom: 18px;
+            transition: all var(--anim-duration) var(--anim-curve);
+        }
+
+        .mode-tiny .left-accent {
+            top: 10px;
+            bottom: 10px;
+        }
+
+        /* --- 2. Watermark --- */
+        .verse-id-watermark {
+            position: absolute;
+            font-family: "Noto Serif SC", serif;
+            font-weight: 900;
+            color: var(--id-watermark-color);
+            pointer-events: none;
+            z-index: 0;
+            white-space: nowrap;
+            mix-blend-mode: multiply;
+            right: -8px;
+            bottom: -5px;
+            font-size: 42px;
+            opacity: 0.08;
+            letter-spacing: 0;
+            transition: all var(--anim-duration) var(--anim-curve);
+        }
+
+        .mode-tiny .verse-id-watermark {
+            right: -8px;
+            bottom: -8px;
+            font-size: 32px;
+            opacity: 0.06;
+            letter-spacing: -3px;
+        }
+
+        /* --- 3. Content Wrap --- */
+        .content-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            z-index: 1;
+            margin-left: 18px;
+            margin-right: 0;
+            transition: all var(--anim-duration) var(--anim-curve);
+        }
+
+        .mode-tiny .content-wrap {
+            gap: 2px;
+            margin-left: 8px;
+            margin-right: 40px;
+        }
+
+        /* --- 4. Meta Top --- */
+        .meta-top {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            height: 20px;
+            transition: all var(--anim-duration) var(--anim-curve);
+        }
+
+        .meta-left {
+            display: flex;
+            align-items: center;
+            flex-wrap: nowrap;
+            gap: 6px;
+        }
+
+        /* Algorithm Tag: OPTIMIZED ANIMATION */
+        .sub-tag.algo-name {
+            font-size: 10px;
+            border-radius: 3px;
+            font-weight: bold;
+            line-height: 1.2;
+
+            /* Core Props for Animation */
+            white-space: nowrap;
+            /* Prevent Wrap */
+            overflow: hidden;
+            /* Ensure clip */
+            display: inline-block;
+
+            /* Hidden State (Expanded) */
+            max-width: 0;
+            padding: 0;
+            opacity: 0;
+
+            /* Color Init (for transition) */
+            background-color: var(--theme-color);
+            color: rgba(255, 255, 255, 0.95);
+            border: 1px solid transparent;
+
+            /* Transition Config */
+            /* We want Width to grow, THEN content to fade in? Or clip reveal? 
+               Standard growing: max-width grows, content is revealed. */
+            transition:
+                max-width var(--anim-duration) var(--anim-curve),
+                padding var(--anim-duration) var(--anim-curve),
+                opacity 0.3s ease-in 0.1s,
+                /* Delay opacity slightly to avoid immediate jump */
+                margin-right var(--anim-duration) var(--anim-curve);
+        }
+
+        .mode-tiny .sub-tag.algo-name {
+            /* Visible State (Tiny) */
+            max-width: 60px;
+            /* Sufficient width */
+            padding: 1px 5px;
+            opacity: 1;
+
+            /* Solid Theme Color Style */
+            background-color: var(--theme-color);
+            color: rgba(255, 255, 255, 0.95);
+            border: 1px solid transparent;
+            /* Match Solid */
+        }
+
+        /* Other Sub Tags */
+        .sub-tag:not(.algo-name) {
+            font-size: 10px;
+            border-radius: 3px;
+            font-weight: bold;
+            color: var(--theme-color);
+
+            /* Expanded Style */
+            padding: 1px 5px;
+            background-color: color-mix(in srgb, var(--theme-color) 8%, white);
+            border: 0.5px solid color-mix(in srgb, var(--theme-color) 12%, transparent);
+
+            transition: all var(--anim-duration) var(--anim-curve);
+        }
+
+        .mode-tiny .sub-tag:not(.algo-name) {
+            /* Tiny Style */
+            padding: 0px 4px;
+            background-color: color-mix(in srgb, var(--theme-color) 6%, white);
+            border: 1px solid color-mix(in srgb, var(--theme-color) 10%, transparent);
+        }
+
+        .age-badge {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+            color: #967131;
+            font-weight: bold;
+            background: rgba(150, 113, 49, 0.08);
+            padding: 1px 5px;
+            border-radius: 3px;
+            transition: all var(--anim-duration) var(--anim-curve);
+        }
+
+        .mode-tiny .age-badge {
+            font-size: 10px;
+            color: #8D6E63;
+            background: transparent;
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+
+        /* --- 5. Seal Tag --- */
+        .seal-tag {
+            position: absolute;
+            z-index: 2;
+            font-size: 10.5px;
+            font-weight: bold;
+            border: 1px solid;
+            padding: 0 4px;
+            border-radius: 2px;
+            top: 18px;
+            right: 20px;
+            transform: rotate(0deg);
+            background: rgba(255, 255, 255, 0.01);
+            transition: all var(--anim-duration) var(--anim-curve);
+        }
+
+        .mode-tiny .seal-tag {
+            top: 6px;
+            right: 10px;
+            background: transparent;
+            font-size: 11px;
+            padding: 1px 3px;
+            font-weight: 900;
+            border-width: 1.5px;
+        }
+
+        /* Seal Colors */
+        .seal-great-good {
+            color: #1B5E20;
+            border-color: #1B5E20;
+            background: rgba(27, 94, 32, 0.05);
+        }
+
+        .seal-good {
+            color: #43A047;
+            border-color: #43A047;
+            background: rgba(67, 160, 71, 0.05);
+        }
+
+        .seal-neutral {
+            color: #757575;
+            border-color: #757575;
+            background: rgba(117, 117, 117, 0.05);
+        }
+
+        .seal-bad {
+            color: #E53935;
+            border-color: #E53935;
+            background: rgba(229, 57, 53, 0.05);
+        }
+
+        .mode-tiny .seal-great-good {
+            background-color: rgba(27, 94, 32, 0.04);
+        }
+
+        /* --- 6. Verse Text --- */
+        .verse-text {
+            color: var(--ink-text);
+            font-weight: 500;
+            font-size: 16.5px;
+            line-height: 1.6;
+            margin-bottom: 0;
+            transition: all var(--anim-duration) var(--anim-curve);
+        }
+
+        .mode-tiny .verse-text {
+            font-size: 15px;
+            line-height: 1.4;
+            margin-bottom: 2px;
+        }
+
+        /* --- 7. ID Text --- */
+        .verse-id-text {
+            position: absolute;
+            font-family: "JetBrains Mono", monospace;
+            color: var(--id-text-color);
+            z-index: 2;
+            right: 12px;
+            bottom: 10px;
+            font-size: 9px;
+            letter-spacing: 1px;
+            font-weight: bold;
+            opacity: 0.6;
+            transition: all var(--anim-duration) var(--anim-curve);
+        }
+
+        .mode-tiny .verse-id-text {
+            right: 10px;
+            bottom: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .no-prefix {
+            display: inline-block;
+            max-width: 30px;
+            opacity: 1;
+            transition: all var(--anim-duration) var(--anim-curve);
+        }
+
+        .mode-tiny .no-prefix {
+            max-width: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+
+        /* Controls */
+        .controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 8px 16px;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+
+        .controls:active {
+            transform: scale(0.98);
+        }
+
+        /* Card Foot */
+        .card-foot {
+            background-color: var(--theme-color);
+            height: 24px;
+            border-radius: 0 0 16px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+            transition: all var(--anim-duration) var(--anim-curve);
+        }
+
+        .mode-tiny .card-foot {
+            height: 4px;
+            border-radius: 0 0 8px 8px;
+            opacity: 0.4;
+        }
+
+        .foot-dot {
+            width: 4px;
+            height: 4px;
+            background-color: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            margin: 0 3px;
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+
+        .mode-tiny .foot-dot {
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="controls" onclick="toggleMode()">
+        <span>切换形态 (Switch Mode)</span>
+        <div style="font-size: 18px">✨</div>
+    </div>
+
+    <!-- 皇极经世 · 演示卡片 -->
+    <div class="algo-card theme-huangji" id="demoCard">
+        <div class="card-head">
+            <div class="head-title">皇极经世 · 丝滑动画</div>
+            <div class="head-formula">(年干 × 12 + 月支) ÷ 360</div>
+        </div>
+
+        <div class="card-body">
+
+            <!-- Item 1 -->
+            <div class="verse-row">
+                <div class="verse-id-text"><span class="no-prefix">NO. </span>1245</div>
+                <div class="verse-id-watermark">壹貳肆伍</div>
+                <div class="left-accent"></div>
+
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag algo-name">皇极经世</span>
+                            <span class="sub-tag">元会运世</span>
+                            <span class="age-badge">45-54 岁</span>
+                        </div>
+                        <span class="seal-tag seal-great-good">大吉</span>
+                    </div>
+                    <div class="verse-text">宏图大展在此时，四海昇平见太平。云开见日，君子有为。</div>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="verse-row">
+                <div class="verse-id-text"><span class="no-prefix">NO. </span>3870</div>
+                <div class="verse-id-watermark">叁捌柒零</div>
+                <div class="left-accent"></div>
+
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag algo-name">皇极经世</span>
+                            <span class="sub-tag">值年卦</span>
+                            <span class="age-badge">2024 甲辰</span>
+                        </div>
+                        <span class="seal-tag seal-neutral">中平</span>
+                    </div>
+                    <div class="verse-text">亢龙有悔，盈不可久。凡事留有余地，方能长久。</div>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="verse-row">
+                <div class="verse-id-text"><span class="no-prefix">NO. </span>5432</div>
+                <div class="verse-id-watermark">伍肆叁貳</div>
+                <div class="left-accent"></div>
+
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag algo-name">皇极经世</span>
+                            <span class="sub-tag">动爻</span>
+                        </div>
+                        <span class="seal-tag seal-good">吉</span>
+                    </div>
+                    <div class="verse-text">时来天地皆同力，运去英雄不自由。慎思笃行，终有所成。</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card-foot" id="demoFoot">
+            <div class="foot-dot"></div>
+            <div class="foot-dot"></div>
+            <div class="foot-dot"></div>
+        </div>
+    </div>
+
+    <script>
+        const card = document.getElementById('demoCard');
+        function toggleMode() {
+            card.classList.toggle('mode-tiny');
+        }
+    </script>
+</body>
+
+</html>

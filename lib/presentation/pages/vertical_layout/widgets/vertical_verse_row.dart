@@ -1,5 +1,15 @@
 import 'package:flutter/material.dart';
 
+/// Defines the temporal scope or level of a divination result.
+enum TemporalScope {
+  natal, // 本命 (基石)
+  decadeLuck, // 大运 (10年)
+  yearlyLuck, // 流年 (1年)
+  monthlyLuck, // 流月 (1月)
+  dailyLuck, // 流日 (1日)
+  hourlyLuck, // 流时 (1时辰)
+}
+
 class VerseVersion {
   final String source;
   final String content;
@@ -30,6 +40,13 @@ class VerseRowData {
   final String? subAlgorithm;
   final String description; // To be used as card subtitle/formula
 
+  /// The temporal scope of this verse row. Defaults to [TemporalScope.natal].
+  final TemporalScope temporalScope;
+
+  /// The specific timeline node for this verse.
+  /// For example: "2024 甲辰" or "大运 戊戌".
+  final String? temporalNodeText;
+
   /// Optional multi-version data. When non-null, overrides [verseText].
   final List<VerseVersion>? versions;
 
@@ -45,6 +62,8 @@ class VerseRowData {
     required this.algorithm,
     this.subAlgorithm,
     this.description = '',
+    this.temporalScope = TemporalScope.natal,
+    this.temporalNodeText,
     this.versions,
   });
 }

@@ -47,3 +47,7 @@ app.*.symbols
 
 # Obfuscation related
 app.*.map.json
+
+# Chrome profile
+.chrome-profile/
+example/.chrome-profile/

@@ -81,6 +81,20 @@ class HomePage extends StatelessWidget {
         route: '/tiebanshenshu/huang_ji_v2_demo',
         color: Colors.indigo,
       ),
+      _FeatureItem(
+        title: '竖排布局',
+        subtitle: 'Vertical Layout (Original)',
+        icon: Icons.vertical_split, // Or Icons.format_align_justify
+        route: '/tiebanshenshu/vertical_layout',
+        color: const Color(0xFF5D4037), // Antique Brown
+      ),
+      _FeatureItem(
+        title: 'Base 18 布局',
+        subtitle: 'Base 18 Vertical Layout',
+        icon: Icons.view_agenda,
+        route: '/tiebanshenshu/base18',
+        color: const Color(0xFFA62B1F), // Taixuan Red
+      ),
     ];
 
     return GridView.builder(

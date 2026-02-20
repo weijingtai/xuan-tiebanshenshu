@@ -81,7 +81,7 @@ class _DouJiaYiSelectionTableState extends State<DouJiaYiSelectionTable> {
     );
 
     return DataTable(
-      headingRowColor: MaterialStateProperty.all(
+      headingRowColor: WidgetStateProperty.all(
         Theme.of(context).colorScheme.primaryContainer,
       ),
       columnSpacing: 16,
@@ -101,7 +101,7 @@ class _DouJiaYiSelectionTableState extends State<DouJiaYiSelectionTable> {
         final items = widget.douData[zhi] ?? const [];
 
         return DataRow(
-          color: MaterialStateProperty.all(
+          color: WidgetStateProperty.all(
             Theme.of(context).colorScheme.secondaryContainer.withOpacity(0.12),
           ),
           cells: [

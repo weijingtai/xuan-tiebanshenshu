@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>铁板神数 - 皇极对数 (Base 8 Updated)</title>
+    <style>
+        :root {
+            --bg-color: #E8E4DD;
+            --paper: #FAF8F5;
+
+            /* 预定义的色卡 */
+            --taixuan-red: #A62B1F;
+            /* 朱砂 */
+            --yuantang-blue: #2A4056;
+            /* 黛蓝 */
+            --huangji-purple: #512E5F;
+            /* 皇极紫 */
+            --neutral-black: #1A1A1B;
+            /* 默认黑 */
+
+            --line-light: rgba(0, 0, 0, 0.06);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 24px 16px;
+            font-family: "Noto Serif SC", "Songti SC", serif;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            align-items: center;
+        }
+
+        /* --- 算法卡片基础结构 --- */
+        .algo-card {
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            background: transparent;
+            /* 核心：定义主题色变量，默认为黑色 */
+            --theme-color: var(--neutral-black);
+        }
+
+        /* --- 个性化主题颜色设定 --- */
+        .theme-taixuan {
+            --theme-color: var(--taixuan-red);
+        }
+
+        .theme-yuantang {
+            --theme-color: var(--yuantang-blue);
+        }
+
+        .theme-huangji {
+            --theme-color: var(--huangji-purple);
+        }
+
+        /* --- 1. 头部 (Head) : 颜色由主题决定 --- */
+        .card-head {
+            background-color: var(--theme-color);
+            color: #FFFFFF;
+            padding: 24px 20px 20px;
+            border-radius: 16px 16px 0 0;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .head-title {
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 4px;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .head-formula {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 10px;
+            border-radius: 12px;
+            align-self: center;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- 2. 躯干 (Body) --- */
+        .card-body {
+            background-color: var(--paper);
+            padding: 4px 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .verse-row {
+            display: flex;
+            padding: 16px 20px;
+            border-bottom: 1px dashed var(--line-light);
+        }
+
+        .verse-row:last-child {
+            border-bottom: none;
+        }
+
+        /* 装饰线：与主题色一致 */
+        .left-accent {
+            width: 3px;
+            margin-right: 16px;
+            background-color: var(--theme-color);
+            border-radius: 2px;
+            flex-shrink: 0;
+            opacity: 0.9;
+        }
+
+        .content-wrap {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .meta-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .meta-left {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        /* 算法标签：与主题色保持一致 (实心浅底色 + 主题色文字) */
+        .sub-tag {
+            font-size: 11px;
+            padding: 1px 6px;
+            border-radius: 4px;
+            background-color: rgba(0, 0, 0, 0.04);
+            /* 基准背景 */
+            color: var(--theme-color);
+            /* 文字使用主题色 */
+            font-weight: bold;
+            line-height: 1.4;
+            border: 0.5px solid rgba(0, 0, 0, 0.05);
+            /* 将当前颜色混合微量主题色背景 */
+            background-image: linear-gradient(var(--theme-color), var(--theme-color));
+            background-size: 0;
+            /* 默认不显示 */
+            background-color: color-mix(in srgb, var(--theme-color) 8%, white);
+        }
+
+        .age-text {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 12px;
+            color: #967131;
+            font-weight: bold;
+        }
+
+        /* 吉凶印章：与主题色一致 */
+        .seal-tag {
+            font-size: 11px;
+            border: 1px solid var(--theme-color);
+            color: var(--theme-color);
+            padding: 0 5px;
+            border-radius: 2px;
+            font-weight: bold;
+        }
+
+        .verse-text {
+            font-size: 17px;
+            line-height: 1.6;
+            color: var(--ink-text);
+            text-align: justify;
+            font-weight: 500;
+        }
+
+        /* --- 3. 底部封口 --- */
+        .card-foot {
+            background-color: var(--theme-color);
+            height: 24px;
+            border-radius: 0 0 16px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .foot-dot {
+            width: 4px;
+            height: 4px;
+            background-color: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            margin: 0 3px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 皇极经世 - 算法一 -->
+    <div class="algo-card theme-huangji">
+        <div class="card-head">
+            <div class="head-title">皇极经世</div>
+            <div class="head-formula">(年干 × 12 + 月支) ÷ 360</div>
+        </div>
+
+        <div class="card-body">
+            <div class="verse-row">
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag">皇极经世</span>
+                            <span class="sub-tag">算法一</span>
+                            <span class="age-text">45-54</span>
+                        </div>
+                        <span class="seal-tag">大吉</span>
+                    </div>
+                    <div class="verse-text">宏图大展在此时，四海昇平见太平。</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-foot">
+            <div class="foot-dot"></div>
+            <div class="foot-dot"></div>
+            <div class="foot-dot"></div>
+        </div>
+    </div>
+
+    <!-- 皇极经世 - 算法二 -->
+    <div class="algo-card theme-huangji">
+        <div class="card-head">
+            <div class="head-title">皇极经世</div>
+            <div class="head-formula">(值年卦 × 卦象) % 384</div>
+        </div>
+
+        <div class="card-body">
+            <div class="verse-row">
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag">皇极经世</span>
+                            <span class="sub-tag">算法二</span>
+                            <span class="sub-tag">值年卦</span>
+                        </div>
+                        <span class="seal-tag">平</span>
+                    </div>
+                    <div class="verse-text">云深不知处，静待有缘人。此时宜静不宜动。</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-foot">
+            <div class="foot-dot"></div>
+            <div class="foot-dot"></div>
+            <div class="foot-dot"></div>
+        </div>
+    </div>
+
+    <!-- 太玄神数 (对比色一致性) -->
+    <div class="algo-card theme-taixuan">
+        <div class="card-head">
+            <div class="head-title">太玄神数</div>
+            <div class="head-formula">(先天 + 后天) % 12</div>
+        </div>
+
+        <div class="card-body">
+            <div class="verse-row">
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag">太玄神数</span>
+                            <span class="sub-tag">先天数</span>
+                            <span class="age-text">28-37</span>
+                        </div>
+                        <span class="seal-tag">小吉</span>
+                    </div>
+                    <div class="verse-text">命有定数，运有变数。知命而改运，方为上乘。</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-foot">
+            <div class="foot-dot"></div>
+            <div class="foot-dot"></div>
+            <div class="foot-dot"></div>
+        </div>
+    </div>
+
+    <!-- 元堂大运 (对比色一致性) -->
+    <div class="algo-card theme-yuantang">
+        <div class="card-head">
+            <div class="head-title">元堂大运</div>
+            <div class="head-formula">(年干 × 2 + 月令) / 6</div>
+        </div>
+
+        <div class="card-body">
+            <div class="verse-row">
+                <div class="left-accent"></div>
+                <div class="content-wrap">
+                    <div class="meta-top">
+                        <div class="meta-left">
+                            <span class="sub-tag">元堂大运</span>
+                            <span class="sub-tag">元堂算法</span>
+                            <span class="age-text">14-23</span>
+                        </div>
+                        <span class="seal-tag">凶</span>
+                    </div>
+                    <div class="verse-text">石中藏美玉，淘沙见真金。此十年间，莫管他人闲事。</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-foot">
+            <div class="foot-dot"></div>
+            <div class="foot-dot"></div>
+            <div class="foot-dot"></div>
+        </div>
+    </div>
+
+</body>
+
+</html>

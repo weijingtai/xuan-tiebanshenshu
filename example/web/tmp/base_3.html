@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>铁板神数 - 尊享版设计系统</title>
+    <style>
+        :root {
+            --header-black: #1A1A1A;
+            --paper-bg: #F7F3ED;
+            --cinnabar: #A62B1F;
+            --ink-deep: #2C2C2C;
+            --ink-light: #8E8E8E;
+            --gold-age: #967131;
+            --divider: rgba(0, 0, 0, 0.06);
+        }
+
+        body {
+            background-color: #E5E5E5;
+            margin: 0;
+            padding: 10px;
+            font-family: "Noto Serif SC", serif;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+        /* 全局容器，模拟手机长屏 */
+        .app-container {
+            width: 100%;
+            max-width: 400px;
+            background: var(--paper-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 区域一：算法分类头部 (引用图片黑色 Header) */
+        .algo-section-header {
+            background: var(--header-black);
+            color: white;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .algo-title {
+            font-size: 18px;
+            letter-spacing: 4px;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .algo-subtitle {
+            font-size: 12px;
+            opacity: 0.7;
+            letter-spacing: 1px;
+        }
+
+        /* 区域二：高密度条文列表 */
+        .verse-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .verse-card {
+            border-bottom: 1px solid var(--divider);
+            padding: 16px 0;
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+        }
+
+        /* 核心内容区：红色经线 + 算法 Chip + 年龄 */
+        .verse-main {
+            display: flex;
+            padding: 0 16px;
+            position: relative;
+        }
+
+        .red-line {
+            width: 2px;
+            background: var(--cinnabar);
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        .content-box {
+            flex: 1;
+        }
+
+        .meta-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        /* 算法 Chip：设计感印章 */
+        .algo-chip {
+            border: 1px solid var(--cinnabar);
+            color: var(--cinnabar);
+            font-size: 11px;
+            padding: 1px 4px;
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        .age-range {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 12px;
+            color: var(--gold-age);
+            font-weight: bold;
+        }
+
+        .verse-text {
+            font-size: 18px;
+            line-height: 1.6;
+            color: var(--ink-deep);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* 区域三：三栏式元数据 (引用图片底部设计) */
+        .verse-footer {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            margin-top: 12px;
+            padding: 8px 16px 0 16px;
+            border-top: 0.5px dashed var(--divider);
+        }
+
+        .footer-item {
+            text-align: center;
+            position: relative;
+        }
+
+        .footer-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 20%;
+            height: 60%;
+            width: 1px;
+            background: var(--divider);
+        }
+
+        .val {
+            font-size: 14px;
+            color: var(--ink-deep);
+            font-weight: bold;
+        }
+
+        .lbl {
+            font-size: 10px;
+            color: var(--cinnabar);
+            margin-top: 2px;
+        }
+
+        /* 背景水印 */
+        .watermark {
+            position: absolute;
+            right: 10px;
+            top: 20px;
+            width: 60px;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="app-container">
+        <div class="algo-section-header">
+            <div class="algo-title">太玄神数</div>
+            <div class="algo-subtitle">TAI XUAN DIVINATION</div>
+        </div>
+
+        <div class="verse-list">
+            <div class="verse-card">
+                <div class="verse-main">
+                    <div class="red-line"></div>
+                    <div class="content-box">
+                        <div class="meta-row">
+                            <span class="algo-chip">太玄</span>
+                            <span class="age-range">(28, 37)</span>
+                        </div>
+                        <div class="verse-text">命有定数，运有变数，知命而改运，方为上乘。</div>
+                    </div>
+                </div>
+                <div class="verse-footer">
+                    <div class="footer-item">
+                        <div class="val">中平</div>
+                        <div class="lbl">吉凶</div>
+                    </div>
+                    <div class="footer-item">
+                        <div class="val">进德</div>
+                        <div class="lbl">象义</div>
+                    </div>
+                    <div class="footer-item">
+                        <div class="val">日柱</div>
+                        <div class="lbl">源起</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="verse-card">
+                <div class="verse-main">
+                    <div class="red-line"></div>
+                    <div class="content-box">
+                        <div class="meta-row">
+                            <span class="algo-chip">太玄</span>
+                            <span class="age-range"></span>
+                        </div>
+                        <div class="verse-text">金石为开，大器晚成。宜守不宜进。</div>
+                    </div>
+                </div>
+                <div class="verse-footer">
+                    <div class="footer-item">
+                        <div class="val">小吉</div>
+                        <div class="lbl">吉凶</div>
+                    </div>
+                    <div class="footer-item">
+                        <div class="val">潜龙</div>
+                        <div class="lbl">象义</div>
+                    </div>
+                    <div class="footer-item">
+                        <div class="val">月令</div>
+                        <div class="lbl">源起</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="algo-section-header" style="margin-top: 10px;">
+            <div class="algo-title">元堂大运</div>
+            <div class="algo-subtitle">YUAN TANG CYCLE</div>
+        </div>
+    </div>
+
+</body>
+
+</html>
