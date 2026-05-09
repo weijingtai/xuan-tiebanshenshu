@@ -45,7 +45,7 @@ xuan-tiebanshenshu/
 │   ├── project/
 │   │   ├── README.md                                    （Step 1 覆写，占位）
 │   │   └── ... (from upstream)
-│   ├── superpowers/                                     （from upstream + 本 spec 迁入）
+│   ├── superpowers/                                     （**preserve**：含项目自己的 SPEC + 上游参考 SPEC，整体由 PRESERVE_DIRS 保护）
 │   └── previous_archived/                               ← 旧 old_docs/ 内容归档于此（preserve）
 ├── docs-overrides/                ← 项目专属覆写文件源
 │   ├── Plans.md
@@ -80,7 +80,9 @@ xuan-tiebanshenshu/
 **配置项**（脚本顶部）：
 
 ```bash
-PRESERVE_DIRS=("previous_archived")    # docs/ 下需要在同步中保留的子目录
+PRESERVE_DIRS=("previous_archived" "superpowers")
+# previous_archived: 旧文档归档
+# superpowers:       项目自己的 SPEC / 实现计划（一旦迁入就属于项目，不再受上游影响）
 ```
 
 **错误处理**：
@@ -197,7 +199,7 @@ PRESERVE_DIRS=("previous_archived")    # docs/ 下需要在同步中保留的子
 - [ ] `docs/ai/code-style.md` 是 upstream 版本（未覆写）
 - [ ] `docs/previous_archived/` 存在，内容来自原 `old_docs/`，文件数不少于原 `old_docs/`
 - [ ] `xuan-tiebanshenshu/AI_README.md` 存在，正文符合 ONBOARDING 5 要点
-- [ ] `bash scripts/sync-docs.sh` 在干净状态下成功，且 `docs/previous_archived/` 在同步后仍然完整保留
+- [ ] `bash scripts/sync-docs.sh` 在干净状态下成功，且 `docs/previous_archived/` 与 `docs/superpowers/specs/<本 spec>` 在同步后仍然完整保留
 - [ ] sync-docs.sh 在 `docs/` 有手编改动时正确中止
 - [ ] xuan-tiebanshenshu git tree 实实在在包含 docs/* 的所有文件（`git ls-files docs/ | wc -l > 0`）
 - [ ] 本 spec 文件落在 `docs/superpowers/specs/2026-05-08-docs-framework-init-design.md`
@@ -229,7 +231,8 @@ set -euo pipefail
 
 UPSTREAM_URL="https://github.com/weijingtai/docs.git"
 UPSTREAM_REF="master"
-PRESERVE_DIRS=("previous_archived")    # docs/ 下需要在同步中保留的子目录
+PRESERVE_DIRS=("previous_archived" "superpowers")    # docs/ 下需要在同步中保留的子目录
+                                                     # superpowers 含项目自己的 SPEC，不能被上游覆盖
 
 REPO_ROOT="$(git rev-parse --show-toplevel)"
 DOCS_DIR="$REPO_ROOT/docs"

@@ -6,7 +6,8 @@ set -euo pipefail
 
 UPSTREAM_URL="https://github.com/weijingtai/docs.git"
 UPSTREAM_REF="master"
-PRESERVE_DIRS=("previous_archived")    # docs/ 下需要在同步中保留的子目录
+PRESERVE_DIRS=("previous_archived" "superpowers")    # docs/ 下需要在同步中保留的子目录
+                                                     # superpowers 含项目自己的 SPEC，不能被上游覆盖
 
 REPO_ROOT="$(git rev-parse --show-toplevel)"
 DOCS_DIR="$REPO_ROOT/docs"
