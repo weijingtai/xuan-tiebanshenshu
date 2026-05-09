@@ -12,11 +12,11 @@
 - **项目类型**：Flutter 应用（Dart SDK，pubspec.yaml 为权威）
 - **代码语言**：Dart；面向 AI 的注释/文档/提交信息一律使用中文
 - **协同框架**：基于 [`weijingtai/docs`](https://github.com/weijingtai/docs) 的 SPEC-Driven Development 协同规范
-- **文档源约束**：`docs/` 目录是 weijingtai/docs 的本地 vendor 镜像
-  - **MUST NOT 手编 `docs/` 内任何文件**（手编会被下次同步覆盖）
-  - 项目专属覆写写入 `docs-overrides/`（路径与 docs/ 对齐），由 `scripts/sync-docs.sh` 在同步时叠加
-  - 旧文档归档于 `docs/previous_archived/`（由 sync 脚本保留，不参与上游同步）
-  - 同步：`bash scripts/sync-docs.sh` → `git diff --stat docs/` → 提交
+- **docs/ 性质**：初始内容来自 weijingtai/docs（master 分支），按上游 ONBOARDING 三步定制后属于本项目，可自由编辑、commit
+  - 上游约束：本项目 **MUST NOT** 向 weijingtai/docs 提交（pull-only，物理上 docs/ 内无 .git，无法 push 上游）
+  - 旧文档归档：`docs/previous_archived/`（由 sync 脚本保留）
+  - 项目自有 SPEC：`docs/superpowers/specs/<日期>-<主题>-design.md`（由 sync 脚本保留）
+  - 重拉上游（**会覆盖项目对 Plans/code-style/toolchain/directory-structure/project-README 的定制**，慎用）：`bash scripts/sync-docs.sh`
 
 ---
 
@@ -133,7 +133,7 @@ Step 1: 分支就绪  →  Step 2: 代码开发  →  Step 3: 自测验证  → 
 ```
 请先阅读 AI_README.md 和 docs/ai/ 下全部 12 个模块，然后开始工作。
 任何非平凡改动必须先创建 SPEC（docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md）并经我批准后才能编码。
-docs/ 是 weijingtai/docs 的本地 vendor 镜像，禁止手编；项目专属覆写在 docs-overrides/。
+docs/ 框架部分来自 weijingtai/docs（pull-only），项目自定制内容已就地落入 docs/ 对应位置；不得 push 到 weijingtai/docs。
 ```
 
 ---
