@@ -271,9 +271,10 @@ rm -rf "$DOCS_DIR"
 mkdir -p "$DOCS_DIR"
 cp -R "$TMP_DIR/upstream/." "$DOCS_DIR/"
 
-# 8. 恢复 PRESERVE_DIRS
+# 8. 恢复 PRESERVE_DIRS（先清掉 upstream 创建的同名目录，避免 mv 嵌套）
 for d in "${PRESERVE_DIRS[@]}"; do
   if [ -d "$TMP_DIR/preserved/$d" ]; then
+    rm -rf "$DOCS_DIR/$d"
     mv "$TMP_DIR/preserved/$d" "$DOCS_DIR/$d"
     echo "恢复 docs/$d"
   fi
