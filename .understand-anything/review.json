@@ -1,0 +1,29 @@
+{
+  "issues": [],
+  "warnings": [
+    "Deterministic local analysis used because subagent dispatch was unavailable in this context."
+  ],
+  "stats": {
+    "files": 505,
+    "categories": {
+      "config": 39,
+      "docs": 118,
+      "code": 321,
+      "script": 1,
+      "markup": 26
+    },
+    "nodeTypes": {
+      "config": 39,
+      "document": 144,
+      "concept": 3217,
+      "file": 322,
+      "class": 475,
+      "function": 1251
+    },
+    "edgeTypes": {
+      "contains": 3725,
+      "imports": 1027,
+      "tested_by": 146
+    }
+  }
+}

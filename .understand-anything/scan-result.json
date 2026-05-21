@@ -1,0 +1,2530 @@
+{
+  "projectName": "xuan-tiebanshenshu",
+  "files": [
+    {
+      "path": ".claude/settings.local.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": ".gitignore",
+      "language": "gitignore",
+      "fileCategory": "config"
+    },
+    {
+      "path": "AGENTS.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "AI_README.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CLAUDE.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "PROBLEM_SOLVED_huang_ji_loading.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "WARNING_README.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "analysis_options.yaml",
+      "language": "yaml",
+      "fileCategory": "config"
+    },
+    {
+      "path": "assets/icons/icon_list.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "build.yaml",
+      "language": "yaml",
+      "fileCategory": "config"
+    },
+    {
+      "path": "docs/.gitignore",
+      "language": "gitignore",
+      "fileCategory": "config"
+    },
+    {
+      "path": "docs/ONBOARDING.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/Plans.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/README.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/README_zh.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/ai/CONSTITUTION.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/ai/board-protocol.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/ai/code-style.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/ai/delivery-pipeline.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/ai/directory-structure.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/ai/doc-standards.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/ai/git-rules.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/ai/glossary.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/ai/phases.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/ai/principles.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/ai/project-context-guide.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/ai/toolchain.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/board/PROGRESS.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/board/TASKS.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/2025-10-02/PRDs.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/2025-10-02/code_review.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/HUANG_JI_V2_IMPLEMENTATION_SUMMARY.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/HuangJiFormulaManager使用说明.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/HuangJiV2Demo使用说明.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/HuangJiV2SessionService/DESIGN_HuangJiV2SessionService.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/PRDs.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/alg_code_review_v1/ba_gua_gun_strategy.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/alg_code_review_v1/ba_gua_jia_ze_strategy.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/alg_code_review_v1/day_gan_zhi_gua_strategy.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/alg_code_review_v1/four_zhu_tian_gan_strategy.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/alg_code_review_v1/gua_yao_gan_zhi_he_strategy.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/alg_code_review_v1/gua_zhong_strategy.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/alg_code_review_v1/liu_yao_gan_zhi_he_strategy.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/alg_code_review_v1/middle_palace_five_strategy.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/alg_code_review_v1/qian_hou_gua_strategy.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/alg_code_review_v1/si_men_fa_strategy.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/alg_code_review_v1/strategy_architecture_review.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/alg_code_review_v1/tai_xuan_four_zhu_interactive_strategy.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/alg_code_review_v1/tai_xuan_four_zhu_strategy.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/alg_code_review_v1/xian_houtian_jia_ze_strategy.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/alg_code_review_v1/xian_houtian_qu_shu_strategy.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/alg_code_review_v1/yuan_tang_strategy.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/calculation_strategy_selection/ALIGNMENT_calculation_strategy_selection.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/classic_strategy_conversion/ALIGNMENT_classic_strategy_conversion.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/claude/huang_ji/architecture.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/claude/huang_ji/quick_reference.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/claude/huang_ji/requirements_specification.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/claude/huang_ji/todo_list.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/code_review.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/features/huangji/multi_base_number_selection_call_chain.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/flow_pill_card_integration/ACCEPTANCE_flow_pill_card_integration.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/flow_pill_card_integration/DESIGN_flow_pill_card_integration.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/flow_pill_card_integration/TASK_flow_pill_card_integration.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/flow_pill_card_integration/TODO_list_flow_pill_card_integration.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/flow_pill_card_integration/tmp_summary_integration.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/huangji/API.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/huangji/PRD.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/huangji/code_review.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/interactive_strategy_design.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/kao_ding_liu_qin/PRDs.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/kao_ding_liu_qin/code_review.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/kao_ke/PRD.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/kao_ke/TECHNICAL_ARCHITECTURE.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/kao_ke/gua_yao_gan_zhi_he_implementation_summary.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/liuqinkaoke/PRDs.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/liuqinkaoke/todo_list.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/middle5/todo_list.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/models/MULTI_BASE_NUMBER_USAGE.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/mvvm_strategy_implementation/ACCEPTANCE_mvvm_strategy_implementation.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/mvvm_strategy_implementation/ALIGNMENT_mvvm_strategy_implementation.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/mvvm_strategy_implementation/TASK_mvvm_strategy_implementation.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/normal_alg/BA_GUA_JIA_ZE_CODE_REVIEW.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/normal_alg/GUA_YAO_GAN_ZHI_HE_CODE_REVIEW.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/normal_alg/PRD.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/normal_alg/TAI_XUAN_DUAL_NAJIA_CODE_REVIEW.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/normal_alg/YUAN_TANG_CODE_REVIEW.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/normal_alg/code_review copy.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/normal_alg/code_review.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/normal_alg/eight_gua_jia_ze_todo_list.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/normal_alg/four_new_algorithms_todo_list_updated.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/normal_alg/gua_yao_gan_zhi_he_completion_summary.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/normal_alg/null_error_analysis_report.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/normal_alg/phase_1_4_completion_summary.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/normal_alg/tai_xuan_todo_list.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/normal_alg/yuan_tang_liuyun_algorithm.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/normal_alg/yuan_tang_liuyun_prd.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/normal_alg/yuan_tang_todo_list.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/normal_alg/yuan_tang_user_guide.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/one_click/PRDs.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/one_click/Plans_en.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/one_click/Plans_zh.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/one_click/Tasks.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/one_click/gui/README.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/service_to_mvvm_migration_guide.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/tai_xuan_interactive_migration/ACCEPTANCE_tai_xuan_interactive_migration.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/tai_xuan_interactive_migration/ALIGNMENT_tai_xuan_interactive_migration.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/tai_xuan_interactive_migration/DESIGN_tai_xuan_interactive_migration.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/tai_xuan_interactive_migration/TASK_tai_xuan_interactive_migration.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/trae/1_refactor_strategy_todo_list.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/trae/PRDs.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/trae/interactive_strategy_design.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/trae/strategy_parameters_result_design.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/ui_implementation/ALIGNMENT_ui_implementation.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/umimpl.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/修复BaseNumberTiaoWenListModel构造函数.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/重构完成总结.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/previous_archived/页面执行流程分析.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/project/README.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/superpowers/plans/2026-05-08-ai-readme-implementation.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-05-08-ai-governance-v2-design.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-05-08-ai-readme-design.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-05-08-docs-framework-init-design.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "example/.gitignore",
+      "language": "gitignore",
+      "fileCategory": "config"
+    },
+    {
+      "path": "example/README.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "example/analysis_options.yaml",
+      "language": "yaml",
+      "fileCategory": "config"
+    },
+    {
+      "path": "example/assets/formulas/huang_ji_1_formula.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "example/assets/formulas/huang_ji_2_formula.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "example/assets/formulas/huang_ji_3_formula.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "example/assets/kao_ke/geng_mu_jia_liu_du.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "example/assets/kao_ke/jin_gong_jia_liu_du.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "example/assets/kao_ke/jin_jia_yi_liu_du.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "example/assets/kao_ke/jin_mu_jia_liu_du.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "example/assets/kao_ke/kun_gong_jia_liu_du.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "example/assets/kao_ke/mu_gong_jia_liu_du.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "example/assets/kao_ke/mu_gong_jia_yi_du.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "example/assets/kao_ke/na_bi_gua_jia.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "example/assets/kao_ke/na_bi_gua_yi.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "example/assets/kao_ke/na_gen_gua_bing.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "example/assets/kao_ke/na_gen_gua_yi.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "example/assets/kao_ke/qian_gong_jia_liu_du.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "example/assets/kao_ke/qian_kun_jia_liu_du.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "example/assets/kao_ke/sheng_xian_month.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "example/assets/kao_ke/sheng_xian_year.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "example/assets/kao_ke/shi_tu.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "example/assets/kao_ke/six_qin_kao_fen.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "example/assets/kao_ke/six_qin_kao_ke_1.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "example/assets/kao_ke/six_qin_kao_ke_2.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "example/assets/kao_ke/wu_jin_jia_liu_du.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "example/assets/kao_ke/wu_mu_jia_liu_du.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "example/lib/dev_tiaowen_page.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "example/lib/main.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "example/pubspec.yaml",
+      "language": "yaml",
+      "fileCategory": "config"
+    },
+    {
+      "path": "example/run_web.sh",
+      "language": "shell",
+      "fileCategory": "script"
+    },
+    {
+      "path": "example/test/unified_run_demo_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "example/test/widget_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "example/tiebanshenshu_example.iml",
+      "language": "xml",
+      "fileCategory": "config"
+    },
+    {
+      "path": "example/web/index.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "example/web/manifest.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "example/web/tmp/base_10.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "example/web/tmp/base_12.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "example/web/tmp/base_13.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "example/web/tmp/base_14 copy.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "example/web/tmp/base_14.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "example/web/tmp/base_15 copy.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "example/web/tmp/base_15.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "example/web/tmp/base_16.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "example/web/tmp/base_17.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "example/web/tmp/base_18.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "example/web/tmp/base_19 copy 5.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "example/web/tmp/base_19 copy 6.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "example/web/tmp/base_19.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "example/web/tmp/base_20.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "example/web/tmp/base_4.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "example/web/tmp/base_5.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "example/web/tmp/base_6.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "example/web/tmp/base_7.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "example/web/tmp/base_8.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "example/web/tmp/base_9.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "example/web/tmp/luck_v1.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "example/web/tmp/normal_tiny_base_19.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "example/web/tmp/tiaowen_as_card.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "example/web/tmp/tiny_tiaowen_as_card.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "lib/application/services/interactive_session_service.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/application/usecases/base_interactive_use_case.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/constant/constants.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/constant/kao_ke_constants.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/constant/kao_ke_constants.g.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/exceptions/huang_ji_calculation_exceptions.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/exceptions/tiao_wen_calculation_exceptions.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/ba_gua_gun_base_number_model.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/ba_gua_jia_ze_base_number_model.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/base_number_model.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/base_number_model_result.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/base_number_selection_batch.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/base_number_selection_batch.g.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/base_number_selection_record.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/base_number_selection_record.g.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/base_number_tiao_wen_list_model.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/gua_yao_gan_zhi_he_base_number_model.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/gua_zhong_base_number_model.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/huang_ji_number.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/huang_ji_number.g.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/interactive_session.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/interactive_strategy_config.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/interactive_strategy_config.g.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/liu_yao_gan_zhi_he_base_number_model.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/middle_palace_five_strategy.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/multi_base_number_result.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/multi_base_number_selection.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/multi_base_number_selection.g.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/qian_hou_gua_base_number_model.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/si_men_fa_base_number_model.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/tai_xuan_base_number_model.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/tiao_wen_candidate.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/tiao_wen_candidate.g.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/tiao_wen_list_result.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/tiao_wen_list_state.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/tiao_wen_result.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/tiao_wen_result.g.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/tiao_wen_source_info.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/unified/divination_context.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/unified/divination_result.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/unified/divination_session.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/xian_houtian_gua_base_number_model.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/xian_houtian_qu_shu_base_number_model.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/yuan_hui_yun_shi.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/yuan_hui_yun_shi.g.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/yuan_tang_base_number_model.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/domain/models/yuan_tang_model_result.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/enums.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/extensions/chinese_date_info_extension.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/huang_ji/huang_ji_formula_data_v2.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/huang_ji/huang_ji_formula_data_v2.g.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/huang_ji/huang_ji_formula_v2.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/huang_ji/huang_ji_formula_v2.g.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/huang_ji/huang_ji_session_manager.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/huang_ji/huang_ji_v2_calculation_strategy.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/huang_ji/huang_ji_v2_calculation_strategy_impl.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/huang_ji/huang_ji_v2_demo_page.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/huang_ji/huang_ji_v2_session_models.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/huang_ji/huang_ji_v2_session_models.g.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/huang_ji/huang_ji_v2_use_case.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/huang_ji/huang_ji_v2_view_model.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/huang_ji_formula_manager.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/kao_ding_liu_qin/models/liu_du_table.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/kao_ding_liu_qin/models/liu_qin_type.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/kao_ding_liu_qin/models/session_manager.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/kao_ding_liu_qin/models/spouse_ordinal.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/kao_ding_liu_qin/pages/kao_ding_liu_qin_page.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/kao_ding_liu_qin/repositories/liu_du_table_repository.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/kao_ding_liu_qin/services/kao_ding_liu_qin_strategy.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/kao_ding_liu_qin/services/na_jia_liu_qin_helper.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/kao_ding_liu_qin/services/qi_gua_helper.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/kao_ding_liu_qin/usecases/kao_ding_liu_qin_use_case.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/kao_ding_liu_qin/widgets/liu_du_table_selection_widget.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/kao_ke/gua_calculation_helper.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/kao_ke/kao_ke_calculation_strategy.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/kao_ke/kao_ke_calculation_strategy_impl.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/kao_ke/kao_ke_interactive_page.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/kao_ke/kao_ke_session_manager.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/kao_ke/kao_ke_session_models.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/kao_ke/kao_ke_session_models.g.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/kao_ke/kao_ke_use_case.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/kao_ke/kao_ke_view_model.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/kao_ke/widgets/dou_jia_yi_selection_table.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/kao_ke/widgets/final_result_display_widget.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/kao_ke/widgets/gua_display_widget.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/kao_ke/widgets/ke_selection_table.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/kao_ke/widgets/method_selector_widget.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/kao_ke/widgets/tiao_wen_detail_dialog.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/liuqinkaoke/models/liuqinkaoke_models.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/liuqinkaoke/pages/liuqinkaoke_selection_page.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/liuqinkaoke/repository/liuqinkaoke_session_repository.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/liuqinkaoke/strategy/liuqinkaoke_calculation_strategy.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/liuqinkaoke/strategy/liuqinkaoke_default_strategy.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/liuqinkaoke/usecase/liuqinkaoke_session_manager.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/liuqinkaoke/usecase/liuqinkaoke_use_case.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/liuqinkaoke/viewmodels/liuqinkaoke_view_model.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/six_yao_gua/enum_6_shou.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/six_yao_gua/enum_8_gong_gua.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/six_yao_gua/pure_six_yao_gua.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/six_yao_gua/pure_six_yao_gua.g.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/six_yao_gua/pure_six_yao_gua_extension.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/six_yao_gua/six_yao_calculator.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/yuan_tang_gua/pure_yuan_tang_gua.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/yuan_tang_gua/pure_yuan_tang_gua.g.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/yuan_tang_gua/yuan_tang_calculator.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/yuan_tang_gua/yuan_tang_info.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/yuan_tang_gua/yuan_tang_info.g.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/yuan_tang_gua/yuan_tang_info_ext.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/features/yuan_tang_gua/yuan_tang_info_ext.g.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/infrastructure/di/strategy_providers.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/main.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/navigator.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/components/animated_button.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/components/glass_scaffold.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/components/gradient_card.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/components/section_header.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/home/home_page.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/models/ba_gua_gun_ui_model.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/models/ba_gua_jia_ze_ui_model.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/models/si_men_fa_ui_model.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/models/ui_tiao_wen_list_result_model.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/models/yuan_tang_ui_model.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/pages/four_doors_and_gun_fa_page.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/pages/strategy_demo_page.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/pages/tai_xuan_interactive_page.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/pages/vertical_layout/base_18_page.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/pages/vertical_layout/models/base_18_models.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/pages/vertical_layout/vertical_layout_page.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/pages/vertical_layout/widgets/horizontal_algorithm_card.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/pages/vertical_layout/widgets/horizontal_tiao_wen_widget.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/pages/vertical_layout/widgets/unified_algorithm_card.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/pages/vertical_layout/widgets/unified_nav_rail.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/pages/vertical_layout/widgets/unified_verse_row.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/pages/vertical_layout/widgets/vertical_algorithm_card.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/pages/vertical_layout/widgets/vertical_text_wrapper.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/pages/vertical_layout/widgets/vertical_verse_row.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/styles/strategy_demo_styles.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/theme/app_colors.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/theme/app_theme.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/theme/app_theme_data.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/theme/app_typography.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/viewmodels/ba_gua_gun_view_model.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/viewmodels/ba_gua_jia_ze_view_model.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/viewmodels/base_tiao_wen_list_view_model.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/viewmodels/day_gan_zhi_gua_view_model.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/viewmodels/four_zhu_tian_gan_view_model.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/viewmodels/gua_yao_gan_zhi_he_view_model.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/viewmodels/gua_zhong_view_model.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/viewmodels/kao_ding_liu_qin_view_model.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/viewmodels/liu_yao_gan_zhi_he_view_model.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/viewmodels/qian_hou_gua_view_model.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/viewmodels/si_men_fa_view_model.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/viewmodels/tai_xuan_four_zhu_interactive_view_model.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/viewmodels/tai_xuan_four_zhu_view_model.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/viewmodels/theme_view_model.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/viewmodels/xian_houtian_jia_ze_view_model.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/viewmodels/xian_houtian_qu_shu_view_model.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/viewmodels/yuan_tang_view_model.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/widgets/ba_gua_jia_ze_card.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/widgets/calculation_summary.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/widgets/candidate_selection_widget.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/widgets/empty_state_widget.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/widgets/error_widget.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/widgets/gua_change_visualization.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/widgets/gua_yao_gan_zhi_he_card.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/widgets/gua_zhong_card.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/widgets/interactive_result_widget.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/widgets/interactive_session_header.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/widgets/interactive_step_indicator.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/widgets/kao_ding_liu_qin_card.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/widgets/liu_yao_gan_zhi_he_card.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/widgets/loading_widget.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/widgets/qian_hou_gua_card.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/widgets/strategy_card.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/widgets/strategy_header.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/widgets/tai_xuan_dual_method_card.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/widgets/tai_xuan_method_section.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/widgets/tiao_wen_item.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/widgets/tiao_wen_list_view.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/widgets/xian_houtian_jia_ze_card.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/widgets/xian_houtian_qu_shu_card.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/widgets/yuan_tang_card.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/widgets/yuan_tang_dayun_widget.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/widgets/yuan_tang_liunian_list.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/widgets/yuan_tang_liuyue_panel.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/presentation/widgets/yuan_tang_liuyun_section.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/providers/datetime_provider.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/repository/datamodels/tiao_wen_datamodel.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/repository/datamodels/tiao_wen_datamodel.g.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/repository/repository_factory.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/repository/session_repository.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/repository/session_repository_impl.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/repository/tiao_wen_repository.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/repository/tiao_wen_repository_impl.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/service/strategy/ba_gua_gun_strategy.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/service/strategy/ba_gua_jia_ze_result.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/service/strategy/ba_gua_jia_ze_strategy.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/service/strategy/base/multi_gua_calculator_base.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/service/strategy/base/yuan_tang_based_strategy.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/service/strategy/base/yuan_tang_derived_params.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/service/strategy/base_calculation_strategy.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/service/strategy/base_interactive_strategy.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/service/strategy/calculation_strategy.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/service/strategy/day_gan_zhi_gua_strategy.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/service/strategy/four_zhu_tian_gan_strategy.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/service/strategy/gua_yao_gan_zhi_he_result.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/service/strategy/gua_yao_gan_zhi_he_strategy.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/service/strategy/gua_zhong_strategy.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/service/strategy/liu_yao_gan_zhi_he_strategy.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/service/strategy/middle_palace_five_strategy.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/service/strategy/qian_hou_gua_strategy.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/service/strategy/si_men_fa_strategy.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/service/strategy/standard_calculation_strategy.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/service/strategy/tai_xuan_four_zhu_interactive_strategy.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/service/strategy/tai_xuan_four_zhu_strategy.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/service/strategy/tiao_wen_list_calculation.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/service/strategy/xian_houtian_jia_ze_strategy.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/service/strategy/xian_houtian_qu_shu_strategy.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/service/strategy/yuan_tang_strategy.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/service/unified/adapters/day_gan_zhi_gua_adapter.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/service/unified/adapters/four_zhu_tian_gan_adapter.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/service/unified/adapters/tai_xuan_four_zhu_adapter.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/service/unified/divination_orchestrator.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/service/unified/unified_strategy_adapter.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/summary.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "lib/ui/pages/dev_page.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/ui/utils/snackbar.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usecases/ba_gua_gun_tiao_wen_list_use_case.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usecases/ba_gua_jia_ze_tiao_wen_list_use_case.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usecases/base_get_tiao_wen_list_use_case.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usecases/day_gan_zhi_gua_tiao_wen_list_use_case.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usecases/four_zhu_tian_gan_tiao_wen_list_use_case.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usecases/gua_yao_gan_zhi_he_tiao_wen_list_use_case.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usecases/gua_zhong_tiao_wen_list_use_case.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usecases/liu_yao_gan_zhi_he_tiao_wen_list_use_case.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usecases/qian_hou_gua_tiao_wen_list_use_case.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usecases/si_men_fa_tiao_wen_list_use_case.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usecases/tai_xuan_four_zhu_interactive_use_case.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usecases/tai_xuan_four_zhu_tiao_wen_list_use_case.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usecases/xian_houtian_jia_ze_tiao_wen_list_use_case.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usecases/xian_houtian_qu_shu_tiao_wen_list_use_case.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usecases/yuan_tang_tiao_wen_list_use_case.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/utils/tiao_wen_calculator.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/utils/tiao_wen_number_calculator.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/utils/utils.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "pubspec.yaml",
+      "language": "yaml",
+      "fileCategory": "config"
+    },
+    {
+      "path": "test/application/services/huang_ji_multiple_selection_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/assets/formula/huang_ji_1.json",
+      "language": "json",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/assets/formula/huang_ji_2.json",
+      "language": "json",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/assets/formula/huang_ji_3.json",
+      "language": "json",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/assets/formula/huang_ji_formula.json",
+      "language": "json",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/disabled/huang_ji_formula_v2_integration_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/disabled/verify_raw_number_fix.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/domain/models/first_yuanhui.json",
+      "language": "json",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/domain/models/first_yunshi.json",
+      "language": "json",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/domain/models/huang_ji_first_formula_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/domain/models/huang_ji_formula_data_v2_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/domain/models/huang_ji_formula_generator.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/domain/models/huang_ji_formula_raw_number_integration_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/domain/models/huang_ji_formula_v2_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/domain/models/tiao_wen_list_result_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/features/huang_ji_formula_manager_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/features/kao_ding_liu_qin/find_complete_liuqin_example.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/features/kao_ding_liu_qin/kao_ding_liu_qin_basic_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/features/kao_ding_liu_qin/kao_ding_liu_qin_debug_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/features/kao_ding_liu_qin/kao_ding_liu_qin_hua_gua_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/features/kao_ding_liu_qin/kao_ding_liu_qin_integration_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/features/kao_ke/gua_calculation_helper_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/features/kao_ke/gua_conversion_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/features/liuqinkaoke/strategy/liuqinkaoke_calculation_strategy_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/gua_64_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/huang_ji_v2_models_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/run_huang_ji_formula_tests.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/service/strategy/BA_GUA_JIA_ZE_TEST_REPORT.md",
+      "language": "markdown",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/service/strategy/HUMAN_SPEC_TESTS_SUMMARY.md",
+      "language": "markdown",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/service/strategy/TAI_XUAN_DUAL_NAJIA_TEST_REPORT.md",
+      "language": "markdown",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/service/strategy/ba_gua_gun_debug_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/service/strategy/ba_gua_gun_human_spec_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/service/strategy/ba_gua_jia_ze_human_spec_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/service/strategy/ba_gua_jia_ze_public_methods_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/service/strategy/ba_gua_jia_ze_strategy_debug_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/service/strategy/ba_gua_jia_ze_strategy_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/service/strategy/gua_yao_gan_zhi_he_detailed_yao_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/service/strategy/gua_yao_gan_zhi_he_gui_wei_simple_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/service/strategy/gua_zhong_human_spec_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/service/strategy/gua_zhong_logic_debug_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/service/strategy/gua_zhong_three_plans_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/service/strategy/liu_yao_debug_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/service/strategy/liu_yao_gan_zhi_he_human_spec_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/service/strategy/liu_yao_gan_zhi_he_strategy_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/service/strategy/qian_hou_gua_human_spec_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/service/strategy/qian_hou_gua_strategy_debug_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/service/strategy/si_men_fa_debug_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/service/strategy/si_men_fa_human_spec_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/service/strategy/tai_xuan_four_zhu_strategy_debug_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/service/strategy/tai_xuan_four_zhu_strategy_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/service/strategy/tai_xuan_four_zhu_strategy_v2_debug_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/service/strategy/tiao_wen_calculation_config_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/service/strategy/xian_houtian_jia_ze_human_spec_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/service/strategy/xian_houtian_jia_ze_strategy_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/service/strategy/xian_houtian_qu_shu_debug_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/service/strategy/xian_houtian_qu_shu_human_spec_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/service/strategy/yuan_tang_dayun_debug_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/service/strategy/yuan_tang_dayun_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/service/strategy/yuan_tang_fix_analysis_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/service/strategy/yuan_tang_gui_si_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/service/strategy/yuan_tang_strategy_debug_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/service/strategy/yuan_tang_strategy_specific_debug_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/service/strategy/yuan_tang_strategy_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/service/strategy/yuan_tang_tiaogen_expand_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/tiao_wen_repository_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/usecases/gua_zhong_use_case_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/usecases/liu_yao_gan_zhi_he_use_case_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/usecases/qian_hou_gua_use_case_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/usecases/xian_houtian_jia_ze_use_case_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/utils/gua_utils_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/yuan_tang_test.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "test_debug.dart",
+      "language": "dart",
+      "fileCategory": "code"
+    },
+    {
+      "path": "tiebanshenshu.iml",
+      "language": "xml",
+      "fileCategory": "config"
+    },
+    {
+      "path": "tiebanshenshu_android.iml",
+      "language": "xml",
+      "fileCategory": "config"
+    },
+    {
+      "path": "web/drift_worker.js",
+      "language": "javascript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "web/index.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "web/manifest.json",
+      "language": "json",
+      "fileCategory": "config"
+    }
+  ]
+}

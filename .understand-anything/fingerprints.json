@@ -1,0 +1,2026 @@
+{
+  "version": "deterministic-1",
+  "generatedAt": "2026-05-21T22:58:18.762Z",
+  "files": {
+    ".claude/settings.local.json": {
+      "hash": "97570366086950e4c445f93b2fdfa10ad70ae1b8e3b831fcb505d5be6a92854c",
+      "size": 26938
+    },
+    ".gitignore": {
+      "hash": "3e30a4ec6268267d08613dda0745889c166e9e9800889b216b1ce7795e761078",
+      "size": 518
+    },
+    "AGENTS.md": {
+      "hash": "8d1af067ebad70e0cc2bc5ad70e97e8ba2e184c6dfe823d44c15f7abaf6c790d",
+      "size": 8
+    },
+    "AI_README.md": {
+      "hash": "4e56d03be994fe7ea5c20851bf96669342555f2af8da3328b6850df1a6f0957a",
+      "size": 7896
+    },
+    "CLAUDE.md": {
+      "hash": "8d1af067ebad70e0cc2bc5ad70e97e8ba2e184c6dfe823d44c15f7abaf6c790d",
+      "size": 8
+    },
+    "PROBLEM_SOLVED_huang_ji_loading.md": {
+      "hash": "0e2547612bded76e58d5e99ee35925063cb38881180aec255f58d265cb3487c4",
+      "size": 5110
+    },
+    "WARNING_README.md": {
+      "hash": "25785ec031e1d35075d6fff1e7c3349043d1296d2961e55d41066a4c0a5b458b",
+      "size": 654
+    },
+    "analysis_options.yaml": {
+      "hash": "421f614e47dad8040403a78ab790d2510c382c1956adb714f574a2fcf963c138",
+      "size": 199
+    },
+    "assets/icons/icon_list.json": {
+      "hash": "8895bd15ef20a90627ce82257e6d2ba2177ff4da9e06352443498b4a5496bd8f",
+      "size": 291
+    },
+    "build.yaml": {
+      "hash": "53f5b2402e269fd599f0b035c9e00536a39b6a5bdc6e6ef424c334c029f64363",
+      "size": 738
+    },
+    "docs/.gitignore": {
+      "hash": "5d2d4a2e87084a4b1ed982271b2108d5ec77ea95bde6393ee4d6f1195741ddb9",
+      "size": 60
+    },
+    "docs/ONBOARDING.md": {
+      "hash": "f174d7f7fdb35d8a5ea29d4802eddc46d5bf36728d82c0f5a923bd7b34993a6a",
+      "size": 7246
+    },
+    "docs/Plans.md": {
+      "hash": "ce3525d6e3c9b51ccc15b78579231c939da2729fea4f3ab8a2d958325a75d31b",
+      "size": 1142
+    },
+    "docs/README.md": {
+      "hash": "6cb87db8780d8ab2c4079fdfef51e7066c56a9228b6517883ddf31431b61e2c7",
+      "size": 3444
+    },
+    "docs/README_zh.md": {
+      "hash": "2ee3b2ca1f6a15d54fb805615355a7a8eb4411ecb880a287bb776e3c041e1d88",
+      "size": 3319
+    },
+    "docs/ai/CONSTITUTION.md": {
+      "hash": "15a14e9716c22afe7ba41062658275cac86b19e7c50b1714d2e6b6baede242bb",
+      "size": 1758
+    },
+    "docs/ai/board-protocol.md": {
+      "hash": "590e4e640792d935378a196dd8c45828a8e31081af98d9b502db3bc4eaed19b0",
+      "size": 4426
+    },
+    "docs/ai/code-style.md": {
+      "hash": "f394142f57bc768835f84ddb0c65e3c0e61b270cbee3159255fdd46b47d85636",
+      "size": 3141
+    },
+    "docs/ai/delivery-pipeline.md": {
+      "hash": "ed7e11220bd88352b7312feb4b61e650507408345ba4852749570b22efd55436",
+      "size": 7916
+    },
+    "docs/ai/directory-structure.md": {
+      "hash": "64c0848a7130274d61b9ec7d170a155c67f047b475cb02cdaef7450984fc5c3e",
+      "size": 2158
+    },
+    "docs/ai/doc-standards.md": {
+      "hash": "e85e403f5bffca5f1796d824781c4f56110451eedfbfef8824cacdff831505c4",
+      "size": 3534
+    },
+    "docs/ai/git-rules.md": {
+      "hash": "5db3da9b04d936f14aa74fec83bafd21c91fddc44d83b7d973695f69aacc2c85",
+      "size": 2479
+    },
+    "docs/ai/glossary.md": {
+      "hash": "094a56d940bf2ca540397239c41a419b7701de3bc4ea3820ae281e509508c67b",
+      "size": 2557
+    },
+    "docs/ai/phases.md": {
+      "hash": "3e1db247b3982d556a12b846735a2118d2a11711a14c4b0d7a76f6e3aa964535",
+      "size": 10999
+    },
+    "docs/ai/principles.md": {
+      "hash": "efb0627f67cf4dbaf2b10a9a8bc836e25e080a7418fca67348d939044c1d3cab",
+      "size": 3129
+    },
+    "docs/ai/project-context-guide.md": {
+      "hash": "6dbd20a8af9469a49181e7040426a661f6be2b922cf7ad738b14ad16b4cf1dfd",
+      "size": 2840
+    },
+    "docs/ai/toolchain.md": {
+      "hash": "58c796e7f0ed8048269614b5415ddf28246fa217ea33eebeb3a581ea8fea55d0",
+      "size": 1679
+    },
+    "docs/board/PROGRESS.md": {
+      "hash": "a8b1c75867c0fbeec8add1c3f9b2f4ba4e4a111467f0470de4f796c2337b1aac",
+      "size": 569
+    },
+    "docs/board/TASKS.md": {
+      "hash": "87b491751e51acabcf94dffe56d571c15a58d3b07efab9f2898794fa2f12f061",
+      "size": 1090
+    },
+    "docs/previous_archived/2025-10-02/PRDs.md": {
+      "hash": "8af76ac4fb6bb97fc09026769b6b9ff49bffe8aa9c0b1558fd5fa0eb407260eb",
+      "size": 4939
+    },
+    "docs/previous_archived/2025-10-02/code_review.md": {
+      "hash": "6e3bb67c81a65b9aed3845a778f389902a95f9bd471f8b78f1154e22fcb5d84c",
+      "size": 3126
+    },
+    "docs/previous_archived/HUANG_JI_V2_IMPLEMENTATION_SUMMARY.md": {
+      "hash": "27b58aa8170ec865b3c5757777d4961f77b2fa2dc3d6d5045cd3dfede9c11656",
+      "size": 17699
+    },
+    "docs/previous_archived/HuangJiFormulaManager使用说明.md": {
+      "hash": "5cfdc04bb20744b4cb86224a72410f79a7417ddc055da27f13c14bf3257cdb0f",
+      "size": 6976
+    },
+    "docs/previous_archived/HuangJiV2Demo使用说明.md": {
+      "hash": "072a846ba74a8b41cfca549bd2e8a36698439964ac263f8aabbae23509efc0e5",
+      "size": 575
+    },
+    "docs/previous_archived/HuangJiV2SessionService/DESIGN_HuangJiV2SessionService.md": {
+      "hash": "77a7ff9bc74738f19b5ded4acd7266b295f2601818c417815e34f475020dc3a8",
+      "size": 4840
+    },
+    "docs/previous_archived/PRDs.md": {
+      "hash": "009dafe64306bbcd0e0e988e261eb0df550c6179d9adfe0e019c064da5ba22bf",
+      "size": 6993
+    },
+    "docs/previous_archived/alg_code_review_v1/ba_gua_gun_strategy.md": {
+      "hash": "eb4aead73f6a92d1919206b783230369324beca3ca55a0ea5351772a19f2904f",
+      "size": 2768
+    },
+    "docs/previous_archived/alg_code_review_v1/ba_gua_jia_ze_strategy.md": {
+      "hash": "1f457acd3adb90c8fe4a4a5e159319ba40cb083f8c8d78c3ae7ce75b7d44ed1e",
+      "size": 2549
+    },
+    "docs/previous_archived/alg_code_review_v1/day_gan_zhi_gua_strategy.md": {
+      "hash": "0a254ee26b650cf3156005b129d9ffc218de1cb9441d8809989f895cbee1a1f5",
+      "size": 2699
+    },
+    "docs/previous_archived/alg_code_review_v1/four_zhu_tian_gan_strategy.md": {
+      "hash": "efacdfc2dc072cf24f1de6b630a56a4d284b24b550a7c31b18bcc67e42e0a120",
+      "size": 2164
+    },
+    "docs/previous_archived/alg_code_review_v1/gua_yao_gan_zhi_he_strategy.md": {
+      "hash": "5cf527b2507b7d9c2585336884bcea6740a4bd294154059b5fae17f6f3def3e1",
+      "size": 2777
+    },
+    "docs/previous_archived/alg_code_review_v1/gua_zhong_strategy.md": {
+      "hash": "c910e8fad4758326e52bb8ed84a118e8c684a09055b2908713882762a55f8c4f",
+      "size": 3043
+    },
+    "docs/previous_archived/alg_code_review_v1/liu_yao_gan_zhi_he_strategy.md": {
+      "hash": "ec0d8d034994bac859af1f9fda89c554b522b52eeec836b926c8940014e41fa7",
+      "size": 2766
+    },
+    "docs/previous_archived/alg_code_review_v1/middle_palace_five_strategy.md": {
+      "hash": "c2a4161c26a4572ddd495709324877bfbc856478622a4d528e5e675882bff398",
+      "size": 1791
+    },
+    "docs/previous_archived/alg_code_review_v1/qian_hou_gua_strategy.md": {
+      "hash": "407a0aea5b9b476f5135a4deea3f5782ec3989b4e91d43b1e442f3901b58fb1a",
+      "size": 2560
+    },
+    "docs/previous_archived/alg_code_review_v1/si_men_fa_strategy.md": {
+      "hash": "d2b6a777d4014790668196163cf69f74068e4fa0547792e65efe9bb1d6ebc459",
+      "size": 2684
+    },
+    "docs/previous_archived/alg_code_review_v1/strategy_architecture_review.md": {
+      "hash": "f591d50d93ab86912d5a5e161c10574919042f669de0b247fcdca544dab99708",
+      "size": 3154
+    },
+    "docs/previous_archived/alg_code_review_v1/tai_xuan_four_zhu_interactive_strategy.md": {
+      "hash": "449131d21d5725d784d5fce1251d629f928119165c800929f28aa303f798f3b1",
+      "size": 3213
+    },
+    "docs/previous_archived/alg_code_review_v1/tai_xuan_four_zhu_strategy.md": {
+      "hash": "409278c5a6e7603cf5499b88a0a5d8f44ad35a52a21d6278718ca5fd46e2a32a",
+      "size": 2576
+    },
+    "docs/previous_archived/alg_code_review_v1/xian_houtian_jia_ze_strategy.md": {
+      "hash": "1c7102406ab3798cf50dd60324556dfbfc9a9d725b36e6dc6a8612adf9f3da18",
+      "size": 2310
+    },
+    "docs/previous_archived/alg_code_review_v1/xian_houtian_qu_shu_strategy.md": {
+      "hash": "f7eb1cafc7cfab6c5c61431469fe73b342292d9057d9faa36c802e7ec7ec8d6c",
+      "size": 2822
+    },
+    "docs/previous_archived/alg_code_review_v1/yuan_tang_strategy.md": {
+      "hash": "db2c6956fcba4ffafbe4055c9e00f7402a32deb7e53443e3c654e805e3ffd3b3",
+      "size": 3191
+    },
+    "docs/previous_archived/calculation_strategy_selection/ALIGNMENT_calculation_strategy_selection.md": {
+      "hash": "b96e0769e59db158cb34b4830bbd1c122045c4c455c2518811c7384034954847",
+      "size": 5194
+    },
+    "docs/previous_archived/classic_strategy_conversion/ALIGNMENT_classic_strategy_conversion.md": {
+      "hash": "1cbd8d8a96510b1a899346f09accd15eb9b12c80d9ca82d3476a3ae0659bdd4a",
+      "size": 3430
+    },
+    "docs/previous_archived/claude/huang_ji/architecture.md": {
+      "hash": "1c667869a0089fdc440c4f47f1c1311da120b1d1a81da5c47a35a8844e08fd66",
+      "size": 27970
+    },
+    "docs/previous_archived/claude/huang_ji/quick_reference.md": {
+      "hash": "7640eaaca940204b49c55d4c07ff7825c2317371727468cf3b443107c712f6c3",
+      "size": 11398
+    },
+    "docs/previous_archived/claude/huang_ji/requirements_specification.md": {
+      "hash": "5b57770de546a70742997fe84934efb425e7c801a58b5e0c2445e0f4d29edb4b",
+      "size": 20404
+    },
+    "docs/previous_archived/claude/huang_ji/todo_list.md": {
+      "hash": "b570b22bdf8f4a7f126cb9d5863b0ecbf24507595f55fb7ad272a7b3f4ca10d4",
+      "size": 22564
+    },
+    "docs/previous_archived/code_review.md": {
+      "hash": "d4bb2905ec4f66a78bd120fc37afc127188711c8cecb1eb233b188650309665c",
+      "size": 23992
+    },
+    "docs/previous_archived/features/huangji/multi_base_number_selection_call_chain.md": {
+      "hash": "cc8d23e787ded3a844188f1571aea3cca552327b3ca0c2504ed39501e146f131",
+      "size": 6284
+    },
+    "docs/previous_archived/flow_pill_card_integration/ACCEPTANCE_flow_pill_card_integration.md": {
+      "hash": "95fb4ee736af5e339650ab7550c444aa957b3daf1f232cfedfda7a9da8a4b00b",
+      "size": 3792
+    },
+    "docs/previous_archived/flow_pill_card_integration/DESIGN_flow_pill_card_integration.md": {
+      "hash": "198d3f146a819442eb3255365515e184895fdef1eb277f79dfee5793c5d2a694",
+      "size": 14229
+    },
+    "docs/previous_archived/flow_pill_card_integration/TASK_flow_pill_card_integration.md": {
+      "hash": "8643b776a80653e2a9197649bc3ca46d852884ce4348a47954643bb14faca8d2",
+      "size": 10329
+    },
+    "docs/previous_archived/flow_pill_card_integration/TODO_list_flow_pill_card_integration.md": {
+      "hash": "d812c6d281f849959dd87f014a4a078c3ac2816432171986f41ae3efc0bc8afd",
+      "size": 5729
+    },
+    "docs/previous_archived/flow_pill_card_integration/tmp_summary_integration.md": {
+      "hash": "1b725c26a73147909a85d2a3d114b952bbe740f182377d2ea3c65ccccafa4e51",
+      "size": 7250
+    },
+    "docs/previous_archived/huangji/API.md": {
+      "hash": "647524c56a64f377471a55639ca26fb0b59307089aa57802f8d7b3cadedbb639",
+      "size": 49929
+    },
+    "docs/previous_archived/huangji/PRD.md": {
+      "hash": "3fe3bdc8c76d155dd30ad68527c40d4e11dca16e80f0a4e4048e2f2873e889c5",
+      "size": 30977
+    },
+    "docs/previous_archived/huangji/code_review.md": {
+      "hash": "3d3aa937735f590dbb78e5bb75bfd567f21a85bf75de329ae7dc99516fbad2d9",
+      "size": 85204
+    },
+    "docs/previous_archived/interactive_strategy_design.md": {
+      "hash": "d746bbfb8420efb5fbe2f66dd3961cdbc67add6b909d1b825410da283e3bc7b2",
+      "size": 5660
+    },
+    "docs/previous_archived/kao_ding_liu_qin/PRDs.md": {
+      "hash": "fb40ee7b872c1db6e1142ce7dddc6bbaf4b003f1b9879c25ff08dd106e756e52",
+      "size": 6995
+    },
+    "docs/previous_archived/kao_ding_liu_qin/code_review.md": {
+      "hash": "7ef4f3f94974d59885bc284d6813ff2fa72c14dcc9527b3f8d468631acf0e197",
+      "size": 6577
+    },
+    "docs/previous_archived/kao_ke/PRD.md": {
+      "hash": "6962f0eb83904bbcac50a5397559197ed87df419532870048a7463c3abc4dd40",
+      "size": 7770
+    },
+    "docs/previous_archived/kao_ke/TECHNICAL_ARCHITECTURE.md": {
+      "hash": "8ddf2780f55f814a6ed45331215c3a71fd17faf7c306dce93773574203610054",
+      "size": 14655
+    },
+    "docs/previous_archived/kao_ke/gua_yao_gan_zhi_he_implementation_summary.md": {
+      "hash": "3f742c2b63ef130b581c029e9023d5410e50186ebf33c69d46c2c87e02089255",
+      "size": 5408
+    },
+    "docs/previous_archived/liuqinkaoke/PRDs.md": {
+      "hash": "857576c7da440094331e45b36c68e68dded2f5414c4dac39eec6fddb1c208cd9",
+      "size": 5430
+    },
+    "docs/previous_archived/liuqinkaoke/todo_list.md": {
+      "hash": "cf48d96adac4778de0d8d73393a4c9aaa3c9d95595d94b3a19e9a9d5012a18be",
+      "size": 8399
+    },
+    "docs/previous_archived/middle5/todo_list.md": {
+      "hash": "e4619547d8172b3769d966d3ad66a56125b41e11f78a3e9c7d396c34cfcb7701",
+      "size": 1586
+    },
+    "docs/previous_archived/models/MULTI_BASE_NUMBER_USAGE.md": {
+      "hash": "3ac1267719eeab7a20909fd64160b188b8e8b222f944fa04156779f5e8bb5cf7",
+      "size": 9816
+    },
+    "docs/previous_archived/mvvm_strategy_implementation/ACCEPTANCE_mvvm_strategy_implementation.md": {
+      "hash": "a05989e3d5cce9d45d14dc17c28821608887d462406fde32f3307d75273fdc80",
+      "size": 6891
+    },
+    "docs/previous_archived/mvvm_strategy_implementation/ALIGNMENT_mvvm_strategy_implementation.md": {
+      "hash": "4eec637a1d9805fbcf3eaae02fdd654d85d916aecec3e63346a3efe2c684fd99",
+      "size": 4943
+    },
+    "docs/previous_archived/mvvm_strategy_implementation/TASK_mvvm_strategy_implementation.md": {
+      "hash": "07919413de735dbde53fbba9a550d706c7230c36d2b7d2eb75860375fb1cd723",
+      "size": 8922
+    },
+    "docs/previous_archived/normal_alg/BA_GUA_JIA_ZE_CODE_REVIEW.md": {
+      "hash": "d76086468a825ab1642c4352efd1c5bcbd46fc128c9a90fc0a656e4a52312958",
+      "size": 39889
+    },
+    "docs/previous_archived/normal_alg/GUA_YAO_GAN_ZHI_HE_CODE_REVIEW.md": {
+      "hash": "d4fa56486edda9673ee50ad1fe0303c2d83655e8ee466e269b4f190532236e4e",
+      "size": 24165
+    },
+    "docs/previous_archived/normal_alg/PRD.md": {
+      "hash": "b18e899fb48a8c8ed0ea3bf255223bb9dad5de267f9f27c1124a7b1e746d50f5",
+      "size": 21348
+    },
+    "docs/previous_archived/normal_alg/TAI_XUAN_DUAL_NAJIA_CODE_REVIEW.md": {
+      "hash": "70e86b8a7a7db7d06581e81e5a67f9266ad744ea5555c0c99447b5207aa7f939",
+      "size": 31830
+    },
+    "docs/previous_archived/normal_alg/YUAN_TANG_CODE_REVIEW.md": {
+      "hash": "f58f7df1a75725e3687ca42ac44262bbadeef52bd928778513475b0c3d2bfaff",
+      "size": 40242
+    },
+    "docs/previous_archived/normal_alg/code_review copy.md": {
+      "hash": "4ff1bbec8f32e77b9f966da931789d8799b37eca1545390addef9c1fc67d85ce",
+      "size": 19148
+    },
+    "docs/previous_archived/normal_alg/code_review.md": {
+      "hash": "4ff1bbec8f32e77b9f966da931789d8799b37eca1545390addef9c1fc67d85ce",
+      "size": 19148
+    },
+    "docs/previous_archived/normal_alg/eight_gua_jia_ze_todo_list.md": {
+      "hash": "9f8ec9528574898b2d43d9581fc6b88d4adc611a6d8b5f31e3fb0eac2dacd2e8",
+      "size": 17935
+    },
+    "docs/previous_archived/normal_alg/four_new_algorithms_todo_list_updated.md": {
+      "hash": "891193880b98a1fa4c0994999d309b5991a90e044764de6adeb7a6be1eea1496",
+      "size": 37966
+    },
+    "docs/previous_archived/normal_alg/gua_yao_gan_zhi_he_completion_summary.md": {
+      "hash": "132a27bf2546a531dbbc2c6019bda02cfa5f515983f7a3d98416d8474cd3845d",
+      "size": 5298
+    },
+    "docs/previous_archived/normal_alg/null_error_analysis_report.md": {
+      "hash": "56661e2eb7b4dc51c780af0f79898b4b817313424cc2d394421ca5c6cfe1d237",
+      "size": 9029
+    },
+    "docs/previous_archived/normal_alg/phase_1_4_completion_summary.md": {
+      "hash": "bd9f57090286cfd43ae9d2cc1820b34053cf82c4e366610ce1f3002d0aa3ff90",
+      "size": 16896
+    },
+    "docs/previous_archived/normal_alg/tai_xuan_todo_list.md": {
+      "hash": "53761f87fb9893578ae58cdb0ba0ee1a91e238faef6c94ea0e05335421144cc3",
+      "size": 37763
+    },
+    "docs/previous_archived/normal_alg/yuan_tang_liuyun_algorithm.md": {
+      "hash": "8a2f4d49a38c30b60a7e3575d5241b823d871dc00d854c0274931399d1ce270b",
+      "size": 24612
+    },
+    "docs/previous_archived/normal_alg/yuan_tang_liuyun_prd.md": {
+      "hash": "bc27aebcf3d8224f232a204b2c5f3b0418379f9cb773b34d13850c52ebe1d561",
+      "size": 17421
+    },
+    "docs/previous_archived/normal_alg/yuan_tang_todo_list.md": {
+      "hash": "0c46d3cd6fe2995cd2020f14100af32707a131b43b4afb787051870195468e18",
+      "size": 61658
+    },
+    "docs/previous_archived/normal_alg/yuan_tang_user_guide.md": {
+      "hash": "2803e91a2919315ade857ead89b95fe7e829d8265d37c59a557af3421aab88dc",
+      "size": 13839
+    },
+    "docs/previous_archived/one_click/PRDs.md": {
+      "hash": "2caffeb28104a024f4dff7eb9e670253be3ae75fc50b103eda456dfefd7ab807",
+      "size": 3743
+    },
+    "docs/previous_archived/one_click/Plans_en.md": {
+      "hash": "5d7181410354c83be92e3122f3a1a5fd86be26d7c73e413ce85f793881b7e744",
+      "size": 10586
+    },
+    "docs/previous_archived/one_click/Plans_zh.md": {
+      "hash": "b1421a7964fc2db5da290b3d54e7cf0a5bf36694d5628f6bd34f60ffcbd29f06",
+      "size": 11021
+    },
+    "docs/previous_archived/one_click/Tasks.md": {
+      "hash": "49c59c96f50c33911dcecf8fb0a7345098164a5f31196c8753e8198ef4f29ae2",
+      "size": 2220
+    },
+    "docs/previous_archived/one_click/gui/README.md": {
+      "hash": "b86e2a706bf2edf28dbbb4cc6203fc75664b349515811fefc85d5cf61e6908ab",
+      "size": 727
+    },
+    "docs/previous_archived/service_to_mvvm_migration_guide.md": {
+      "hash": "f134b76314c2e7e2f3df1d1c0dd6e7e2fcb3b741b35617169e93737e8e8b83e9",
+      "size": 12159
+    },
+    "docs/previous_archived/tai_xuan_interactive_migration/ACCEPTANCE_tai_xuan_interactive_migration.md": {
+      "hash": "912ff69083301cd8c36281c10e5d3e6fcc1ecd87d7de98054052e5c2f5e33c91",
+      "size": 7642
+    },
+    "docs/previous_archived/tai_xuan_interactive_migration/ALIGNMENT_tai_xuan_interactive_migration.md": {
+      "hash": "33cbcbf2786806639668d4c632de08298b5ec7afb2ed5fe5f02b9b53daf3b730",
+      "size": 3597
+    },
+    "docs/previous_archived/tai_xuan_interactive_migration/DESIGN_tai_xuan_interactive_migration.md": {
+      "hash": "a5ed01a3c77921d0b937f0c2b29a00b8778cad30564758e456abd71c3d1c7fd7",
+      "size": 5540
+    },
+    "docs/previous_archived/tai_xuan_interactive_migration/TASK_tai_xuan_interactive_migration.md": {
+      "hash": "89b97af41f961d2d151eea6955f9a7d69b51a4d014f1b600e8f050a06026f710",
+      "size": 5478
+    },
+    "docs/previous_archived/trae/1_refactor_strategy_todo_list.md": {
+      "hash": "fcc1cd67a0b2852063bfd94de8598b8baf3c55072098d813210adb668adf2030",
+      "size": 7749
+    },
+    "docs/previous_archived/trae/PRDs.md": {
+      "hash": "26d5a951ff2c12496947524e84885bea74a26c2b29d709efde04cee532b04f0d",
+      "size": 8590
+    },
+    "docs/previous_archived/trae/interactive_strategy_design.md": {
+      "hash": "77bb19dfcfeab096ed9a43133d871b2be12731de695817dad690a508069a84c2",
+      "size": 33213
+    },
+    "docs/previous_archived/trae/strategy_parameters_result_design.md": {
+      "hash": "691d300a7b93356c372955c8cb7904afe34fb7104f4270238542bc99d35450a0",
+      "size": 14625
+    },
+    "docs/previous_archived/ui_implementation/ALIGNMENT_ui_implementation.md": {
+      "hash": "2c254316a1e3c804dd8049d3715752095a97701f2d8e34b77b39e56b1bef8e33",
+      "size": 2738
+    },
+    "docs/previous_archived/umimpl.md": {
+      "hash": "3f5ffccba4bbce0d1903232d6f6d30cf828dc6282fe33fb1ae1ab56aebfcbcf2",
+      "size": 2489
+    },
+    "docs/previous_archived/修复BaseNumberTiaoWenListModel构造函数.md": {
+      "hash": "9c52c8cab0792007b3de8841f6574c0fe20d028d95de8aff23022b30e2398275",
+      "size": 2761
+    },
+    "docs/previous_archived/重构完成总结.md": {
+      "hash": "446febc1a28f9ef4ae1635b260a41129a2a2bb74669ca3687051ccfd5897c44e",
+      "size": 3542
+    },
+    "docs/previous_archived/页面执行流程分析.md": {
+      "hash": "56178599fc059e5e8c7f6896284f641867c1ddf02795d066dfc8d96c0d3d2627",
+      "size": 23233
+    },
+    "docs/project/README.md": {
+      "hash": "86af24dbeeefb81462ca9f4ba82d9bcee40939558ea4a115b9c4eb6f313a11cb",
+      "size": 1365
+    },
+    "docs/superpowers/plans/2026-05-08-ai-readme-implementation.md": {
+      "hash": "07f23b4b405868cd9d214258d96266b9260ae63158945a7e4ca3a6f536a56ecb",
+      "size": 56907
+    },
+    "docs/superpowers/specs/2026-05-08-ai-governance-v2-design.md": {
+      "hash": "6a1c3469433f41aa53ec8648da362eb7ff75151125769153c46ed9c4b39f6caa",
+      "size": 10211
+    },
+    "docs/superpowers/specs/2026-05-08-ai-readme-design.md": {
+      "hash": "f58e8aa45661037203d67334d939eeff0efaa7dc6107d44ed48d3ebf9f52efc3",
+      "size": 41007
+    },
+    "docs/superpowers/specs/2026-05-08-docs-framework-init-design.md": {
+      "hash": "527db2e081b7442e133f04423be2b720d441267d0d59a85c2712949f98925fb8",
+      "size": 12767
+    },
+    "example/.gitignore": {
+      "hash": "4a8d984279954e0461e0ffef9b9e7455340a0a762f227c01065a53482a83a4f1",
+      "size": 703
+    },
+    "example/README.md": {
+      "hash": "f9f4d9eabc4a70a7da76ebaa98453f461b860ace8cd779f0f6b5b6400dfc93de",
+      "size": 564
+    },
+    "example/analysis_options.yaml": {
+      "hash": "e0ea485cfdbc3e12b93efb8679a5ea73ebfe20ea4ca0c473dc594fc2fb274ed5",
+      "size": 1420
+    },
+    "example/assets/formulas/huang_ji_1_formula.json": {
+      "hash": "185e3bc2de0592754653c62c544d84226facb857230703ac847876c8f06da466",
+      "size": 11959
+    },
+    "example/assets/formulas/huang_ji_2_formula.json": {
+      "hash": "bbc5b48d84d7f5f63025f13f3af33f8e78751a5938359b1b14efddb8acdab981",
+      "size": 5778
+    },
+    "example/assets/formulas/huang_ji_3_formula.json": {
+      "hash": "94377fbd73b5ee7be525fdddf39bc147d237fd68e76adc4bb9afe6bd68343838",
+      "size": 10342
+    },
+    "example/assets/kao_ke/geng_mu_jia_liu_du.json": {
+      "hash": "ce13624437df7ff27616bf9f45509072ddea781508ddf2856984c8d69e518a04",
+      "size": 1299
+    },
+    "example/assets/kao_ke/jin_gong_jia_liu_du.json": {
+      "hash": "ad86d1e2b437bacfc07ef68b9bb35db01211fca1ecc5edf16b865117d71ec870",
+      "size": 1287
+    },
+    "example/assets/kao_ke/jin_jia_yi_liu_du.json": {
+      "hash": "91f6364e3e84ef50dac62c2aba7452794a29d25970741e59ff844f5764951c8e",
+      "size": 1293
+    },
+    "example/assets/kao_ke/jin_mu_jia_liu_du.json": {
+      "hash": "8fa1869863f7279702117fa013f8049b0f000eae0fd2114004562ca1318e4d73",
+      "size": 1284
+    },
+    "example/assets/kao_ke/kun_gong_jia_liu_du.json": {
+      "hash": "ae4f38e927039e3499845da775207afbd3bfeff26f75a4ecba13a814f8f55cbf",
+      "size": 835
+    },
+    "example/assets/kao_ke/mu_gong_jia_liu_du.json": {
+      "hash": "92af841a1dfce7e35b1d62dd99fd25544c4771bf983f8168b4eee10fdb1daa6a",
+      "size": 1264
+    },
+    "example/assets/kao_ke/mu_gong_jia_yi_du.json": {
+      "hash": "ce1d7ded69c3be812e0e9625fc2b8461ca2d88397b70071187cd86576423a51a",
+      "size": 1277
+    },
+    "example/assets/kao_ke/na_bi_gua_jia.json": {
+      "hash": "1a902373475a6af01db8eb36937485f563756a4a5b6f613f9ad5ad550d423bd6",
+      "size": 740
+    },
+    "example/assets/kao_ke/na_bi_gua_yi.json": {
+      "hash": "ed0e0a9336485e01760cb37c570cafa3a600a66ae6916b5e54b97508c3bc4048",
+      "size": 939
+    },
+    "example/assets/kao_ke/na_gen_gua_bing.json": {
+      "hash": "bf660b0deee862128167afe552723cd83a5cca876c65547c48b27431a31186c4",
+      "size": 984
+    },
+    "example/assets/kao_ke/na_gen_gua_yi.json": {
+      "hash": "f91ca094a44c2a8207bd61353e7715fd1730f0b2c971fc2c9ce8bed691634d85",
+      "size": 917
+    },
+    "example/assets/kao_ke/qian_gong_jia_liu_du.json": {
+      "hash": "9cd2090bf31c233c153340b040e19e8f72249d6d682bf9dc5a1f2f487131a455",
+      "size": 928
+    },
+    "example/assets/kao_ke/qian_kun_jia_liu_du.json": {
+      "hash": "166241bf4a6bcbba6021081b3864a9cf909767727669212f72f653642406bec8",
+      "size": 960
+    },
+    "example/assets/kao_ke/sheng_xian_month.json": {
+      "hash": "b3ab8cb97e184843700c4fe33fea2cbd3e4b87ba3aa4ec539194870fd3853f5e",
+      "size": 930
+    },
+    "example/assets/kao_ke/sheng_xian_year.json": {
+      "hash": "d9a3f9cca04bae308b5efd3a80be3aa1e9796c1fea832bc90ed1d4d3538b33e5",
+      "size": 930
+    },
+    "example/assets/kao_ke/shi_tu.json": {
+      "hash": "d31dfb77cb2ebf3eae950caa3c436604f1e5f8de67594a31bd51107bb5bd7a84",
+      "size": 1278
+    },
+    "example/assets/kao_ke/six_qin_kao_fen.json": {
+      "hash": "3c31e88f8962786dc0e1cddeff2e4dcbe1b819e29a4a9bc8a54140a1e527de01",
+      "size": 28448
+    },
+    "example/assets/kao_ke/six_qin_kao_ke_1.json": {
+      "hash": "a19daabee87415a7ed6ecb7c77456f881ff733827a4938028e8f2747bbafe0cb",
+      "size": 12975
+    },
+    "example/assets/kao_ke/six_qin_kao_ke_2.json": {
+      "hash": "c2f82bd37ff4a76a8ce58fa1f89e0da27c070687960a46e68fbb77f270c70e2e",
+      "size": 17573
+    },
+    "example/assets/kao_ke/wu_jin_jia_liu_du.json": {
+      "hash": "861db3cdeb8ae9f22a745c7e89d6344b945c074b73b468201a996e134633bb48",
+      "size": 1293
+    },
+    "example/assets/kao_ke/wu_mu_jia_liu_du.json": {
+      "hash": "6e44ba5ad68f9a3d398ad8ecc032fbc2be4b9d5ded9a415fc8d401a4b38bceb3",
+      "size": 1011
+    },
+    "example/lib/dev_tiaowen_page.dart": {
+      "hash": "aafd2a1fdf48d0b2393d4e03df5e8801c0739833942b5a5bda12af3e66504063",
+      "size": 13720
+    },
+    "example/lib/main.dart": {
+      "hash": "95666ea3f5cb50061fa076a41238d5e6afcf4eb6678e64f2a0ef9beb3814db62",
+      "size": 1569
+    },
+    "example/pubspec.yaml": {
+      "hash": "7f4cf40fcf049909815ddb9bff21e0ffb7b7786c52aee6331db200d0f010f21b",
+      "size": 1270
+    },
+    "example/run_web.sh": {
+      "hash": "73b53729f7bc58b4204b9f46d073120581db13ca5f556565feacbcb57ace82bb",
+      "size": 604
+    },
+    "example/test/unified_run_demo_test.dart": {
+      "hash": "aff67896ba8b3e764917701899382fcfdf118daec81440180baa566880edf045",
+      "size": 2608
+    },
+    "example/test/widget_test.dart": {
+      "hash": "a1d7f8fbaf62ab07b3c3bcef47d965e1c1366829f2bb2de50d2f2e7cbbc81b21",
+      "size": 1056
+    },
+    "example/tiebanshenshu_example.iml": {
+      "hash": "078556ebd66f23eeb43b60557b1ed3d3e0b1a2a6297ccb71ad3b779316c7880d",
+      "size": 842
+    },
+    "example/web/index.html": {
+      "hash": "0a3b39930e1bc23a3cf00ec692f816eb1d06b4a763b37cc2c596c363ba7f8957",
+      "size": 1240
+    },
+    "example/web/manifest.json": {
+      "hash": "801809bee40f9bb4511a29be9aef906ff53c2f1153ac080ccfcadbfe7c19de2c",
+      "size": 938
+    },
+    "example/web/tmp/base_10.html": {
+      "hash": "57e6fd6e2a74d3398f3ee47233bc4b6f1ceb973cc382b6afa1f841880f38cf44",
+      "size": 14509
+    },
+    "example/web/tmp/base_12.html": {
+      "hash": "bd76b0b500e5d910329bc002d48e92cf2f6d6b3e9f08b6691fa73d48ffedeff9",
+      "size": 14215
+    },
+    "example/web/tmp/base_13.html": {
+      "hash": "576a0d6aa85afd27893814622c5ccc6a50804e5d8a985bf73723953e4b47cdb3",
+      "size": 23874
+    },
+    "example/web/tmp/base_14 copy.html": {
+      "hash": "018e54d3508514fff3389283a0f83ca270f9104cca1d91a79f94d19a587f4d8f",
+      "size": 17349
+    },
+    "example/web/tmp/base_14.html": {
+      "hash": "32fd2b4ee3bd58a8d55925b839dc7e3faf3f998711fe922a36a1d3a8bb896f7f",
+      "size": 17350
+    },
+    "example/web/tmp/base_15 copy.html": {
+      "hash": "69e76463e327fdd3fcaed62fd6ca320d60f42d6be5b0e05da8171d3b8e5140af",
+      "size": 30532
+    },
+    "example/web/tmp/base_15.html": {
+      "hash": "5f192fa23405b3b1c540c0e427cdc782c4097706e28455601d912719f0e84a18",
+      "size": 34394
+    },
+    "example/web/tmp/base_16.html": {
+      "hash": "4da37497fff59e3ac5b3ff9c018a901afc709b63bb8314d151ff9bf2096c40c3",
+      "size": 34586
+    },
+    "example/web/tmp/base_17.html": {
+      "hash": "4f5b1b74cecaa76af46874949759f81ee9d8cdd88b08854d14234c1fde52e088",
+      "size": 36395
+    },
+    "example/web/tmp/base_18.html": {
+      "hash": "adccd2c5d0f527103c70030ed144d7ff42ab975b6dc7128326b5c5a5f2d84203",
+      "size": 40742
+    },
+    "example/web/tmp/base_19 copy 5.html": {
+      "hash": "fffecbb2009a15185dbc8971302db783437ad4640f1e8f0b38ec4900e4454948",
+      "size": 24506
+    },
+    "example/web/tmp/base_19 copy 6.html": {
+      "hash": "85c77a80d0274f0c704ed12ab17344de57e0117596f4fdb5c28ff3156b03c756",
+      "size": 23382
+    },
+    "example/web/tmp/base_19.html": {
+      "hash": "a41d19a8f8f4164c6d510fb1092ad0f991b04041bc5fbd49aaf70b845215c1cf",
+      "size": 40361
+    },
+    "example/web/tmp/base_20.html": {
+      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "example/web/tmp/base_4.html": {
+      "hash": "887e70e8a55f29f21f4a7c74c879d1de1c476d19cade603322924873ee754163",
+      "size": 8724
+    },
+    "example/web/tmp/base_5.html": {
+      "hash": "62423bc86e78c001bdff0f8231a00c0f09d8d68fb5efee3fb93f7df44685faac",
+      "size": 6539
+    },
+    "example/web/tmp/base_6.html": {
+      "hash": "df910b954634305f2508b27f56e807502e71c60c8b67f468327ab9dbea2dc94d",
+      "size": 10646
+    },
+    "example/web/tmp/base_7.html": {
+      "hash": "513b8f97dbdd724765ec311aa2b9afc1dbe89bbbe88be9962c0ad455f12a7cc7",
+      "size": 9049
+    },
+    "example/web/tmp/base_8.html": {
+      "hash": "c2e63baa8c67edd14faeef4b7014cd01b7444be272bdedd1cfc6f010a2dbc456",
+      "size": 10372
+    },
+    "example/web/tmp/base_9.html": {
+      "hash": "3d91d5e7b6b7b6643515661a6ed256a1e521a7761a48bae0bce4cd8b5bc5a282",
+      "size": 22177
+    },
+    "example/web/tmp/luck_v1.html": {
+      "hash": "dc42e560862155ebbf2a43d1f1ec9251909814be73794d17c0c97237753be87e",
+      "size": 13454
+    },
+    "example/web/tmp/normal_tiny_base_19.html": {
+      "hash": "37b2026e86c11d59e2c0aba205c526e178408740351bfe81fcc320b1d4923cf5",
+      "size": 32702
+    },
+    "example/web/tmp/tiaowen_as_card.html": {
+      "hash": "e1de800636bc810715dbcfd6f9e30cabb737d8ad23547fd803f788c3e2334165",
+      "size": 24413
+    },
+    "example/web/tmp/tiny_tiaowen_as_card.html": {
+      "hash": "576a0d6aa85afd27893814622c5ccc6a50804e5d8a985bf73723953e4b47cdb3",
+      "size": 23874
+    },
+    "lib/application/services/interactive_session_service.dart": {
+      "hash": "d437cb85b29f6799208df0a39245c6b2b1346f4162ecf69936abd9e97a9ed04a",
+      "size": 6559
+    },
+    "lib/application/usecases/base_interactive_use_case.dart": {
+      "hash": "73d9cd1dc57d4c11e95e51de02fc36ed470d21bd655e15fe0eca1b4d974c2199",
+      "size": 7942
+    },
+    "lib/constant/constants.dart": {
+      "hash": "ace00563fd9cdce318ff78fda8c4321fb3874aa0154ba23287d77072d2b249d9",
+      "size": 24402
+    },
+    "lib/constant/kao_ke_constants.dart": {
+      "hash": "d290a0dfa10f413cd89a283c70964e85fa678ed401b2d470fe4a933656d3ec9b",
+      "size": 38360
+    },
+    "lib/constant/kao_ke_constants.g.dart": {
+      "hash": "58200af779c5d23a3a4cd327e6e0b61e5d9b8c5d4e1b7d944aa9120dff8b23de",
+      "size": 10789
+    },
+    "lib/domain/exceptions/huang_ji_calculation_exceptions.dart": {
+      "hash": "89a1cdbdf6d9c63c5378894f794f081215ba5124593126a0ee8af2d213c5ed18",
+      "size": 5277
+    },
+    "lib/domain/exceptions/tiao_wen_calculation_exceptions.dart": {
+      "hash": "61e1c25f3657bcc0b66e295a44d688047633fd267f4c81c73439d928ebcfe895",
+      "size": 11523
+    },
+    "lib/domain/models/ba_gua_gun_base_number_model.dart": {
+      "hash": "434cb48d818d657e6df741a3b930714abb57503ed2a107fb421b5fc3d103849c",
+      "size": 4653
+    },
+    "lib/domain/models/ba_gua_jia_ze_base_number_model.dart": {
+      "hash": "b1513ae3dc34582e9262ba9f7f94be4f40989205b3d94a23d44f4bfe448a03ca",
+      "size": 7675
+    },
+    "lib/domain/models/base_number_model.dart": {
+      "hash": "006f930f994a52c023ad5ea85044ac4acc2c02e17f9bf3266de473af090b0bed",
+      "size": 3573
+    },
+    "lib/domain/models/base_number_model_result.dart": {
+      "hash": "8c3571dda63f84c33fea27b4fa7599a28df27f5accb4c76ae1afbce270fabe82",
+      "size": 4698
+    },
+    "lib/domain/models/base_number_selection_batch.dart": {
+      "hash": "cfcbb9d7ca376a9925768488b5bb2c8b7c68c3106ed9761af050259b27ce27e2",
+      "size": 2894
+    },
+    "lib/domain/models/base_number_selection_batch.g.dart": {
+      "hash": "8ddefff463ef9a1bfe589b46eb8de430a66a56ce4a4bcb2e436f530b0af322bc",
+      "size": 1951
+    },
+    "lib/domain/models/base_number_selection_record.dart": {
+      "hash": "91aeceb837bd97b4bbdc3528090f38c4092d189c6375627672fff0ebab3bd7d6",
+      "size": 9388
+    },
+    "lib/domain/models/base_number_selection_record.g.dart": {
+      "hash": "d07190fad8c9489eb08d41dd8f10d8fbf44881f73bdd5f730c041b4da1066a3c",
+      "size": 4836
+    },
+    "lib/domain/models/base_number_tiao_wen_list_model.dart": {
+      "hash": "a97b9774ac21ae9b2aed16f6318158d6762a1014e28a7dc31f05f4f17d2d767c",
+      "size": 8255
+    },
+    "lib/domain/models/gua_yao_gan_zhi_he_base_number_model.dart": {
+      "hash": "af640a7c885637387c05bcf78b3b3fa5427b7ea9f627f8c5c66adf20620a4506",
+      "size": 5998
+    },
+    "lib/domain/models/gua_zhong_base_number_model.dart": {
+      "hash": "baf5245af75b69279d0afd11303902117ad1d1f08ac528225b24341affdc45e6",
+      "size": 23056
+    },
+    "lib/domain/models/huang_ji_number.dart": {
+      "hash": "cee40c923fe4ca1a29154292e14cd8b2d17e80198ae2d24b2f83c39570a48c52",
+      "size": 8788
+    },
+    "lib/domain/models/huang_ji_number.g.dart": {
+      "hash": "a91b799b54366490561b2100790ac1cae7b614d9612f3870bb70b6487896f29e",
+      "size": 5863
+    },
+    "lib/domain/models/interactive_session.dart": {
+      "hash": "98b3390a1b024ad4790616fd5db689755d30726d4f1581d3fef38e436cd3724b",
+      "size": 8101
+    },
+    "lib/domain/models/interactive_strategy_config.dart": {
+      "hash": "6e566429b0c0c60d08560bf0cdc1ca3da13d6640ba6bbaa675c1d5cd9ee5cb3e",
+      "size": 6196
+    },
+    "lib/domain/models/interactive_strategy_config.g.dart": {
+      "hash": "85c0874ac2cce53c90be8b8d73a96b26b1d31cb16341093c947ee7ff86d124c2",
+      "size": 2056
+    },
+    "lib/domain/models/liu_yao_gan_zhi_he_base_number_model.dart": {
+      "hash": "12efc5981040cb7ef8feebadac2a744966804e7c7fa79fbed9b8da7a837ef280",
+      "size": 17810
+    },
+    "lib/domain/models/middle_palace_five_strategy.dart": {
+      "hash": "1178d1762e4f12123e4b4b07df6dad28473ecfe9990d97de34723a30ff7a6a81",
+      "size": 1238
+    },
+    "lib/domain/models/multi_base_number_result.dart": {
+      "hash": "c75c22234e76079e13e99bcdbee64f00701ce3880f9f4fe66619a8f9a858dc98",
+      "size": 7811
+    },
+    "lib/domain/models/multi_base_number_selection.dart": {
+      "hash": "8c74fa4a24a65a0908bd99ab189c9cf3844568218f59610573ec4a72a240ea20",
+      "size": 11847
+    },
+    "lib/domain/models/multi_base_number_selection.g.dart": {
+      "hash": "a2c167b443243663fd95a9c0409821fc5cded3e27bdd76f3f64c4e99a4d095b5",
+      "size": 4122
+    },
+    "lib/domain/models/qian_hou_gua_base_number_model.dart": {
+      "hash": "78efc959c7054bd69f5786f0ff24640cf25dfbbeef6022723ccca103ed59a7e4",
+      "size": 15995
+    },
+    "lib/domain/models/si_men_fa_base_number_model.dart": {
+      "hash": "9a302a49e696b287f70a5ab6b63bf2acc878230de285106785221c141032d147",
+      "size": 3956
+    },
+    "lib/domain/models/tai_xuan_base_number_model.dart": {
+      "hash": "76940e61797c30425238c15ee4686a2a976d1bd2c359f5ff37e43fc8509ca74a",
+      "size": 9838
+    },
+    "lib/domain/models/tiao_wen_candidate.dart": {
+      "hash": "a7398d28fa56fc7ad1a6cc429951c081dc2d15404dc77e1b5db711d97fae24b9",
+      "size": 7534
+    },
+    "lib/domain/models/tiao_wen_candidate.g.dart": {
+      "hash": "09236ef82b0d562be28100d95f1c6be1f8e242ad0889cec29cea1efb3dfe0c7f",
+      "size": 1607
+    },
+    "lib/domain/models/tiao_wen_list_result.dart": {
+      "hash": "7a9a0e08a2ee45ccbd0cc388d86da2fda55abb1a20cf6197d7f9483200e105af",
+      "size": 3970
+    },
+    "lib/domain/models/tiao_wen_list_state.dart": {
+      "hash": "2d5ad3f05bc77d2957872f3726c03ee9ed61f369accccf3b9fbb7782a5832ee2",
+      "size": 533
+    },
+    "lib/domain/models/tiao_wen_result.dart": {
+      "hash": "fb058ad2dfbffd12551676fdc5d08ea72fb538a4e3952e90c0997a3a3c0e8b5c",
+      "size": 1047
+    },
+    "lib/domain/models/tiao_wen_result.g.dart": {
+      "hash": "903a9756ba9448aac129d0d74b9799976370697b91dcbbe951e76b56bd424e4d",
+      "size": 1053
+    },
+    "lib/domain/models/tiao_wen_source_info.dart": {
+      "hash": "8edaec50639a707b56653820a712b1a9bc507c9dd059faf9d83f19b225665360",
+      "size": 5574
+    },
+    "lib/domain/models/unified/divination_context.dart": {
+      "hash": "2c49a4a5573cffdcd11b7925413474fb981c7c9263bbe9c5d75b04fa42cbdae2",
+      "size": 2866
+    },
+    "lib/domain/models/unified/divination_result.dart": {
+      "hash": "5cd6bb5cb1ff5207256c75cfaeaa85a4224b0a4f61117c4ff58d5b7428799fcd",
+      "size": 2732
+    },
+    "lib/domain/models/unified/divination_session.dart": {
+      "hash": "a39b4544623a0e858dbce75f8bbb69b8959ae9eacb0f492774e2cd3b4631d370",
+      "size": 1982
+    },
+    "lib/domain/models/xian_houtian_gua_base_number_model.dart": {
+      "hash": "2b98d9532d509932149fef43d4a531c0bc42b6d2ba1c43aec206827a4590c83a",
+      "size": 13333
+    },
+    "lib/domain/models/xian_houtian_qu_shu_base_number_model.dart": {
+      "hash": "4fbd8d573b87a6dcfd39d839e969541885bed0308d767658186fff11c6e116d2",
+      "size": 17808
+    },
+    "lib/domain/models/yuan_hui_yun_shi.dart": {
+      "hash": "f6f02d843d82ca8da28edb3fac2a999eca100b729bbfad99714f4b71ce97484e",
+      "size": 5214
+    },
+    "lib/domain/models/yuan_hui_yun_shi.g.dart": {
+      "hash": "7daf31d6f9994fa6c0d1b0e82106fb75c6f6b937d952e1281b3ef60700fcc67c",
+      "size": 5622
+    },
+    "lib/domain/models/yuan_tang_base_number_model.dart": {
+      "hash": "73d33f1b99c483fe6f826518288b400127ac3615c7cad944748a752a9d5c4b6c",
+      "size": 32986
+    },
+    "lib/domain/models/yuan_tang_model_result.dart": {
+      "hash": "01d715038d3d0a41f99e7ff37f033e2b3ee71519b974b4ebd298935625be9a1c",
+      "size": 3956
+    },
+    "lib/enums.dart": {
+      "hash": "c94433818037839874c3fd6007b7d61e275045972473ac621437a959bece6f9a",
+      "size": 446
+    },
+    "lib/extensions/chinese_date_info_extension.dart": {
+      "hash": "3d9e54dc18c5c8da1c765f90d864eabcedc0bdd420239a078c7a502121738f76",
+      "size": 2060
+    },
+    "lib/features/huang_ji/huang_ji_formula_data_v2.dart": {
+      "hash": "049c7a821c87d8500151c48a2911d818f36e6499e7ce1688864e8556222f6ff5",
+      "size": 13562
+    },
+    "lib/features/huang_ji/huang_ji_formula_data_v2.g.dart": {
+      "hash": "0069b966830dc3e70eb03bea4f39d5c2a973005dd205e2a19e872253e725b878",
+      "size": 8209
+    },
+    "lib/features/huang_ji/huang_ji_formula_v2.dart": {
+      "hash": "4da7f46faa8a3ae6c8937cdec89284b0422a2d13441b6edd36f1e623bb292366",
+      "size": 18028
+    },
+    "lib/features/huang_ji/huang_ji_formula_v2.g.dart": {
+      "hash": "8d7da49d25aa9300fe5fd78b3d244a520b82cdcdeaf690e6326bd35b63567608",
+      "size": 7824
+    },
+    "lib/features/huang_ji/huang_ji_session_manager.dart": {
+      "hash": "be9c30f06c270318d9dc69cbb2fc7da4097f2b9b376f7ca0fc6f4808c059f548",
+      "size": 4870
+    },
+    "lib/features/huang_ji/huang_ji_v2_calculation_strategy.dart": {
+      "hash": "d1265da51ccaf53a4f0d46c2f91dcff7383e062c3fb315a847383a3e5942c2a9",
+      "size": 1024
+    },
+    "lib/features/huang_ji/huang_ji_v2_calculation_strategy_impl.dart": {
+      "hash": "874735140855be07e90d64dee4110eab2b9a301f665e30d424152e0869248def",
+      "size": 3886
+    },
+    "lib/features/huang_ji/huang_ji_v2_demo_page.dart": {
+      "hash": "edcd1550359845661137f3a4e59cbd5160a93f08dc8abd8109efaa61f62948b8",
+      "size": 14472
+    },
+    "lib/features/huang_ji/huang_ji_v2_session_models.dart": {
+      "hash": "0f4c83ec8c5f84e7d4e13ef5322d1cf36915d04877329b61ec072f8ea3cecb2a",
+      "size": 6926
+    },
+    "lib/features/huang_ji/huang_ji_v2_session_models.g.dart": {
+      "hash": "49e6e269bbbe4240a3a966316bc5c882191c1c332c8a7cd0af43ee667c899fa5",
+      "size": 4092
+    },
+    "lib/features/huang_ji/huang_ji_v2_use_case.dart": {
+      "hash": "faeec47bae013074d3fe7af74491b17e2349f5f41895d58d04ee5efd77fae7e9",
+      "size": 15784
+    },
+    "lib/features/huang_ji/huang_ji_v2_view_model.dart": {
+      "hash": "e329c5e757e1b5f26da296131ba30b9edea34a13164dd3f6e8a1dde259e21364",
+      "size": 5471
+    },
+    "lib/features/huang_ji_formula_manager.dart": {
+      "hash": "b7f04fed2dc8b9c7eee0b00f2deb5f615e988fb6ee8d141fe690149fa4e15c95",
+      "size": 7565
+    },
+    "lib/features/kao_ding_liu_qin/models/liu_du_table.dart": {
+      "hash": "977392d1fe00845ed77e4f45f862919ce764c10c22d8126b5a3a387fc9686960",
+      "size": 5353
+    },
+    "lib/features/kao_ding_liu_qin/models/liu_qin_type.dart": {
+      "hash": "ef8ac70472fe6201ed0e9a1eaf74f8036f76f220607d6bf5a39c9a08481dc9c2",
+      "size": 2044
+    },
+    "lib/features/kao_ding_liu_qin/models/session_manager.dart": {
+      "hash": "d689669eb5428088923f18af6f14391b009cd5ec7e536f6b997d72d3a8712fe5",
+      "size": 6199
+    },
+    "lib/features/kao_ding_liu_qin/models/spouse_ordinal.dart": {
+      "hash": "d1696a4ca4cabce4551328ec7597e73bb45a3786ce1674d52835ff6232f7e41d",
+      "size": 549
+    },
+    "lib/features/kao_ding_liu_qin/pages/kao_ding_liu_qin_page.dart": {
+      "hash": "c9361289516886b5778c8fddade06bfbb56924449412021e59880a8fa83f4afb",
+      "size": 16595
+    },
+    "lib/features/kao_ding_liu_qin/repositories/liu_du_table_repository.dart": {
+      "hash": "8eb713fc42a26bdba22fcd03d637cb4ffb34f80c9c004e6e7ac06122c8bd9467",
+      "size": 5784
+    },
+    "lib/features/kao_ding_liu_qin/services/kao_ding_liu_qin_strategy.dart": {
+      "hash": "6ee35f271b6fa22aa44184849df00066be9a0a8c18d30b26b4404879f19550e6",
+      "size": 6735
+    },
+    "lib/features/kao_ding_liu_qin/services/na_jia_liu_qin_helper.dart": {
+      "hash": "c4a6e3edbbea9833e69d067fa99be33c749b82687635219bc18b310229ed6868",
+      "size": 6342
+    },
+    "lib/features/kao_ding_liu_qin/services/qi_gua_helper.dart": {
+      "hash": "b156b1ac4ab9ad5b4ed6ccc0ad32f5a1ede35f88776cbeff929e33b7c6501328",
+      "size": 3988
+    },
+    "lib/features/kao_ding_liu_qin/usecases/kao_ding_liu_qin_use_case.dart": {
+      "hash": "6040267147907edea8a992df746ef28f982cf560b30fac09bb73ed342d074b34",
+      "size": 10427
+    },
+    "lib/features/kao_ding_liu_qin/widgets/liu_du_table_selection_widget.dart": {
+      "hash": "bc9625a4a34573eeffe1accaa02f0da0bbe6348a87f6edbcbb6deb6f8185d0ef",
+      "size": 7914
+    },
+    "lib/features/kao_ke/gua_calculation_helper.dart": {
+      "hash": "0c68c851d430c718d68df6c44bb064f9edda40d306aa2da5f5661fc0229e7ad5",
+      "size": 7167
+    },
+    "lib/features/kao_ke/kao_ke_calculation_strategy.dart": {
+      "hash": "1815dfd762815bc164025af6470703b3176930e3a1deaae1002b8c805e759931",
+      "size": 1932
+    },
+    "lib/features/kao_ke/kao_ke_calculation_strategy_impl.dart": {
+      "hash": "c22cb241414dfe9cdc341b0b744a140c252fdc3cb47d5185583b4b3caf40f0bf",
+      "size": 7358
+    },
+    "lib/features/kao_ke/kao_ke_interactive_page.dart": {
+      "hash": "829ad6acf9b992cb3061ce05e7d3d486eb917c8613320bc4e366dc2ebb4652b5",
+      "size": 21842
+    },
+    "lib/features/kao_ke/kao_ke_session_manager.dart": {
+      "hash": "4b4fe20dd323083c3fd358c0e90067ac3d11c1c4a75c12f2acad13732ef871a9",
+      "size": 4468
+    },
+    "lib/features/kao_ke/kao_ke_session_models.dart": {
+      "hash": "83e9e6ae08678774a1befcaecae2171cde9f7506dc850cb231cdc8e2fce15666",
+      "size": 11238
+    },
+    "lib/features/kao_ke/kao_ke_session_models.g.dart": {
+      "hash": "9ff8727c206447c746153078fac89c986c144327662575bf6e27fd0006ebbf43",
+      "size": 6099
+    },
+    "lib/features/kao_ke/kao_ke_use_case.dart": {
+      "hash": "7c7b107c0e3ee124e1f208b947aba8dbb698dfbfea784f997e45d87609626fbe",
+      "size": 9530
+    },
+    "lib/features/kao_ke/kao_ke_view_model.dart": {
+      "hash": "ed374d06a1850d36d9bac069d1178321813b8923616d0b6e5b61103e190254e3",
+      "size": 6760
+    },
+    "lib/features/kao_ke/widgets/dou_jia_yi_selection_table.dart": {
+      "hash": "7367364645fdf3d8c963c53b33815f5e6a5b301df9067213cf6f423d0aaafb1b",
+      "size": 5941
+    },
+    "lib/features/kao_ke/widgets/final_result_display_widget.dart": {
+      "hash": "a5460c701f69cd07892d788945479b6d9ee0c9a29a3491729ccab5e064041da2",
+      "size": 8611
+    },
+    "lib/features/kao_ke/widgets/gua_display_widget.dart": {
+      "hash": "11a27fab788fe70a21e7ea0fbe87fc1aebabf51f691d046acc273b0c8d2595b8",
+      "size": 7063
+    },
+    "lib/features/kao_ke/widgets/ke_selection_table.dart": {
+      "hash": "a5d36dc62f7a27df1ef1f0a70685f0eed8dd06681097dc52f507babd72dbb23a",
+      "size": 5464
+    },
+    "lib/features/kao_ke/widgets/method_selector_widget.dart": {
+      "hash": "162335c3ddab1c78b8563416b305be8808838d024ee62a59ddb8c7604042032c",
+      "size": 5839
+    },
+    "lib/features/kao_ke/widgets/tiao_wen_detail_dialog.dart": {
+      "hash": "8747f8e107679f3c49ffcf4c7ed20dfcfb09041cfbc904986c79ce4219bd7ef9",
+      "size": 6375
+    },
+    "lib/features/liuqinkaoke/models/liuqinkaoke_models.dart": {
+      "hash": "20c524048f47720ada7b25f5c10c5b43c5e0f1b3d342ca6d3551de6d82ee167b",
+      "size": 3131
+    },
+    "lib/features/liuqinkaoke/pages/liuqinkaoke_selection_page.dart": {
+      "hash": "810787f6ec8745bd9fd1c7147d00df697c602a8ab131505599e86627034e252e",
+      "size": 6386
+    },
+    "lib/features/liuqinkaoke/repository/liuqinkaoke_session_repository.dart": {
+      "hash": "cefadf5d2ee6dc61a318f1b61bffa8ae24241b6ad658c15e797d9b92268dd8e3",
+      "size": 1072
+    },
+    "lib/features/liuqinkaoke/strategy/liuqinkaoke_calculation_strategy.dart": {
+      "hash": "68eb1d8c4cda7d055bf480e4cd098f867f7cb027f8dc9eac0428e60ce84d2b06",
+      "size": 6136
+    },
+    "lib/features/liuqinkaoke/strategy/liuqinkaoke_default_strategy.dart": {
+      "hash": "9deafc74d7db935c0e8bfda5e1643c813839a9a6072dec0d97f263a24ec5c0c5",
+      "size": 312
+    },
+    "lib/features/liuqinkaoke/usecase/liuqinkaoke_session_manager.dart": {
+      "hash": "32d9c4ac5ac4f2b337303dad4984486c969216351e948f3a85fad2166ec6e12b",
+      "size": 6299
+    },
+    "lib/features/liuqinkaoke/usecase/liuqinkaoke_use_case.dart": {
+      "hash": "61f5447a664797249726008378c0c0cb54f88e06a800458d27b6f148f724761e",
+      "size": 1187
+    },
+    "lib/features/liuqinkaoke/viewmodels/liuqinkaoke_view_model.dart": {
+      "hash": "f92efd43cf66a9e5bc389b8ee74074edeed44af645b86f2d59d64a83de1c058d",
+      "size": 2723
+    },
+    "lib/features/six_yao_gua/enum_6_shou.dart": {
+      "hash": "84b3621fcbf1608d9b9cf10d26a8a07f771cf415c70e3f1b888aa79c28654770",
+      "size": 820
+    },
+    "lib/features/six_yao_gua/enum_8_gong_gua.dart": {
+      "hash": "3a3ff0e980a42189a4f08bd7d27249174c04ee931a615019930dcc018b7ca2ca",
+      "size": 1236
+    },
+    "lib/features/six_yao_gua/pure_six_yao_gua.dart": {
+      "hash": "a54512d5d60d20bf3bed4d47bb5f78278658f2f4eb05f00733f023bd989bb0ee",
+      "size": 15533
+    },
+    "lib/features/six_yao_gua/pure_six_yao_gua.g.dart": {
+      "hash": "4fc7b49c6732804da71f45d017137b378b6c0fdc4ed8d91f29bf534d40696a3b",
+      "size": 5191
+    },
+    "lib/features/six_yao_gua/pure_six_yao_gua_extension.dart": {
+      "hash": "12db0dfdebe2b13645d7b3e9532918cf12f6f26e7b091aa50785be4167854091",
+      "size": 3518
+    },
+    "lib/features/six_yao_gua/six_yao_calculator.dart": {
+      "hash": "19219321ea3e85dca4971d77f0650ff0b6b3b321bfde9a0ae45746affacde31a",
+      "size": 10781
+    },
+    "lib/features/yuan_tang_gua/pure_yuan_tang_gua.dart": {
+      "hash": "51839eb82340b6333766bf90849563c192ffe2adfd937ce6145ec513632bf8af",
+      "size": 14413
+    },
+    "lib/features/yuan_tang_gua/pure_yuan_tang_gua.g.dart": {
+      "hash": "f75c9eaaed01299f503b5e220b9901548abc51777677d4c876af2e54cfad94e0",
+      "size": 8600
+    },
+    "lib/features/yuan_tang_gua/yuan_tang_calculator.dart": {
+      "hash": "e094a912ea001b4e5813e2f382c5472881c5c102a0ba00a175a50322d9b01d07",
+      "size": 42541
+    },
+    "lib/features/yuan_tang_gua/yuan_tang_info.dart": {
+      "hash": "76c6ab57a8e667f54b51c14d511bba7ed87d734ed3590399cce60295e9a8f8e1",
+      "size": 4399
+    },
+    "lib/features/yuan_tang_gua/yuan_tang_info.g.dart": {
+      "hash": "21d859ab2923d6778321eaca5f7431f973f822bfc7d12120955b1597fe534386",
+      "size": 2939
+    },
+    "lib/features/yuan_tang_gua/yuan_tang_info_ext.dart": {
+      "hash": "1d5c843665cc3721d6cf018d3e84d05772da0c555da71857d13572879c0b2590",
+      "size": 7694
+    },
+    "lib/features/yuan_tang_gua/yuan_tang_info_ext.g.dart": {
+      "hash": "be23effbc67108f41676cf7e16fe344f8a5e11fdccc82c562257365b3789ec13",
+      "size": 3070
+    },
+    "lib/infrastructure/di/strategy_providers.dart": {
+      "hash": "6a9fe2e5786ba22d0eb378a51049a0f0d3919b110f36b65d793ba90259713669",
+      "size": 15867
+    },
+    "lib/main.dart": {
+      "hash": "3a058d2b996e1d91ad26dfc0832b079a0d719df3dd6694a574362d92ef156620",
+      "size": 1461
+    },
+    "lib/navigator.dart": {
+      "hash": "929895786f62fb4585826dfe39c65456ef0c93bac3e41810a38ac4f3b3abd26a",
+      "size": 4223
+    },
+    "lib/presentation/components/animated_button.dart": {
+      "hash": "6be4056031b0430d6d0dd0d550f6078c2f745fb3fbc79252f43ebe60941b370f",
+      "size": 3033
+    },
+    "lib/presentation/components/glass_scaffold.dart": {
+      "hash": "27bb663d6c2786f8405e5ea9e6510f531df753bf4e0253ca22775b86e577c719",
+      "size": 2331
+    },
+    "lib/presentation/components/gradient_card.dart": {
+      "hash": "c1cc6ebfae2009e5938c824870f2edf22f47d05961c51db52a4f2cc8f5d94555",
+      "size": 1395
+    },
+    "lib/presentation/components/section_header.dart": {
+      "hash": "3c56a753b961253c97c7b418d00b3b8d3ecc4b91b06cbca20419913eb56cd4f5",
+      "size": 1172
+    },
+    "lib/presentation/home/home_page.dart": {
+      "hash": "6b666c7ff6020766fa02705a3313bf6d0de1e1536624a6246818215da1edd8ea",
+      "size": 6671
+    },
+    "lib/presentation/models/ba_gua_gun_ui_model.dart": {
+      "hash": "6751cb968b9f921999a64dd16de32185102e1c8934b32116334fcb8f5b5650a4",
+      "size": 5615
+    },
+    "lib/presentation/models/ba_gua_jia_ze_ui_model.dart": {
+      "hash": "791540314ff4c1717118306063ef6e61c8ee92128782fee176142197c92e29a6",
+      "size": 9951
+    },
+    "lib/presentation/models/si_men_fa_ui_model.dart": {
+      "hash": "3c5eccbf80e98bff6b9ef66c81d1f17ff9e3fa4a5fe13771e2fc8e740a5d8d56",
+      "size": 6203
+    },
+    "lib/presentation/models/ui_tiao_wen_list_result_model.dart": {
+      "hash": "1bffa93d6996a2b05ee35c171643e0f17e2be0edc640cec007ecb40c3b5d1d86",
+      "size": 7622
+    },
+    "lib/presentation/models/yuan_tang_ui_model.dart": {
+      "hash": "dc62b507fd3915036bacc99f1bd41daed4c98c27ca5d9a6239ee243adf1cf0fb",
+      "size": 19541
+    },
+    "lib/presentation/pages/four_doors_and_gun_fa_page.dart": {
+      "hash": "86a668123e9dc04fd4b0ecefcc541dd508183817b91c3a83b402f6781a8ea9a0",
+      "size": 21540
+    },
+    "lib/presentation/pages/strategy_demo_page.dart": {
+      "hash": "46829373c52dc789f7bd30b89162399648824808da4dd981efef9355eb5450cf",
+      "size": 32883
+    },
+    "lib/presentation/pages/tai_xuan_interactive_page.dart": {
+      "hash": "d3ea94d40b419dd2d1bf92ec22f28352f58fb7a3dd1cd6d1966a0c76dbdbf837",
+      "size": 14625
+    },
+    "lib/presentation/pages/vertical_layout/base_18_page.dart": {
+      "hash": "0bb52793d8a19804079f2d2f9365f758d2ffcc5c637ceb6b7600cd5f4220a953",
+      "size": 9423
+    },
+    "lib/presentation/pages/vertical_layout/models/base_18_models.dart": {
+      "hash": "eed00b976fd20e4ce0b54bc996cc485df68ac1d36921c73816197b0961dc098f",
+      "size": 1785
+    },
+    "lib/presentation/pages/vertical_layout/vertical_layout_page.dart": {
+      "hash": "d8b76cf5ce72b5db659ca0dba0ca05266932a10230610ccf29f7733164e7395d",
+      "size": 13285
+    },
+    "lib/presentation/pages/vertical_layout/widgets/horizontal_algorithm_card.dart": {
+      "hash": "cbf987ef1009be502431e8e81bfbef9db2891d52c139305bdd142051e9eef932",
+      "size": 11768
+    },
+    "lib/presentation/pages/vertical_layout/widgets/horizontal_tiao_wen_widget.dart": {
+      "hash": "e1dbb703f864dab7cfb16af42824e66401b5b890ca5b48e3b2fd7656b8541258",
+      "size": 23328
+    },
+    "lib/presentation/pages/vertical_layout/widgets/unified_algorithm_card.dart": {
+      "hash": "e79fd15668ee88abb2a409b5690458d04813f58c8d935bb3e15c994928cd3dad",
+      "size": 5620
+    },
+    "lib/presentation/pages/vertical_layout/widgets/unified_nav_rail.dart": {
+      "hash": "7353de87ca547dfcc6b92436e1d7ad5b386b59fc151a4d3a3a50ef8c706d0b0e",
+      "size": 1976
+    },
+    "lib/presentation/pages/vertical_layout/widgets/unified_verse_row.dart": {
+      "hash": "1da43ac7a748c47d2b9b1acfaa8db6e7a20b4a65ae3ebbcd0cfda5edeedeb538",
+      "size": 15954
+    },
+    "lib/presentation/pages/vertical_layout/widgets/vertical_algorithm_card.dart": {
+      "hash": "70f91c0cfc92da1bd35701ee6cbb252b1332fb6d0c77f84fda7a2a9bb87f6465",
+      "size": 7470
+    },
+    "lib/presentation/pages/vertical_layout/widgets/vertical_text_wrapper.dart": {
+      "hash": "95b457ad3abf5c9de8a2cd53581460e7a7aeb5595045f661c0e51c5ba02e5953",
+      "size": 4293
+    },
+    "lib/presentation/pages/vertical_layout/widgets/vertical_verse_row.dart": {
+      "hash": "b48a129c8596d1ea1fa3ce7ea21ddc0620d55f2f2d9fb2572aed0a71acc56b42",
+      "size": 20341
+    },
+    "lib/presentation/styles/strategy_demo_styles.dart": {
+      "hash": "b84b36183511395b50208192608be27a144ef12a28cabb2b2f2aeb53a2e9a39d",
+      "size": 6044
+    },
+    "lib/presentation/theme/app_colors.dart": {
+      "hash": "33f60f82f38f6e950a841b3bfe511d8bbeaf60f97313e81abc6b8532432c9569",
+      "size": 2236
+    },
+    "lib/presentation/theme/app_theme.dart": {
+      "hash": "7e814733b9f795893a9d8475d94c95627553c3368728a711874fb2f2c17ea300",
+      "size": 2835
+    },
+    "lib/presentation/theme/app_theme_data.dart": {
+      "hash": "175cc0aeec6c0f46e2835871a33c48ff4e8eb2d912dc542f78bd39fd113b7494",
+      "size": 4990
+    },
+    "lib/presentation/theme/app_typography.dart": {
+      "hash": "277641e1097bd418f4082bc3c2b33b4738addd3af83d98e90ad87ee0e0b34435",
+      "size": 2386
+    },
+    "lib/presentation/viewmodels/ba_gua_gun_view_model.dart": {
+      "hash": "68212217043e96e92daec80e9a9872462ff4f26a87f200808c3d8839a65328cc",
+      "size": 6360
+    },
+    "lib/presentation/viewmodels/ba_gua_jia_ze_view_model.dart": {
+      "hash": "52852487d7299613879a0d9eb02198004134fae5f63b93d576592f92985f6b3d",
+      "size": 3868
+    },
+    "lib/presentation/viewmodels/base_tiao_wen_list_view_model.dart": {
+      "hash": "7fb702a1c41f1194e43f4a4e02a9c031f3a32247db2ea6fe312ffb3287cb0f8d",
+      "size": 7193
+    },
+    "lib/presentation/viewmodels/day_gan_zhi_gua_view_model.dart": {
+      "hash": "3f0396718282421e3652558c74950db067066c5ab2a2d1026f644405d71274b0",
+      "size": 2285
+    },
+    "lib/presentation/viewmodels/four_zhu_tian_gan_view_model.dart": {
+      "hash": "211af05565b375034b195c6939b73e77b4c10069198ff4ede7096da1c90ce0d8",
+      "size": 2687
+    },
+    "lib/presentation/viewmodels/gua_yao_gan_zhi_he_view_model.dart": {
+      "hash": "d27853f36cdd677b480e52826677d921a331499d7062aaf5fbfb5a5f16e73598",
+      "size": 2684
+    },
+    "lib/presentation/viewmodels/gua_zhong_view_model.dart": {
+      "hash": "d1a20e22c0295747fdfbc48947ed0f839807e3a762966532292a205106f8f73b",
+      "size": 9366
+    },
+    "lib/presentation/viewmodels/kao_ding_liu_qin_view_model.dart": {
+      "hash": "28422744d72acdbbae6852b46a8ce366db1857f74dc33e6b121c49e56f06850a",
+      "size": 12157
+    },
+    "lib/presentation/viewmodels/liu_yao_gan_zhi_he_view_model.dart": {
+      "hash": "fa1cd17cdfc218ab846c1dbe8489bd56b6ebc62b26db9597e7eada0ce886eebe",
+      "size": 8669
+    },
+    "lib/presentation/viewmodels/qian_hou_gua_view_model.dart": {
+      "hash": "06ad5970cfc6f14cbab5ab73d534b3771af87728b20a3e5a57068249a2814e21",
+      "size": 7554
+    },
+    "lib/presentation/viewmodels/si_men_fa_view_model.dart": {
+      "hash": "bdf54b182685d082b787b6108902be6a372d923b3fd9ab668acd58d49001adab",
+      "size": 5653
+    },
+    "lib/presentation/viewmodels/tai_xuan_four_zhu_interactive_view_model.dart": {
+      "hash": "1c9b0842325c687d14ece45f73658b6b1416d7a6c16afd2b141e648b29451019",
+      "size": 15554
+    },
+    "lib/presentation/viewmodels/tai_xuan_four_zhu_view_model.dart": {
+      "hash": "bc81f1189820ff2424dde044f50fbae55b8b12185a9231be751e5bc74eb6410a",
+      "size": 12418
+    },
+    "lib/presentation/viewmodels/theme_view_model.dart": {
+      "hash": "5d88f1c3284d3cb4d75ff290aae4d86440b3c54e7fc05b96ee4aa7b74f89178b",
+      "size": 1695
+    },
+    "lib/presentation/viewmodels/xian_houtian_jia_ze_view_model.dart": {
+      "hash": "e5fbc4454a39297c5eec1dc2c99c56d05fb8206e7b17685a3865b48b27059678",
+      "size": 7078
+    },
+    "lib/presentation/viewmodels/xian_houtian_qu_shu_view_model.dart": {
+      "hash": "b756d0f6ee472242d932f4913b50bc70fc61b5d177c2c2bda5adb05dc7c61ca7",
+      "size": 8658
+    },
+    "lib/presentation/viewmodels/yuan_tang_view_model.dart": {
+      "hash": "e0dfd93d820e6c46ef4f6caeedb4833a76552a3903b76d3a5021f474d6740097",
+      "size": 6282
+    },
+    "lib/presentation/widgets/ba_gua_jia_ze_card.dart": {
+      "hash": "f80493026cecd784dc5efe718efe81d3c6ea023b3ed08a84b8ac8ea8f7bb36c8",
+      "size": 13505
+    },
+    "lib/presentation/widgets/calculation_summary.dart": {
+      "hash": "e692d48323ee6a4c9d26eeb251290d51b20c4f57b204b8246225b9d501556f6e",
+      "size": 4870
+    },
+    "lib/presentation/widgets/candidate_selection_widget.dart": {
+      "hash": "c08baac5d74deb6dedfbf6828d40d4348ec7c15327e7a3e18cfbe524d3c0d318",
+      "size": 10137
+    },
+    "lib/presentation/widgets/empty_state_widget.dart": {
+      "hash": "f3ab2ddb1d28b745a9d3c3ec52fc01d5bdb7d1ea15c6ab56535a43fed729660c",
+      "size": 4513
+    },
+    "lib/presentation/widgets/error_widget.dart": {
+      "hash": "d5a432a0ca294d34101e430fccab137faec3397981e95aa138c713473ffa42d1",
+      "size": 4986
+    },
+    "lib/presentation/widgets/gua_change_visualization.dart": {
+      "hash": "5cbd6a2e8a3fdabcb976b149d8f3435b12eda032376c54f077acc19aacb4b8f0",
+      "size": 6688
+    },
+    "lib/presentation/widgets/gua_yao_gan_zhi_he_card.dart": {
+      "hash": "449d9c37a116b3b2a31ad017f5d109af5a6c646a282197d33ec8fe40255af830",
+      "size": 17446
+    },
+    "lib/presentation/widgets/gua_zhong_card.dart": {
+      "hash": "8f75d829c716f954a42d3840f73c19023b230982bd95ffe517b177e564a0bc00",
+      "size": 19963
+    },
+    "lib/presentation/widgets/interactive_result_widget.dart": {
+      "hash": "f64c811f58104b494b8de5d2895379736b2c0624e1052e2834f150b3b18c779e",
+      "size": 6872
+    },
+    "lib/presentation/widgets/interactive_session_header.dart": {
+      "hash": "3e7750e62782679203e3b035ab711b2d3c7edc83bc00a24452d4aa2df5627c77",
+      "size": 5390
+    },
+    "lib/presentation/widgets/interactive_step_indicator.dart": {
+      "hash": "d0e36352f8e91e3c8dc7079cfe5887b818a8081429a3909c498ab1110e989829",
+      "size": 5574
+    },
+    "lib/presentation/widgets/kao_ding_liu_qin_card.dart": {
+      "hash": "d8af9cd686b73b2fc208821bbfe4ce0d222929a1f067f742e4e2977644ca88a5",
+      "size": 10443
+    },
+    "lib/presentation/widgets/liu_yao_gan_zhi_he_card.dart": {
+      "hash": "4e2350b0c64dae2835816ec7ef3693d582c02c1750de7c221dd84384e5d414bc",
+      "size": 31739
+    },
+    "lib/presentation/widgets/loading_widget.dart": {
+      "hash": "481303d39380616ea61570acaed67ea5abfccfecb677416f0972fa6b672bb7e7",
+      "size": 3898
+    },
+    "lib/presentation/widgets/qian_hou_gua_card.dart": {
+      "hash": "a37477c404f620f1b9e72a7c6f2ea9d4b07f340245a4f394c0344f268e33f315",
+      "size": 24860
+    },
+    "lib/presentation/widgets/strategy_card.dart": {
+      "hash": "4ca84cff234d8c6d58e54eccb0eed359b307fdcce356fa73bbd97f1f3c54431b",
+      "size": 4889
+    },
+    "lib/presentation/widgets/strategy_header.dart": {
+      "hash": "35df11d04d368d9d6c38f435f42a2f5d48ce7661ab467fc2227161d209744667",
+      "size": 3707
+    },
+    "lib/presentation/widgets/tai_xuan_dual_method_card.dart": {
+      "hash": "291d81a706a690bb14012287fdffa8e5540ec8313abdca7ab302a3b7e457b933",
+      "size": 9953
+    },
+    "lib/presentation/widgets/tai_xuan_method_section.dart": {
+      "hash": "d0b9fd9fc55e57707dfa66eb57e648e55427da3a4d5f3ab1813c33dabc65e0ed",
+      "size": 4059
+    },
+    "lib/presentation/widgets/tiao_wen_item.dart": {
+      "hash": "bdb004609baeca51aaddf3656219f0b0b2139bae17f4ee7b3df9822d095ad598",
+      "size": 6218
+    },
+    "lib/presentation/widgets/tiao_wen_list_view.dart": {
+      "hash": "2db96d8620e25646de82bcdd47d0ded0657a11b03f05a2f1cb90609e9e164592",
+      "size": 5520
+    },
+    "lib/presentation/widgets/xian_houtian_jia_ze_card.dart": {
+      "hash": "c584ff443517c17d8377d8f42e47f1568c7857d6f69ad627590d4c425193c164",
+      "size": 23560
+    },
+    "lib/presentation/widgets/xian_houtian_qu_shu_card.dart": {
+      "hash": "2be3b7691054fff0d4b4d73453b0046941eb3a4957da9410137bca6527e524a1",
+      "size": 31824
+    },
+    "lib/presentation/widgets/yuan_tang_card.dart": {
+      "hash": "d73aca7b8d46c9afc7d7c30d675390988b93ab729e06a9fa7623c477227d5ed2",
+      "size": 32635
+    },
+    "lib/presentation/widgets/yuan_tang_dayun_widget.dart": {
+      "hash": "877446649c9aab1545b8332b814686f4733db0504af8e0305a2f4c9fd20a285b",
+      "size": 6037
+    },
+    "lib/presentation/widgets/yuan_tang_liunian_list.dart": {
+      "hash": "9ecbd1fd36e35b60f3430e108d668e16fdf17ec4dd4ab3098238affca5cecb28",
+      "size": 9937
+    },
+    "lib/presentation/widgets/yuan_tang_liuyue_panel.dart": {
+      "hash": "b5591ba92cdbe08d68a8250214ce9807b1179cb2ef35724e1cb68ed0cd8c6530",
+      "size": 12633
+    },
+    "lib/presentation/widgets/yuan_tang_liuyun_section.dart": {
+      "hash": "3be4d9b7dfb1eb9cffcc3faab7b858ca82559ad487b44a6299a6d102d234b0e1",
+      "size": 13449
+    },
+    "lib/providers/datetime_provider.dart": {
+      "hash": "f5ac623244d2ab055508efeed4dda767e24ee59e281c0cc456777ae5762fdb62",
+      "size": 561
+    },
+    "lib/repository/datamodels/tiao_wen_datamodel.dart": {
+      "hash": "2444213a4b217118a26d7fab83575e236a3db7173aebe44d4467af322c0c1e54",
+      "size": 626
+    },
+    "lib/repository/datamodels/tiao_wen_datamodel.g.dart": {
+      "hash": "f6c8c92590d13103c8d7f081470e538491ec33e85796f3f99b81ca3df1aa5405",
+      "size": 1383
+    },
+    "lib/repository/repository_factory.dart": {
+      "hash": "e73a60a3abfd856c0f7c1d0c0594afd76819def58746efa0398c69b35d4c4aa6",
+      "size": 754
+    },
+    "lib/repository/session_repository.dart": {
+      "hash": "440e8bdca8636bf4f5ca07938a9906d7a2e83cbf2266181828c93f33e6bbf767",
+      "size": 703
+    },
+    "lib/repository/session_repository_impl.dart": {
+      "hash": "a5066827420991d177cb7e457deb3b229a3843f2cd9662dbf9647cfeb473d913",
+      "size": 1859
+    },
+    "lib/repository/tiao_wen_repository.dart": {
+      "hash": "89e06f7125aa722ea2c9d3246552cad569fd35d61a34eddd71dc61c59e63163d",
+      "size": 3458
+    },
+    "lib/repository/tiao_wen_repository_impl.dart": {
+      "hash": "c53248f20439f4ade5d947e3f5a54c4b1b3e57d9562f6de9a7e4d99167c7c2b5",
+      "size": 15887
+    },
+    "lib/service/strategy/ba_gua_gun_strategy.dart": {
+      "hash": "0d05ac7d57f237f95431e692e678e89c538974692210d02a5ca56c0252fcff86",
+      "size": 12980
+    },
+    "lib/service/strategy/ba_gua_jia_ze_result.dart": {
+      "hash": "6105018c1ca420042042259b86591c197f4160453196e4e6a8bb722e01aea844",
+      "size": 1384
+    },
+    "lib/service/strategy/ba_gua_jia_ze_strategy.dart": {
+      "hash": "2f29766e5cdb457ad96a83eba2073e640622e5ed0982b5a75ded7184b588d695",
+      "size": 13582
+    },
+    "lib/service/strategy/base/multi_gua_calculator_base.dart": {
+      "hash": "b7f8af87545607eb8a8782b9212c334fd0270c44a996d9cfdcce1075a2722d00",
+      "size": 14337
+    },
+    "lib/service/strategy/base/yuan_tang_based_strategy.dart": {
+      "hash": "845499824790bff571b0a70dfe0b0a620310f43e8d16f48e39a6b2d3cf26809b",
+      "size": 4357
+    },
+    "lib/service/strategy/base/yuan_tang_derived_params.dart": {
+      "hash": "f2b0f5d4b56c3a430800fd62a1fa17235b35b17a289d51198aed832da42a91d8",
+      "size": 3379
+    },
+    "lib/service/strategy/base_calculation_strategy.dart": {
+      "hash": "4a5001ca80735722a61571ba0103a0bfd6c122fb2d7cdc92ac8c7ac5c52d6445",
+      "size": 7644
+    },
+    "lib/service/strategy/base_interactive_strategy.dart": {
+      "hash": "8c455d995f6a27361aadfbbf0af5aa415c084e5a8f66883df44ebfec11f35a00",
+      "size": 4838
+    },
+    "lib/service/strategy/calculation_strategy.dart": {
+      "hash": "8ee9062694210326d10e228d2228f9e196f507e9c1e37f47ac862d7337ff7eb4",
+      "size": 274
+    },
+    "lib/service/strategy/day_gan_zhi_gua_strategy.dart": {
+      "hash": "a22495bcf809eb0ed827d5233fe97deffde3fd490c6095c06ce4355641f0c674",
+      "size": 7758
+    },
+    "lib/service/strategy/four_zhu_tian_gan_strategy.dart": {
+      "hash": "c3cf84e4766236754c46023f949f138115f691019f9be8d54687b0c193304117",
+      "size": 6202
+    },
+    "lib/service/strategy/gua_yao_gan_zhi_he_result.dart": {
+      "hash": "ebf881a0caffbc697de2b17ac0b638c3e3443c36bdf975ed846fe41dd47482f3",
+      "size": 1961
+    },
+    "lib/service/strategy/gua_yao_gan_zhi_he_strategy.dart": {
+      "hash": "ca55000010c27ac7f1aa032e2229be72b8b8c8a8d2a335a10dbfdff0eac98940",
+      "size": 11940
+    },
+    "lib/service/strategy/gua_zhong_strategy.dart": {
+      "hash": "4046f2315303780b19bfe67fa5bd5636463a5819d60678874521fc0370a99552",
+      "size": 23052
+    },
+    "lib/service/strategy/liu_yao_gan_zhi_he_strategy.dart": {
+      "hash": "511cecb9cfa9bec550a9aa2ec421164ea0b45761ffc830600b639698b5d9fe67",
+      "size": 15588
+    },
+    "lib/service/strategy/middle_palace_five_strategy.dart": {
+      "hash": "1178d1762e4f12123e4b4b07df6dad28473ecfe9990d97de34723a30ff7a6a81",
+      "size": 1238
+    },
+    "lib/service/strategy/qian_hou_gua_strategy.dart": {
+      "hash": "813e3341e1d40590c6addb1a99eec223e24ffc68eeb62d1ae90cef541f8d60e2",
+      "size": 12091
+    },
+    "lib/service/strategy/si_men_fa_strategy.dart": {
+      "hash": "0514b73c1e1376a0b1c9a92d868825775962969fcfcbf58c628686fe9c88053f",
+      "size": 9129
+    },
+    "lib/service/strategy/standard_calculation_strategy.dart": {
+      "hash": "080006f67a1db45ec567b8ccebdb7d7b2bf05ce7a73d800e9d3bb8075a071c19",
+      "size": 1808
+    },
+    "lib/service/strategy/tai_xuan_four_zhu_interactive_strategy.dart": {
+      "hash": "49930dc812465bc233366361e20fce8d3151fc81a1db9939b5e11f0bdf5e3140",
+      "size": 26383
+    },
+    "lib/service/strategy/tai_xuan_four_zhu_strategy.dart": {
+      "hash": "e7ad075349aa69aa5b78695557a07fd2b61f64402c4462b44e1900ce76adeb9a",
+      "size": 14077
+    },
+    "lib/service/strategy/tiao_wen_list_calculation.dart": {
+      "hash": "d80cea8076a1f6375c7eaba9e7a9a4c49203025b0ea208e9313f59e172cce881",
+      "size": 3620
+    },
+    "lib/service/strategy/xian_houtian_jia_ze_strategy.dart": {
+      "hash": "9f984bdd71bb962a12245d20c033dea21fac9c79d89366fae1565d0fb41cdbbf",
+      "size": 11004
+    },
+    "lib/service/strategy/xian_houtian_qu_shu_strategy.dart": {
+      "hash": "d87fd91ba8e7b7ee400a5814cc655996a1a5ae3fa9ef53a229b287accdff16c3",
+      "size": 18606
+    },
+    "lib/service/strategy/yuan_tang_strategy.dart": {
+      "hash": "6a86153c546da8e9c5d9a0524f3224b381c34f72b128482e86b921c2eca1abe8",
+      "size": 24635
+    },
+    "lib/service/unified/adapters/day_gan_zhi_gua_adapter.dart": {
+      "hash": "ae547221f926a06154ee2779ca2664d2e3179ddf71e336a03dfdd4cf7b22ae5b",
+      "size": 1668
+    },
+    "lib/service/unified/adapters/four_zhu_tian_gan_adapter.dart": {
+      "hash": "af295c16d5209b8aa17c36ea45d23c68c079ebd717f71c2870d6d62fb49783a2",
+      "size": 1575
+    },
+    "lib/service/unified/adapters/tai_xuan_four_zhu_adapter.dart": {
+      "hash": "441bec932d8e816034563efef4da97b446b43c02c5667acd7519aaa1c4df769e",
+      "size": 2059
+    },
+    "lib/service/unified/divination_orchestrator.dart": {
+      "hash": "9ba480de0cfe7fc5acde403a5831335ec3b5df8ed08432a52785d3e1af5dac56",
+      "size": 4669
+    },
+    "lib/service/unified/unified_strategy_adapter.dart": {
+      "hash": "469789c304f000c9fef292a6797e2f6311d46eae275aa02d3fac8e6ebb041dbf",
+      "size": 835
+    },
+    "lib/summary.md": {
+      "hash": "39c9ca5cafc70b50e65beb200b71684f78bd38478b95489ea851c2c82dbb9a9d",
+      "size": 39188
+    },
+    "lib/ui/pages/dev_page.dart": {
+      "hash": "b3a9870dbc45c74a4a6a082e6b195e3e556486c5d97b66b614ea2e7282bb90fd",
+      "size": 5073
+    },
+    "lib/ui/utils/snackbar.dart": {
+      "hash": "229393fb28d88ba4524698d0be6f4c15c19fdd5ccc4493d141feaae735876703",
+      "size": 839
+    },
+    "lib/usecases/ba_gua_gun_tiao_wen_list_use_case.dart": {
+      "hash": "41cffe5051d5e40f92c88d2e847830cd2c17cd88d26cb3c65a71e5cec10782f6",
+      "size": 6344
+    },
+    "lib/usecases/ba_gua_jia_ze_tiao_wen_list_use_case.dart": {
+      "hash": "2aca69b94fba99cb07827b74fd419c11174beee796499452b89a4ab4ee1cff22",
+      "size": 5309
+    },
+    "lib/usecases/base_get_tiao_wen_list_use_case.dart": {
+      "hash": "6c657e1e773a2117a713b7c7a3a339bf7bc40c8449fb39e0fd44a1b85b3a2c55",
+      "size": 5041
+    },
+    "lib/usecases/day_gan_zhi_gua_tiao_wen_list_use_case.dart": {
+      "hash": "d1ffc3c71e9a86ab7202db52e8852bd09e5f5e2c639346e3ca9f068c31ecbc73",
+      "size": 4365
+    },
+    "lib/usecases/four_zhu_tian_gan_tiao_wen_list_use_case.dart": {
+      "hash": "737ff334db42654bc37d23a93916f13beced75864148026508086dfbe9be901a",
+      "size": 5871
+    },
+    "lib/usecases/gua_yao_gan_zhi_he_tiao_wen_list_use_case.dart": {
+      "hash": "eecbeb46e922f0b4633c8247688939c2d3dc728a22ff61bf0b95efdfc65d344a",
+      "size": 6700
+    },
+    "lib/usecases/gua_zhong_tiao_wen_list_use_case.dart": {
+      "hash": "7a607171ac65a220667477398cb7742c4d9e02d6622daa52d075796b5e7a95c8",
+      "size": 6870
+    },
+    "lib/usecases/liu_yao_gan_zhi_he_tiao_wen_list_use_case.dart": {
+      "hash": "f0ff9ee1f3626123fe22cc834b0bbd2f6fcb504a50d91f755378d89e991e910e",
+      "size": 8477
+    },
+    "lib/usecases/qian_hou_gua_tiao_wen_list_use_case.dart": {
+      "hash": "80916bab475de371d549085bdaefd98ae98cb4d2d7d1e136fb9561c105897a9e",
+      "size": 8252
+    },
+    "lib/usecases/si_men_fa_tiao_wen_list_use_case.dart": {
+      "hash": "ce27a109c79da149b18eddc03cc426d2ba1e6e59fe3d16026e314631b06b240d",
+      "size": 6197
+    },
+    "lib/usecases/tai_xuan_four_zhu_interactive_use_case.dart": {
+      "hash": "0b766e41a85f559792b7bb81c0e4828714f5e533a3be7e9734b1fd615d718831",
+      "size": 17453
+    },
+    "lib/usecases/tai_xuan_four_zhu_tiao_wen_list_use_case.dart": {
+      "hash": "53b88582cef4357416617464d360731a4951c3190d5e4bcabd07aaf894873421",
+      "size": 7715
+    },
+    "lib/usecases/xian_houtian_jia_ze_tiao_wen_list_use_case.dart": {
+      "hash": "13ef4bb03fb704ebc14714303faa59eac89ecfb82032f6aac46480cd52d975fc",
+      "size": 8283
+    },
+    "lib/usecases/xian_houtian_qu_shu_tiao_wen_list_use_case.dart": {
+      "hash": "5f4db17b524a9dda2d163a6595c3c9d07abe67ccccbf867e0b29e119ebf13714",
+      "size": 8315
+    },
+    "lib/usecases/yuan_tang_tiao_wen_list_use_case.dart": {
+      "hash": "1bf14f49d76018094265dc8bc38da88a24d7eba0c5024781bab84a2b380041b4",
+      "size": 9086
+    },
+    "lib/utils/tiao_wen_calculator.dart": {
+      "hash": "1e8589dd662170358dea5720344c144803e166602044df9442f62541143368b9",
+      "size": 11104
+    },
+    "lib/utils/tiao_wen_number_calculator.dart": {
+      "hash": "7e6ae7f90f4addfc0a83db964e403016f96b230cf2a3fc06abf3c2c92543c569",
+      "size": 5892
+    },
+    "lib/utils/utils.dart": {
+      "hash": "2369dd578cb1813000042b38c8e52f4d299465a769e4d5fa6299f1bc86430250",
+      "size": 22477
+    },
+    "pubspec.yaml": {
+      "hash": "34d37a831e7c7981482e2f6e4040834bb59710bcd9ef9a4d66a385bc0d764a8e",
+      "size": 3933
+    },
+    "test/application/services/huang_ji_multiple_selection_test.dart": {
+      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "test/assets/formula/huang_ji_1.json": {
+      "hash": "185e3bc2de0592754653c62c544d84226facb857230703ac847876c8f06da466",
+      "size": 11959
+    },
+    "test/assets/formula/huang_ji_2.json": {
+      "hash": "d8c3ac7a4ef09fe941e0f763dd1b34da5006c0caad1d346fc40a5b281a66df6c",
+      "size": 6011
+    },
+    "test/assets/formula/huang_ji_3.json": {
+      "hash": "a0220249a05188243d00222041d5a78fbff6d91e6e2815375f0a28192666ccd2",
+      "size": 11274
+    },
+    "test/assets/formula/huang_ji_formula.json": {
+      "hash": "0a5fa2ff97a25d7d8af2fdee578650760eb3b2d72e2a5f884e8d6abf48a9621b",
+      "size": 25747
+    },
+    "test/disabled/huang_ji_formula_v2_integration_test.dart": {
+      "hash": "aca90ee7c27bf43bdb563846a83dedc509e428f88f33cab5de1e956ea9e61615",
+      "size": 11629
+    },
+    "test/disabled/verify_raw_number_fix.dart": {
+      "hash": "da4e28fde0b317401b37e957eee854644d76bd71d5a6c64ba9a23f41c468a3bf",
+      "size": 4373
+    },
+    "test/domain/models/first_yuanhui.json": {
+      "hash": "fd50aa028583195c90fd2fc533f3e6125058f5a178ebea913a618d224eff1406",
+      "size": 6161
+    },
+    "test/domain/models/first_yunshi.json": {
+      "hash": "2f57e0d5308b366640a98b0e13587cf2eb5039b6a0bda8eff8c469f56866ce78",
+      "size": 4268
+    },
+    "test/domain/models/huang_ji_first_formula_test.dart": {
+      "hash": "bb1bea7ca5fba81e811f942939e5239a465241333d55f6ef2137ffc3ba1ecc27",
+      "size": 11298
+    },
+    "test/domain/models/huang_ji_formula_data_v2_test.dart": {
+      "hash": "6d62ef8ad6ff2c006bffcff2904f2f0c344e41c746c2ea69143fa1a1172549a8",
+      "size": 19731
+    },
+    "test/domain/models/huang_ji_formula_generator.dart": {
+      "hash": "a0478da0262be4b4d47647d137e626d5ec59db848962199d08d92aa6a75d6164",
+      "size": 32764
+    },
+    "test/domain/models/huang_ji_formula_raw_number_integration_test.dart": {
+      "hash": "9aaebb1b3f7bbcc4a972726d1f6afe80856c589c6407f5b974b827ba5ab9ab9d",
+      "size": 8516
+    },
+    "test/domain/models/huang_ji_formula_v2_test.dart": {
+      "hash": "0b51ed650cb0d712d93a768e88ebed1c045a49406413feb6339d9156ac4ba5f5",
+      "size": 11549
+    },
+    "test/domain/models/tiao_wen_list_result_test.dart": {
+      "hash": "179655d4f85ff88c8703e56d3516d6f9e080910ae4c447eda4673cdb29b51fd2",
+      "size": 7325
+    },
+    "test/features/huang_ji_formula_manager_test.dart": {
+      "hash": "cf646941ba1436e9380e090e0e45e57bb5c29c4f1c75f0bbd19de3bb61a7790f",
+      "size": 6799
+    },
+    "test/features/kao_ding_liu_qin/find_complete_liuqin_example.dart": {
+      "hash": "803608107efba8a302a05410e3e3e0995835b36ea756ba2376b42cf1225eb877",
+      "size": 2602
+    },
+    "test/features/kao_ding_liu_qin/kao_ding_liu_qin_basic_test.dart": {
+      "hash": "2986a905495c9f493caae1cc517590ea366da5162dd2ca6ac6846d2201c33aec",
+      "size": 3473
+    },
+    "test/features/kao_ding_liu_qin/kao_ding_liu_qin_debug_test.dart": {
+      "hash": "8d909e107e1198bd63bc335853fda857e5c577b52350320ff7966c135e4c6188",
+      "size": 4491
+    },
+    "test/features/kao_ding_liu_qin/kao_ding_liu_qin_hua_gua_test.dart": {
+      "hash": "de5b7231783093e051d678667ac5a30e273b9977c1d66fb8d9d13c1e0efc6696",
+      "size": 4261
+    },
+    "test/features/kao_ding_liu_qin/kao_ding_liu_qin_integration_test.dart": {
+      "hash": "738d0e0acbd0fba9fc4d3b2301ac3c12d4302d2733cb501bc81fb8bdee80530b",
+      "size": 6524
+    },
+    "test/features/kao_ke/gua_calculation_helper_test.dart": {
+      "hash": "4765df57742f1f783c7ffeec33c37b319f185111d8d470f3094bb837854d3aaf",
+      "size": 8481
+    },
+    "test/features/kao_ke/gua_conversion_test.dart": {
+      "hash": "035cb8f0db06105d7adc99859faa552442e7a85ed039e097f344e60885557bff",
+      "size": 4706
+    },
+    "test/features/liuqinkaoke/strategy/liuqinkaoke_calculation_strategy_test.dart": {
+      "hash": "2851be9548bdd3b2976c7da4c86ceb3a7019e47076f787653eff3dc70517db41",
+      "size": 4885
+    },
+    "test/gua_64_test.dart": {
+      "hash": "655b03f159fd495400af4527f158c0dcf7e52f136beaaa3bdc02b65bdab114cc",
+      "size": 831
+    },
+    "test/huang_ji_v2_models_test.dart": {
+      "hash": "0813662c5a175b487b74fcde24afacbde825bebb01f28c51710064fa7ee72346",
+      "size": 5733
+    },
+    "test/run_huang_ji_formula_tests.dart": {
+      "hash": "af88dc6e93211b979e6da96b888367f6bf4b01efaadffd704f075f9e9a5bab7c",
+      "size": 1506
+    },
+    "test/service/strategy/BA_GUA_JIA_ZE_TEST_REPORT.md": {
+      "hash": "55f32a1a1d4347cf46f6db385e6067e7401836820947b1bdc6bb172a6cdd4fc6",
+      "size": 5704
+    },
+    "test/service/strategy/HUMAN_SPEC_TESTS_SUMMARY.md": {
+      "hash": "ae84f566b66832b5c74ebcd8d738722db83087221835140b5a434e79b577a048",
+      "size": 6810
+    },
+    "test/service/strategy/TAI_XUAN_DUAL_NAJIA_TEST_REPORT.md": {
+      "hash": "819cfe7e15a78e788afa04576a897fa3f95430c642544a997c894eb3e79d1843",
+      "size": 9354
+    },
+    "test/service/strategy/ba_gua_gun_debug_test.dart": {
+      "hash": "998f6e3594b8e3eb7545ec156492c4f760491d7bbacad1aa3406970a18075d56",
+      "size": 1371
+    },
+    "test/service/strategy/ba_gua_gun_human_spec_test.dart": {
+      "hash": "e9ada48ecf3ea8f74083a420f4406cb43d269c29837f32a70b0ee2af4136a32f",
+      "size": 9920
+    },
+    "test/service/strategy/ba_gua_jia_ze_human_spec_test.dart": {
+      "hash": "ae0a7a00d3d8987e41dfad374bb63338a01d5258c1f94dfc71c6d58e355dea52",
+      "size": 5455
+    },
+    "test/service/strategy/ba_gua_jia_ze_public_methods_test.dart": {
+      "hash": "c2548e9cc6d6216c256a443806a09e2ef7dddb7d4465c2fcb6b2065540881f90",
+      "size": 4676
+    },
+    "test/service/strategy/ba_gua_jia_ze_strategy_debug_test.dart": {
+      "hash": "ac4f1037117fd8220d4c2466e771ae288e71acb721c8b22990cf768be4e9b265",
+      "size": 1558
+    },
+    "test/service/strategy/ba_gua_jia_ze_strategy_test.dart": {
+      "hash": "8bd1e0994a9052bad6e479f35acadd0d9c4b21a11b8969c29e2d1ebcc22bb701",
+      "size": 18665
+    },
+    "test/service/strategy/gua_yao_gan_zhi_he_detailed_yao_test.dart": {
+      "hash": "3f9078c9e98bc69279f543834b86973d2a6fa0200e144c66f8a6fe678f959101",
+      "size": 9818
+    },
+    "test/service/strategy/gua_yao_gan_zhi_he_gui_wei_simple_test.dart": {
+      "hash": "7d4b37aef14ca5dbe9e2516a138a71abf867e4d36356eff5783caf79f30a2a80",
+      "size": 3879
+    },
+    "test/service/strategy/gua_zhong_human_spec_test.dart": {
+      "hash": "d90ebe0a8022737cbdf8602627785b9ae91c1dcb43f57876596c4fcab3341c2b",
+      "size": 9339
+    },
+    "test/service/strategy/gua_zhong_logic_debug_test.dart": {
+      "hash": "61402833c363e0d6e1beea9bc8d841dd110db7d54e6e2d7c587da74d0fd4c31c",
+      "size": 7810
+    },
+    "test/service/strategy/gua_zhong_three_plans_test.dart": {
+      "hash": "d1043c3aaeddeba3d767ac655f02ea7b26bdeb4afd20d9629476bd1839bccd20",
+      "size": 14421
+    },
+    "test/service/strategy/liu_yao_debug_test.dart": {
+      "hash": "a45aded40e7fa608e0b37b19087fb1a6f90a4126ddf3dea5aee49226b774217f",
+      "size": 1943
+    },
+    "test/service/strategy/liu_yao_gan_zhi_he_human_spec_test.dart": {
+      "hash": "be8ef40e2651760f7668cc3ccd7e4bed316b68b3dc8f730b8094040a1638cc60",
+      "size": 6437
+    },
+    "test/service/strategy/liu_yao_gan_zhi_he_strategy_test.dart": {
+      "hash": "d6057858568025180a3203ae7d2ffcf7ed9d13d463db37af39c10ba49dcccc91",
+      "size": 8873
+    },
+    "test/service/strategy/qian_hou_gua_human_spec_test.dart": {
+      "hash": "29d53997576204a4417102944d77d841842f81849b315dd099cbc458271c85a1",
+      "size": 5630
+    },
+    "test/service/strategy/qian_hou_gua_strategy_debug_test.dart": {
+      "hash": "58ce5b7deb41598269aa45ec599fc696dba2982d53a138fe6701b67580af9dc0",
+      "size": 3039
+    },
+    "test/service/strategy/si_men_fa_debug_test.dart": {
+      "hash": "a68149ada90804c799f74ab62169bd61af5209848968e1e2c598c3d27ef16973",
+      "size": 1156
+    },
+    "test/service/strategy/si_men_fa_human_spec_test.dart": {
+      "hash": "f80d56b6edc21803f536e7f6743a08af1d37c9c6e4152af7562fdb7e5a5d5444",
+      "size": 7534
+    },
+    "test/service/strategy/tai_xuan_four_zhu_strategy_debug_test.dart": {
+      "hash": "1ce6d5b74facb7ebc7b1025725a33e9990c828501f933a729eecb4b5f4a687e4",
+      "size": 1714
+    },
+    "test/service/strategy/tai_xuan_four_zhu_strategy_test.dart": {
+      "hash": "bdbdf8683856bf1fa6a323e9f30936e22b299317cad819e85b7ba425988e75d3",
+      "size": 8864
+    },
+    "test/service/strategy/tai_xuan_four_zhu_strategy_v2_debug_test.dart": {
+      "hash": "c6efdbbebb3e108ae1bf1f68800d60670b68011bb4e6d990c325ba0801624ebe",
+      "size": 5026
+    },
+    "test/service/strategy/tiao_wen_calculation_config_test.dart": {
+      "hash": "f5b7f2cff13e4f85a59ed0ebb82843d7298278925566e90e1605190e7165c47d",
+      "size": 7404
+    },
+    "test/service/strategy/xian_houtian_jia_ze_human_spec_test.dart": {
+      "hash": "2c071f1ef0b6de34f12e82ff93a8764e18876ed2ca89008396d613b95a225b76",
+      "size": 7742
+    },
+    "test/service/strategy/xian_houtian_jia_ze_strategy_test.dart": {
+      "hash": "d44025bd31503575291891b70c9ed481529ca42c59f5f72b5636ec3c7a498ad4",
+      "size": 12146
+    },
+    "test/service/strategy/xian_houtian_qu_shu_debug_test.dart": {
+      "hash": "1e030e6145b4d8944a00104c62e30248c25fa4b28fd63af00fd7dae08ceee893",
+      "size": 2102
+    },
+    "test/service/strategy/xian_houtian_qu_shu_human_spec_test.dart": {
+      "hash": "5a8d739541ee5f39d0549593d61bf67b0019e75070a0e9a545f4bae79205d58b",
+      "size": 3957
+    },
+    "test/service/strategy/yuan_tang_dayun_debug_test.dart": {
+      "hash": "3fa657410076a4f2276f01361cebce50b110ce9dc202dbdd8294a08ad1554db3",
+      "size": 2385
+    },
+    "test/service/strategy/yuan_tang_dayun_test.dart": {
+      "hash": "b65f8416ea7b233911477dbd04e7bc3a2c7d5d679a03c5f455a1be5e38b71637",
+      "size": 9485
+    },
+    "test/service/strategy/yuan_tang_fix_analysis_test.dart": {
+      "hash": "d9c8938c3c03c335388a46ae6e86cca67735e6dba41cdd99f1eca545c337fd90",
+      "size": 8292
+    },
+    "test/service/strategy/yuan_tang_gui_si_test.dart": {
+      "hash": "6577fd5e62f640af5db381fdff6e65943c4d223ede79a9972fa2cfbed165d971",
+      "size": 12362
+    },
+    "test/service/strategy/yuan_tang_strategy_debug_test.dart": {
+      "hash": "b109a542524bf26a725dde8bcbb12720a649574643a48ab4bdac7807c8f4613b",
+      "size": 10988
+    },
+    "test/service/strategy/yuan_tang_strategy_specific_debug_test.dart": {
+      "hash": "db171cd7df9602b0a16fc137e5e19d5a4d1d620818ba6e4dafbdb51b855adce9",
+      "size": 15284
+    },
+    "test/service/strategy/yuan_tang_strategy_test.dart": {
+      "hash": "8ce54420c83ce23007f9a85df16807af19002f881bfe3fbe85b389c9a8793a1f",
+      "size": 27277
+    },
+    "test/service/strategy/yuan_tang_tiaogen_expand_test.dart": {
+      "hash": "af9c527d4ba80a0003c066f5b0d6bb76d89dc48dee26e17df54d9798dfa38703",
+      "size": 5586
+    },
+    "test/tiao_wen_repository_test.dart": {
+      "hash": "3ae47966bd84572ef0d9ee75fad35131ccc012a9e0eef92a2d8121cd70cc55f0",
+      "size": 16828
+    },
+    "test/usecases/gua_zhong_use_case_test.dart": {
+      "hash": "ae4b87f52d313dda08c14d77da10aa2652267a01edb2e9e3ad1e4fb7b914b741",
+      "size": 4631
+    },
+    "test/usecases/liu_yao_gan_zhi_he_use_case_test.dart": {
+      "hash": "b934de84ced4b5e5e9d8d0872b4bb8958501ce415564a17fdd93b773b3b74d62",
+      "size": 16991
+    },
+    "test/usecases/qian_hou_gua_use_case_test.dart": {
+      "hash": "2485d3fded798a79f072ae64e0e7d2ac5f68da375a886e093d71b460a4b1d041",
+      "size": 3580
+    },
+    "test/usecases/xian_houtian_jia_ze_use_case_test.dart": {
+      "hash": "a714a4ebd5bc0ad3b57bf85fab8be2e17eefcda2aecd502c58e6dd2c58d06209",
+      "size": 16251
+    },
+    "test/utils/gua_utils_test.dart": {
+      "hash": "e86cd62f42c32b3d0757c2c20078a9f21c2f6023bb70f9865086bb7d44654c41",
+      "size": 7771
+    },
+    "test/yuan_tang_test.dart": {
+      "hash": "7cfc992654799ac90ded24aa654bd5c20db1329b5a354cad3a67fb8150944ed0",
+      "size": 32978
+    },
+    "test_debug.dart": {
+      "hash": "08dde07d99b22481cb77ddc307323a29e7d3d9e1c204f1873863810ee35c16a0",
+      "size": 782
+    },
+    "tiebanshenshu.iml": {
+      "hash": "078556ebd66f23eeb43b60557b1ed3d3e0b1a2a6297ccb71ad3b779316c7880d",
+      "size": 842
+    },
+    "tiebanshenshu_android.iml": {
+      "hash": "e3b694ebe5cd590364d0a3ef301b467f6967fecc53d43800c852b45c4e02db9f",
+      "size": 1465
+    },
+    "web/drift_worker.js": {
+      "hash": "cf6b8e1e9650a3235245f73213015ed4a50646bead691c49eac9996002376534",
+      "size": 358709
+    },
+    "web/index.html": {
+      "hash": "bda6c86098a32a60768216f678bff44c29dcb0412c7d094b93134af0fc9edc07",
+      "size": 2154
+    },
+    "web/manifest.json": {
+      "hash": "a4c3d751f60158cdcb7656d1e52303758ce080616a4d7a72b6eb02b9ed53e5e3",
+      "size": 904
+    }
+  }
+}
