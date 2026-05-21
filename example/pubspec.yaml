@@ -13,9 +13,13 @@ dependencies:
 
   cupertino_icons: ^1.0.8
   tiebanshenshu:
-    path: ..
+    git:
+      url: http://xuan:***@192.168.0.165:3000/xuan/xuan-tiebanshenshu.git
+      ref: main
   common:
-    path: ../../xuan-common
+    git:
+      url: http://xuan:***@192.168.0.165:3000/xuan/xuan-common.git
+      ref: main
   provider: ^6.1.5+1
   timezone: ^0.11.0
   drift: ^2.30.1
