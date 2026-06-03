@@ -1,6 +1,6 @@
 import 'package:metaphysics_core/enums.dart';
 import 'package:metaphysics_core/models/eight_chars.dart';
-import 'package:xuan_common/shared/utils/collections_utils.dart';
+import 'package:metaphysics_core/utils/collections_utils.dart';
 import 'package:tiebanshenshu/features/six_yao_gua/pure_six_yao_gua.dart';
 import 'package:tiebanshenshu/enums.dart';
 import 'package:tiebanshenshu/features/yuan_tang_gua/yuan_tang_info.dart';
