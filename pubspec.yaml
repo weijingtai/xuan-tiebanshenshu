@@ -44,13 +44,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   xuan_common:
-
-    git:
-
-      url: http://xuan:wjt19951215@192.168.0.165:3000/xuan/xuan-common.git
-
-      ref: main
-  google_fonts: ^8.0.1
+    path: ../xuan-common
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -109,3 +103,7 @@ flutter:
     androidX: true
     androidPackage: com.example.tiebanshenshu
     iosBundleIdentifier: com.example.tiebanshenshu
+
+dependency_overrides:
+  persistence_core:
+    path: ../xuan-storage/core
