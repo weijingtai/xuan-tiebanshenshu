@@ -1,7 +1,7 @@
 // utils.dart
 // 导入包含所有静态数据映射的常量文件
-import 'package:common/enums.dart';
-import 'package:common/models/eight_chars.dart';
+import 'package:metaphysics_core/enums.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:tiebanshenshu/features/six_yao_gua/pure_six_yao_gua.dart';
 import 'package:tiebanshenshu/features/yuan_tang_gua/pure_yuan_tang_gua.dart';
 

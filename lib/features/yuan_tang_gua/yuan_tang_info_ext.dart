@@ -1,4 +1,4 @@
-import 'package:common/enums.dart';
+import 'package:metaphysics_core/enums.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:tiebanshenshu/constant/constants.dart' as constants;
 import 'package:tiebanshenshu/domain/models/base_number_model.dart';

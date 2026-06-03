@@ -1,8 +1,8 @@
-import 'package:common/enums/enum_jia_zi.dart';
-import 'package:common/models/eight_chars.dart';
+import 'package:xuan_common/enums/enum_jia_zi.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:timezone/data/latest.dart' as tz;
-import 'package:common/dev_constant.dart';
+import 'package:xuan_common/dev_constant.dart';
 import 'package:tiebanshenshu/service/strategy/gua_zhong_strategy.dart';
 
 void main() {

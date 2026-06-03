@@ -1,4 +1,4 @@
-import 'package:common/dev_constant.dart';
+import 'package:xuan_common/dev_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'navigator.dart';

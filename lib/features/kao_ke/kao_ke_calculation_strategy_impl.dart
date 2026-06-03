@@ -1,4 +1,4 @@
-import 'package:common/models/eight_chars.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 import '../../domain/models/tiao_wen_result.dart';
 import '../../repository/tiao_wen_repository.dart';
 import '../../service/strategy/ba_gua_jia_ze_strategy.dart';

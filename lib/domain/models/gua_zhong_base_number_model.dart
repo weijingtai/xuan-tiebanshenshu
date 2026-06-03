@@ -32,8 +32,8 @@
 /// - **总计产生12个条文编号**（4个位置 × 3种方案）
 library;
 
-import 'package:common/enums.dart';
-import 'package:common/models/eight_chars.dart';
+import 'package:metaphysics_core/enums.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:tiebanshenshu/features/six_yao_gua/pure_six_yao_gua.dart';
 import 'base_number_model.dart';
 

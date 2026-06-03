@@ -3,7 +3,7 @@
 /// 负责处理基于太玄四柱交互式策略的业务逻辑
 library;
 
-import 'package:common/models/eight_chars.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 
 import '../application/usecases/base_interactive_use_case.dart';
 import '../domain/exceptions/tiao_wen_calculation_exceptions.dart';

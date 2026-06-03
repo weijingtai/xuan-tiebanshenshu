@@ -3,8 +3,8 @@
 /// 保存四门法计算的完整过程和中间结果
 library;
 
-import 'package:common/enums.dart';
-import 'package:common/models/eight_chars.dart';
+import 'package:metaphysics_core/enums.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 import '../../features/six_yao_gua/pure_six_yao_gua.dart';
 import 'base_number_model.dart';
 import 'tiao_wen_source_info.dart';

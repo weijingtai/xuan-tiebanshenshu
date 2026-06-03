@@ -1,4 +1,4 @@
-import 'package:common/models/eight_chars.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 
 import '../../domain/models/multi_base_number_result.dart';
 import '../../usecases/ba_gua_jia_ze_tiao_wen_list_use_case.dart';

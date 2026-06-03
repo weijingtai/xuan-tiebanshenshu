@@ -3,9 +3,9 @@
 /// 保存元堂卦取数法的完整计算过程和中间结果
 library;
 
-import 'package:common/enums.dart';
-import 'package:common/features/datetime_details/input_info_params.dart';
-import 'package:common/models/eight_chars.dart';
+import 'package:metaphysics_core/enums.dart';
+import 'package:xuan_common/features/datetime_details/input_info_params.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 
 import '../../constant/constants.dart' as constants;
 import '../../features/six_yao_gua/pure_six_yao_gua.dart';

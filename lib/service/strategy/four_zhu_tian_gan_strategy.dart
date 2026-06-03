@@ -3,7 +3,7 @@
 /// 将四柱天干取数法算法封装为标准计算策略
 library;
 
-import 'package:common/models/eight_chars.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 import '../../constant/constants.dart' as Constants;
 import '../../utils/tiao_wen_calculator.dart';
 import 'base_calculation_strategy.dart';

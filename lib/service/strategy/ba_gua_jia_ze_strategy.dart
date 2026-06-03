@@ -4,8 +4,8 @@
 /// 支持两种装卦方法：爻序法和纳甲法
 library;
 
-import 'package:common/enums.dart';
-import 'package:common/models/eight_chars.dart';
+import 'package:metaphysics_core/enums.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 
 import '../../constant/constants.dart' as constants;
 import '../../features/six_yao_gua/pure_six_yao_gua.dart';

@@ -1,5 +1,5 @@
-import 'package:common/enums.dart';
-import 'package:common/models/eight_chars.dart';
+import 'package:metaphysics_core/enums.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 import '../../../repository/tiao_wen_repository.dart';
 import '../../../repository/tiao_wen_repository_impl.dart';
 import '../../../features/kao_ke/gua_calculation_helper.dart';

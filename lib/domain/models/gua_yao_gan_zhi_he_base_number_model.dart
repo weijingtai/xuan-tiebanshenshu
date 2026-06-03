@@ -3,7 +3,7 @@
 /// Contains NaJia method enum, Yao detail model, and Base number model
 library;
 
-import 'package:common/enums.dart';
+import 'package:metaphysics_core/enums.dart';
 import '../../features/six_yao_gua/pure_six_yao_gua.dart';
 import '../../repository/datamodels/tiao_wen_datamodel.dart';
 import 'base_number_tiao_wen_list_model.dart';

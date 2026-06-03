@@ -1,4 +1,4 @@
-import 'package:common/models/eight_chars.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 
 import '../../usecases/four_zhu_tian_gan_tiao_wen_list_use_case.dart';
 import 'base_tiao_wen_list_view_model.dart';

@@ -1,4 +1,4 @@
-import 'package:common/models/eight_chars.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../constant/kao_ke_constants.dart';

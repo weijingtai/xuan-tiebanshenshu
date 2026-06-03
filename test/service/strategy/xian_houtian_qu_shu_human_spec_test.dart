@@ -1,5 +1,5 @@
-import 'package:common/enums.dart';
-import 'package:common/models/eight_chars.dart';
+import 'package:metaphysics_core/enums.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:tiebanshenshu/service/strategy/xian_houtian_qu_shu_strategy.dart';
 import 'package:tiebanshenshu/domain/models/xian_houtian_qu_shu_base_number_model.dart';

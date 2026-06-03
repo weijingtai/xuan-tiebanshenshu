@@ -1,4 +1,4 @@
-import 'package:common/models/eight_chars.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 
 import 'base_get_tiao_wen_list_use_case.dart';
 import '../domain/models/base_number_model.dart';

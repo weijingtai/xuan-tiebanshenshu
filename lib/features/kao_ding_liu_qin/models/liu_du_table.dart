@@ -1,4 +1,4 @@
-import 'package:common/enums.dart';
+import 'package:metaphysics_core/enums.dart';
 import '../../../repository/datamodels/tiao_wen_datamodel.dart';
 
 /// 流度表条目

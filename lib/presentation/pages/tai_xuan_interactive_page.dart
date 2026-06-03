@@ -5,8 +5,8 @@ library;
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:common/dev_constant.dart';
-import 'package:common/models/eight_chars.dart';
+import 'package:xuan_common/dev_constant.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 
 import '../viewmodels/tai_xuan_four_zhu_interactive_view_model.dart';
 import '../../domain/models/interactive_strategy_config.dart';

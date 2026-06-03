@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:common/models/eight_chars.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 import '../viewmodels/gua_zhong_view_model.dart';
 import '../components/gradient_card.dart';
 

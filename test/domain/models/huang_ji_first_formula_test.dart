@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:common/enums.dart';
-import 'package:common/models/eight_chars.dart';
+import 'package:metaphysics_core/enums.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:tiebanshenshu/features/huang_ji/huang_ji_formula_data_v2.dart';
 import 'package:tiebanshenshu/features/huang_ji/huang_ji_formula_v2.dart';

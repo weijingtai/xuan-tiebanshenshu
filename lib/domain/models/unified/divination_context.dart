@@ -1,5 +1,5 @@
-import 'package:common/enums.dart';
-import 'package:common/models/eight_chars.dart';
+import 'package:metaphysics_core/enums.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 import 'divination_result.dart';
 import '../yuan_hui_yun_shi.dart';
 

@@ -3,8 +3,8 @@
 /// 实现八卦滚法的完整计算流程
 library;
 
-import 'package:common/enums.dart';
-import 'package:common/models/eight_chars.dart';
+import 'package:metaphysics_core/enums.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 
 import '../../domain/models/ba_gua_gun_base_number_model.dart';
 import '../../domain/models/base_number_model.dart';

@@ -1,4 +1,4 @@
-import 'package:common/enums.dart';
+import 'package:metaphysics_core/enums.dart';
 
 /// 后天八卦“中五宫”取数策略的抽象接口
 abstract class MiddlePalaceFiveStrategy {

@@ -4,8 +4,8 @@
 /// 都继承此基类，实现参数统一和YuanTangInfo复用
 library;
 
-import 'package:common/enums.dart';
-import 'package:common/models/eight_chars.dart';
+import 'package:metaphysics_core/enums.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:tiebanshenshu/enums.dart';
 import 'package:tiebanshenshu/features/yuan_tang_gua/yuan_tang_calculator.dart';
 import 'package:tiebanshenshu/features/yuan_tang_gua/yuan_tang_info.dart';

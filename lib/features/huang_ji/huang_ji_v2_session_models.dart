@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:common/models/eight_chars.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 import '../../domain/models/base_number_selection_record.dart';
 import '../../domain/models/yuan_hui_yun_shi.dart';
 import 'huang_ji_formula_v2.dart';

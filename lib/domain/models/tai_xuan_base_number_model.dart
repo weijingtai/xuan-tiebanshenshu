@@ -4,7 +4,7 @@
 /// 支持两种纳甲方案：年干阴阳纳甲和传统内外卦纳甲
 library;
 
-import 'package:common/enums.dart';
+import 'package:metaphysics_core/enums.dart';
 import 'base_number_model.dart';
 
 /// 太玄纳甲方法枚举

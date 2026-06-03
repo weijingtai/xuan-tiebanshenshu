@@ -3,7 +3,7 @@
 /// 将日柱变卦取数法算法封装为标准计算策略
 library;
 
-import 'package:common/enums.dart';
+import 'package:metaphysics_core/enums.dart';
 
 import '../../constant/constants.dart' as Constants;
 import '../../features/six_yao_gua/pure_six_yao_gua.dart';

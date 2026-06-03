@@ -1,5 +1,5 @@
 import 'package:tiebanshenshu/domain/models/huang_ji_formula_data_v2.dart';
-import 'package:common/enums.dart';
+import 'package:metaphysics_core/enums.dart';
 import 'package:tiebanshenshu/domain/models/huang_ji_number.dart';
 
 void main() {

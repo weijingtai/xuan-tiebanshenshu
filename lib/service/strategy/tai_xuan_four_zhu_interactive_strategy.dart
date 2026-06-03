@@ -4,8 +4,8 @@
 library;
 
 import 'package:collection/collection.dart';
-import 'package:common/enums.dart';
-import 'package:common/models/eight_chars.dart';
+import 'package:metaphysics_core/enums.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:tiebanshenshu/domain/models/tiao_wen_list_state.dart';
 
 import '../../constant/constants.dart' as Constants;

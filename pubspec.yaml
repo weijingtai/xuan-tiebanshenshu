@@ -21,6 +21,8 @@ environment:
   sdk: ^3.8.1
 
 dependencies:
+  metaphysics_core:
+    path: ../xuan-metaphysics-core
   flutter:
     sdk: flutter
 

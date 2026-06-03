@@ -1,4 +1,4 @@
-import 'package:common/enums.dart';
+import 'package:metaphysics_core/enums.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:tiebanshenshu/repository/datamodels/tiao_wen_datamodel.dart';
 part 'kao_ke_constants.g.dart';

@@ -1,4 +1,4 @@
-import 'package:common/models/eight_chars.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:flutter/foundation.dart';
 
 import '../../domain/models/tai_xuan_base_number_model.dart';

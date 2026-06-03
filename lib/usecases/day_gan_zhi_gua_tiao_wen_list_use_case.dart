@@ -1,4 +1,4 @@
-import 'package:common/enums.dart';
+import 'package:metaphysics_core/enums.dart';
 
 import 'base_get_tiao_wen_list_use_case.dart';
 import '../domain/models/multi_base_number_result.dart';

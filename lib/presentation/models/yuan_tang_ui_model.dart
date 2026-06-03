@@ -3,7 +3,7 @@
 /// 用于UI层展示元堂卦计算结果的数据结构
 library;
 
-import 'package:common/enums.dart';
+import 'package:metaphysics_core/enums.dart';
 
 import '../../domain/models/base_number_tiao_wen_list_model.dart';
 import '../../domain/models/yuan_tang_base_number_model.dart';

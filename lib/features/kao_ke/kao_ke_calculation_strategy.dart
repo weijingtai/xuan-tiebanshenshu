@@ -1,4 +1,4 @@
-import 'package:common/models/eight_chars.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 import 'kao_ke_session_models.dart';
 import '../../domain/models/tiao_wen_result.dart';
 

@@ -4,8 +4,8 @@
 /// Calculates base numbers from Four Pillars using Gua and NaJia mappings
 library;
 
-import 'package:common/enums.dart';
-import 'package:common/models/eight_chars.dart';
+import 'package:metaphysics_core/enums.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 
 import 'package:tiebanshenshu/features/six_yao_gua/pure_six_yao_gua.dart';
 import 'package:tiebanshenshu/features/six_yao_gua/six_yao_calculator.dart';

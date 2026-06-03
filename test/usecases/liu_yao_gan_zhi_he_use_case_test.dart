@@ -1,4 +1,4 @@
-import 'package:common/models/eight_chars.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:tiebanshenshu/domain/models/base_number_model_result.dart';
 import 'package:tiebanshenshu/domain/models/liu_yao_gan_zhi_he_base_number_model.dart';
@@ -6,7 +6,7 @@ import 'package:tiebanshenshu/repository/datamodels/tiao_wen_datamodel.dart';
 import 'package:tiebanshenshu/repository/tiao_wen_repository.dart';
 import 'package:tiebanshenshu/service/strategy/liu_yao_gan_zhi_he_strategy.dart';
 import 'package:tiebanshenshu/usecases/liu_yao_gan_zhi_he_tiao_wen_list_use_case.dart';
-import 'package:common/enums.dart';
+import 'package:metaphysics_core/enums.dart';
 
 /// Mock Strategy for testing
 class MockLiuYaoGanZhiHeStrategy extends LiuYaoGanZhiHeStrategy {

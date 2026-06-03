@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:common/models/eight_chars.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 import 'huang_ji_formula_v2.dart';
 import '../../domain/models/base_number_selection_batch.dart';
 import './huang_ji_v2_session_models.dart';

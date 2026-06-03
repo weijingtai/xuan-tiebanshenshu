@@ -1,4 +1,4 @@
-import 'package:common/features/datetime_details/input_info_params.dart';
+import 'package:xuan_common/features/datetime_details/input_info_params.dart';
 import 'package:flutter/foundation.dart';
 
 class DateTimeProvider extends ChangeNotifier {

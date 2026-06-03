@@ -1,5 +1,5 @@
-import 'package:common/enums.dart';
-import 'package:common/models/eight_chars.dart';
+import 'package:metaphysics_core/enums.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:flutter/material.dart';
 import 'package:tiebanshenshu/features/huang_ji/huang_ji_v2_demo_page.dart';
 import 'package:tiebanshenshu/presentation/home/home_page.dart';

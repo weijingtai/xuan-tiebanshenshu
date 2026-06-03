@@ -1,4 +1,4 @@
-import 'package:common/models/chinese_date_info.dart';
+import 'package:metaphysics_core/models/chinese_date_info.dart';
 
 import '../constant/constants.dart' as Constants;
 

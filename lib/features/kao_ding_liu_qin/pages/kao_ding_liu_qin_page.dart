@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:common/models/eight_chars.dart';
-import 'package:common/enums.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
+import 'package:metaphysics_core/enums.dart';
 import '../models/liu_qin_type.dart';
 import '../widgets/liu_du_table_selection_widget.dart';
 import '../../../presentation/viewmodels/kao_ding_liu_qin_view_model.dart';

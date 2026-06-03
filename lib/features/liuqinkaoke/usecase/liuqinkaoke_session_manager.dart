@@ -1,10 +1,10 @@
-import 'package:common/enums.dart';
+import 'package:metaphysics_core/enums.dart';
 import 'package:tiebanshenshu/features/liuqinkaoke/models/liuqinkaoke_models.dart';
 import 'package:tiebanshenshu/features/liuqinkaoke/repository/liuqinkaoke_session_repository.dart';
 import 'package:tiebanshenshu/features/liuqinkaoke/strategy/liuqinkaoke_calculation_strategy.dart';
 import 'package:tiebanshenshu/repository/tiao_wen_repository.dart';
 import 'package:uuid/uuid.dart';
-import 'package:common/dev_constant.dart';
+import 'package:xuan_common/dev_constant.dart';
 import 'package:tiebanshenshu/constant/constants.dart';
 
 import 'package:tiebanshenshu/service/strategy/tiao_wen_list_calculation.dart';

@@ -3,7 +3,7 @@
 /// 负责管理太玄四柱交互式计算的UI状态和业务逻辑调用
 library;
 
-import 'package:common/models/eight_chars.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:flutter/foundation.dart';
 
 import '../../domain/models/interactive_session.dart';

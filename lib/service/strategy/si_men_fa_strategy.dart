@@ -3,8 +3,8 @@
 /// 实现四门法V2的完整计算流程
 library;
 
-import 'package:common/enums.dart';
-import 'package:common/models/eight_chars.dart';
+import 'package:metaphysics_core/enums.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 
 import '../../domain/models/base_number_model.dart';
 import '../../domain/models/base_number_model_result.dart';

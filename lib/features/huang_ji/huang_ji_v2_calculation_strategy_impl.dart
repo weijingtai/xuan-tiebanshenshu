@@ -3,7 +3,7 @@ import '../../domain/models/yuan_hui_yun_shi.dart';
 import 'huang_ji_formula_data_v2.dart';
 import '../../domain/models/base_number_selection_record.dart';
 import '../../domain/models/huang_ji_number.dart';
-import 'package:common/models/eight_chars.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 
 /// 皇极 V2 计算策略实现
 class HuangJiV2CalculationStrategyImpl implements HuangJiV2CalculationStrategy {

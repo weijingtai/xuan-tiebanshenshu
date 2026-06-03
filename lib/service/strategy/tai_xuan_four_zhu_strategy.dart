@@ -3,8 +3,8 @@
 /// 将太玄取数法（1）算法封装为标准计算策略
 library;
 
-import 'package:common/enums.dart';
-import 'package:common/models/eight_chars.dart';
+import 'package:metaphysics_core/enums.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 import '../../features/six_yao_gua/pure_six_yao_gua.dart';
 
 import '../../constant/constants.dart' as Constants;

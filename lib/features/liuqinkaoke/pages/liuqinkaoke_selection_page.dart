@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tiebanshenshu/features/liuqinkaoke/models/liuqinkaoke_models.dart';
 import 'package:tiebanshenshu/features/liuqinkaoke/viewmodels/liuqinkaoke_view_model.dart';
-import 'package:common/enums.dart';
+import 'package:metaphysics_core/enums.dart';
 
 class LiuQinKaoKeSelectionPage extends StatefulWidget {
   const LiuQinKaoKeSelectionPage({super.key});

@@ -1,4 +1,4 @@
-import 'package:common/enums.dart';
+import 'package:metaphysics_core/enums.dart';
 import '../../../constant/constants.dart';
 import '../../../features/six_yao_gua/pure_six_yao_gua.dart';
 import '../models/liu_qin_type.dart';

@@ -3,7 +3,7 @@
 /// 用于UI层展示四门法V2计算结果和中间过程的数据结构
 library;
 
-import 'package:common/enums.dart';
+import 'package:metaphysics_core/enums.dart';
 import '../../domain/models/si_men_fa_base_number_model.dart';
 import '../../repository/datamodels/tiao_wen_datamodel.dart';
 

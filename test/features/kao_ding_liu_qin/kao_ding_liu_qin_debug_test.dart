@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:common/enums.dart';
+import 'package:metaphysics_core/enums.dart';
 import 'package:tiebanshenshu/features/kao_ding_liu_qin/services/qi_gua_helper.dart';
 import 'package:tiebanshenshu/features/kao_ding_liu_qin/services/na_jia_liu_qin_helper.dart';
 import 'package:tiebanshenshu/features/kao_ding_liu_qin/models/liu_qin_type.dart';

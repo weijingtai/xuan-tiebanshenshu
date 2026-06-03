@@ -3,7 +3,7 @@
 /// 扩展自BaseNumberModel，添加八卦加则算法特定的计算过程信息
 library;
 
-import 'package:common/enums.dart';
+import 'package:metaphysics_core/enums.dart';
 import '../../features/six_yao_gua/pure_six_yao_gua.dart';
 import 'base_number_model.dart';
 

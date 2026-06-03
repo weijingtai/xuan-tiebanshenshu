@@ -1,10 +1,10 @@
-import 'package:common/enums.dart';
+import 'package:metaphysics_core/enums.dart';
 import 'package:tiebanshenshu/presentation/components/glass_scaffold.dart';
-import 'package:common/features/datetime_details/input_info_params.dart';
-import 'package:common/models/jie_qi_info.dart';
+import 'package:xuan_common/features/datetime_details/input_info_params.dart';
+import 'package:metaphysics_core/models/jie_qi_info.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:common/dev_constant.dart';
+import 'package:xuan_common/dev_constant.dart';
 import '../viewmodels/day_gan_zhi_gua_view_model.dart';
 import '../viewmodels/four_zhu_tian_gan_view_model.dart';
 import '../viewmodels/tai_xuan_four_zhu_view_model.dart';

@@ -1,5 +1,5 @@
-import 'package:common/enums.dart';
-import 'package:common/models/eight_chars.dart';
+import 'package:metaphysics_core/enums.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:tiebanshenshu/features/six_yao_gua/pure_six_yao_gua.dart';
 
 /// 来源类型：先天或后天

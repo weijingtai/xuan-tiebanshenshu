@@ -1,4 +1,4 @@
-import 'package:common/enums.dart';
+import 'package:metaphysics_core/enums.dart';
 import '../../../features/six_yao_gua/pure_six_yao_gua.dart';
 import '../repositories/liu_du_table_repository.dart';
 import '../services/qi_gua_helper.dart';

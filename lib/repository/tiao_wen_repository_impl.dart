@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/services.dart';
-import 'package:common/enums.dart';
+import 'package:metaphysics_core/enums.dart';
 import 'tiao_wen_repository.dart';
 import 'datamodels/tiao_wen_datamodel.dart';
 

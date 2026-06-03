@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:common/enums.dart';
-import 'package:common/models/eight_chars.dart';
+import 'package:metaphysics_core/enums.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:tiebanshenshu/features/kao_ding_liu_qin/models/liu_qin_type.dart';
 import 'package:tiebanshenshu/features/kao_ding_liu_qin/usecases/kao_ding_liu_qin_use_case.dart';
 

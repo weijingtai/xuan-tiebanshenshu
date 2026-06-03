@@ -3,7 +3,7 @@
 /// 用于UI层展示八卦滚法计算结果和中间过程的数据结构
 library;
 
-import 'package:common/enums.dart';
+import 'package:metaphysics_core/enums.dart';
 import '../../domain/models/ba_gua_gun_base_number_model.dart';
 import '../../repository/datamodels/tiao_wen_datamodel.dart';
 import 'si_men_fa_ui_model.dart'; // 复用 GuaInfoUIModel 和 GuaThreeNumbersUIModel

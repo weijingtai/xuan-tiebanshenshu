@@ -1,5 +1,5 @@
-import 'package:common/enums.dart';
-import 'package:common/models/eight_chars.dart';
+import 'package:metaphysics_core/enums.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 import '../../domain/models/multi_base_number_result.dart';
 import '../../domain/models/si_men_fa_base_number_model.dart';
 import '../../usecases/si_men_fa_tiao_wen_list_use_case.dart';

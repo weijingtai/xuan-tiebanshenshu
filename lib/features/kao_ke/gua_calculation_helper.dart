@@ -1,4 +1,4 @@
-import 'package:common/enums.dart';
+import 'package:metaphysics_core/enums.dart';
 import '../../features/six_yao_gua/pure_six_yao_gua.dart';
 import 'kao_ke_session_models.dart';
 

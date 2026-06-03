@@ -1,6 +1,6 @@
-import 'package:common/models/eight_chars.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:common/enums.dart';
+import 'package:metaphysics_core/enums.dart';
 import 'package:tiebanshenshu/features/yuan_tang_gua/pure_yuan_tang_gua.dart';
 import 'package:tiebanshenshu/features/yuan_tang_gua/yuan_tang_calculator.dart';
 import 'package:tiebanshenshu/utils/utils.dart' as gua_utils;

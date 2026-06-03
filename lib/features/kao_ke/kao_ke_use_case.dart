@@ -1,5 +1,5 @@
-import 'package:common/enums.dart';
-import 'package:common/models/eight_chars.dart';
+import 'package:metaphysics_core/enums.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 import '../../constant/kao_ke_constants.dart';
 import 'kao_ke_session_manager.dart';
 import 'kao_ke_session_models.dart';

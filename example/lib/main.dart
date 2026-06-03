@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'package:tiebanshenshu/infrastructure/di/strategy_providers.dart';
 import 'package:tiebanshenshu/providers/datetime_provider.dart';
-import 'package:common/dev_constant.dart';
+import 'package:xuan_common/dev_constant.dart';
 import 'package:timezone/data/latest.dart' as tz;
 
 import 'package:tiebanshenshu/presentation/viewmodels/theme_view_model.dart';

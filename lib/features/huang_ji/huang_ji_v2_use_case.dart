@@ -1,4 +1,4 @@
-import 'package:common/models/eight_chars.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 import 'huang_ji_formula_v2.dart';
 import 'huang_ji_formula_data_v2.dart';
 import '../../domain/models/yuan_hui_yun_shi.dart';

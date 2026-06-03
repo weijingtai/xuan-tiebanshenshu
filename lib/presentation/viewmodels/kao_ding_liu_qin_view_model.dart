@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:common/models/eight_chars.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
 import '../../features/kao_ding_liu_qin/models/liu_qin_type.dart';
 import '../../features/kao_ding_liu_qin/models/liu_du_table.dart';
 import '../../features/kao_ding_liu_qin/usecases/kao_ding_liu_qin_use_case.dart';

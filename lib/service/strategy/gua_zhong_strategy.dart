@@ -6,8 +6,8 @@ library;
 import 'package:tiebanshenshu/features/six_yao_gua/pure_six_yao_gua.dart';
 
 import '../../constant/constants.dart' as constants;
-import 'package:common/models/eight_chars.dart';
-import 'package:common/enums.dart';
+import 'package:metaphysics_core/models/eight_chars.dart';
+import 'package:metaphysics_core/enums.dart';
 import '../../domain/models/base_number_model.dart';
 import '../../domain/models/base_number_model_result.dart';
 import '../../domain/models/gua_zhong_base_number_model.dart';
