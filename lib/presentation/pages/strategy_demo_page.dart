@@ -1,6 +1,6 @@
 import 'package:metaphysics_core/enums.dart';
 import 'package:tiebanshenshu/presentation/components/glass_scaffold.dart';
-import 'package:xuan_common/features/datetime_details/input_info_params.dart';
+import 'package:metaphysics_core/enums/datetime_strategy_enums.dart';
 import 'package:metaphysics_core/models/jie_qi_info.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

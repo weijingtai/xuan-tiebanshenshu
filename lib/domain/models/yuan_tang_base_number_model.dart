@@ -4,7 +4,7 @@
 library;
 
 import 'package:metaphysics_core/enums.dart';
-import 'package:xuan_common/features/datetime_details/input_info_params.dart';
+import 'package:metaphysics_core/models/datetime_details_bundle_logic_model.dart';
 import 'package:metaphysics_core/models/eight_chars.dart';
 
 import '../../constant/constants.dart' as constants;

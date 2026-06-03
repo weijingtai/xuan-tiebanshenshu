@@ -1,12 +1,12 @@
-import 'package:xuan_common/features/datetime_details/input_info_params.dart';
+import 'package:metaphysics_core/models/datetime_details_bundle_logic_model.dart';
 import 'package:flutter/foundation.dart';
 
 class DateTimeProvider extends ChangeNotifier {
-  DateTimeDetailsBundle? _currentDateTimeBundle;
+  DateTimeDetailsBundleLogicModel? _currentDateTimeBundle;
 
-  DateTimeDetailsBundle? get currentDateTimeBundle => _currentDateTimeBundle;
+  DateTimeDetailsBundleLogicModel? get currentDateTimeBundle => _currentDateTimeBundle;
 
-  void updateDateTime(DateTimeDetailsBundle bundle) {
+  void updateDateTime(DateTimeDetailsBundleLogicModel bundle) {
     _currentDateTimeBundle = bundle;
     notifyListeners();
   }
