@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'package:tiebanshenshu/infrastructure/di/strategy_providers.dart';
 import 'package:tiebanshenshu/providers/datetime_provider.dart';
-import 'package:xuan_common/dev_constant.dart';
+import 'package:tiebanshenshu/dev/dev_fixtures.dart';
 import 'package:timezone/data/latest.dart' as tz;
 
 import 'package:tiebanshenshu/presentation/viewmodels/theme_view_model.dart';
@@ -22,7 +22,8 @@ void main() {
         // DateTime provider from tiebanshenshu
         ChangeNotifierProvider<DateTimeProvider>(
           create: (_) =>
-              DateTimeProvider()..updateDateTime(DevConstant.dev_usa),
+              DateTimeProvider()
+                ..updateDateTime(TiebanshenshuDevFixtures.devUsa),
         ),
 
         ChangeNotifierProvider(create: (_) => ThemeViewModel()),

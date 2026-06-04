@@ -1,4 +1,4 @@
-import 'package:xuan_common/enums/enum_jia_zi.dart';
+import 'package:metaphysics_core/enums.dart';
 import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:tiebanshenshu/service/strategy/gua_zhong_strategy.dart';

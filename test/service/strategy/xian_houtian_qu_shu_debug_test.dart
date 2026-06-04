@@ -1,7 +1,7 @@
 import 'package:metaphysics_core/enums.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:timezone/data/latest.dart' as tz;
-import 'package:xuan_common/dev_constant.dart';
+import 'package:tiebanshenshu/dev/dev_fixtures.dart';
 import 'package:tiebanshenshu/service/strategy/xian_houtian_qu_shu_strategy.dart';
 
 void main() {
@@ -11,8 +11,9 @@ void main() {
 
   group('Debug XianHoutianQuShuStrategy null error', () {
     test('打印中间结果定位null来源', () {
-      // 使用DevConstant.dev_usa的八字数据
-      final eightChars = DevConstant.dev_usa.standeredChineseInfo.eightChars;
+      // 使用TiebanshenshuDevFixtures.devUsa的八字数据
+      final eightChars =
+          TiebanshenshuDevFixtures.devUsa.standeredChineseInfo.eightChars;
 
       // 创建FourZhu对象
       // final fourZhu = FourZhu(

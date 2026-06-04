@@ -1,7 +1,7 @@
 import 'package:metaphysics_core/enums.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:timezone/data/latest.dart' as tz;
-import 'package:xuan_common/dev_constant.dart';
+import 'package:tiebanshenshu/dev/dev_fixtures.dart';
 import 'package:tiebanshenshu/service/strategy/qian_hou_gua_strategy.dart';
 
 void main() {
@@ -11,8 +11,9 @@ void main() {
 
   group('QianHouGuaStrategy Debug Test', () {
     test('检查前后卦取数法的条文编号是否在合理范围内', () {
-      // 使用DevConstant.dev_usa的八字数据
-      final eightChars = DevConstant.dev_usa.standeredChineseInfo.eightChars;
+      // 使用TiebanshenshuDevFixtures.devUsa的八字数据
+      final eightChars =
+          TiebanshenshuDevFixtures.devUsa.standeredChineseInfo.eightChars;
 
       // 创建策略
       final strategy = QianHouGuaStrategy();

@@ -1,8 +1,8 @@
-import 'package:xuan_common/enums/enum_jia_zi.dart';
 import 'package:metaphysics_core/models/eight_chars.dart';
+import 'package:metaphysics_core/enums.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:timezone/data/latest.dart' as tz;
-import 'package:xuan_common/dev_constant.dart';
+import 'package:tiebanshenshu/dev/dev_fixtures.dart';
 import 'package:tiebanshenshu/service/strategy/gua_zhong_strategy.dart';
 
 void main() {
@@ -14,8 +14,9 @@ void main() {
 
   group('GuaZhong算法逻辑验证', () {
     test('验证年月卦计算 - mod 8逻辑', () {
-      // 使用DevConstant.dev_usa的八字数据
-      final eightChars = DevConstant.dev_usa.standeredChineseInfo.eightChars;
+      // 使用TiebanshenshuDevFixtures.devUsa的八字数据
+      final eightChars =
+          TiebanshenshuDevFixtures.devUsa.standeredChineseInfo.eightChars;
 
       print('\n========== 年月卦计算验证 ==========');
       print('年柱: ${eightChars.year.name}');
@@ -50,8 +51,9 @@ void main() {
     });
 
     test('验证日时卦计算 - 大于8减8逻辑', () {
-      // 使用DevConstant.dev_usa的八字数据
-      final eightChars = DevConstant.dev_usa.standeredChineseInfo.eightChars;
+      // 使用TiebanshenshuDevFixtures.devUsa的八字数据
+      final eightChars =
+          TiebanshenshuDevFixtures.devUsa.standeredChineseInfo.eightChars;
 
       print('\n========== 日时卦计算验证 ==========');
       print('日柱: ${eightChars.day.name}');
@@ -86,7 +88,8 @@ void main() {
     });
 
     test('验证条文编号计算 - 年月卦主卦', () {
-      final eightChars = DevConstant.dev_usa.standeredChineseInfo.eightChars;
+      final eightChars =
+          TiebanshenshuDevFixtures.devUsa.standeredChineseInfo.eightChars;
 
       print('\n========== 年月卦主卦条文编号验证（三种方案） ==========');
 

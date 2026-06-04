@@ -2,7 +2,7 @@ import 'package:metaphysics_core/enums.dart';
 import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:timezone/data/latest.dart' as tz;
-import 'package:xuan_common/dev_constant.dart';
+import 'package:tiebanshenshu/dev/dev_fixtures.dart';
 import 'package:tiebanshenshu/service/strategy/gua_zhong_strategy.dart';
 import 'package:tiebanshenshu/domain/models/gua_zhong_base_number_model.dart';
 
@@ -29,8 +29,9 @@ void main() {
     test('验证震卦场景 - 上卦先天数=4触发千位=10', () {
       print('\n========== 震卦场景测试 ==========');
 
-      // 使用DevConstant.dev_usa的数据（年月卦上卦为震卦）
-      final eightChars = DevConstant.dev_usa.standeredChineseInfo.eightChars;
+      // 使用TiebanshenshuDevFixtures.devUsa的数据（年月卦上卦为震卦）
+      final eightChars =
+          TiebanshenshuDevFixtures.devUsa.standeredChineseInfo.eightChars;
 
       print(
         '四柱: ${eightChars.year} ${eightChars.month} ${eightChars.day} ${eightChars.time}',
@@ -193,7 +194,8 @@ void main() {
     test('验证tiaoWenNumbersWithPlanLabel方法', () {
       print('\n========== 带标签条文列表测试 ==========');
 
-      final eightChars = DevConstant.dev_usa.standeredChineseInfo.eightChars;
+      final eightChars =
+          TiebanshenshuDevFixtures.devUsa.standeredChineseInfo.eightChars;
 
       final params = GuaZhongStrategyParams(eightChars: eightChars);
       final result = strategy.calculate(params);
@@ -239,7 +241,8 @@ void main() {
     test('验证getNianYueZhuGuaTiaoWenNumber和getRiShiZhuGuaTiaoWenNumber方法', () {
       print('\n========== 按方案获取条文编号方法测试 ==========');
 
-      final eightChars = DevConstant.dev_usa.standeredChineseInfo.eightChars;
+      final eightChars =
+          TiebanshenshuDevFixtures.devUsa.standeredChineseInfo.eightChars;
 
       final params = GuaZhongStrategyParams(eightChars: eightChars);
       final result = strategy.calculate(params);
@@ -292,7 +295,8 @@ void main() {
     test('验证震卦千位=10的精确计算', () {
       print('\n========== 震卦千位=10精确计算测试 ==========');
 
-      final eightChars = DevConstant.dev_usa.standeredChineseInfo.eightChars;
+      final eightChars =
+          TiebanshenshuDevFixtures.devUsa.standeredChineseInfo.eightChars;
 
       final params = GuaZhongStrategyParams(eightChars: eightChars);
       final result = strategy.calculate(params);

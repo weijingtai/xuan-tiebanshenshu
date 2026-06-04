@@ -1,7 +1,7 @@
 import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:metaphysics_core/enums.dart';
-import 'package:xuan_common/dev_constant.dart';
+import 'package:tiebanshenshu/dev/dev_fixtures.dart';
 import 'package:tiebanshenshu/features/six_yao_gua/pure_six_yao_gua.dart';
 import 'package:tiebanshenshu/features/liuqinkaoke/strategy/liuqinkaoke_calculation_strategy.dart';
 import 'package:tiebanshenshu/features/liuqinkaoke/models/liuqinkaoke_models.dart';
@@ -23,7 +23,7 @@ void main() {
       'calculateCandidates should generate 14 candidates (7 innate, 7 acquired)',
       () {
         // Arrange
-        final devData = DevConstant.dev_usa;
+        final devData = TiebanshenshuDevFixtures.devUsa;
         final fourZhu = devData.standeredChineseInfo.eightChars;
         const gender = Gender.male;
         // 年干为乙，属阴

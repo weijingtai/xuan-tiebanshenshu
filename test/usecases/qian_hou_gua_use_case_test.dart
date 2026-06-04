@@ -1,7 +1,7 @@
 import 'package:metaphysics_core/enums.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:timezone/data/latest.dart' as tz;
-import 'package:xuan_common/dev_constant.dart';
+import 'package:tiebanshenshu/dev/dev_fixtures.dart';
 import 'package:tiebanshenshu/repository/repository_factory.dart';
 import 'package:tiebanshenshu/service/strategy/qian_hou_gua_strategy.dart';
 import 'package:tiebanshenshu/usecases/qian_hou_gua_tiao_wen_list_use_case.dart';
@@ -20,8 +20,9 @@ void main() {
       final repository = RepositoryFactory.defaultTiaoWenRepository;
       final useCase = QianHouGuaTiaoWenListUseCase(strategy, repository);
 
-      // 使用DevConstant.dev_usa的八字数据
-      final eightChars = DevConstant.dev_usa.standeredChineseInfo.eightChars;
+      // 使用TiebanshenshuDevFixtures.devUsa的八字数据
+      final eightChars =
+          TiebanshenshuDevFixtures.devUsa.standeredChineseInfo.eightChars;
 
       // 创建参数
       final params = QianHouGuaUseCaseParams(
