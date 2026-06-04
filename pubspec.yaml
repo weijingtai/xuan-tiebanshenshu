@@ -43,8 +43,6 @@ dependencies:
 
   flutter_localizations:
     sdk: flutter
-  xuan_common:
-    path: ../xuan-common
 dev_dependencies:
   flutter_test:
     sdk: flutter

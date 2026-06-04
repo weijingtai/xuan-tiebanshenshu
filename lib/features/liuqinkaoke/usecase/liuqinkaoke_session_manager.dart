@@ -4,7 +4,7 @@ import 'package:tiebanshenshu/features/liuqinkaoke/repository/liuqinkaoke_sessio
 import 'package:tiebanshenshu/features/liuqinkaoke/strategy/liuqinkaoke_calculation_strategy.dart';
 import 'package:tiebanshenshu/repository/tiao_wen_repository.dart';
 import 'package:uuid/uuid.dart';
-import 'package:xuan_common/dev_constant.dart';
+import 'package:tiebanshenshu/dev/dev_fixtures.dart';
 import 'package:tiebanshenshu/constant/constants.dart';
 
 import 'package:tiebanshenshu/service/strategy/tiao_wen_list_calculation.dart';
@@ -25,7 +25,7 @@ class LiuQinKaoKeSessionManager {
 
   /// 开始一个新会话
   Future<LiuQinKaoKeSession> start({required Gender gender}) async {
-    final devData = DevConstant.dev_usa;
+    final devData = TiebanshenshuDevFixtures.devUsa;
     final eightChars = devData.standeredChineseInfo.eightChars;
     final isYangNianGan = tianGanYinYangMapper[eightChars.year.gan.value] ?? false;
     final era = devData.standeredChineseInfo.threeYuan;

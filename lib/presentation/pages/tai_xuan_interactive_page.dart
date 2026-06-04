@@ -5,7 +5,7 @@ library;
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:xuan_common/dev_constant.dart';
+import 'package:tiebanshenshu/dev/dev_fixtures.dart';
 import 'package:metaphysics_core/models/eight_chars.dart';
 
 import '../viewmodels/tai_xuan_four_zhu_interactive_view_model.dart';
@@ -52,7 +52,7 @@ class _TaiXuanInteractivePageState extends State<TaiXuanInteractivePage>
     _initializeAnimations();
     _selectedEightChars =
         widget.initialEightChars ??
-        DevConstant.dev_usa.standeredChineseInfo.eightChars;
+        TiebanshenshuDevFixtures.devUsa.standeredChineseInfo.eightChars;
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _initializeSession();

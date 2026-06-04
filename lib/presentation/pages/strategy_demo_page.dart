@@ -4,7 +4,7 @@ import 'package:metaphysics_core/enums/datetime_strategy_enums.dart';
 import 'package:metaphysics_core/models/jie_qi_info.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:xuan_common/dev_constant.dart';
+import 'package:tiebanshenshu/dev/dev_fixtures.dart';
 import '../viewmodels/day_gan_zhi_gua_view_model.dart';
 import '../viewmodels/four_zhu_tian_gan_view_model.dart';
 import '../viewmodels/tai_xuan_four_zhu_view_model.dart';
@@ -112,8 +112,8 @@ class _StrategyDemoPageState extends State<StrategyDemoPage>
       final qianHouGuaViewModel = context.read<QianHouGuaViewModel>();
       final guaZhongViewModel = context.read<GuaZhongViewModel>();
 
-      // 使用DevConstant.dev_usa的八字数据
-      final eightChars = DevConstant.dev_usa.standeredChineseInfo.eightChars;
+      // 使用TiebanshenshuDevFixtures.devUsa的八字数据
+      final eightChars = TiebanshenshuDevFixtures.devUsa.standeredChineseInfo.eightChars;
 
       // 并行初始化所有ViewModel
       await Future.wait([
@@ -568,7 +568,7 @@ class _StrategyDemoPageState extends State<StrategyDemoPage>
   /// 构建数据源信息
   Widget _buildDataSourceInfo() {
     final theme = Theme.of(context);
-    final devData = DevConstant.dev_usa;
+    final devData = TiebanshenshuDevFixtures.devUsa;
     final eightChars = devData.standeredChineseInfo.eightChars;
 
     return Container(
@@ -769,7 +769,7 @@ class _StrategyDemoPageState extends State<StrategyDemoPage>
     );
 
     // 为流运系统准备参数：基础模型、出生年份、策略实例
-    final birthYear = DevConstant.dev_usa.standeredDatetime.year;
+    final birthYear = TiebanshenshuDevFixtures.devUsa.standeredDatetime.year;
     final strategy = YuanTangStrategy();
 
     return YuanTangCard(
@@ -988,7 +988,7 @@ class _StrategyDemoPageState extends State<StrategyDemoPage>
               Text('• 前后卦取数法：基于元堂卦法取先天卦和后天卦，前卦递增96四次，后卦递减96四次'),
               Text('• 卦中取数法：基于四柱干支太玄数，年月卦和日时卦各产生主卦和互卦条文编号，总计4个条文'),
               SizedBox(height: 12.0),
-              Text('所有计算都使用DevConstant.dev_usa作为数据源，展示完整的条文列表信息。'),
+              Text('所有计算都使用TiebanshenshuDevFixtures.devUsa作为数据源，展示完整的条文列表信息。'),
               SizedBox(height: 12.0),
               Text('点击卡片头部可以展开/收起详细内容，点击刷新按钮可以重新计算。'),
             ],

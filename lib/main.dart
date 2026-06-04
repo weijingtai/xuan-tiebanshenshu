@@ -1,4 +1,4 @@
-import 'package:xuan_common/dev_constant.dart';
+import 'package:tiebanshenshu/dev/dev_fixtures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'navigator.dart';
@@ -17,7 +17,7 @@ void main() {
         Provider<String>.value(value: 'example'),
         ChangeNotifierProvider<DateTimeProvider>(
           create: (_) =>
-              DateTimeProvider()..updateDateTime(DevConstant.dev_usa),
+              DateTimeProvider()..updateDateTime(TiebanshenshuDevFixtures.devUsa),
         ),
         ChangeNotifierProvider(create: (_) => ThemeViewModel()),
         // Strategy相关的Provider配置

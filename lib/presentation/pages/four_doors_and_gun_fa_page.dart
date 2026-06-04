@@ -1,5 +1,5 @@
 import 'package:metaphysics_core/enums.dart';
-import 'package:xuan_common/dev_constant.dart';
+import 'package:tiebanshenshu/dev/dev_fixtures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../viewmodels/si_men_fa_view_model.dart';
@@ -92,8 +92,8 @@ class _FourDoorsAndGunFaPageState extends State<FourDoorsAndGunFaPage>
       final siMenFaViewModel = context.read<SiMenFaViewModel>();
       final baGuaGunViewModel = context.read<BaGuaGunViewModel>();
 
-      // 使用DevConstant.dev_usa的八字数据
-      final eightChars = DevConstant.dev_usa.standeredChineseInfo.eightChars;
+      // 使用TiebanshenshuDevFixtures.devUsa的八字数据
+      final eightChars = TiebanshenshuDevFixtures.devUsa.standeredChineseInfo.eightChars;
 
       // 并行初始化两个ViewModel
       await Future.wait([
@@ -691,7 +691,7 @@ class _FourDoorsAndGunFaPageState extends State<FourDoorsAndGunFaPage>
               Text('• 计算三基数：先天顺序数、先天洛书数、后天洛书数'),
               Text('• 生成48个条文（8卦 × 6条文）'),
               SizedBox(height: 16.0),
-              Text('所有计算都使用DevConstant.dev_usa作为数据源。'),
+              Text('所有计算都使用TiebanshenshuDevFixtures.devUsa作为数据源。'),
             ],
           ),
         ),
