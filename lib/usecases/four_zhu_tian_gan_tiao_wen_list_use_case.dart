@@ -7,7 +7,7 @@ import '../domain/models/multi_base_number_result.dart';
 import '../domain/exceptions/tiao_wen_calculation_exceptions.dart';
 import '../domain/models/tiao_wen_list_result.dart';
 import '../domain/models/tiao_wen_list_state.dart';
-import '../repository/tiao_wen_repository.dart';
+import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 import '../service/strategy/four_zhu_tian_gan_strategy.dart';
 import '../service/strategy/tiao_wen_list_calculation.dart';
 

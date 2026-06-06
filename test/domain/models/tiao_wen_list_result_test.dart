@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:tiebanshenshu/domain/models/tiao_wen_list_result.dart';
 import 'package:tiebanshenshu/domain/models/tiao_wen_list_state.dart';
-import 'package:tiebanshenshu/repository/datamodels/tiao_wen_datamodel.dart';
+import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 import 'package:metaphysics_core/enums.dart';
 
 void main() {

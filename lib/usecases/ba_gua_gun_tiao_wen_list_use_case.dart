@@ -4,7 +4,7 @@ import '../domain/models/base_number_tiao_wen_list_model.dart';
 import '../domain/models/multi_base_number_result.dart';
 import '../domain/models/ba_gua_gun_base_number_model.dart';
 import '../domain/exceptions/tiao_wen_calculation_exceptions.dart';
-import '../repository/tiao_wen_repository.dart';
+import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 import '../service/strategy/ba_gua_gun_strategy.dart';
 import '../service/strategy/tiao_wen_list_calculation.dart';
 import 'base_get_tiao_wen_list_use_case.dart';

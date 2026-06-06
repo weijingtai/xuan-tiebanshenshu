@@ -8,8 +8,7 @@ import '../domain/models/multi_base_number_result.dart';
 import '../domain/models/base_number_tiao_wen_list_model.dart';
 import '../domain/models/base_number_model.dart';
 import '../service/strategy/tiao_wen_list_calculation.dart';
-import '../repository/tiao_wen_repository.dart';
-import '../repository/datamodels/tiao_wen_datamodel.dart';
+import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 
 /// 获取条文列表UseCase的基础抽象类
 ///

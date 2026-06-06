@@ -1,7 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:tiebanshenshu/dev/dev_fixtures.dart';
-import 'package:tiebanshenshu/repository/repository_factory.dart';
+import 'package:persistence_assets/persistence_assets.dart';
+import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 import 'package:tiebanshenshu/service/strategy/gua_zhong_strategy.dart';
 import 'package:tiebanshenshu/usecases/gua_zhong_tiao_wen_list_use_case.dart';
 
@@ -16,7 +17,7 @@ void main() {
     test('应该成功计算卦中取数法并返回条文列表（三种方案）', () async {
       // 创建依赖
       final strategy = GuaZhongStrategy();
-      final repository = RepositoryFactory.defaultTiaoWenRepository;
+      final repository = AssetsTiaoWenRepository(dataPath: kDefaultTiaoWenAssetPath);
       final useCase = GuaZhongTiaoWenListUseCase(strategy, repository);
 
       // 使用TiebanshenshuDevFixtures.devUsa的八字数据

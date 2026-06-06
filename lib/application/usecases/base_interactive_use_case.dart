@@ -10,8 +10,7 @@ import '../../domain/models/interactive_strategy_config.dart';
 import '../../domain/models/tiao_wen_candidate.dart';
 import '../../domain/models/multi_base_number_result.dart';
 import '../../domain/models/base_number_tiao_wen_list_model.dart';
-import '../../repository/tiao_wen_repository.dart';
-import '../../repository/datamodels/tiao_wen_datamodel.dart';
+import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 
 /// 交互式UseCase的基础抽象类
 ///

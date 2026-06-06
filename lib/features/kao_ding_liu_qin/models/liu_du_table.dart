@@ -1,5 +1,5 @@
 import 'package:metaphysics_core/enums.dart';
-import '../../../repository/datamodels/tiao_wen_datamodel.dart';
+import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 
 /// 流度表条目
 ///

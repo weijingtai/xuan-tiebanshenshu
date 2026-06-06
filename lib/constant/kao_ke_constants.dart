@@ -1,6 +1,6 @@
 import 'package:metaphysics_core/enums.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:tiebanshenshu/repository/datamodels/tiao_wen_datamodel.dart';
+import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 part 'kao_ke_constants.g.dart';
 
 // 鐵板神數之八刻

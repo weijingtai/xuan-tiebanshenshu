@@ -2,7 +2,7 @@ import 'package:metaphysics_core/enums.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../constant/kao_ke_constants.dart';
-import '../../../repository/tiao_wen_repository.dart';
+import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 
 /// 斗甲乙宫（三宫之数）选择表格
 ///

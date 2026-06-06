@@ -1,7 +1,6 @@
 import 'package:metaphysics_core/enums.dart';
 import 'package:metaphysics_core/models/eight_chars.dart';
-import '../../../repository/tiao_wen_repository.dart';
-import '../../../repository/tiao_wen_repository_impl.dart';
+import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 import '../../../features/kao_ke/gua_calculation_helper.dart';
 import '../../../features/kao_ke/kao_ke_session_models.dart';
 import '../../../features/six_yao_gua/pure_six_yao_gua.dart';
@@ -61,10 +60,10 @@ class KaoDingLiuQinUseCase {
 
   KaoDingLiuQinUseCase({
     LiuDuTableRepository? liuDuTableRepository,
-    TiaoWenRepository? tiaoWenRepository,
+    required TiaoWenRepository tiaoWenRepository,
     KaoDingLiuQinSessionManager? sessionManager,
   })  : _liuDuTableRepository = liuDuTableRepository ?? LiuDuTableRepository(),
-        _tiaoWenRepository = tiaoWenRepository ?? TiaoWenRepositoryImpl(dataPath: 'assets/tiao_wen_data.csv'),
+        _tiaoWenRepository = tiaoWenRepository,
         _sessionManager = sessionManager ?? KaoDingLiuQinSessionManager(),
         _strategy = KaoDingLiuQinStrategy(liuDuTableRepository ?? LiuDuTableRepository());
 

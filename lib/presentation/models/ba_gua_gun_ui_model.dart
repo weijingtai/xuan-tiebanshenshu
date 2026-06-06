@@ -5,7 +5,7 @@ library;
 
 import 'package:metaphysics_core/enums.dart';
 import '../../domain/models/ba_gua_gun_base_number_model.dart';
-import '../../repository/datamodels/tiao_wen_datamodel.dart';
+import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 import 'si_men_fa_ui_model.dart'; // 复用 GuaInfoUIModel 和 GuaThreeNumbersUIModel
 
 /// 八卦滚法 UI模型

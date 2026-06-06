@@ -10,7 +10,7 @@ import 'widgets/gua_display_widget.dart';
 import 'widgets/method_selector_widget.dart';
 import 'widgets/final_result_display_widget.dart';
 import 'widgets/dou_jia_yi_selection_table.dart';
-import '../../repository/tiao_wen_repository.dart';
+import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 
 /// 考刻交互主页面
 ///

@@ -1,5 +1,5 @@
 import 'tiao_wen_list_state.dart';
-import '../../repository/datamodels/tiao_wen_datamodel.dart';
+import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 
 /// 条文列表计算结果
 ///

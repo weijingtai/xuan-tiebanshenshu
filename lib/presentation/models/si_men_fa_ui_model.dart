@@ -5,7 +5,7 @@ library;
 
 import 'package:metaphysics_core/enums.dart';
 import '../../domain/models/si_men_fa_base_number_model.dart';
-import '../../repository/datamodels/tiao_wen_datamodel.dart';
+import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 
 /// 四门法V2 UI模型
 ///

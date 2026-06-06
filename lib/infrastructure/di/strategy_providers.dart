@@ -8,8 +8,7 @@ import '../../features/huang_ji/huang_ji_v2_use_case.dart';
 import '../../features/huang_ji/huang_ji_v2_view_model.dart';
 import '../../features/liuqinkaoke/repository/liuqinkaoke_session_repository.dart';
 import '../../features/liuqinkaoke/usecase/liuqinkaoke_session_manager.dart';
-import '../../repository/repository_factory.dart';
-import '../../repository/tiao_wen_repository.dart';
+import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 import '../../service/strategy/day_gan_zhi_gua_strategy.dart';
 import '../../service/strategy/four_zhu_tian_gan_strategy.dart';
 import '../../service/strategy/middle_palace_five_strategy.dart';
@@ -84,11 +83,6 @@ class StrategyProviders {
   ///
   /// 包含Repository、Strategy、UseCase和ViewModel的完整依赖链
   static List<SingleChildWidget> get providers => [
-    // Repository层
-    Provider<TiaoWenRepository>(
-      create: (_) => RepositoryFactory.defaultTiaoWenRepository,
-    ),
-
     // 条文列表计算配置层
     Provider<TiaoWenListCalculationConfig>(
       create: (_) => TiaoWenListCalculationConfig.listAdd(

@@ -2,7 +2,8 @@ import 'package:metaphysics_core/enums.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:tiebanshenshu/dev/dev_fixtures.dart';
-import 'package:tiebanshenshu/repository/repository_factory.dart';
+import 'package:persistence_assets/persistence_assets.dart';
+import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 import 'package:tiebanshenshu/service/strategy/qian_hou_gua_strategy.dart';
 import 'package:tiebanshenshu/usecases/qian_hou_gua_tiao_wen_list_use_case.dart';
 
@@ -17,7 +18,7 @@ void main() {
     test('应该成功计算前后卦取数法并返回条文列表', () async {
       // 创建依赖
       final strategy = QianHouGuaStrategy();
-      final repository = RepositoryFactory.defaultTiaoWenRepository;
+      final repository = AssetsTiaoWenRepository(dataPath: kDefaultTiaoWenAssetPath);
       final useCase = QianHouGuaTiaoWenListUseCase(strategy, repository);
 
       // 使用TiebanshenshuDevFixtures.devUsa的八字数据

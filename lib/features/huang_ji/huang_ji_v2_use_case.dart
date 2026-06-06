@@ -8,7 +8,7 @@ import '../../domain/models/tiao_wen_result.dart';
 import './huang_ji_v2_session_models.dart';
 import './huang_ji_session_manager.dart';
 import './huang_ji_v2_calculation_strategy.dart';
-import '../../repository/tiao_wen_repository.dart';
+import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 
 /// UseCase - 核心业务逻辑编排
 ///

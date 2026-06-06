@@ -5,7 +5,7 @@ library;
 
 import '../../domain/models/base_number_tiao_wen_list_model.dart';
 import '../../domain/models/ba_gua_jia_ze_base_number_model.dart';
-import '../../repository/datamodels/tiao_wen_datamodel.dart';
+import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 
 /// 八卦加则UI模型
 ///

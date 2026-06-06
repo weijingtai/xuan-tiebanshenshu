@@ -1,6 +1,6 @@
 import 'package:metaphysics_core/models/eight_chars.dart';
 import '../../domain/models/tiao_wen_result.dart';
-import '../../repository/tiao_wen_repository.dart';
+import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 import '../../service/strategy/ba_gua_jia_ze_strategy.dart';
 import '../../service/strategy/gua_yao_gan_zhi_he_strategy.dart';
 import '../../domain/models/gua_yao_gan_zhi_he_base_number_model.dart';

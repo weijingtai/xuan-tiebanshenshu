@@ -4,7 +4,7 @@
 /// 用于表示包含条文列表的完整基础数模型
 library;
 
-import '../../repository/datamodels/tiao_wen_datamodel.dart';
+import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 import '../../service/strategy/tiao_wen_list_calculation.dart';
 import 'base_number_model.dart';
 

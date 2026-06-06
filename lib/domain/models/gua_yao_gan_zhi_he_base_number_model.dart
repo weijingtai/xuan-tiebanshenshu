@@ -5,7 +5,7 @@ library;
 
 import 'package:metaphysics_core/enums.dart';
 import '../../features/six_yao_gua/pure_six_yao_gua.dart';
-import '../../repository/datamodels/tiao_wen_datamodel.dart';
+import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 import 'base_number_tiao_wen_list_model.dart';
 import 'base_number_model.dart';
 

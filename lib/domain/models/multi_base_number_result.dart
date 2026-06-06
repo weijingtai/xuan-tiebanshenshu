@@ -8,7 +8,7 @@ import '../../service/strategy/base_calculation_strategy.dart';
 import 'base_number_model.dart';
 import 'base_number_tiao_wen_list_model.dart';
 import 'tiao_wen_list_state.dart';
-import '../../repository/datamodels/tiao_wen_datamodel.dart';
+import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 
 /// 多基础数算法结果
 ///

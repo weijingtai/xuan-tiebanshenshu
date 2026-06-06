@@ -1,6 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:metaphysics_core/enums.dart';
 import 'package:metaphysics_core/models/eight_chars.dart';
+import 'package:persistence_assets/persistence_assets.dart';
+import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 import 'package:tiebanshenshu/features/kao_ding_liu_qin/usecases/kao_ding_liu_qin_use_case.dart';
 import 'package:tiebanshenshu/features/kao_ding_liu_qin/models/liu_qin_type.dart';
 
@@ -13,7 +15,9 @@ void main() {
     late KaoDingLiuQinUseCase useCase;
 
     setUp(() {
-      useCase = KaoDingLiuQinUseCase();
+      useCase = KaoDingLiuQinUseCase(
+        tiaoWenRepository: AssetsTiaoWenRepository(dataPath: kDefaultTiaoWenAssetPath),
+      );
     });
 
     test('应该能够使用选择的条文编号进行化卦', () {

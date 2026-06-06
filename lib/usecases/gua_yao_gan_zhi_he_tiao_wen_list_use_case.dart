@@ -1,6 +1,6 @@
 import 'package:metaphysics_core/models/eight_chars.dart';
 
-import '../repository/datamodels/tiao_wen_datamodel.dart';
+import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 import 'base_get_tiao_wen_list_use_case.dart';
 import '../service/strategy/tiao_wen_list_calculation.dart';
 import '../domain/models/multi_base_number_result.dart';
@@ -9,7 +9,6 @@ import '../domain/models/tiao_wen_list_result.dart';
 import '../domain/models/tiao_wen_list_state.dart';
 import '../domain/models/base_number_tiao_wen_list_model.dart';
 import '../domain/models/gua_yao_gan_zhi_he_base_number_model.dart';
-import '../repository/tiao_wen_repository.dart';
 import '../service/strategy/gua_yao_gan_zhi_he_strategy.dart';
 import '../service/strategy/base_calculation_strategy.dart';
 

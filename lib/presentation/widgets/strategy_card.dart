@@ -3,7 +3,7 @@ import 'package:tiebanshenshu/presentation/components/gradient_card.dart';
 import '../viewmodels/base_tiao_wen_list_view_model.dart';
 import '../models/ui_tiao_wen_list_result_model.dart';
 import '../../domain/models/tiao_wen_list_state.dart';
-import '../../repository/datamodels/tiao_wen_datamodel.dart';
+import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 import 'calculation_summary.dart';
 import 'loading_widget.dart';
 import 'error_widget.dart';

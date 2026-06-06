@@ -2,7 +2,7 @@ import 'package:metaphysics_core/enums.dart';
 import 'package:tiebanshenshu/features/liuqinkaoke/models/liuqinkaoke_models.dart';
 import 'package:tiebanshenshu/features/liuqinkaoke/repository/liuqinkaoke_session_repository.dart';
 import 'package:tiebanshenshu/features/liuqinkaoke/strategy/liuqinkaoke_calculation_strategy.dart';
-import 'package:tiebanshenshu/repository/tiao_wen_repository.dart';
+import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 import 'package:uuid/uuid.dart';
 import 'package:tiebanshenshu/dev/dev_fixtures.dart';
 import 'package:tiebanshenshu/constant/constants.dart';

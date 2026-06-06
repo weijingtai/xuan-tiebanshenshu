@@ -16,7 +16,7 @@ import '../domain/models/tiao_wen_candidate.dart';
 import '../domain/models/tiao_wen_list_result.dart';
 import '../domain/models/multi_base_number_result.dart';
 import '../domain/models/tiao_wen_list_state.dart';
-import '../repository/tiao_wen_repository.dart';
+import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 import '../service/strategy/tai_xuan_four_zhu_interactive_strategy.dart';
 import '../service/strategy/tiao_wen_list_calculation.dart';
 
