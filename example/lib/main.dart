@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
+import 'package:persistence_assets/persistence_assets.dart';
 
 import 'package:tiebanshenshu/infrastructure/di/strategy_providers.dart';
 import 'package:tiebanshenshu/providers/datetime_provider.dart';
@@ -27,6 +29,10 @@ void main() {
         ),
 
         ChangeNotifierProvider(create: (_) => ThemeViewModel()),
+
+        Provider<TiaoWenRepository>(
+          create: (_) => AssetsTiaoWenRepository(dataPath: kDefaultTiaoWenAssetPath),
+        ),
 
         // All strategy related providers from tiebanshenshu
         ...StrategyProviders.providers,
