@@ -1,27 +1,27 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/services.dart';
-import 'package:tiebanshenshu/repository/tiao_wen_repository_impl.dart';
-import 'package:tiebanshenshu/repository/datamodels/tiao_wen_datamodel.dart';
+import 'package:persistence_assets/persistence_assets.dart';
+import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 import 'package:metaphysics_core/enums.dart';
 
 /// 条文数据仓库测试
 void main() {
-  group('TiaoWenRepositoryImpl Tests', () {
-    late TiaoWenRepositoryImpl repository;
+  group('AssetsTiaoWenRepository Tests', () {
+    late AssetsTiaoWenRepository repository;
 
     setUpAll(() async {
       // 确保 Flutter 绑定已初始化（测试环境需要）
       TestWidgetsFlutterBinding.ensureInitialized();
 
       // 初始化仓库，指向 CSV 文件
-      repository = TiaoWenRepositoryImpl(
+      repository = AssetsTiaoWenRepository(
         dataPath: 'assets/all_tiao_wen_v1.csv',
       );
     });
 
     tearDownAll(() {
       // 清理缓存
-      TiaoWenRepositoryImpl.clearCache();
+      AssetsTiaoWenRepository.clearCache();
     });
 
     test('获取单个条文 - getById', () async {
@@ -445,7 +445,7 @@ void main() {
         await repository.getCount();
 
         // 清除缓存
-        TiaoWenRepositoryImpl.clearCache();
+        AssetsTiaoWenRepository.clearCache();
 
         // 重新加载应该重新读取数据
         final count = await repository.getCount();
