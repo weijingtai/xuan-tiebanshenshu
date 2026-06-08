@@ -1,6 +1,6 @@
 import 'package:metaphysics_core/enums.dart';
 import '../../../constant/constants.dart';
-import 'package:xuan_gua_core/xuan_gua_core.dart';
+import 'package:xuan_gua_core/xuan_gua_core.dart' hide shiYao, yiYao, eightGongGuaListMapper, fiveXingSixQingMapper;
 import '../models/liu_qin_type.dart';
 
 /// 纳甲六亲结果
