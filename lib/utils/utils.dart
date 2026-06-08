@@ -75,7 +75,7 @@ Enum64Gua guaToCuoGua(Enum64Gua guaName) {
 @Deprecated('使用 xuan_gua_core 的 yaoxuZhuangGua 替代')
 List<String> yaoxuZhuangGua(Enum64Gua guaName) {
   // 直接调用 xuan-gua-core 中的实现
-  return xuan_gua_core.yaoxuZhuangGua(guaName);
+  return yaoxuZhuangGua(guaName);
 }
 
 /// 根据双经卦名进行纳甲，安装"地支"。

@@ -445,7 +445,7 @@ class YuanTangStrategy
   /// 返回: 变换后的新卦象
   Enum64Gua _changeYao(Enum64Gua gua, int yaoIndex) {
     // 将卦转换为二进制列表
-    final binaryList = gua_utils.guaToBinaryList(gua);
+    final binaryList = guaToBinaryList(gua);
 
     // 转换索引：yaoIndex使用从下到上的索引(0=初爻,5=上爻)
     // 而binaryList使用从上到下的索引(0=上卦第1爻,5=下卦第3爻)
