@@ -6,7 +6,7 @@ library;
 import 'package:metaphysics_core/enums.dart';
 
 import '../../constant/constants.dart' as Constants;
-import '../../features/six_yao_gua/pure_six_yao_gua.dart';
+import 'package:xuan_gua_core/xuan_gua_core.dart';
 import 'base_calculation_strategy.dart';
 import 'standard_calculation_strategy.dart';
 import '../../domain/models/base_number_model_result.dart';

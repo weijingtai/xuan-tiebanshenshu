@@ -1,10 +1,10 @@
 import 'dart:core';
 
 import 'package:metaphysics_core/enums.dart';
-import 'package:tiebanshenshu/features/six_yao_gua/pure_six_yao_gua.dart';
-import 'package:tiebanshenshu/features/six_yao_gua/enum_6_shou.dart';
+import 'package:xuan_gua_core/xuan_gua_core.dart';
+import 'package:xuan_gua_core/xuan_gua_core.dart';
 
-import '../features/six_yao_gua/enum_8_gong_gua.dart';
+import 'package:xuan_gua_core/xuan_gua_core.dart';
 
 Map<TianGan, Map<EnumYaoOrder, Enum6Shou>> ganSixShouMapper = {
   TianGan.JIA: {

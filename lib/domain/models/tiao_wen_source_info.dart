@@ -3,7 +3,7 @@
 /// 记录每个条文编号的计算来源和方法
 library;
 
-import '../../features/six_yao_gua/pure_six_yao_gua.dart';
+import 'package:xuan_gua_core/xuan_gua_core.dart';
 
 /// 条文来源信息
 class TiaoWenSourceInfo {

@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:metaphysics_core/enums.dart';
 import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:tiebanshenshu/enums.dart';
-import 'package:tiebanshenshu/features/six_yao_gua/pure_six_yao_gua.dart';
+import 'package:xuan_gua_core/xuan_gua_core.dart';
 import 'package:tiebanshenshu/features/yuan_tang_gua/yuan_tang_calculator.dart';
 import 'package:tiebanshenshu/service/strategy/yuan_tang_strategy.dart';
 import 'package:tiebanshenshu/domain/models/yuan_tang_base_number_model.dart';

@@ -3,7 +3,7 @@ import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 import '../../../features/kao_ke/gua_calculation_helper.dart';
 import '../../../features/kao_ke/kao_ke_session_models.dart';
-import '../../../features/six_yao_gua/pure_six_yao_gua.dart';
+import 'package:xuan_gua_core/xuan_gua_core.dart';
 import '../repositories/liu_du_table_repository.dart';
 import '../services/kao_ding_liu_qin_strategy.dart';
 import '../models/liu_qin_type.dart';

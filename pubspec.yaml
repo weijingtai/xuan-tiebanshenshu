@@ -21,6 +21,8 @@ environment:
   sdk: ^3.8.1
 
 dependencies:
+  xuan_gua_core:
+    path: ../xuan-gua-core
   metaphysics_core:
     path: ../xuan-metaphysics-core
   repository_interface_tiebanshenshu:

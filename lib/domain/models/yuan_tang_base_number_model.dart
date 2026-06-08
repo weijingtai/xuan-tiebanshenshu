@@ -8,7 +8,7 @@ import 'package:metaphysics_core/models/datetime_details_bundle_logic_model.dart
 import 'package:metaphysics_core/models/eight_chars.dart';
 
 import '../../constant/constants.dart' as constants;
-import '../../features/six_yao_gua/pure_six_yao_gua.dart';
+import 'package:xuan_gua_core/xuan_gua_core.dart';
 import 'base_number_model.dart';
 
 /// 元堂爻详情模型

@@ -7,8 +7,8 @@ library;
 import 'package:metaphysics_core/enums.dart';
 import 'package:metaphysics_core/models/eight_chars.dart';
 
-import 'package:tiebanshenshu/features/six_yao_gua/pure_six_yao_gua.dart';
-import 'package:tiebanshenshu/features/six_yao_gua/six_yao_calculator.dart';
+import 'package:xuan_gua_core/xuan_gua_core.dart';
+import 'package:xuan_gua_core/xuan_gua_core.dart';
 import '../../domain/models/base_number_model.dart';
 import '../../domain/models/base_number_model_result.dart';
 import '../../domain/models/gua_yao_gan_zhi_he_base_number_model.dart';

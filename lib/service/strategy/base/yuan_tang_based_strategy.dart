@@ -4,7 +4,7 @@
 /// 都继承此基类，共享 YuanTangInfo 的获取和缓存逻辑
 library;
 
-import 'package:tiebanshenshu/features/six_yao_gua/pure_six_yao_gua.dart';
+import 'package:xuan_gua_core/xuan_gua_core.dart';
 import 'package:tiebanshenshu/features/yuan_tang_gua/yuan_tang_info.dart';
 
 import '../../../constant/constants.dart' as constants;

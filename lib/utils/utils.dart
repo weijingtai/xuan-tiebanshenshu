@@ -2,7 +2,7 @@
 // 导入包含所有静态数据映射的常量文件
 import 'package:metaphysics_core/enums.dart';
 import 'package:metaphysics_core/models/eight_chars.dart';
-import 'package:tiebanshenshu/features/six_yao_gua/pure_six_yao_gua.dart';
+import 'package:xuan_gua_core/xuan_gua_core.dart';
 import 'package:tiebanshenshu/features/yuan_tang_gua/pure_yuan_tang_gua.dart';
 
 import '../constant/constants.dart' as constants;
@@ -11,14 +11,8 @@ import '../constant/constants.dart' as constants;
 // 核心卦象变换函数 (Core Hexagram Transformation Functions)
 // ===================================================================
 
-/// 将双经卦名（如 "乾坤"）转换为6个元素的二进制列表（从上爻到下爻）。
-List<int> guaToBinaryList(Enum64Gua guaName) {
-  // 合并上卦和下卦的二进制列表
-  return PureSixYaoGua.by8Gua(
-    guaName.top,
-    guaName.bottom,
-  ).topBotYaoBinStr.split("").map((e) => int.parse(e)).toList();
-}
+/// guaToBinaryList 已迁移到 xuan-gua-core
+/// 如需使用，请导入 'package:xuan_gua_core/xuan_gua_core.dart'
 
 /// 将6个元素的二进制列表转换为双经卦名（如 "离兑"）。
 String binaryListToGua(List<int> binaryList) {
@@ -77,34 +71,11 @@ Enum64Gua guaToCuoGua(Enum64Gua guaName) {
 /// - 阴爻依次配：丑、卯、巳、未、酉、亥
 ///
 /// 返回一个从上爻到初爻的6元素地支列表。
+/// 已迁移到 xuan-gua-core，此函数保留为兼容性包装器。
+@Deprecated('使用 xuan_gua_core 的 yaoxuZhuangGua 替代')
 List<String> yaoxuZhuangGua(Enum64Gua guaName) {
-  // 阳爻地支序列
-  final yangDiZhi = ['子', '寅', '辰', '午', '申', '戌'];
-
-  // 阴爻地支序列
-  final yinDiZhi = ['丑', '卯', '巳', '未', '酉', '亥'];
-
-  // 将卦转换为二进制列表（从上爻到下爻）
-  final binaryList = guaToBinaryList(guaName);
-
-  int yangIndex = 0;
-  int yinIndex = 0;
-  final result = <String>[];
-
-  // 从上爻到下爻装配地支（索引0是上爻，索引5是初爻）
-  for (int i = 0; i < 6; i++) {
-    if (binaryList[i] == 1) {
-      // 阳爻
-      result.add(yangDiZhi[yangIndex % yangDiZhi.length]);
-      yangIndex++;
-    } else {
-      // 阴爻
-      result.add(yinDiZhi[yinIndex % yinDiZhi.length]);
-      yinIndex++;
-    }
-  }
-
-  return result;
+  // 直接调用 xuan-gua-core 中的实现
+  return xuan_gua_core.yaoxuZhuangGua(guaName);
 }
 
 /// 根据双经卦名进行纳甲，安装"地支"。

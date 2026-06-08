@@ -1,5 +1,5 @@
 import 'package:metaphysics_core/enums.dart';
-import '../../features/six_yao_gua/pure_six_yao_gua.dart';
+import 'package:xuan_gua_core/xuan_gua_core.dart';
 import 'kao_ke_session_models.dart';
 
 /// 卦象计算辅助类

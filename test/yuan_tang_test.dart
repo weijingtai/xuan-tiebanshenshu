@@ -5,7 +5,7 @@ import 'package:tiebanshenshu/features/yuan_tang_gua/pure_yuan_tang_gua.dart';
 import 'package:tiebanshenshu/features/yuan_tang_gua/yuan_tang_calculator.dart';
 import 'package:tiebanshenshu/utils/utils.dart' as gua_utils;
 import 'package:tiebanshenshu/constant/constants.dart' as constants;
-import 'package:tiebanshenshu/features/six_yao_gua/pure_six_yao_gua.dart';
+import 'package:xuan_gua_core/xuan_gua_core.dart';
 import 'package:tuple/tuple.dart';
 
 void main() {

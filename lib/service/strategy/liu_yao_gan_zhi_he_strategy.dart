@@ -14,7 +14,7 @@ import '../../constant/constants.dart' as constants;
 import '../../domain/models/base_number_model.dart';
 import '../../domain/models/base_number_model_result.dart';
 import '../../domain/models/liu_yao_gan_zhi_he_base_number_model.dart';
-import '../../features/six_yao_gua/pure_six_yao_gua.dart';
+import 'package:xuan_gua_core/xuan_gua_core.dart';
 import 'base/yuan_tang_based_strategy.dart';
 import 'base/yuan_tang_derived_params.dart';
 import 'base_calculation_strategy.dart';

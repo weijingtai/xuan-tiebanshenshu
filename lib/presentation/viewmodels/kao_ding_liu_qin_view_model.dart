@@ -6,7 +6,7 @@ import '../../features/kao_ding_liu_qin/usecases/kao_ding_liu_qin_use_case.dart'
 import '../../features/kao_ding_liu_qin/services/kao_ding_liu_qin_strategy.dart';
 import '../../features/kao_ding_liu_qin/models/session_manager.dart';
 import '../../features/kao_ke/kao_ke_session_models.dart';
-import '../../features/six_yao_gua/pure_six_yao_gua.dart';
+import 'package:xuan_gua_core/xuan_gua_core.dart';
 import '../../features/kao_ding_liu_qin/models/spouse_ordinal.dart';
 
 /// 考订六亲状态

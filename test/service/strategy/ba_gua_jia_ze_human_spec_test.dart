@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:tiebanshenshu/features/six_yao_gua/pure_six_yao_gua.dart';
+import 'package:xuan_gua_core/xuan_gua_core.dart';
 import 'package:tiebanshenshu/service/strategy/ba_gua_jia_ze_strategy.dart';
 
 /// 八卦加则法人工规格测试

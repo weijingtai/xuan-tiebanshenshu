@@ -2,8 +2,8 @@ import 'package:metaphysics_core/enums.dart';
 import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import '../six_yao_gua/pure_six_yao_gua.dart';
-import '../six_yao_gua/enum_6_shou.dart';
+import 'package:xuan_gua_core/xuan_gua_core.dart';
+import 'package:xuan_gua_core/xuan_gua_core.dart';
 import 'yuan_tang_calculator.dart';
 
 part 'pure_yuan_tang_gua.g.dart';

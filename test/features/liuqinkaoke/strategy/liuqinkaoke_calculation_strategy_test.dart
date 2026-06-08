@@ -2,7 +2,7 @@ import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:metaphysics_core/enums.dart';
 import 'package:tiebanshenshu/dev/dev_fixtures.dart';
-import 'package:tiebanshenshu/features/six_yao_gua/pure_six_yao_gua.dart';
+import 'package:xuan_gua_core/xuan_gua_core.dart';
 import 'package:tiebanshenshu/features/liuqinkaoke/strategy/liuqinkaoke_calculation_strategy.dart';
 import 'package:tiebanshenshu/features/liuqinkaoke/models/liuqinkaoke_models.dart';
 import 'package:tiebanshenshu/service/strategy/middle_palace_five_strategy.dart';
