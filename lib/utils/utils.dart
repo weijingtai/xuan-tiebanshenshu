@@ -67,17 +67,6 @@ Enum64Gua guaToCuoGua(Enum64Gua guaName) {
 /// 根据双经卦名使用爻序法进行装卦，安装"地支"。
 ///
 /// 爻序法规则：
-/// - 阳爻依次配：子、寅、辰、午、申、戌
-/// - 阴爻依次配：丑、卯、巳、未、酉、亥
-///
-/// 返回一个从上爻到初爻的6元素地支列表。
-/// 已迁移到 xuan-gua-core，此函数保留为兼容性包装器。
-@Deprecated('使用 xuan_gua_core 的 yaoxuZhuangGua 替代')
-List<String> yaoxuZhuangGua(Enum64Gua guaName) {
-  // 直接调用 xuan-gua-core 中的实现
-  return yaoxuZhuangGua(guaName);
-}
-
 /// 根据双经卦名进行纳甲，安装"地支"。
 /// 返回一个从上爻到初爻的6元素地支列表。
 List<String> najiaZhuangGua(Enum64Gua guaName) {

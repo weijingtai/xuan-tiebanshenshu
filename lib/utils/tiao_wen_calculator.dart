@@ -20,7 +20,7 @@ class TiaowenCalculator {
     List<int> binaryGua = guaToBinaryList(guaName);
 
     // 使用爻序法将地支装到卦上
-    List<String> zhiTopToBottom = GuaUtils.yaoxuZhuangGua(guaName);
+    List<String> zhiTopToBottom = yaoxuZhuangGua(guaName);
 
     // 计算卦的总数
     int guaTotalNumber = 0;
