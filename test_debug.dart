@@ -1,5 +1,5 @@
-import 'package:tiebanshenshu/features/six_yao_gua/pure_six_yao_gua.dart';
 import 'package:tiebanshenshu/constant/constants.dart' as constants;
+import 'package:xuan_gua_core/xuan_gua_core.dart';
 
 void main() {
   // 测试乾为天
@@ -9,7 +9,7 @@ void main() {
   print('  bottom (下卦): ${qian.bottom}');
   print('  top number: ${constants.houGuaNumberMapper[qian.top]}');
   print('  bottom number: ${constants.houGuaNumberMapper[qian.bottom]}');
-  
+
   // 测试坤为地
   final kun = Enum64Gua.kun_wei_di;
   print('\n坤为地:');
