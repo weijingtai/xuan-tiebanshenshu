@@ -11,6 +11,7 @@ import 'infrastructure/di/strategy_providers.dart';
 import 'features/liuqinkaoke/pages/liuqinkaoke_selection_page.dart';
 import 'features/kao_ke/kao_ke_interactive_page.dart';
 import 'features/kao_ding_liu_qin/pages/kao_ding_liu_qin_page.dart';
+import 'shaozishu/presentation/pages/shao_zi_shu_page.dart';
 import 'package:tiebanshenshu/presentation/pages/vertical_layout/vertical_layout_page.dart';
 import 'package:tiebanshenshu/presentation/pages/vertical_layout/base_18_page.dart';
 
@@ -64,6 +65,22 @@ class NavigatorGenerator {
       return MultiProvider(
         providers: StrategyProviders.providers,
         child: KaoKeInteractivePage(eightChars: eightChars),
+      );
+    },
+
+    // 邵子数：河洛天地数法纯演绎推演页
+    "/tiebanshenshu/shaozishu": (context, {arguments}) {
+      final defaultEightChars = EightChars(
+        year: JiaZi.GUI_SI,
+        month: JiaZi.JIA_ZI,
+        day: JiaZi.DING_YOU,
+        time: JiaZi.GUI_MAO,
+      );
+      final eightChars = arguments is EightChars ? arguments : defaultEightChars;
+
+      return MultiProvider(
+        providers: StrategyProviders.providers,
+        child: ShaoZiShuPage(eightChars: eightChars),
       );
     },
 

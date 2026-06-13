@@ -15,9 +15,12 @@ dependencies:
   tiebanshenshu:
     path: ../
   repository_interface_tiebanshenshu:
-    path: ../../repository-interface-tiebanshenshu
+    git:
+      url: http://192.168.0.165:3000/xuan/repository-interface-tiebanshenshu.git
   persistence_assets:
-    path: ../../xuan-storage/assets
+    git:
+      url: http://192.168.0.165:3000/xuan/xuan-storage.git
+      path: assets
 
 dev_dependencies:
   flutter_test:
@@ -35,4 +38,6 @@ flutter:
 
 dependency_overrides:
   persistence_core:
-    path: ../../xuan-storage/core
+    git:
+      url: http://192.168.0.165:3000/xuan/xuan-storage.git
+      path: core

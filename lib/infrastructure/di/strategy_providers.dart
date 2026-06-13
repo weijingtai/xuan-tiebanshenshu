@@ -68,6 +68,17 @@ import '../../features/kao_ke/kao_ke_calculation_strategy.dart';
 import '../../features/kao_ke/kao_ke_calculation_strategy_impl.dart';
 import '../../features/kao_ke/kao_ke_use_case.dart';
 import '../../features/kao_ke/kao_ke_view_model.dart';
+// 邵子数 Repository
+import '../../shaozishu/repository/data_source/tiao_wen_local_data_source.dart';
+import '../../shaozishu/repository/data_source/shaozi_txt_data_source.dart';
+import '../../shaozishu/repository/data_source/tiao_wen_remote_data_source.dart';
+import '../../shaozishu/repository/tiao_wen_repository_impl.dart';
+// 邵子数 Phase 3-4 领域层 + 应用层 + UI 层
+import '../../shaozishu/domain/session/shao_zi_shu_session_manager.dart';
+import '../../shaozishu/domain/strategy/shao_zi_shu_calculation_strategy.dart';
+import '../../shaozishu/domain/strategy/shao_zi_shu_calculation_strategy_impl.dart';
+import '../../shaozishu/application/shao_zi_shu_use_case.dart';
+import '../../shaozishu/presentation/view_model/shao_zi_shu_view_model.dart';
 // 考订六亲
 import '../../features/kao_ding_liu_qin/repositories/liu_du_table_repository.dart';
 import '../../features/kao_ding_liu_qin/services/kao_ding_liu_qin_strategy.dart';
@@ -83,6 +94,42 @@ class StrategyProviders {
   ///
   /// 包含Repository、Strategy、UseCase和ViewModel的完整依赖链
   static List<SingleChildWidget> get providers => [
+    // ============================================================
+    // 邵子数 Repository 层（DataSource → RepositoryImpl）
+    // ============================================================
+    Provider<TiaoWenLocalDataSource>(
+      create: (_) => ShaoziTxtDataSource(),
+    ),
+    Provider<TiaoWenRemoteDataSource>(
+      create: (_) => const StubTiaoWenRemoteDataSource(),
+    ),
+    Provider<TiaoWenRepository>(
+      create: (context) => TiaoWenRepositoryImpl(
+        localDataSource: context.read<TiaoWenLocalDataSource>(),
+        remoteDataSource: context.read<TiaoWenRemoteDataSource>(),
+      ),
+    ),
+
+    // —— 邵子数 DI（SessionManager → Strategy → UseCase → ViewModel）——
+    Provider<ShaoZiShuSessionManager>(
+      create: (_) => ShaoZiShuSessionManager(),
+    ),
+    Provider<ShaoZiShuCalculationStrategy>(
+      create: (context) => ShaoZiShuCalculationStrategyImpl(
+        repository: context.read<TiaoWenRepository>(),
+      ),
+    ),
+    Provider<ShaoZiShuUseCase>(
+      create: (context) => ShaoZiShuUseCase(
+        sessionManager: context.read<ShaoZiShuSessionManager>(),
+        calculationStrategy: context.read<ShaoZiShuCalculationStrategy>(),
+      ),
+    ),
+    ChangeNotifierProvider<ShaoZiShuViewModel>(
+      create: (context) =>
+          ShaoZiShuViewModel(useCase: context.read<ShaoZiShuUseCase>()),
+    ),
+
     // 条文列表计算配置层
     Provider<TiaoWenListCalculationConfig>(
       create: (_) => TiaoWenListCalculationConfig.listAdd(

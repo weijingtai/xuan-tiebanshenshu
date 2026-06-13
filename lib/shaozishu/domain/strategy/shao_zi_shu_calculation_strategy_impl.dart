@@ -1,0 +1,51 @@
+/// 邵子数计算策略实现
+///
+/// 对标 kao_ke_calculation_strategy_impl.dart，实现 [ShaoZiShuCalculationStrategy] 接口。
+/// 计算逻辑委托给 [ShaoZiShuCalculationHelper]（静态纯函数），
+/// 条文查询委托给 [TiaoWenRepository]。
+library;
+
+import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
+
+import '../../helper/shao_zi_shu_calculation_helper.dart';
+import 'shao_zi_shu_calculation_strategy.dart';
+
+/// 邵子数计算策略实现
+///
+/// 职责：
+/// - [calculateResult] → 委托给 [ShaoZiShuCalculationHelper.calculate]
+/// - [getTiaoWenContent] → 委托给 [TiaoWenRepository.getByIdList]
+/// - [getExpandedTiaoWenContent] → 使用接口默认实现（委托给 getTiaoWenContent）
+class ShaoZiShuCalculationStrategyImpl
+    implements ShaoZiShuCalculationStrategy {
+  final TiaoWenRepository _repository;
+
+  /// 构造注入
+  ///
+  /// [repository] 条文数据源（Phase 2 产物），负责根据编号列表查询条文内容。
+  ShaoZiShuCalculationStrategyImpl({
+    required TiaoWenRepository repository,
+  }) : _repository = repository;
+
+  // ===========================================================================
+  // ShaoZiShuCalculationStrategy 接口实现
+  // ===========================================================================
+
+  @override
+  ShaoZiShuResult calculateResult(EightChars eightChars) {
+    return ShaoZiShuCalculationHelper.calculate(eightChars);
+  }
+
+  @override
+  Future<List<TiaoWenDataModel>> getTiaoWenContent({
+    required List<int> tiaoWenNumbers,
+  }) async {
+    if (tiaoWenNumbers.isEmpty) return [];
+
+    return await _repository.getByIdList(
+      queryList: tiaoWenNumbers,
+      preserveOrder: true,
+      skipNotFound: true,
+    );
+  }
+}
