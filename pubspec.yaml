@@ -116,7 +116,10 @@ flutter:
 
 dependency_overrides:
   persistence_core:
-    git:
-      url: http://192.168.0.165:3000/xuan/xuan-storage.git
-      ref: fix/phase456-storage
-      path: core
+    path: ../xuan-storage/core
+  metaphysics_core:
+    path: ../xuan-metaphysics-core
+  repository_interface_tiebanshenshu:
+    path: ../repository-interface-tiebanshenshu
+  xuan_gua_core:
+    path: ../xuan-gua-core
