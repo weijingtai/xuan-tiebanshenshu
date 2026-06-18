@@ -1,7 +1,5 @@
 import 'package:metaphysics_core/enums.dart';
 import 'package:tiebanshenshu/presentation/components/glass_scaffold.dart';
-import 'package:metaphysics_core/enums/datetime_strategy_enums.dart';
-import 'package:metaphysics_core/models/jie_qi_info.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tiebanshenshu/dev/dev_fixtures.dart';
@@ -30,7 +28,7 @@ import '../widgets/qian_hou_gua_card.dart';
 import '../widgets/gua_zhong_card.dart';
 import '../models/ba_gua_jia_ze_ui_model.dart';
 import '../models/yuan_tang_ui_model.dart';
-import '../../service/strategy/yuan_tang_strategy.dart';
+import '../viewmodels/yuan_tang_liuyun_view_model.dart';
 
 /// Strategy演示页面
 ///
@@ -768,16 +766,21 @@ class _StrategyDemoPageState extends State<StrategyDemoPage>
       houtianTiaoWenNumbers: houtianTiaoWenNumbers,
     );
 
-    // 为流运系统准备参数：基础模型、出生年份、策略实例
+    // 为流运系统准备参数：基础模型、出生年份
     final birthYear = TiebanshenshuDevFixtures.devUsa.standeredDatetime.year;
-    final strategy = YuanTangStrategy();
+    final liuyunViewModel = YuanTangLiuyunViewModel();
+    liuyunViewModel.initialize(
+      model: yuanTangModel,
+      birthYear: birthYear,
+      context: context,
+    );
 
     return YuanTangCard(
       model: uiModel,
       initiallyExpanded: true,
       baseNumberModel: yuanTangModel,
       birthYear: birthYear,
-      strategy: strategy,
+      liuyunViewModel: liuyunViewModel,
     );
   }
 
@@ -952,15 +955,8 @@ class _StrategyDemoPageState extends State<StrategyDemoPage>
       );
     }
 
-    // GuaZhongCard需要EightChars参数
-    if (viewModel.currentEightChars == null) {
-      return const Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Center(child: Text('参数错误')),
-      );
-    }
-
-    return GuaZhongCard(eightChars: viewModel.currentEightChars!);
+    // GuaZhong 结果由页面层 setParams 触发，直接透传 ViewModel
+    return GuaZhongCard(viewModel: viewModel);
   }
 
   /// 显示信息对话框

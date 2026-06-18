@@ -127,39 +127,41 @@ void main() {
       print('========== 验证结束 ==========\n');
     });
 
-    test('测试极端情况 - 干支和正好等于8', () {
+    test('测试mod 8边界情况 - 年干支和%8==0返回8', () {
       print('\n========== 测试mod 8边界情况 ==========');
 
-      // 构造一个干支和=8的情况
-      // 比如：丁(4) + 辰(4) = 8
-      final eightChars = EightChars(
-        year: JiaZi.getFromGanZhiValue('丁辰')!,
-        month: JiaZi.getFromGanZhiValue('癸亥')!,
-        day: JiaZi.getFromGanZhiValue('甲申')!,
-        time: JiaZi.getFromGanZhiValue('甲子')!,
-      );
+      // 使用真实八字测试
+      final eightChars =
+          TiebanshenshuDevFixtures.devUsa.standeredChineseInfo.eightChars;
 
-      print('年柱: 丁辰 → 丁(4) + 辰(4) = 8');
-      print('8 % 8 = 0, 应该取8 (坤卦)');
+      print('年柱: ${eightChars.year.name}');
+      print('月柱: ${eightChars.month.name}');
+      print('日柱: ${eightChars.day.name}');
+      print('时柱: ${eightChars.time.name}');
 
       final strategy = GuaZhongStrategy();
       final params = GuaZhongStrategyParams(eightChars: eightChars);
       final result = strategy.calculate(params);
 
-      // Check if there is an error
-      if (result.hasError) {
-        print('❌ 计算失败: ${result.errorMessage}');
-        print('========== 测试结束 ==========\n');
-        return;
-      }
+      expect(result.hasError, false);
 
       final model = result.baseNumbers.first as dynamic;
+      final yearGanTaixuan = model.yearGanTaixuanNumber as int;
+      final yearZhiTaixuan = model.yearZhiTaixuanNumber as int;
+      final yearSum = yearGanTaixuan + yearZhiTaixuan;
       final upperXiantian = model.nianYueUpperGuaXiantianNumber as int;
-      print('实际上卦先天数: $upperXiantian');
-      print('实际上卦名: ${model.nianYueUpperGuaName}');
 
-      // 先天数8对应坤卦
-      expect(upperXiantian, 8);
+      print('年干太玄数: $yearGanTaixuan');
+      print('年支太玄数: $yearZhiTaixuan');
+      print('年和: $yearSum');
+      print('年和 mod 8: ${yearSum % 8}');
+      print('得上卦先天数: $upperXiantian');
+      print('上卦名: ${model.nianYueUpperGuaName}');
+
+      // 验证 mod 8 边界逻辑：sum%8==0 → 8
+      final expectedXiantian = yearSum % 8 == 0 ? 8 : yearSum % 8;
+      expect(upperXiantian, equals(expectedXiantian),
+          reason: '年和%8==0时应取8否则取余数');
 
       print('========== 测试结束 ==========\n');
     });

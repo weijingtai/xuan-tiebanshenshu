@@ -5,7 +5,7 @@ library;
 
 import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:xuan_gua_core/xuan_gua_core.dart';
-import 'package:tiebanshenshu/shared/models/yuan_hui_yun_shi.dart';
+import 'package:tiebanshenshu/domain/models/yuan_hui_yun_shi.dart';
 
 /// 邵子先天推演阶段枚举
 enum ShaoziTuibianPhase {

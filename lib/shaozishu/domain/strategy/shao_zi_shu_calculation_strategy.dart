@@ -4,6 +4,7 @@
 /// 纯演绎流程：八字 → 12个数 → 天地数 → 本命基数 → 条文编号 → 加一倍法展开。
 library;
 
+import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 
 import '../../helper/shao_zi_shu_calculation_helper.dart';

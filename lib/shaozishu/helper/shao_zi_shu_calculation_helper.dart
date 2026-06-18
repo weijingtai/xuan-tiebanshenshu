@@ -15,7 +15,7 @@ library;
 import 'package:metaphysics_core/enums.dart';
 import 'package:metaphysics_core/models/eight_chars.dart';
 
-import '../constants/shao_zi_shu_constants.dart';
+import '../constants/shao_zi_shu_constants.dart' as shaozishu;
 
 /// 邵子数计算结果（单次河洛天地数法）
 class ShaoZiShuResult {
@@ -77,7 +77,7 @@ class ShaoZiShuCalculationHelper {
   /// 根据邵子数口诀「戊一乙癸二，庚三辛四同，壬甲从六数，丁七丙八宫，己九无差别」
   /// 将天干映射为对应的数值。
   static int ganToShaoZiNumber(TianGan gan) {
-    return ganToShaoZiNumber[gan] ?? 0;
+    return shaozishu.ganToShaoZiNumber[gan] ?? 0;
   }
 
   /// 地支 → 河图数（返回 [生数, 成数]）
@@ -85,7 +85,7 @@ class ShaoZiShuCalculationHelper {
   /// 根据口诀「亥子一六水，寅卯三八木，巳午二七火，申酉四九金，辰戌丑未五十土」
   /// 将地支映射为河图生成数（两个数值）。
   static List<int> zhiToHeTuNumbers(DiZhi zhi) {
-    return zhiToHeTuNumbers[zhi] ?? [0, 0];
+    return shaozishu.zhiToHeTuNumbers[zhi] ?? [0, 0];
   }
 
   // =========================================================================
@@ -118,8 +118,8 @@ class ShaoZiShuCalculationHelper {
   /// 若余数为 0，则返回 25
   static int calculateTianShu(List<int> twelveNumbers) {
     final sum = twelveNumbers.where((n) => n % 2 == 1).fold<int>(0, (a, b) => a + b);
-    final remainder = sum % tianShuMod;
-    return remainder == 0 ? tianShuMod : remainder;
+    final remainder = sum % shaozishu.tianShuMod;
+    return remainder == 0 ? shaozishu.tianShuMod : remainder;
   }
 
   /// 计算地数
@@ -128,8 +128,8 @@ class ShaoZiShuCalculationHelper {
   /// 若余数为 0，则返回 30
   static int calculateDiShu(List<int> twelveNumbers) {
     final sum = twelveNumbers.where((n) => n % 2 == 0).fold<int>(0, (a, b) => a + b);
-    final remainder = sum % diShuMod;
-    return remainder == 0 ? diShuMod : remainder;
+    final remainder = sum % shaozishu.diShuMod;
+    return remainder == 0 ? shaozishu.diShuMod : remainder;
   }
 
   /// 计算天数原始和（未取模）
@@ -154,8 +154,8 @@ class ShaoZiShuCalculationHelper {
   /// 条文编号 = 本命基数 × 24 % 6144
   /// 若结果为 0，则返回 6144
   static int calculateTiaoWenNumber(int benMingJiShu) {
-    final num = (benMingJiShu * 24) % totalTiaoWenCount;
-    return num == 0 ? totalTiaoWenCount : num;
+    final num = (benMingJiShu * 24) % shaozishu.totalTiaoWenCount;
+    return num == 0 ? shaozishu.totalTiaoWenCount : num;
   }
 
   /// 加一倍法展开条文编号
@@ -164,16 +164,16 @@ class ShaoZiShuCalculationHelper {
   /// 生成 9 个条文编号（含基础值），并按 1~6144 范围裁剪。
   static List<int> expandByJiaYiBei(int baseTiaoWenNumber) {
     final results = <int>[];
-    for (final offset in jiaYiBeiExpansionOffsets) {
+    for (final offset in shaozishu.jiaYiBeiExpansionOffsets) {
       // 加法
       int plus = baseTiaoWenNumber + offset;
-      if (plus > totalTiaoWenCount) plus -= totalTiaoWenCount;
+      if (plus > shaozishu.totalTiaoWenCount) plus -= shaozishu.totalTiaoWenCount;
       results.add(plus);
 
       // 减法（offset=0 时不重复添加）
       if (offset > 0) {
         int minus = baseTiaoWenNumber - offset;
-        if (minus <= 0) minus += totalTiaoWenCount;
+        if (minus <= 0) minus += shaozishu.totalTiaoWenCount;
         results.add(minus);
       }
     }
@@ -228,8 +228,8 @@ class ShaoZiShuCalculationHelper {
     final diShu = calculateDiShu(twelveNumbers);
 
     buffer.writeln('【步骤3】取天地余数');
-    buffer.writeln('  天数: $tianShuSum % $tianShuMod = $tianShu');
-    buffer.writeln('  地数: $diShuSum % $diShuMod = $diShu');
+    buffer.writeln('  天数: $tianShuSum % ${shaozishu.tianShuMod} = $tianShu');
+    buffer.writeln('  地数: $diShuSum % ${shaozishu.diShuMod} = $diShu');
     buffer.writeln();
 
     // 4. 本命基数
@@ -243,7 +243,7 @@ class ShaoZiShuCalculationHelper {
     final tiaoWenNumber = calculateTiaoWenNumber(benMingJiShu);
 
     buffer.writeln('【步骤5】条文编号');
-    buffer.writeln('  本命基数×24 % $totalTiaoWenCount = $benMingJiShu × 24 % $totalTiaoWenCount = $tiaoWenNumber');
+    buffer.writeln('  本命基数×24 % ${shaozishu.totalTiaoWenCount} = $benMingJiShu × 24 % ${shaozishu.totalTiaoWenCount} = $tiaoWenNumber');
     buffer.writeln();
 
     // 6. 加一倍法展开

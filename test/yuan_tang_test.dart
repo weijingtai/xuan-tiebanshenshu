@@ -445,7 +445,7 @@ void main() {
         YinYang.YANG,
       );
       expect(
-        houGua,
+        houGua.gua,
         Enum64Gua.getBy8Gua(Enum8Gua.Xun, Enum8Gua.Dui),
         reason: "应该为风泽中孚",
       );
@@ -490,7 +490,7 @@ void main() {
         YinYang.YIN,
       );
       expect(
-        houGua,
+        houGua.gua,
         Enum64Gua.getBy8Gua(Enum8Gua.Kan, Enum8Gua.Qian),
         reason: "应该为水天需",
       );

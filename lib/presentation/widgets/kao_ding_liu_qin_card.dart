@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../features/kao_ding_liu_qin/models/liu_qin_type.dart';
-import '../../features/kao_ding_liu_qin/services/kao_ding_liu_qin_strategy.dart';
 import '../viewmodels/kao_ding_liu_qin_view_model.dart';
 
 /// 考订六亲结果卡片
@@ -127,18 +126,16 @@ class _KaoDingLiuQinCardState extends State<KaoDingLiuQinCard> {
       return const Padding(padding: EdgeInsets.all(16.0), child: Text('暂无结果'));
     }
 
-    final result = viewModel.currentResult!;
-
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildBasicInfo(context, result, viewModel),
+          _buildBasicInfo(context, viewModel),
           const SizedBox(height: 16.0),
-          _buildTiaoWenResults(context, result, viewModel),
+          _buildTiaoWenResults(context, viewModel),
           const SizedBox(height: 16.0),
-          _buildCalculationDetail(context, result),
+          _buildCalculationDetail(context, viewModel),
           const SizedBox(height: 16.0),
           _buildHistorySection(context, viewModel),
         ],
@@ -148,9 +145,9 @@ class _KaoDingLiuQinCardState extends State<KaoDingLiuQinCard> {
 
   Widget _buildBasicInfo(
     BuildContext context,
-    KaoDingLiuQinResult result,
     KaoDingLiuQinViewModel viewModel,
   ) {
+    final result = viewModel.currentResult!;
     final theme = Theme.of(context);
     final gua64 = viewModel.getGua64(result.liuQinType);
 
@@ -215,9 +212,9 @@ class _KaoDingLiuQinCardState extends State<KaoDingLiuQinCard> {
 
   Widget _buildTiaoWenResults(
     BuildContext context,
-    KaoDingLiuQinResult result,
     KaoDingLiuQinViewModel viewModel,
   ) {
+    final result = viewModel.currentResult!;
     final theme = Theme.of(context);
 
     return Container(
@@ -262,8 +259,9 @@ class _KaoDingLiuQinCardState extends State<KaoDingLiuQinCard> {
 
   Widget _buildCalculationDetail(
     BuildContext context,
-    KaoDingLiuQinResult result,
+    KaoDingLiuQinViewModel viewModel,
   ) {
+    final result = viewModel.currentResult!;
     final theme = Theme.of(context);
 
     return ExpansionTile(

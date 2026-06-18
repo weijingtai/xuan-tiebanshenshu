@@ -1,6 +1,6 @@
 import 'package:tiebanshenshu/domain/models/unified/divination_context.dart';
 import 'package:tiebanshenshu/domain/models/unified/divination_result.dart';
-import '../../strategy/four_zhu_tian_gan_strategy.dart';
+import '../../../../service/strategy/four_zhu_tian_gan_strategy.dart';
 import '../unified_strategy_adapter.dart';
 
 class FourZhuTianGanAdapter implements UnifiedStrategyAdapter {

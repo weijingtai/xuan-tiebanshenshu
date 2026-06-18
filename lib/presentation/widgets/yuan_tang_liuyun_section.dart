@@ -5,7 +5,7 @@ library;
 
 import 'package:flutter/material.dart';
 import '../../domain/models/yuan_tang_base_number_model.dart';
-import '../../service/strategy/yuan_tang_strategy.dart';
+import '../viewmodels/yuan_tang_liuyun_view_model.dart';
 import 'yuan_tang_liunian_list.dart';
 import 'yuan_tang_liuyue_panel.dart';
 
@@ -16,20 +16,11 @@ import 'yuan_tang_liuyue_panel.dart';
 /// - 后天卦大运 + 流年卦
 /// - 点击流年卡片展开流月详情
 class YuanTangLiuyunSection extends StatefulWidget {
-  /// 元堂卦基础数模型
-  final YuanTangBaseNumberModel model;
-
-  /// 出生年份（公元纪年）
-  final int birthYear;
-
-  /// 元堂卦策略实例（用于计算流年流月）
-  final YuanTangStrategy strategy;
+  final YuanTangLiuyunViewModel viewModel;
 
   const YuanTangLiuyunSection({
     super.key,
-    required this.model,
-    required this.birthYear,
-    required this.strategy,
+    required this.viewModel,
   });
 
   @override
@@ -37,55 +28,26 @@ class YuanTangLiuyunSection extends StatefulWidget {
 }
 
 class _YuanTangLiuyunSectionState extends State<YuanTangLiuyunSection> {
-  /// 所有流年卦（缓存）
-  late final List<YuanTangLiunianGua> _allLiunianList;
-
-  /// 当前展开的流月详情（年龄 -> 流月列表）
-  final Map<int, List<YuanTangLiuyueGua>> _expandedLiuyueMap = {};
-
-  /// 当前选中的流年年龄
-  int? _selectedLiunianAge;
-
   @override
   void initState() {
     super.initState();
-    // 一次性计算所有流年卦
-    _allLiunianList = widget.strategy.calculateAllLiunianGua(
-      widget.model,
-      widget.birthYear,
-    );
+    widget.viewModel.addListener(_onViewModelChanged);
+  }
 
-    // 默认展开一个流年的流月（优先选择先天卦的第一个流年）
-    if (_allLiunianList.isNotEmpty) {
-      final defaultLiunian = _allLiunianList.firstWhere(
-        (g) => g.guaSource == '先天卦',
-        orElse: () => _allLiunianList.first,
-      );
-      final defaultAge = defaultLiunian.age;
-      final yuantangIndex = defaultLiunian.guaSource == '先天卦'
-          ? widget.model.yuantangYaoIndex
-          : widget.model.houtianYuantangYaoIndex;
-      final defaultLiuyueList = widget.strategy.calculateLiuyueForAge(
-        defaultAge,
-        defaultLiunian.gua,
-        yuantangIndex,
-      );
-      _expandedLiuyueMap[defaultAge] = defaultLiuyueList;
-      _selectedLiunianAge = defaultAge;
-    }
+  @override
+  void dispose() {
+    widget.viewModel.removeListener(_onViewModelChanged);
+    super.dispose();
+  }
+
+  void _onViewModelChanged() {
+    if (mounted) setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-
-    // 按先天卦/后天卦分组
-    final xiantianLiunianList = _allLiunianList
-        .where((gua) => gua.guaSource == '先天卦')
-        .toList();
-    final houtianLiunianList = _allLiunianList
-        .where((gua) => gua.guaSource == '后天卦')
-        .toList();
+    final vm = widget.viewModel;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -132,45 +94,41 @@ class _YuanTangLiuyunSectionState extends State<YuanTangLiuyunSection> {
         const SizedBox(height: 16.0),
 
         // 先天卦流运
-        _buildXiantianLiuyunSection(theme, xiantianLiunianList),
+        _buildXiantianLiuyunSection(theme),
 
         const SizedBox(height: 24.0),
 
         // 后天卦流运
-        _buildHoutianLiuyunSection(theme, houtianLiunianList),
+        _buildHoutianLiuyunSection(theme),
       ],
     );
   }
 
   /// 构建先天卦流运展示
-  Widget _buildXiantianLiuyunSection(
-    ThemeData theme,
-    List<YuanTangLiunianGua> liunianList,
-  ) {
+  Widget _buildXiantianLiuyunSection(ThemeData theme) {
+    final vm = widget.viewModel;
     return _buildLiuyunSection(
       theme: theme,
-      title: '先天卦流运（${widget.model.xiantianGua}）',
-      liunianList: liunianList,
-      dayunList: widget.model.xiantianDayunList,
+      title: '先天卦流运（${vm.model.xiantianGua}）',
+      liunianList: vm.xiantianLiunianList,
+      dayunList: vm.xiantianDayunList,
       accentColor: theme.colorScheme.primary,
       guaSource: '先天卦',
-      yuantangYaoIndex: widget.model.yuantangYaoIndex,
+      yuantangYaoIndex: vm.xiantianYuantangYaoIndex,
     );
   }
 
   /// 构建后天卦流运展示
-  Widget _buildHoutianLiuyunSection(
-    ThemeData theme,
-    List<YuanTangLiunianGua> liunianList,
-  ) {
+  Widget _buildHoutianLiuyunSection(ThemeData theme) {
+    final vm = widget.viewModel;
     return _buildLiuyunSection(
       theme: theme,
-      title: '后天卦流运（${widget.model.houtianGua}）',
-      liunianList: liunianList,
-      dayunList: widget.model.houtianDayunList,
+      title: '后天卦流运（${vm.model.houtianGua}）',
+      liunianList: vm.houtianLiunianList,
+      dayunList: vm.houtianDayunList,
       accentColor: theme.colorScheme.secondary,
       guaSource: '后天卦',
-      yuantangYaoIndex: widget.model.houtianYuantangYaoIndex,
+      yuantangYaoIndex: vm.houtianYuantangYaoIndex,
     );
   }
 
@@ -184,6 +142,8 @@ class _YuanTangLiuyunSectionState extends State<YuanTangLiuyunSection> {
     required String guaSource,
     required int yuantangYaoIndex,
   }) {
+    final vm = widget.viewModel;
+
     return Container(
       padding: const EdgeInsets.all(12.0),
       decoration: BoxDecoration(
@@ -240,18 +200,16 @@ class _YuanTangLiuyunSectionState extends State<YuanTangLiuyunSection> {
                   guaSource: guaSource,
                   accentColor: accentColor,
                   showDayunTitle: true,
-                  onLiunianTap: (age) =>
-                      _onLiunianTap(age, yuantangYaoIndex, accentColor),
+                  onLiunianTap: (age) => vm.selectLiunianAge(age),
                 ),
 
                 // 显示流月详情（如果已展开）
-                if (_selectedLiunianAge != null &&
-                    _expandedLiuyueMap.containsKey(_selectedLiunianAge)) ...[
+                if (vm.selectedLiunianAge != null) ...[
                   const SizedBox(height: 12.0),
                   _buildLiuyueDetailSection(
                     theme,
-                    _selectedLiunianAge!,
-                    _expandedLiuyueMap[_selectedLiunianAge]!,
+                    vm.selectedLiunianAge!,
+                    vm.getLiuyueForAge(vm.selectedLiunianAge!)!,
                     accentColor,
                   ),
                 ],
@@ -307,11 +265,7 @@ class _YuanTangLiuyunSectionState extends State<YuanTangLiuyunSection> {
               ),
               IconButton(
                 icon: const Icon(Icons.close, size: 20.0),
-                onPressed: () {
-                  setState(() {
-                    _selectedLiunianAge = null;
-                  });
-                },
+                onPressed: () => widget.viewModel.deselectLiunianAge(),
                 padding: EdgeInsets.zero,
                 constraints: const BoxConstraints(),
               ),
@@ -331,75 +285,23 @@ class _YuanTangLiuyunSectionState extends State<YuanTangLiuyunSection> {
       ),
     );
   }
-
-  /// 处理流年卡片点击
-  void _onLiunianTap(int age, int yuantangYaoIndex, Color accentColor) {
-    // 如果点击的是当前已展开的流年，则收起
-    if (_selectedLiunianAge == age) {
-      setState(() {
-        _selectedLiunianAge = null;
-      });
-      return;
-    }
-
-    // 如果还没有计算过该年的流月卦，则计算并缓存
-    if (!_expandedLiuyueMap.containsKey(age)) {
-      // 找到该年龄对应的流年卦
-      final liunianGua = _allLiunianList.firstWhere((gua) => gua.age == age);
-
-      // 计算流月卦
-      final liuyueList = widget.strategy.calculateLiuyueForAge(
-        age,
-        liunianGua.gua,
-        yuantangYaoIndex,
-      );
-
-      setState(() {
-        _expandedLiuyueMap[age] = liuyueList;
-        _selectedLiunianAge = age;
-      });
-    } else {
-      // 已有缓存，直接展开
-      setState(() {
-        _selectedLiunianAge = age;
-      });
-    }
-  }
 }
 
 /// 流运系统紧凑型展示组件
 ///
 /// 仅显示大运和流年卦，不支持展开流月
 class YuanTangLiuyunCompactSection extends StatelessWidget {
-  /// 元堂卦基础数模型
-  final YuanTangBaseNumberModel model;
-
-  /// 出生年份（公元纪年）
-  final int birthYear;
-
-  /// 元堂卦策略实例
-  final YuanTangStrategy strategy;
+  final YuanTangLiuyunViewModel viewModel;
 
   const YuanTangLiuyunCompactSection({
     super.key,
-    required this.model,
-    required this.birthYear,
-    required this.strategy,
+    required this.viewModel,
   });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-
-    // 计算所有流年卦
-    final allLiunianList = strategy.calculateAllLiunianGua(model, birthYear);
-
-    final xiantianLiunianList = allLiunianList
-        .where((gua) => gua.guaSource == '先天卦')
-        .toList();
-    final houtianLiunianList = allLiunianList
-        .where((gua) => gua.guaSource == '后天卦')
-        .toList();
+    final vm = viewModel;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -416,7 +318,7 @@ class YuanTangLiuyunCompactSection extends StatelessWidget {
         _buildCompactOverview(
           theme,
           '先天卦',
-          xiantianLiunianList,
+          vm.xiantianLiunianList,
           theme.colorScheme.primary,
         ),
 
@@ -426,7 +328,7 @@ class YuanTangLiuyunCompactSection extends StatelessWidget {
         _buildCompactOverview(
           theme,
           '后天卦',
-          houtianLiunianList,
+          vm.houtianLiunianList,
           theme.colorScheme.secondary,
         ),
       ],
@@ -457,7 +359,8 @@ class YuanTangLiuyunCompactSection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 4.0),
-          Text('共${liunianList.length}个流年卦', style: theme.textTheme.bodySmall),
+          Text('共${liunianList.length}个流年卦',
+              style: theme.textTheme.bodySmall),
         ],
       ),
     );

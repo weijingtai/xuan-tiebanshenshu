@@ -5,6 +5,7 @@
 /// 条文查询委托给 [TiaoWenRepository]。
 library;
 
+import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 
 import '../../helper/shao_zi_shu_calculation_helper.dart';
@@ -47,5 +48,19 @@ class ShaoZiShuCalculationStrategyImpl
       preserveOrder: true,
       skipNotFound: true,
     );
+  }
+
+  @override
+  Future<Map<int, TiaoWenDataModel>> getExpandedTiaoWenContent({
+    required ShaoZiShuResult result,
+  }) async {
+    final contents = await getTiaoWenContent(
+      tiaoWenNumbers: result.expandedTiaoWenNumbers,
+    );
+    final map = <int, TiaoWenDataModel>{};
+    for (final model in contents) {
+      map[model.id] = model;
+    }
+    return map;
   }
 }

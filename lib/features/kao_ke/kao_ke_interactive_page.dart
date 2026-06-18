@@ -37,14 +37,32 @@ class _KaoKeInteractivePageState extends State<KaoKeInteractivePage> {
       TextEditingController();
   String? _douJiaYiPreviewText;
   String? _douJiaYiError;
+  Map<int, String>? _douJiaYiContentMap;
 
   @override
   void initState() {
     super.initState();
+    _loadDouJiaYiContent();
     // 页面加载时初始化会话
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _initialize();
     });
+  }
+
+  Future<void> _loadDouJiaYiContent() async {
+    final vm = context.read<KaoKeViewModel>();
+    final douData = vm.douJiaYiSelectionData;
+    if (douData == null) return;
+    final numbers = douData.values
+        .expand((list) => list.map((e) => e.tiaoWenNumber))
+        .toSet()
+        .toList();
+    if (numbers.isEmpty) return;
+    try {
+      final repo = context.read<TiaoWenRepository>();
+      final map = await repo.getTiaoWenContentByNumbers(numbers);
+      if (mounted) setState(() => _douJiaYiContentMap = map);
+    } catch (_) {}
   }
 
   @override
@@ -59,6 +77,7 @@ class _KaoKeInteractivePageState extends State<KaoKeInteractivePage> {
       eightChars: widget.eightChars,
       sessionName: widget.sessionName,
     );
+    if (mounted) await _loadDouJiaYiContent();
   }
 
   @override
@@ -234,6 +253,7 @@ class _KaoKeInteractivePageState extends State<KaoKeInteractivePage> {
               DouJiaYiSelectionTable(
                 douData: viewModel.douJiaYiSelectionData!,
                 birthShiChen: birthShiChen,
+                contentMap: _douJiaYiContentMap,
                 onItemSelected: (item) async {
                   await viewModel.selectDouJiaYiByNumber(item.tiaoWenNumber);
                 },

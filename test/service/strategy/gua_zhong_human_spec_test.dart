@@ -1,5 +1,6 @@
 import 'package:metaphysics_core/enums.dart';
 import 'package:metaphysics_core/models/eight_chars.dart';
+import 'package:xuan_gua_core/xuan_gua_core.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:tiebanshenshu/service/strategy/gua_zhong_strategy.dart';
 import 'package:tiebanshenshu/domain/models/gua_zhong_base_number_model.dart';
@@ -80,7 +81,7 @@ void main() {
 
       // 年柱: 己(9) + 丑(8) = 17, 17 % 8 = 1 → 乾卦
       // 月柱: 乙(8) + 亥(4) = 12, 12 % 8 = 4 → 震卦
-      expect(model.nianYueZhuGuaName, equals('乾震'), reason: '年月卦应该是乾震（天雷无妄）');
+      expect(model.nianYueZhuGuaName, equals(Enum64Gua.tian_lei_wu_wang), reason: '年月卦应该是天雷无妄（乾上震下）');
     });
 
     test('年月卦主卦条文应该包含7198（某个方案）', () {

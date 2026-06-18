@@ -9,7 +9,7 @@ import 'package:tiebanshenshu/features/yuan_tang_gua/yuan_tang_info.dart';
 
 import '../../../constant/constants.dart' as constants;
 import 'package:tiebanshenshu/domain/models/base_number_model_result.dart';
-import '../standard_calculation_strategy.dart';
+import '../../../service/strategy/standard_calculation_strategy.dart';
 import 'yuan_tang_derived_params.dart';
 
 /// 元堂派生策略的统一基类

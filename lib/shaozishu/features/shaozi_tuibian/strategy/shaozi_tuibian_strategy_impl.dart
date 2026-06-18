@@ -5,7 +5,7 @@ library;
 
 import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:tiebanshenshu/service/strategy/base_calculation_strategy.dart';
-import 'package:tiebanshenshu/shared/models/yuan_hui_yun_shi.dart';
+import 'package:tiebanshenshu/domain/models/yuan_hui_yun_shi.dart';
 import '../models/shaozi_tuibian_models.dart';
 import 'shaozi_tuibian_strategy.dart';
 

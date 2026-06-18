@@ -9,9 +9,9 @@ import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:provider/provider.dart';
 
 import '../view_model/shao_zi_shu_view_model.dart';
-import '../domain/session/shao_zi_shu_session_models.dart';
-import 'widgets/shao_zi_shu_result_widget.dart';
-import 'widgets/tiao_wen_list_widget.dart';
+import '../../domain/session/shao_zi_shu_session_models.dart';
+import '../widgets/shao_zi_shu_result_widget.dart';
+import '../widgets/tiao_wen_list_widget.dart';
 
 /// 邵子数主页面
 ///
@@ -192,10 +192,10 @@ class _ShaoZiShuPageState extends State<ShaoZiShuPage> {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        '${eightChars.yearGanZhi}  '
-                        '${eightChars.monthGanZhi}  '
-                        '${eightChars.dayGanZhi}  '
-                        '${eightChars.hourGanZhi}',
+                        '${eightChars.year.name}  '
+                        '${eightChars.month.name}  '
+                        '${eightChars.day.name}  '
+                        '${eightChars.time.name}',
                         style: Theme.of(context)
                             .textTheme
                             .titleMedium

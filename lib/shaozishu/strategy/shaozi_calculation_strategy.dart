@@ -21,7 +21,7 @@ class ShaoziCalculationResult extends BaseCalculationResult {
   /// 各步骤中间结果（用于展示计算过程）
   final Map<String, dynamic>? intermediateResults;
 
-  const ShaoziCalculationResult({
+  ShaoziCalculationResult({
     this.finalTiaoWenNumber,
     this.intermediateResults,
   });

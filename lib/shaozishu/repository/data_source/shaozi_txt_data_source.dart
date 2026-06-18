@@ -17,19 +17,19 @@ import 'tiao_wen_local_data_source.dart';
 const String _defaultDataDir = r'D:\数术\邵子数条目';
 
 /// 地支文件名 → DiZhi 枚举映射
-const Map<String, DiZhi> _fileNameToDiZhi = {
-  '子': DiZhi.zi,
-  '丑': DiZhi.chou,
-  '寅': DiZhi.yin,
-  '卯': DiZhi.mao,
-  '辰': DiZhi.chen,
-  '巳': DiZhi.si,
-  '午': DiZhi.wu,
-  '未': DiZhi.wei,
-  '申': DiZhi.shen,
-  '酉': DiZhi.you,
-  '戌': DiZhi.xu,
-  '亥': DiZhi.hai,
+final Map<String, DiZhi> _fileNameToDiZhi = {
+  '子': DiZhi.ZI,
+  '丑': DiZhi.CHOU,
+  '寅': DiZhi.YIN,
+  '卯': DiZhi.MAO,
+  '辰': DiZhi.CHEN,
+  '巳': DiZhi.SI,
+  '午': DiZhi.WU,
+  '未': DiZhi.WEI,
+  '申': DiZhi.SHEN,
+  '酉': DiZhi.YOU,
+  '戌': DiZhi.XU,
+  '亥': DiZhi.HAI,
 };
 
 /// 邵子 TXT 数据源
@@ -61,18 +61,14 @@ class ShaoziTxtDataSource implements TiaoWenLocalDataSource {
 
     final dir = Directory(dataDir);
     if (!await dir.exists()) {
-      throw TiebanshenshuRepositoryError(
-        message: '邵子条文数据目录不存在: $dataDir',
-      );
+      throw Exception('邵子条文数据目录不存在: $dataDir');
     }
 
     final files =
         await dir.list().where((e) => e.path.endsWith('.txt')).toList();
 
     if (files.isEmpty) {
-      throw TiebanshenshuRepositoryError(
-        message: '邵子条文数据目录中没有 .txt 文件: $dataDir',
-      );
+      throw Exception('邵子条文数据目录中没有 .txt 文件: $dataDir');
     }
 
     for (final file in files) {

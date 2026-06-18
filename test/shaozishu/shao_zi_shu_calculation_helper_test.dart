@@ -12,8 +12,8 @@ library;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:metaphysics_core/enums.dart';
 import 'package:metaphysics_core/models/eight_chars.dart';
-import 'package:xuan-tiebanshenshu/shaozishu/constants/shao_zi_shu_constants.dart';
-import 'package:xuan-tiebanshenshu/shaozishu/helper/shao_zi_shu_calculation_helper.dart';
+import 'package:tiebanshenshu/shaozishu/constants/shao_zi_shu_constants.dart';
+import 'package:tiebanshenshu/shaozishu/helper/shao_zi_shu_calculation_helper.dart';
 
 void main() {
   // ===========================================================================
@@ -175,7 +175,12 @@ void main() {
     test('八字生成数量恒定为 12', () {
       // 测试多种八字确保始终 12 个数
       final testCases = [
-        EightChars.defaultBaZi(), // 全甲子
+        EightChars(
+          year: JiaZi.JIA_ZI,
+          month: JiaZi.JIA_ZI,
+          day: JiaZi.JIA_ZI,
+          time: JiaZi.JIA_ZI,
+        ), // 全甲子
         EightChars(
           year: JiaZi.GUI_HAI,
           month: JiaZi.REN_XU,
@@ -400,7 +405,12 @@ void main() {
 
     test('全甲子八字 → 结果', () {
       // 甲子 甲子 甲子 甲子 → 干:6,6,6,6 → 支:[1,6]×4
-      final eightChars = EightChars.defaultBaZi();
+      final eightChars = EightChars(
+        year: JiaZi.JIA_ZI,
+        month: JiaZi.JIA_ZI,
+        day: JiaZi.JIA_ZI,
+        time: JiaZi.JIA_ZI,
+      );
 
       final result = ShaoZiShuCalculationHelper.calculate(eightChars);
 

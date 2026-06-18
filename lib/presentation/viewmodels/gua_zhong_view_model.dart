@@ -290,6 +290,13 @@ class GuaZhongViewModel extends BaseTiaoWenListViewModel {
     return model.riShiGuaDescription;
   }
 
+  List<(int, int, String)> getFilteredNumbersForSection(String sectionTitle) {
+    return filteredTiaoWenNumbersWithLabel.where((item) {
+      if (sectionTitle == '年月卦') return item.$3.startsWith('年月卦');
+      return item.$3.startsWith('日时卦');
+    }).toList();
+  }
+
   @override
   void dispose() {
     _currentEightChars = null;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tiebanshenshu/presentation/components/gradient_card.dart';
 import '../../domain/models/yuan_tang_base_number_model.dart';
-import '../../service/strategy/yuan_tang_strategy.dart';
 import '../models/yuan_tang_ui_model.dart';
+import '../viewmodels/yuan_tang_liuyun_view_model.dart';
 import 'yuan_tang_dayun_widget.dart';
 import 'yuan_tang_liuyun_section.dart';
 
@@ -19,8 +19,8 @@ class YuanTangCard extends StatefulWidget {
   /// 出生年份（可选，用于流运系统）
   final int? birthYear;
 
-  /// 元堂卦策略实例（可选，用于流运系统）
-  final YuanTangStrategy? strategy;
+  /// 流运系统 ViewModel（可选）
+  final YuanTangLiuyunViewModel? liuyunViewModel;
 
   const YuanTangCard({
     super.key,
@@ -28,7 +28,7 @@ class YuanTangCard extends StatefulWidget {
     this.initiallyExpanded = true,
     this.baseNumberModel,
     this.birthYear,
-    this.strategy,
+    this.liuyunViewModel,
   });
 
   @override
@@ -904,9 +904,7 @@ class _YuanTangCardState extends State<YuanTangCard> {
 
   /// 检查是否可以显示流运系统
   bool _canShowLiuyunSystem() {
-    return widget.baseNumberModel != null &&
-        widget.birthYear != null &&
-        widget.strategy != null;
+    return widget.liuyunViewModel != null && widget.liuyunViewModel!.isInitialized;
   }
 
   /// 构建流运系统展示区域
@@ -940,9 +938,7 @@ class _YuanTangCardState extends State<YuanTangCard> {
         Padding(
           padding: const EdgeInsets.all(16.0),
           child: YuanTangLiuyunSection(
-            model: widget.baseNumberModel!,
-            birthYear: widget.birthYear!,
-            strategy: widget.strategy!,
+            viewModel: widget.liuyunViewModel!,
           ),
         ),
       ],

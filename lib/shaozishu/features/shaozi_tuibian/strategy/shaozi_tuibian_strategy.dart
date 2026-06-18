@@ -4,7 +4,7 @@
 library;
 
 import 'package:metaphysics_core/models/eight_chars.dart';
-import 'package:tiebanshenshu/shared/models/yuan_hui_yun_shi.dart';
+import 'package:tiebanshenshu/domain/models/yuan_hui_yun_shi.dart';
 import '../models/shaozi_tuibian_models.dart';
 
 /// 邵子先天推演策略抽象接口

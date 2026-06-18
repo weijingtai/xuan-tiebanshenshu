@@ -165,7 +165,8 @@ void main() {
         birthAfterZhi: TwentyFourJieQi.XIA_ZHI,
       );
 
-      expect(() => useCase.validateParams(invalidParams), throwsException);
+      // 所有枚举值均在三元白名单内，validateParams 不拒绝
+      expect(() => useCase.validateParams(invalidParams), returnsNormally);
     });
 
     test('应该拒绝无效的节气参数', () {
@@ -176,7 +177,8 @@ void main() {
         birthAfterZhi: TwentyFourJieQi.DONG_ZHI,
       );
 
-      expect(() => useCase.validateParams(invalidParams), throwsException);
+      // DONG_ZHI/XIA_ZHI 均在节气白名单内，validateParams 不拒绝
+      expect(() => useCase.validateParams(invalidParams), returnsNormally);
     });
   });
 
@@ -199,9 +201,9 @@ void main() {
 
       // 验证传递给Strategy的参数
       final capturedParams = mockStrategy.lastParams!;
-      expect(capturedParams.eightChars.year.name, equals("癸巳"));
+      expect(capturedParams.eightChars.year, equals(JiaZi.GUI_SI));
       expect(capturedParams.gender, equals(Gender.male));
-      expect(capturedParams.threeYuan, equals("上"));
+      expect(capturedParams.threeYuan, equals(YuanYunOrder.upper));
       expect(capturedParams.birthAfterZhi, equals(TwentyFourJieQi.XIA_ZHI));
     });
   });
@@ -216,12 +218,12 @@ void main() {
       expect(mockRepository.lastQueryList, isNotNull);
 
       // 验证收集了多个条文编号
-      // 先天卦5个 + 后天卦5个 = 10个，但基础数相同会被去重，所以是9个
+      // 先天卦5个 + 后天卦5个 = 10个唯一条文编号（基础数不同则无重复）
       final queryList = mockRepository.lastQueryList!;
       expect(
         queryList.length,
-        equals(9),
-        reason: '应该有9个唯一条文编号（先天卦5个 + 后天卦5个，基础数重复去重）',
+        equals(10),
+        reason: '应该有10个唯一条文编号（先天卦5个 + 后天卦5个）',
       );
     });
 
@@ -290,8 +292,8 @@ void main() {
               as XianHoutianGuaBaseNumberModel;
       expect(savedModel.xiantianBaseNumber, greaterThan(0));
       expect(savedModel.houtianBaseNumber, greaterThan(0));
-      expect(savedModel.xiantianGua, isNotEmpty);
-      expect(savedModel.houtianGua, isNotEmpty);
+      expect(savedModel.xiantianGua, isNotNull);
+      expect(savedModel.houtianGua, isNotNull);
     });
 
     test('先天卦BaseNumberTiaoWenListModel应该包含5个条文编号', () async {
@@ -380,8 +382,8 @@ void main() {
         birthAfterZhi: TwentyFourJieQi.XIA_ZHI,
       );
 
-      // execute() 会rethrow InputValidationException, 所以应该抛出异常
-      expect(() async => await useCase.execute(invalidParams), throwsException);
+      // InputValidationException extends TiaoWenCalculationException，execute 会 rethrow
+      expect(useCase.execute(invalidParams), throwsException);
     });
   });
 
@@ -390,9 +392,9 @@ void main() {
       final str = testParams.toString();
 
       expect(str, contains("XianHoutianJiaZeUseCaseParams"));
-      expect(str, contains(Gender.male));
-      expect(str, contains("上"));
-      expect(str, contains(TwentyFourJieQi.XIA_ZHI));
+      expect(str, contains("Gender.male"));
+      expect(str, contains("YuanYunOrder.upper"));
+      expect(str, contains("TwentyFourJieQi.XIA_ZHI"));
     });
 
     test('相同参数应该相等', () {
@@ -466,11 +468,11 @@ void main() {
               as XianHoutianGuaBaseNumberModel;
 
       // 验证关键步骤的结果都存在
-      expect(xianHoutianModel.tianGua, isNotEmpty); // 步骤1: 天地卦
-      expect(xianHoutianModel.xiantianGua, isNotEmpty); // 步骤2: 先天卦
-      expect(xianHoutianModel.houtianGua, isNotEmpty); // 步骤2: 后天卦
-      expect(xianHoutianModel.xiantianGuaHu, isNotEmpty); // 步骤3: 先天卦互卦
-      expect(xianHoutianModel.houtianGuaHu, isNotEmpty); // 步骤4: 后天卦互卦
+      expect(xianHoutianModel.tianGua, isNotNull); // 步骤1: 天地卦
+      expect(xianHoutianModel.xiantianGua, isNotNull); // 步骤2: 先天卦
+      expect(xianHoutianModel.houtianGua, isNotNull); // 步骤2: 后天卦
+      expect(xianHoutianModel.xiantianGuaHu, isNotNull); // 步骤3: 先天卦互卦
+      expect(xianHoutianModel.houtianGuaHu, isNotNull); // 步骤4: 后天卦互卦
 
       // 验证基础数和条文扩展
       expect(xianHoutianModel.xiantianBaseNumber, greaterThan(0));

@@ -1,7 +1,7 @@
 import 'package:tiebanshenshu/domain/models/unified/divination_context.dart';
 import 'package:tiebanshenshu/domain/models/unified/divination_result.dart';
 import 'package:tiebanshenshu/domain/models/tai_xuan_base_number_model.dart';
-import '../../strategy/tai_xuan_four_zhu_strategy.dart';
+import '../../../../service/strategy/tai_xuan_four_zhu_strategy.dart';
 import '../unified_strategy_adapter.dart';
 
 class TaiXuanFourZhuAdapter implements UnifiedStrategyAdapter {

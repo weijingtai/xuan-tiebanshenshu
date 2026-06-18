@@ -225,14 +225,14 @@ class XianHoutianGuaBaseNumberModel extends BaseNumberModel {
 
   /// 获取先后天卦规则说明
   String get xianHoutianGuaRule {
-    if (yearYinYang == "阳") {
-      if (gender == "男") {
+    if (yearYinYang == YinYang.YANG) {
+      if (gender == Gender.male) {
         return "阳年男性：天卦在上，地卦在下";
       } else {
         return "阳年女性：地卦在上，天卦在下";
       }
     } else {
-      if (gender == "女") {
+      if (gender == Gender.female) {
         return "阴年女性：天卦在上，地卦在下";
       } else {
         return "阴年男性：地卦在上，天卦在下";

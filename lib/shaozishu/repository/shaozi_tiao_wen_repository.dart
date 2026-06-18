@@ -34,9 +34,7 @@ class ShaoziTiaoWenRepository implements TiaoWenRepository {
 
     final dir = Directory(dataDir);
     if (!await dir.exists()) {
-      throw TiebanshenshuRepositoryError(
-        message: '邵子条文数据目录不存在: $dataDir',
-      );
+      throw Exception('邵子条文数据目录不存在: $dataDir');
     }
 
     final files = await dir.list().where((e) => e.path.endsWith('.txt')).toList();
@@ -80,7 +78,7 @@ class ShaoziTiaoWenRepository implements TiaoWenRepository {
       if (number == null) return null;
       return TiaoWenDataModel(
         id: number,
-        setName: DiZhi.zi,  // 默认地支，实际应在加载后根据分组填充
+        setName: DiZhi.ZI,  // 默认地支，实际应在加载后根据分组填充
         content1: content,
         ageSet1: [],
       );
@@ -92,7 +90,7 @@ class ShaoziTiaoWenRepository implements TiaoWenRepository {
     if (number == null) return null;
     return TiaoWenDataModel(
       id: number,
-      setName: DiZhi.zi,
+      setName: DiZhi.ZI,
       content1: content,
       ageSet1: [],
     );
@@ -141,7 +139,7 @@ class ShaoziTiaoWenRepository implements TiaoWenRepository {
     if (setName != null) {
       final targetZhi = DiZhi.values.firstWhere(
         (d) => d.name == setName,
-        orElse: () => DiZhi.zi,
+        orElse: () => DiZhi.ZI,
       );
       results = results.where((e) => e.setName == targetZhi).toList();
     }

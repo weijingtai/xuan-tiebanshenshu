@@ -353,7 +353,27 @@ class YuanTangCalculator {
   static int getYuanTangYaoIndex(
     DiZhi timeZhi,
     List<List<DiZhi>> yangTangYaoZhiList,
-  ) {
+    List<int> guaBinaryList, {
+    Gender gender = Gender.male,
+    YinYang timeYinYang = YinYang.YANG,
+    TwentyFourJieQi jieQi = TwentyFourJieQi.XIA_ZHI,
+  }) {
+    // 阴时：先搜阴爻（寄宫主位），命中直接返回
+    if (timeYinYang.isYin) {
+      for (var i = 0; i < yangTangYaoZhiList.length; i++) {
+        final isYinYao = guaBinaryList[i] == 0;
+        if (isYinYao && yangTangYaoZhiList[i].contains(timeZhi)) {
+          return i;
+        }
+      }
+      // 阴爻未命中 → 时支在寄宫阳爻中
+      // 冬至后女命阴时：寄宫阳爻的元堂基准为初爻
+      if (gender == Gender.female && jieQi == TwentyFourJieQi.DONG_ZHI) {
+        return 0;
+      }
+    }
+
+    // 标准全局检索
     var resultYuantangYaoIndex = -1;
     for (var i = 0; i < yangTangYaoZhiList.length; i++) {
       if (yangTangYaoZhiList[i].contains(timeZhi)) {
@@ -473,6 +493,8 @@ class YuanTangCalculator {
           allGuaBinary,
           List.from(yuantangYangTimeSet),
           YinYang.YANG,
+          gender: gender,
+          jieQi: birthAfterZhi,
         );
       } else if (totalYangYao >= 4 && totalYangYao <= 5) {
         zhiList = zhuangGua45(
@@ -490,6 +512,8 @@ class YuanTangCalculator {
           allGuaBinary,
           List.from(yuantangYinTimeSet),
           YinYang.YIN,
+          gender: gender,
+          jieQi: birthAfterZhi,
         );
       } else if (totalYinYao >= 4 && totalYinYao <= 5) {
         zhiList = zhuangGua45(
@@ -503,7 +527,14 @@ class YuanTangCalculator {
     }
 
     // 获取元堂爻索引
-    final yuantangYaoIndex = getYuanTangYaoIndex(eightChars.time.zhi, zhiList);
+    final yuantangYaoIndex = getYuanTangYaoIndex(
+      eightChars.time.zhi,
+      zhiList,
+      allGuaBinary,
+      gender: gender,
+      timeYinYang: timeYinYang,
+      jieQi: birthAfterZhi,
+    );
 
     // 获取元堂爻位标签
     // final yuantangYaoLabel = _getYaoPositionLabel(yuantangYaoIndex);
@@ -561,8 +592,10 @@ class YuanTangCalculator {
   static List<List<DiZhi>> zhuangGua123(
     List<int> guaBinaryList,
     List<DiZhi> zhiList,
-    YinYang yinYang,
-  ) {
+    YinYang yinYang, {
+    Gender gender = Gender.male,
+    TwentyFourJieQi jieQi = TwentyFourJieQi.XIA_ZHI,
+  }) {
     final List<YinYang> yinYangList = guaBinaryList
         .map((x) => x == 1 ? YinYang.YANG : YinYang.YIN)
         .toList();
@@ -616,11 +649,18 @@ class YuanTangCalculator {
       List<DiZhi> leftZhiForYangList = tmpList
           .skip(allYinSlotIndices.length)
           .toList();
+
+      // 冬至后女命阴时：阳爻逆排（从上往下寄宫）
+      final orderedYangIndices = (gender == Gender.female &&
+              jieQi == TwentyFourJieQi.DONG_ZHI)
+          ? yangIndices.reversed.toList()
+          : yangIndices;
+
       for (var i = 0; i < leftZhiForYangList.length; i++) {
-        if (tmp[yangIndices[i]] == null) {
-          tmp[yangIndices[i]] = [];
+        if (tmp[orderedYangIndices[i]] == null) {
+          tmp[orderedYangIndices[i]] = [];
         }
-        tmp[yangIndices[i]]!.add(leftZhiForYangList[i]);
+        tmp[orderedYangIndices[i]]!.add(leftZhiForYangList[i]);
       }
     }
 

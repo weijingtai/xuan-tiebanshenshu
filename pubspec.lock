@@ -775,9 +775,16 @@ packages:
     source: path
     version: "0.0.0"
   repository_interface_qimendunjia:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
       path: "../repository-interface-qimendunjia"
+      relative: true
+    source: path
+    version: "0.0.0"
+  repository_interface_qizhengsiyu:
+    dependency: transitive
+    description:
+      path: "../repository-interface-qizhengsiyu"
       relative: true
     source: path
     version: "0.0.0"
@@ -1110,6 +1117,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.0"
+  xuan_config:
+    dependency: transitive
+    description:
+      path: "../xuan_config"
+      relative: true
+    source: path
+    version: "0.1.0"
   xuan_four_zhu_card:
     dependency: transitive
     description:

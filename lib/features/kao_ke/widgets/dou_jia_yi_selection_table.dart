@@ -1,28 +1,27 @@
 import 'package:metaphysics_core/enums.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import '../../../constant/kao_ke_constants.dart';
 import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
+import '../../../constant/kao_ke_constants.dart';
 
 /// 斗甲乙宫（三宫之数）选择表格
 ///
 /// 展示当前宫的四支（刻）× 每支 1-5 条目
 /// 单元格显示条文内容（并附带编号），点击进行选择
 class DouJiaYiSelectionTable extends StatefulWidget {
-  /// 当前宫的四支 × 1-5 条目
   final Map<DiZhi, List<DouJiaYiNumber>> douData;
 
-  /// 用户出生时辰（用于文案显示与样式）
   final DiZhi birthShiChen;
 
-  /// 点击单元格回调
   final void Function(DouJiaYiNumber) onItemSelected;
+
+  final Map<int, String>? contentMap;
 
   const DouJiaYiSelectionTable({
     super.key,
     required this.douData,
     required this.birthShiChen,
     required this.onItemSelected,
+    this.contentMap,
   });
 
   @override
@@ -30,32 +29,6 @@ class DouJiaYiSelectionTable extends StatefulWidget {
 }
 
 class _DouJiaYiSelectionTableState extends State<DouJiaYiSelectionTable> {
-  Map<int, String>? _contentMap;
-
-  @override
-  void initState() {
-    super.initState();
-    _loadContents();
-  }
-
-  Future<void> _loadContents() async {
-    try {
-      final repo = Provider.of<TiaoWenRepository>(context, listen: false);
-      final numbers = widget.douData.values
-          .expand((list) => list.map((e) => e.tiaoWenNumber))
-          .toSet()
-          .toList();
-      final map = await repo.getTiaoWenContentByNumbers(numbers);
-      if (mounted) {
-        setState(() {
-          _contentMap = map;
-        });
-      }
-    } catch (e) {
-      // 仓库未注入或读取失败时，不阻断UI
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -65,10 +38,8 @@ class _DouJiaYiSelectionTableState extends State<DouJiaYiSelectionTable> {
   }
 
   Widget _buildTable(BuildContext context) {
-    // 列：序 1-5
     final orders = [1, 2, 3, 4, 5];
 
-    // 行顺序：按宫的四支固定排序
     final keys = widget.douData.keys.toSet();
     final possibleOrders = const [
       [DiZhi.ZI, DiZhi.WU, DiZhi.MAO, DiZhi.YOU],
@@ -172,10 +143,10 @@ class _DouJiaYiSelectionTableState extends State<DouJiaYiSelectionTable> {
   }
 
   String _displayContent(int number) {
-    if (_contentMap == null) {
+    if (widget.contentMap == null) {
       return '加载中…';
     }
-    final content = _contentMap![number];
+    final content = widget.contentMap![number];
     return content ?? '未找到内容';
   }
 }

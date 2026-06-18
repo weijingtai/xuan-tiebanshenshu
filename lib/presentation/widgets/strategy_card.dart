@@ -3,7 +3,6 @@ import 'package:tiebanshenshu/presentation/components/gradient_card.dart';
 import '../viewmodels/base_tiao_wen_list_view_model.dart';
 import '../models/ui_tiao_wen_list_result_model.dart';
 import '../../domain/models/tiao_wen_list_state.dart';
-import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 import 'calculation_summary.dart';
 import 'loading_widget.dart';
 import 'error_widget.dart';
@@ -108,18 +107,6 @@ class _StrategyCardState extends State<StrategyCard> {
     );
   }
 
-  /// 格式化年龄信息
-  String _formatAgeInfo(TiaoWenDataModel entity) {
-    String ageInfo = '';
-    if (entity.ageSet1 != null && entity.ageSet1!.isNotEmpty) {
-      ageInfo = entity.ageSet1!.join(', ');
-      if (entity.ageSet2 != null && entity.ageSet2!.isNotEmpty) {
-        ageInfo += ' / ${entity.ageSet2!.join(', ')}';
-      }
-    }
-    return ageInfo.isNotEmpty ? ageInfo : '无年龄信息';
-  }
-
   /// 根据状态构建内容
   Widget _buildStateContent() {
     switch (widget.viewModel.state) {
@@ -147,13 +134,13 @@ class _StrategyCardState extends State<StrategyCard> {
           children: [
             CalculationSummary(result: result),
             TiaoWenListView(
-              tiaoWenList: result.tiaoWenEntities
+              tiaoWenList: result.tiaoWenItems
                   .map(
-                    (e) => TiaoWenItem(
-                      number: e.id,
-                      content: e.content1 ?? '',
-                      ageInfo: _formatAgeInfo(e),
-                      category: e.setName?.name ?? '',
+                    (item) => TiaoWenItem(
+                      number: item.number,
+                      content: item.content,
+                      ageInfo: item.ageInfo,
+                      category: item.category,
                     ),
                   )
                   .toList(),

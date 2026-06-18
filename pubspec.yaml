@@ -72,6 +72,10 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+  assets:
+    - assets/all_tiao_wen_v1.csv
+    - assets/kao_ke/
+
   # To add Flutter specific assets to your application, add an assets section,
   # like this:
   # assets:
@@ -117,9 +121,13 @@ flutter:
 dependency_overrides:
   persistence_core:
     path: ../xuan-storage/core
+  persistence_assets:
+    path: ../xuan-storage/assets
   metaphysics_core:
     path: ../xuan-metaphysics-core
   repository_interface_tiebanshenshu:
     path: ../repository-interface-tiebanshenshu
+  repository_interface_qimendunjia:
+    path: ../repository-interface-qimendunjia
   xuan_gua_core:
     path: ../xuan-gua-core

@@ -1,113 +1,101 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:metaphysics_core/models/eight_chars.dart';
 import '../viewmodels/gua_zhong_view_model.dart';
 import '../components/gradient_card.dart';
+import '../styles/tie_ban_semantic_colors.dart';
 
 /// 卦中取数法展示卡片
 ///
 /// 显示卦中取数法的计算结果和条文内容
 class GuaZhongCard extends StatelessWidget {
-  final EightChars eightChars;
+  final GuaZhongViewModel viewModel;
 
-  const GuaZhongCard({super.key, required this.eightChars});
+  const GuaZhongCard({super.key, required this.viewModel});
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) {
-        final viewModel = context.read<GuaZhongViewModel>();
-        viewModel.setParams(eightChars: eightChars);
-        return viewModel;
-      },
-      child: Consumer<GuaZhongViewModel>(
-        builder: (context, viewModel, child) {
-          return Padding(
-            padding: const EdgeInsets.all(16),
-            child: GradientCard(
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // 标题
-                    Row(
-                      children: [
-                        const Icon(Icons.calculate, color: Colors.deepPurple),
-                        const SizedBox(width: 8),
-                        Text(
-                          '卦中取数法',
-                          style: Theme.of(context).textTheme.titleLarge
-                              ?.copyWith(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.deepPurple,
-                              ),
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: GradientCard(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // 标题
+              Row(
+                children: [
+                  const Icon(Icons.calculate, color: Colors.deepPurple),
+                  const SizedBox(width: 8),
+                  Text(
+                    '卦中取数法',
+                    style: Theme.of(context).textTheme.titleLarge
+                        ?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.deepPurple,
                         ),
-                      ],
-                    ),
-                    const Divider(height: 24),
-
-                    // 四柱信息
-                    _buildInfoRow(
-                      context,
-                      '四柱',
-                      viewModel.fourZhuDisplayText,
-                      Icons.calendar_today,
-                    ),
-                    const SizedBox(height: 16),
-
-                    // 方案选择区域
-                    _buildPlanSelector(context, viewModel),
-                    const SizedBox(height: 16),
-
-                    // 状态显示
-                    if (viewModel.isLoading) ...[
-                      const Center(child: CircularProgressIndicator()),
-                    ] else if (viewModel.hasError) ...[
-                      _buildErrorView(context, viewModel.errorMessage!),
-                    ] else if (viewModel.hasResult) ...[
-                      // 年月卦
-                      _buildGuaSection(
-                        context,
-                        '年月卦',
-                        viewModel.nianYueGuaDisplayText,
-                        viewModel.nianYueUpperGuaDisplayText,
-                        viewModel.nianYueLowerGuaDisplayText,
-                        viewModel.nianYueGuaDescription,
-                        viewModel.nianYueTiaoWenNumbers,
-                        Colors.blue,
-                      ),
-                      const SizedBox(height: 16),
-
-                      // 日时卦
-                      _buildGuaSection(
-                        context,
-                        '日时卦',
-                        viewModel.riShiGuaDisplayText,
-                        viewModel.riShiUpperGuaDisplayText,
-                        viewModel.riShiLowerGuaDisplayText,
-                        viewModel.riShiGuaDescription,
-                        viewModel.riShiTiaoWenNumbers,
-                        Colors.green,
-                      ),
-                      const SizedBox(height: 16),
-
-                      // 条文统计
-                      _buildTiaoWenStats(context, viewModel),
-                      const SizedBox(height: 16),
-
-                      // 条文列表
-                      if (viewModel.result != null &&
-                          viewModel.result!.tiaoWenEntities.isNotEmpty) ...[
-                        _buildTiaoWenList(context, viewModel),
-                      ],
-                    ],
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ),
-          );
-        },
+              const Divider(height: 24),
+
+              // 四柱信息
+              _buildInfoRow(
+                context,
+                '四柱',
+                viewModel.fourZhuDisplayText,
+                Icons.calendar_today,
+              ),
+              const SizedBox(height: 16),
+
+              // 方案选择区域
+              _buildPlanSelector(context),
+              const SizedBox(height: 16),
+
+              // 状态显示
+              if (viewModel.isLoading) ...[
+                const Center(child: CircularProgressIndicator()),
+              ] else if (viewModel.hasError) ...[
+                _buildErrorView(context, viewModel.errorMessage!),
+              ] else if (viewModel.hasResult) ...[
+                // 年月卦
+                _buildGuaSection(
+                  context,
+                  '年月卦',
+                  viewModel.nianYueGuaDisplayText,
+                  viewModel.nianYueUpperGuaDisplayText,
+                  viewModel.nianYueLowerGuaDisplayText,
+                  viewModel.nianYueGuaDescription,
+                  viewModel.nianYueTiaoWenNumbers,
+                  TieBanSemanticColors.plan1,
+                ),
+                const SizedBox(height: 16),
+
+                // 日时卦
+                _buildGuaSection(
+                  context,
+                  '日时卦',
+                  viewModel.riShiGuaDisplayText,
+                  viewModel.riShiUpperGuaDisplayText,
+                  viewModel.riShiLowerGuaDisplayText,
+                  viewModel.riShiGuaDescription,
+                  viewModel.riShiTiaoWenNumbers,
+                  TieBanSemanticColors.plan2,
+                ),
+                const SizedBox(height: 16),
+
+                // 条文统计
+                _buildTiaoWenStats(context),
+                const SizedBox(height: 16),
+
+                // 条文列表
+                if (viewModel.result != null &&
+                    viewModel.result!.tiaoWenEntities.isNotEmpty) ...[
+                  _buildTiaoWenList(context),
+                ],
+              ],
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -138,7 +126,7 @@ class GuaZhongCard extends StatelessWidget {
   }
 
   /// 构建方案选择器
-  Widget _buildPlanSelector(BuildContext context, GuaZhongViewModel viewModel) {
+  Widget _buildPlanSelector(BuildContext context) {
     return ExpansionTile(
       title: const Text(
         '千位计算方案选择',
@@ -210,11 +198,11 @@ class GuaZhongCard extends StatelessWidget {
                   width: 12,
                   height: 12,
                   decoration: const BoxDecoration(
-                    color: Colors.blue,
+                    color: TieBanSemanticColors.plan1,
                     shape: BoxShape.circle,
                   ),
                 ),
-                activeColor: Colors.blue,
+                activeColor: TieBanSemanticColors.plan1,
               ),
 
               // 方案2: 绿色
@@ -233,11 +221,11 @@ class GuaZhongCard extends StatelessWidget {
                   width: 12,
                   height: 12,
                   decoration: const BoxDecoration(
-                    color: Colors.green,
+                    color: TieBanSemanticColors.plan2,
                     shape: BoxShape.circle,
                   ),
                 ),
-                activeColor: Colors.green,
+                activeColor: TieBanSemanticColors.plan2,
               ),
 
               // 方案3: 橙色
@@ -256,11 +244,11 @@ class GuaZhongCard extends StatelessWidget {
                   width: 12,
                   height: 12,
                   decoration: const BoxDecoration(
-                    color: Colors.orange,
+                    color: TieBanSemanticColors.plan3,
                     shape: BoxShape.circle,
                   ),
                 ),
-                activeColor: Colors.orange,
+                activeColor: TieBanSemanticColors.plan3,
               ),
 
               const SizedBox(height: 8),
@@ -290,19 +278,7 @@ class GuaZhongCard extends StatelessWidget {
     List<int> tiaoWenNumbers,
     Color color,
   ) {
-    final viewModel = context.watch<GuaZhongViewModel>();
-
-    // 获取带方案标签的条文编号
-    final numbersWithLabel = viewModel.filteredTiaoWenNumbersWithLabel.where((
-      item,
-    ) {
-      // 根据title过滤年月卦或日时卦
-      if (title == '年月卦') {
-        return item.$3.startsWith('年月卦');
-      } else {
-        return item.$3.startsWith('日时卦');
-      }
-    }).toList();
+    final numbersWithLabel = viewModel.getFilteredNumbersForSection(title);
 
     return Container(
       padding: const EdgeInsets.all(12),
@@ -458,27 +434,21 @@ class GuaZhongCard extends StatelessWidget {
   }
 
   /// 获取方案颜色
-  Color _getPlanColor(int planNumber) {
-    switch (planNumber) {
-      case 1:
-        return Colors.blue;
-      case 2:
-        return Colors.green;
-      case 3:
-        return Colors.orange;
-      default:
-        return Colors.grey;
-    }
-  }
+  Color _getPlanColor(int planNumber) => switch (planNumber) {
+    1 => TieBanSemanticColors.plan1,
+    2 => TieBanSemanticColors.plan2,
+    3 => TieBanSemanticColors.plan3,
+    _ => TieBanSemanticColors.planUnknown,
+  };
 
   /// 构建条文统计
-  Widget _buildTiaoWenStats(BuildContext context, GuaZhongViewModel viewModel) {
+  Widget _buildTiaoWenStats(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: Colors.orange.withOpacity(0.1),
+        color: Colors.grey.withOpacity(0.1),
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.orange.withOpacity(0.3)),
+        border: Border.all(color: Colors.grey.withOpacity(0.3)),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -487,19 +457,19 @@ class GuaZhongCard extends StatelessWidget {
             context,
             '总条文数',
             viewModel.allTiaoWenNumbers.length.toString(),
-            Colors.orange,
+            Colors.grey[700]!,
           ),
           _buildStatItem(
             context,
             '年月卦',
             viewModel.nianYueTiaoWenNumbers.length.toString(),
-            Colors.blue,
+            Colors.blueGrey,
           ),
           _buildStatItem(
             context,
             '日时卦',
             viewModel.riShiTiaoWenNumbers.length.toString(),
-            Colors.green,
+            Colors.blueGrey,
           ),
         ],
       ),
@@ -529,7 +499,7 @@ class GuaZhongCard extends StatelessWidget {
   }
 
   /// 构建条文列表
-  Widget _buildTiaoWenList(BuildContext context, GuaZhongViewModel viewModel) {
+  Widget _buildTiaoWenList(BuildContext context) {
     final tiaoWenEntities = viewModel.result!.tiaoWenEntities;
 
     return ExpansionTile(

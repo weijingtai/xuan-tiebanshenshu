@@ -10,8 +10,8 @@ import 'package:tiebanshenshu/enums.dart';
 import 'package:tiebanshenshu/features/yuan_tang_gua/yuan_tang_calculator.dart';
 import 'package:tiebanshenshu/features/yuan_tang_gua/yuan_tang_info.dart';
 
-import '../yuan_tang_strategy.dart';
-import '../base_calculation_strategy.dart';
+import '../../../service/strategy/yuan_tang_strategy.dart';
+import '../../../service/strategy/base_calculation_strategy.dart';
 
 /// 元堂派生策略的统一参数基类
 ///

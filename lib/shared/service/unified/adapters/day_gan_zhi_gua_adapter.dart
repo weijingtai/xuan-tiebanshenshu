@@ -1,6 +1,6 @@
 import 'package:tiebanshenshu/domain/models/unified/divination_context.dart';
 import 'package:tiebanshenshu/domain/models/unified/divination_result.dart';
-import '../../strategy/day_gan_zhi_gua_strategy.dart';
+import '../../../../service/strategy/day_gan_zhi_gua_strategy.dart';
 import '../unified_strategy_adapter.dart';
 
 class DayGanZhiGuaAdapter implements UnifiedStrategyAdapter {
