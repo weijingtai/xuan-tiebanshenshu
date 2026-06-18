@@ -29,6 +29,107 @@
 | `test/service/strategy/` | ❌ 329/401 通过 | 72 失败为预存上游枚举迁移问题，与本次改动无关 |
 | `test/features/kao_ding_liu_qin/` | ✅ 16/16 通过 | |
 
+## Theme 迁移准入基线
+
+> 基于 `refactor/ui_logic_splited` (c8dbfab) 当前状态
+
+### 主题系统现状
+
+| 项 | 状态 |
+|---|------|
+| 本地主题系统 | ✅ `lib/presentation/theme/app_theme_data.dart` — 5 套预设（天青/朱砂/墨玉/藤黄/紫檀），含 Gradient、Material 3 兼容 |
+| ThemeViewModel | ✅ 已有，将 AppThemeData 转为 ThemeData |
+| 外部 package 依赖 | ❌ 无 `package:theme`、`package:xuan_theme`、`package:xuan_config` 等 |
+| 测试目录 `test/theme/` | ❌ 不存在 |
+
+### Widget 迁移分类
+
+**A 类 — 可立即迁移（纯展示，零业务依赖）：**
+
+| Widget | 行数 | 说明 |
+|--------|------|------|
+| `loading_widget.dart` | ~15 | 纯 loading 指示器 |
+| `empty_state_widget.dart` | ~50 | 空状态占位 |
+| `error_widget.dart` | ~50 | 错误状态展示 |
+| `tiao_wen_item.dart` | ~80 | 单条文列表项 |
+| `tiao_wen_list_view.dart` | ~120 | 条文列表容器 |
+| `calculation_summary.dart` | ~100 | 计算结果摘要 |
+| `strategy_header.dart` | ~30 | 策略头部标题 |
+| `section_header.dart` | ~50 | 章节标题组件 |
+| `gradient_card.dart` | ~60 | 渐变卡片容器 |
+| `animated_button.dart` | ~80 | 动画按钮 |
+| `interactive_step_indicator.dart` | ~60 | 步骤指示器 |
+
+**B 类 — 需少量适配（接收 ViewModel，仅引用语义色+Theme.of）：**
+
+| Widget | 行数 | 说明 |
+|--------|------|------|
+| `xian_houtian_qu_shu_card.dart` | 899 | 接收 ViewModel，仅管理展开状态 |
+| `qian_hou_gua_card.dart` | 723 | 接收 ViewModel，Stateless 渲染 |
+| `liu_yao_gan_zhi_he_card.dart` | 898 | 接收 ViewModel，仅管理展开状态 |
+| `gua_yao_gan_zhi_he_card.dart` | 509 | 接收 ViewModel |
+| `xian_houtian_jia_ze_card.dart` | 683 | 接收 ViewModel |
+| `ba_gua_jia_ze_card.dart` | 440 | 接收 ViewModel |
+| `tai_xuan_dual_method_card.dart` | 324 | 纯展示组件 |
+| `tai_xuan_method_section.dart` | 180 | 纯展示组件 |
+| `strategy_card.dart` | 175 | 容器组件 |
+
+**C 类 — 需先解耦再迁移（含 Strategy/Provider/Repository 引用）：**
+
+| Widget | 问题 | 归类至 |
+|--------|------|--------|
+| `gua_zhong_card.dart` | Provider 创建 + setParams | Phase 3 |
+| `yuan_tang_liuyun_section.dart` | 直接调用 YuanTangStrategy | Phase 4 |
+| `yuan_tang_card.dart` | 持有并透传 YuanTangStrategy | Phase 4 |
+| `kao_ding_liu_qin_card.dart` | import strategy 文件 | Phase 5 |
+
+### 当前资源引用统计
+
+| 源 | 数量 | 说明 |
+|----|------|------|
+| `lib/presentation/` 内 `Colors.` 引用 | ~668 | 需迁移到 theme token |
+| `lib/presentation/` 内 `const Color(0x` 引用 | ~120 | 需替换为语义常量 |
+| `lib/presentation/` 内 Style 类引用 | ~30 | 可提取为 token |
+
+### Flutter Analyze 基线及降噪计划
+
+**当前 1399 issues，0 error。**
+
+| 类别 | 数量 | 说明 | 降噪策略 |
+|------|------|------|----------|
+| `avoid_print` (test/) | 746 | 测试调试输出 | 在测试文件加 `// ignore_for_file: avoid_print` |
+| `avoid_print` (lib/) | 38 | 7 个 lib 文件，集中在 huang_ji 模块 | 改用 `debugPrint()` 或日志 |
+| `withOpacity` deprecation | 302 | 多文件散布 | 批量替换 `.withOpacity(x)` → `.withValues(alpha: x)` |
+| `surfaceVariant` deprecation | 37 | 约 10 个文件 | 替换为 `surfaceContainerHighest` |
+| `timezone` 非依赖导入 | 10 | 直接 import 但未声明 | 在 pubspec.yaml 补充 |
+| `http:` 不安全协议 | 6 | 硬编码 URL | 替换为 `https:` |
+| `generateTianDiGua` deprecation | 4 | 旧 API 调用 | 替换为 `calculateXianTianGua` |
+| Enum 类型比较 | 4 | 策略测试中的遗留 | 已部分在 use_case 修复，strategy 层待修 |
+| 命名/风格 | ~50 | 下划线命名、braces 等 | 可接受或一次性格式化 |
+| 其他 deprecation/import | ~202 | 零星问题 | 逐项审查 |
+
+**降噪目标：** 先降到 ~200（主要修复 deprecation + 依赖 + enum 比较），最终降到 ~50（只保留命名风格类）。实现方式：下一分支执行。
+
+### 强制门禁（执行后必须验证）
+
+```bash
+# 新增 theme 治理测试
+test/theme/theme_token_governance_test.dart  # 确保 no import package:xuan_config
+
+# 边界检查
+grep -rn "package:xuan_config\|package:theme\|package:xuan_theme" lib/
+# 期望：无命中
+
+# 首批 A 类 Widget 迁移后检查
+rg -n "Colors\.\|const Color(0x" \
+  lib/presentation/widgets/loading_widget.dart \
+  lib/presentation/widgets/empty_state_widget.dart \
+  lib/presentation/widgets/error_widget.dart \
+  lib/presentation/widgets/tiao_wen_item.dart \
+  lib/presentation/widgets/calculation_summary.dart
+# 期望：无硬编码色值
+```
+
 ---
 
 # 铁板神数 UI/逻辑解耦计划（修订版 v2）
