@@ -30,6 +30,10 @@ dependencies:
   repository_interface_tiebanshenshu:
     git:
       url: http://192.168.0.165:3000/xuan/repository-interface-tiebanshenshu.git
+  theme:
+    path: ../theme
+  xuan_config:
+    path: ../xuan_config
   flutter:
     sdk: flutter
 
