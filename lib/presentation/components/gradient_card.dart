@@ -34,7 +34,7 @@ class GradientCard extends StatelessWidget {
             border:
                 border ??
                 Border.all(
-                  color: AppColors.of(context).primaryColor.withOpacity(0.1),
+                  color: AppColors.of(context).primaryColor.withValues(alpha: 0.1),
                   width: 1,
                 ),
           ),

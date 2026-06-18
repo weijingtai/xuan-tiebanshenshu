@@ -41,7 +41,7 @@ class UnifiedNavRail extends StatelessWidget {
         message: label,
         preferBelow: false,
         decoration: BoxDecoration(
-          color: Colors.black.withOpacity(0.8),
+          color: Colors.black.withValues(alpha: 0.8),
           borderRadius: BorderRadius.circular(4),
         ),
         textStyle: const TextStyle(color: Colors.white, fontSize: 10),
@@ -49,7 +49,7 @@ class UnifiedNavRail extends StatelessWidget {
           width: 10,
           height: 10,
           decoration: BoxDecoration(
-            color: color.withOpacity(0.3),
+            color: color.withValues(alpha: 0.3),
             shape: BoxShape.circle,
             border: Border.all(
               color: Colors.transparent,
@@ -58,7 +58,7 @@ class UnifiedNavRail extends StatelessWidget {
           ),
           child: Container(
             decoration: BoxDecoration(
-              color: color.withOpacity(0.8),
+              color: color.withValues(alpha: 0.8),
               shape: BoxShape.circle,
             ),
           ),

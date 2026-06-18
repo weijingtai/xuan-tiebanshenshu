@@ -5,7 +5,6 @@ library;
 
 import 'package:metaphysics_core/enums.dart';
 
-import '../../domain/models/base_number_tiao_wen_list_model.dart';
 import '../../domain/models/yuan_tang_base_number_model.dart';
 import 'package:xuan_gua_core/xuan_gua_core.dart';
 import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';

@@ -32,7 +32,7 @@ class UnifiedVerseRow extends StatelessWidget {
           // HTML: expanded has border-bottom dashed. tiny has border solid (faint).
           bottom: BorderSide(
             color: isTinyMode
-                ? Colors.black.withOpacity(0.02)
+                ? Colors.black.withValues(alpha: 0.02)
                 : const Color.fromRGBO(
                     0,
                     0,
@@ -47,7 +47,7 @@ class UnifiedVerseRow extends StatelessWidget {
         boxShadow: isTinyMode
             ? [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.04),
+                  color: Colors.black.withValues(alpha: 0.04),
                   blurRadius: 12,
                   offset: const Offset(0, 4),
                 ),
@@ -98,7 +98,7 @@ class UnifiedVerseRow extends StatelessWidget {
               width: 3, // CSS says 3px
               margin: const EdgeInsets.only(left: 10), // Constant 10px margin
               decoration: BoxDecoration(
-                color: themeColor.withOpacity(0.8),
+                color: themeColor.withValues(alpha: 0.8),
                 borderRadius: BorderRadius.circular(2),
               ),
             ),
@@ -154,7 +154,7 @@ class UnifiedVerseRow extends StatelessWidget {
                   ? const EdgeInsets.symmetric(horizontal: 3, vertical: 1)
                   : const EdgeInsets.symmetric(horizontal: 4, vertical: 0),
               decoration: BoxDecoration(
-                color: data.sealColor.withOpacity(0.05),
+                color: data.sealColor.withValues(alpha: 0.05),
                 border: Border.all(
                   color: data.sealColor,
                   width: isTinyMode ? 1.5 : 1,
@@ -285,7 +285,7 @@ class UnifiedVerseRow extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 1),
         decoration: BoxDecoration(
           color: Color.lerp(tagColor, Colors.white, 0.92), // mix 8%
-          border: Border.all(color: tagColor.withOpacity(0.12), width: 0.5),
+          border: Border.all(color: tagColor.withValues(alpha: 0.12), width: 0.5),
           borderRadius: BorderRadius.circular(3),
         ),
         child: Text(
@@ -322,7 +322,7 @@ class UnifiedVerseRow extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 1),
       decoration: BoxDecoration(
         color: Color.lerp(tagColor, Colors.white, 0.92),
-        border: Border.all(color: tagColor.withOpacity(0.12), width: 0.5),
+        border: Border.all(color: tagColor.withValues(alpha: 0.12), width: 0.5),
         borderRadius: BorderRadius.circular(3),
       ),
       child: Text(
@@ -351,7 +351,7 @@ class UnifiedVerseRow extends StatelessWidget {
               : const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
           decoration: BoxDecoration(
             color: (v.isPrimary && !isTinyMode)
-                ? Base18Theme.taixuanRed.withOpacity(0.04)
+                ? Base18Theme.taixuanRed.withValues(alpha: 0.04)
                 : Colors.transparent, // Tiny: Transparent bg? CSS says so?
             // CSS: .mode-tiny .version-row { padding: 2px 4px }
             border: Border(

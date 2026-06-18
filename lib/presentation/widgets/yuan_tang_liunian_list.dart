@@ -80,9 +80,9 @@ class YuanTangLiunianList extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
       decoration: BoxDecoration(
-        color: accentColor.withOpacity(0.1),
+        color: accentColor.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(8.0),
-        border: Border.all(color: accentColor.withOpacity(0.3), width: 1.5),
+        border: Border.all(color: accentColor.withValues(alpha: 0.3), width: 1.5),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -101,8 +101,8 @@ class YuanTangLiunianList extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 6.0, vertical: 2.0),
             decoration: BoxDecoration(
               color: dayunPeriod.yinYang == '阳'
-                  ? Colors.blue.withOpacity(0.15)
-                  : Colors.purple.withOpacity(0.15),
+                  ? Colors.blue.withValues(alpha: 0.15)
+                  : Colors.purple.withValues(alpha: 0.15),
               borderRadius: BorderRadius.circular(4.0),
             ),
             child: Text(
@@ -117,14 +117,14 @@ class YuanTangLiunianList extends StatelessWidget {
           Text(
             '${dayunPeriod.ageRange}岁',
             style: theme.textTheme.bodyMedium?.copyWith(
-              color: theme.colorScheme.onSurface.withOpacity(0.7),
+              color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
             ),
           ),
           const SizedBox(width: 4.0),
           Text(
             '(${dayunPeriod.years}年)',
             style: theme.textTheme.bodySmall?.copyWith(
-              color: theme.colorScheme.onSurface.withOpacity(0.5),
+              color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
             ),
           ),
         ],
@@ -201,7 +201,7 @@ class YuanTangLiunianList extends StatelessWidget {
                     vertical: 4.0,
                   ),
                   decoration: BoxDecoration(
-                    color: accentColor.withOpacity(0.1),
+                    color: accentColor.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(4.0),
                   ),
                   child: Text(
@@ -219,13 +219,13 @@ class YuanTangLiunianList extends StatelessWidget {
                     vertical: 4.0,
                   ),
                   decoration: BoxDecoration(
-                    color: theme.colorScheme.surfaceVariant.withOpacity(0.3),
+                    color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
                     borderRadius: BorderRadius.circular(4.0),
                   ),
                   child: Text(
                     '未变换',
                     style: theme.textTheme.labelSmall?.copyWith(
-                      color: theme.colorScheme.onSurface.withOpacity(0.5),
+                      color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
                     ),
                   ),
                 ),
@@ -236,7 +236,7 @@ class YuanTangLiunianList extends StatelessWidget {
                 Icon(
                   Icons.touch_app,
                   size: 14.0,
-                  color: theme.colorScheme.onSurface.withOpacity(0.3),
+                  color: theme.colorScheme.onSurface.withValues(alpha: 0.3),
                 ),
               ],
             ],

@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
                 color: Colors.white,
                 shadows: [
                   Shadow(
-                    color: AppColors.primary.withOpacity(0.5),
+                    color: AppColors.primary.withValues(alpha: 0.5),
                     offset: const Offset(0, 4),
                     blurRadius: 10,
                   ),
@@ -118,7 +118,7 @@ class HomePage extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: item.color.withOpacity(0.2),
+                  color: item.color.withValues(alpha: 0.2),
                   shape: BoxShape.circle,
                 ),
                 child: Icon(item.icon, color: Colors.white, size: 28),

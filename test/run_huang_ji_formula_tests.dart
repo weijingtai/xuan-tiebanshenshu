@@ -1,3 +1,4 @@
+// ignore_for_file: avoid_print
 import 'dart:io';
 
 /// 简单的测试运行脚本，用于验证皇极公式相关测试

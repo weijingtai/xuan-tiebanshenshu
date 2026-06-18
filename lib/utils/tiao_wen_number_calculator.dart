@@ -3,7 +3,6 @@
 /// 提供四门法和八卦滚法的条文数计算功能
 library;
 
-import 'package:metaphysics_core/enums.dart';
 import '../constant/constants.dart' as constants;
 import 'package:xuan_gua_core/xuan_gua_core.dart';
 

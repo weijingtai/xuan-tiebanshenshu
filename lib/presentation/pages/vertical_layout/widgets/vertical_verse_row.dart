@@ -301,7 +301,7 @@ class VerticalVerseRow extends StatelessWidget {
                 fontSize: isTinyMode ? 11 : 9, // Increased 9 -> 11 for Tiny
                 color: const Color(
                   0xFF424242,
-                ).withOpacity(isTinyMode ? 0.7 : 0.6),
+                ).withValues(alpha: isTinyMode ? 0.7 : 0.6),
                 fontWeight: FontWeight.bold,
               ),
               child: Row(
@@ -357,7 +357,7 @@ class VerticalVerseRow extends StatelessWidget {
           Text(
             "($yearRange)",
             style: TextStyle(
-              color: const Color(0xFF967131).withOpacity(0.8),
+              color: const Color(0xFF967131).withValues(alpha: 0.8),
               fontSize: 11,
               fontFamily: "JetBrains Mono",
             ),
@@ -392,10 +392,10 @@ class VerticalVerseRow extends StatelessWidget {
     return Container(
       padding: padding,
       decoration: BoxDecoration(
-        color: const Color(0xFF967131).withOpacity(0.05),
+        color: const Color(0xFF967131).withValues(alpha: 0.05),
         borderRadius: BorderRadius.circular(100), // Capsule shape
         border: Border.all(
-          color: const Color(0xFF967131).withOpacity(0.3),
+          color: const Color(0xFF967131).withValues(alpha: 0.3),
           width: 0.6, // Matches Sub Tag (0.6)
         ),
       ),
@@ -427,8 +427,8 @@ class VerticalVerseRow extends StatelessWidget {
     // Background tint: from base_18.html screenshot
     final backgroundColor = showSource
         ? (isPrimary
-              ? const Color(0xFFA62B1F).withOpacity(0.04)
-              : const Color(0xFF000000).withOpacity(0.03))
+              ? const Color(0xFFA62B1F).withValues(alpha: 0.04)
+              : const Color(0xFF000000).withValues(alpha: 0.03))
         : Colors.transparent;
 
     final fontSize = isTiny ? 17.0 : 19.0;
@@ -470,7 +470,7 @@ class VerticalVerseRow extends StatelessWidget {
                     vertical: 1,
                   ),
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.5),
+                    color: Colors.white.withValues(alpha: 0.5),
                     border: Border.all(
                       color: isPrimary
                           ? const Color(0xFFA62B1F)
@@ -546,10 +546,10 @@ class VerticalVerseRow extends StatelessWidget {
       curve: _animCurve,
       padding: padding,
       decoration: BoxDecoration(
-        color: themeColor.withOpacity(0.04), // Reduced opacity 0.08 -> 0.04
+        color: themeColor.withValues(alpha: 0.04), // Reduced opacity 0.08 -> 0.04
         borderRadius: BorderRadius.circular(3),
         border: Border.all(
-          color: themeColor.withOpacity(0.15), // Reduced 0.2 -> 0.15
+          color: themeColor.withValues(alpha: 0.15), // Reduced 0.2 -> 0.15
           width: 0.6, // Reduced 0.8 -> 0.6
         ),
       ),
@@ -577,7 +577,7 @@ class VerticalVerseRow extends StatelessWidget {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           border: Border.all(color: sealColor, width: 0.6), // Thinner border
-          color: sealColor.withOpacity(0.08),
+          color: sealColor.withValues(alpha: 0.08),
           borderRadius: BorderRadius.circular(1.5),
         ),
         child: FittedBox(
@@ -598,14 +598,14 @@ class VerticalVerseRow extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
       decoration: BoxDecoration(
-        border: Border.all(color: sealColor.withOpacity(0.5), width: 0.8),
-        color: sealColor.withOpacity(0.05),
+        border: Border.all(color: sealColor.withValues(alpha: 0.5), width: 0.8),
+        color: sealColor.withValues(alpha: 0.05),
         borderRadius: BorderRadius.circular(2),
       ),
       child: Text(
         seal,
         style: TextStyle(
-          color: sealColor.withOpacity(0.7),
+          color: sealColor.withValues(alpha: 0.7),
           fontSize: 12,
           fontWeight: FontWeight.bold,
           height: 1.2,

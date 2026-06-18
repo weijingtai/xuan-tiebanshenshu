@@ -1,7 +1,6 @@
+// ignore_for_file: avoid_print
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter/services.dart';
 import 'package:persistence_assets/persistence_assets.dart';
-import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 import 'package:metaphysics_core/enums.dart';
 
 /// 条文数据仓库测试

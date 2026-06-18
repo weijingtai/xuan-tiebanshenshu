@@ -1,3 +1,4 @@
+// ignore_for_file: avoid_print
 import 'package:metaphysics_core/models/eight_chars.dart';
 
 import '../domain/models/base_number_tiao_wen_list_model.dart';

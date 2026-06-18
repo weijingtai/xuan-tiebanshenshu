@@ -85,9 +85,7 @@ class _YuanTangCardState extends State<YuanTangCard> {
                           Text(
                             '性别:${widget.model.gender} | 三元:${widget.model.threeYuan} | 节气:${widget.model.birthAfterZhi}',
                             style: theme.textTheme.bodySmall?.copyWith(
-                              color: theme.colorScheme.onSurface.withOpacity(
-                                0.7,
-                              ),
+                              color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
                             ),
                           ),
                         ],
@@ -95,7 +93,7 @@ class _YuanTangCardState extends State<YuanTangCard> {
                     ),
                     Icon(
                       _isExpanded ? Icons.expand_less : Icons.expand_more,
-                      color: theme.colorScheme.onSurface.withOpacity(0.7),
+                      color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
                     ),
                   ],
                 ),
@@ -165,7 +163,7 @@ class _YuanTangCardState extends State<YuanTangCard> {
     return Container(
       padding: const EdgeInsets.all(12.0),
       decoration: BoxDecoration(
-        color: theme.colorScheme.primaryContainer.withOpacity(0.3),
+        color: theme.colorScheme.primaryContainer.withValues(alpha: 0.3),
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Row(
@@ -177,7 +175,7 @@ class _YuanTangCardState extends State<YuanTangCard> {
                 Text(
                   '先天卦',
                   style: theme.textTheme.labelSmall?.copyWith(
-                    color: theme.colorScheme.onSurface.withOpacity(0.7),
+                    color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
                   ),
                 ),
                 const SizedBox(height: 4.0),
@@ -197,7 +195,7 @@ class _YuanTangCardState extends State<YuanTangCard> {
           ),
           Icon(
             Icons.arrow_forward,
-            color: theme.colorScheme.onSurface.withOpacity(0.5),
+            color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
           ),
           const SizedBox(width: 16.0),
           Expanded(
@@ -207,7 +205,7 @@ class _YuanTangCardState extends State<YuanTangCard> {
                 Text(
                   '后天卦',
                   style: theme.textTheme.labelSmall?.copyWith(
-                    color: theme.colorScheme.onSurface.withOpacity(0.7),
+                    color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
                   ),
                 ),
                 const SizedBox(height: 4.0),
@@ -314,9 +312,9 @@ class _YuanTangCardState extends State<YuanTangCard> {
     return Container(
       padding: const EdgeInsets.all(12.0),
       decoration: BoxDecoration(
-        color: theme.colorScheme.surfaceVariant.withOpacity(0.3),
+        color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
         borderRadius: BorderRadius.circular(8.0),
-        border: Border.all(color: theme.colorScheme.outline.withOpacity(0.2)),
+        border: Border.all(color: theme.colorScheme.outline.withValues(alpha: 0.2)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -345,7 +343,7 @@ class _YuanTangCardState extends State<YuanTangCard> {
     return Container(
       padding: const EdgeInsets.all(12.0),
       decoration: BoxDecoration(
-        color: theme.colorScheme.tertiaryContainer.withOpacity(0.2),
+        color: theme.colorScheme.tertiaryContainer.withValues(alpha: 0.2),
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Column(
@@ -368,7 +366,7 @@ class _YuanTangCardState extends State<YuanTangCard> {
               ),
               decoration: BoxDecoration(
                 color: isYuanTang
-                    ? theme.colorScheme.primaryContainer.withOpacity(0.5)
+                    ? theme.colorScheme.primaryContainer.withValues(alpha: 0.5)
                     : Colors.transparent,
                 borderRadius: BorderRadius.circular(4.0),
               ),
@@ -390,7 +388,7 @@ class _YuanTangCardState extends State<YuanTangCard> {
                     child: Text(
                       yao.yinYang,
                       style: theme.textTheme.bodySmall?.copyWith(
-                        color: theme.colorScheme.onSurface.withOpacity(0.7),
+                        color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
                       ),
                     ),
                   ),
@@ -451,10 +449,10 @@ class _YuanTangCardState extends State<YuanTangCard> {
                 child: Container(
                   padding: const EdgeInsets.all(12.0),
                   decoration: BoxDecoration(
-                    color: theme.colorScheme.surfaceVariant.withOpacity(0.3),
+                    color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
                     borderRadius: BorderRadius.circular(8.0),
                     border: Border.all(
-                      color: theme.colorScheme.outline.withOpacity(0.2),
+                      color: theme.colorScheme.outline.withValues(alpha: 0.2),
                     ),
                   ),
                   child: Column(
@@ -490,7 +488,7 @@ class _YuanTangCardState extends State<YuanTangCard> {
     return Container(
       padding: const EdgeInsets.all(12.0),
       decoration: BoxDecoration(
-        color: theme.colorScheme.secondaryContainer.withOpacity(0.3),
+        color: theme.colorScheme.secondaryContainer.withValues(alpha: 0.3),
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Row(
@@ -511,7 +509,7 @@ class _YuanTangCardState extends State<YuanTangCard> {
           Container(
             width: 1,
             height: 40,
-            color: theme.colorScheme.outline.withOpacity(0.3),
+            color: theme.colorScheme.outline.withValues(alpha: 0.3),
           ),
           Column(
             children: [
@@ -535,7 +533,7 @@ class _YuanTangCardState extends State<YuanTangCard> {
     return Container(
       padding: const EdgeInsets.all(12.0),
       decoration: BoxDecoration(
-        color: theme.colorScheme.tertiaryContainer.withOpacity(0.2),
+        color: theme.colorScheme.tertiaryContainer.withValues(alpha: 0.2),
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Column(
@@ -558,7 +556,7 @@ class _YuanTangCardState extends State<YuanTangCard> {
               ),
               decoration: BoxDecoration(
                 color: isYuanTang
-                    ? theme.colorScheme.secondaryContainer.withOpacity(0.5)
+                    ? theme.colorScheme.secondaryContainer.withValues(alpha: 0.5)
                     : Colors.transparent,
                 borderRadius: BorderRadius.circular(4.0),
               ),
@@ -580,7 +578,7 @@ class _YuanTangCardState extends State<YuanTangCard> {
                     child: Text(
                       yao.yinYang,
                       style: theme.textTheme.bodySmall?.copyWith(
-                        color: theme.colorScheme.onSurface.withOpacity(0.7),
+                        color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
                       ),
                     ),
                   ),
@@ -703,9 +701,9 @@ class _YuanTangCardState extends State<YuanTangCard> {
     return Container(
       padding: const EdgeInsets.all(12.0),
       decoration: BoxDecoration(
-        color: theme.colorScheme.surfaceVariant.withOpacity(0.3),
+        color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
         borderRadius: BorderRadius.circular(8.0),
-        border: Border.all(color: theme.colorScheme.outline.withOpacity(0.2)),
+        border: Border.all(color: theme.colorScheme.outline.withValues(alpha: 0.2)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -721,7 +719,7 @@ class _YuanTangCardState extends State<YuanTangCard> {
           Text(
             '计算公式: $formula',
             style: theme.textTheme.bodySmall?.copyWith(
-              color: theme.colorScheme.onSurface.withOpacity(0.7),
+              color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
             ),
           ),
           const SizedBox(height: 6.0),
@@ -751,7 +749,7 @@ class _YuanTangCardState extends State<YuanTangCard> {
       return Container(
         padding: const EdgeInsets.all(16.0),
         decoration: BoxDecoration(
-          color: theme.colorScheme.surfaceVariant.withOpacity(0.3),
+          color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
           borderRadius: BorderRadius.circular(8.0),
         ),
         child: const Center(child: Text('暂无条文内容')),
@@ -779,10 +777,10 @@ class _YuanTangCardState extends State<YuanTangCard> {
                 margin: const EdgeInsets.only(bottom: 16.0),
                 padding: const EdgeInsets.all(12.0),
                 decoration: BoxDecoration(
-                  color: theme.colorScheme.surfaceVariant.withOpacity(0.2),
+                  color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.2),
                   borderRadius: BorderRadius.circular(8.0),
                   border: Border.all(
-                    color: theme.colorScheme.outline.withOpacity(0.2),
+                    color: theme.colorScheme.outline.withValues(alpha: 0.2),
                   ),
                 ),
                 child: Column(
@@ -843,10 +841,10 @@ class _YuanTangCardState extends State<YuanTangCard> {
                             vertical: 2.0,
                           ),
                           decoration: BoxDecoration(
-                            color: sourceColor.withOpacity(0.15),
+                            color: sourceColor.withValues(alpha: 0.15),
                             borderRadius: BorderRadius.circular(4.0),
                             border: Border.all(
-                              color: sourceColor.withOpacity(0.5),
+                              color: sourceColor.withValues(alpha: 0.5),
                               width: 1.0,
                             ),
                           ),
@@ -887,7 +885,7 @@ class _YuanTangCardState extends State<YuanTangCard> {
                         child: Text(
                           tiaowen.content2!,
                           style: theme.textTheme.bodySmall?.copyWith(
-                            color: theme.colorScheme.onSurface.withOpacity(0.7),
+                            color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
                           ),
                         ),
                       ),

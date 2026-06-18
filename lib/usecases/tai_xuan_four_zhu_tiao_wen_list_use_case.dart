@@ -1,3 +1,4 @@
+// ignore_for_file: avoid_print
 import 'package:metaphysics_core/models/eight_chars.dart';
 
 import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
@@ -5,8 +6,6 @@ import 'base_get_tiao_wen_list_use_case.dart';
 import '../service/strategy/tiao_wen_list_calculation.dart';
 import '../domain/models/multi_base_number_result.dart';
 import '../domain/exceptions/tiao_wen_calculation_exceptions.dart';
-import '../domain/models/tiao_wen_list_result.dart';
-import '../domain/models/tiao_wen_list_state.dart';
 import '../domain/models/base_number_tiao_wen_list_model.dart';
 import '../domain/models/tai_xuan_base_number_model.dart';
 import '../service/strategy/tai_xuan_four_zhu_strategy.dart';

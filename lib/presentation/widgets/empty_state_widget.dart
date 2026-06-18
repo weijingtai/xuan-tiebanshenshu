@@ -84,7 +84,7 @@ class EmptyStateWidget extends StatelessWidget {
               Icon(
                 icon ?? Icons.inbox_outlined,
                 size: iconSize,
-                color: theme.colorScheme.onSurface.withOpacity(0.4),
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.4),
               ),
               const SizedBox(height: 24.0),
             ],
@@ -93,7 +93,7 @@ class EmptyStateWidget extends StatelessWidget {
             Text(
               message,
               style: theme.textTheme.titleLarge?.copyWith(
-                color: theme.colorScheme.onSurface.withOpacity(0.7),
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
                 fontWeight: FontWeight.w500,
               ),
               textAlign: TextAlign.center,
@@ -105,7 +105,7 @@ class EmptyStateWidget extends StatelessWidget {
               Text(
                 description!,
                 style: theme.textTheme.bodyMedium?.copyWith(
-                  color: theme.colorScheme.onSurface.withOpacity(0.5),
+                  color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -157,14 +157,14 @@ class SimpleEmptyWidget extends StatelessWidget {
               Icon(
                 icon,
                 size: 48.0,
-                color: theme.colorScheme.onSurface.withOpacity(0.4),
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.4),
               ),
               const SizedBox(height: 16.0),
             ],
             Text(
               message,
               style: theme.textTheme.bodyLarge?.copyWith(
-                color: theme.colorScheme.onSurface.withOpacity(0.6),
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
               ),
               textAlign: TextAlign.center,
             ),

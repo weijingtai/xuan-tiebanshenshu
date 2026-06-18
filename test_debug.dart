@@ -1,3 +1,4 @@
+// ignore_for_file: avoid_print
 import 'package:tiebanshenshu/constant/constants.dart' as constants;
 import 'package:xuan_gua_core/xuan_gua_core.dart';
 

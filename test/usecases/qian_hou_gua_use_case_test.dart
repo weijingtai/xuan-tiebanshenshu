@@ -1,9 +1,9 @@
+// ignore_for_file: avoid_print
 import 'package:metaphysics_core/enums.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:tiebanshenshu/dev/dev_fixtures.dart';
 import 'package:persistence_assets/persistence_assets.dart';
-import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 import 'package:tiebanshenshu/service/strategy/qian_hou_gua_strategy.dart';
 import 'package:tiebanshenshu/usecases/qian_hou_gua_tiao_wen_list_use_case.dart';
 

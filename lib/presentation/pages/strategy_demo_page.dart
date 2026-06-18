@@ -249,7 +249,7 @@ class _StrategyDemoPageState extends State<StrategyDemoPage>
                 labelColor: Theme.of(context).colorScheme.secondary,
                 unselectedLabelColor: Theme.of(
                   context,
-                ).colorScheme.onSurface.withOpacity(0.6),
+                ).colorScheme.onSurface.withValues(alpha: 0.6),
                 tabs: _tabs
                     .map(
                       (config) =>
@@ -265,13 +265,13 @@ class _StrategyDemoPageState extends State<StrategyDemoPage>
 
   /// 构建加载状态
   Widget _buildLoadingState() {
-    print("------ _buildLoadingState");
+    debugPrint("------ _buildLoadingState");
     return const Center(child: LargeLoadingWidget(message: '正在初始化Strategy...'));
   }
 
   /// 构建主要内容
   Widget _buildContent() {
-    print("------ _buildContent");
+    debugPrint("------ _buildContent");
     return PageView(
       controller: _pageController,
       onPageChanged: (index) {
@@ -526,9 +526,9 @@ class _StrategyDemoPageState extends State<StrategyDemoPage>
     return Container(
       padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
-        color: theme.colorScheme.primaryContainer.withOpacity(0.3),
+        color: theme.colorScheme.primaryContainer.withValues(alpha: 0.3),
         borderRadius: BorderRadius.circular(12.0),
-        border: Border.all(color: theme.colorScheme.outline.withOpacity(0.2)),
+        border: Border.all(color: theme.colorScheme.outline.withValues(alpha: 0.2)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -573,9 +573,9 @@ class _StrategyDemoPageState extends State<StrategyDemoPage>
       margin: const EdgeInsets.symmetric(horizontal: 16.0),
       padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
-        color: theme.colorScheme.surfaceContainerHighest.withOpacity(0.3),
+        color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
         borderRadius: BorderRadius.circular(12.0),
-        border: Border.all(color: theme.colorScheme.outline.withOpacity(0.2)),
+        border: Border.all(color: theme.colorScheme.outline.withValues(alpha: 0.2)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -624,7 +624,7 @@ class _StrategyDemoPageState extends State<StrategyDemoPage>
             child: Text(
               '$label:',
               style: theme.textTheme.bodySmall?.copyWith(
-                color: theme.colorScheme.onSurface.withOpacity(0.7),
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
               ),
             ),
           ),

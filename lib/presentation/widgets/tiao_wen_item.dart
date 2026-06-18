@@ -201,7 +201,7 @@ class CompactTiaoWenItem extends StatelessWidget {
           Text(
             ageInfo,
             style: theme.textTheme.bodySmall?.copyWith(
-              color: theme.colorScheme.onSurface.withOpacity(0.7),
+              color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
             ),
           ),
         ],

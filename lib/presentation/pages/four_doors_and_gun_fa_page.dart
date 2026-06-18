@@ -345,7 +345,7 @@ class _FourDoorsAndGunFaPageState extends State<FourDoorsAndGunFaPage>
 
         // 条文统计
         Card(
-          color: theme.colorScheme.primaryContainer.withOpacity(0.3),
+          color: theme.colorScheme.primaryContainer.withValues(alpha: 0.3),
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
@@ -548,7 +548,7 @@ class _FourDoorsAndGunFaPageState extends State<FourDoorsAndGunFaPage>
 
         // 卦象生成流程说明
         Card(
-          color: theme.colorScheme.secondaryContainer.withOpacity(0.3),
+          color: theme.colorScheme.secondaryContainer.withValues(alpha: 0.3),
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
@@ -571,7 +571,7 @@ class _FourDoorsAndGunFaPageState extends State<FourDoorsAndGunFaPage>
 
         // 三基数计算说明
         Card(
-          color: theme.colorScheme.tertiaryContainer.withOpacity(0.3),
+          color: theme.colorScheme.tertiaryContainer.withValues(alpha: 0.3),
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
@@ -594,7 +594,7 @@ class _FourDoorsAndGunFaPageState extends State<FourDoorsAndGunFaPage>
 
         // 条文统计
         Card(
-          color: theme.colorScheme.primaryContainer.withOpacity(0.3),
+          color: theme.colorScheme.primaryContainer.withValues(alpha: 0.3),
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(

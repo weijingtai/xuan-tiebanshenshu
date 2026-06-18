@@ -1,3 +1,4 @@
+// ignore_for_file: avoid_print
 import 'package:flutter_test/flutter_test.dart';
 import 'package:metaphysics_core/enums.dart';
 import 'package:tiebanshenshu/features/kao_ding_liu_qin/services/qi_gua_helper.dart';

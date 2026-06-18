@@ -79,7 +79,7 @@ class BaGuaJiaZeCard extends StatelessWidget {
     return Card(
       color: Theme.of(
         context,
-      ).colorScheme.surfaceContainerHighest.withOpacity(0.5),
+      ).colorScheme.surfaceContainerHighest.withValues(alpha: 0.5),
       child: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Column(
@@ -157,7 +157,7 @@ class BaGuaJiaZeCard extends StatelessWidget {
   /// 构建六爻详情
   Widget _buildYaoDetails(BuildContext context) {
     return Card(
-      color: Theme.of(context).colorScheme.tertiaryContainer.withOpacity(0.3),
+      color: Theme.of(context).colorScheme.tertiaryContainer.withValues(alpha: 0.3),
       child: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Column(
@@ -240,7 +240,7 @@ class BaGuaJiaZeCard extends StatelessWidget {
   /// 构建条文内容
   Widget _buildTiaoWenContent(BuildContext context) {
     return Card(
-      color: Theme.of(context).colorScheme.secondaryContainer.withOpacity(0.3),
+      color: Theme.of(context).colorScheme.secondaryContainer.withValues(alpha: 0.3),
       child: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Column(

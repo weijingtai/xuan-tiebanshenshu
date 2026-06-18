@@ -63,10 +63,10 @@ class GuaChangeVisualization extends StatelessWidget {
                     vertical: 2.0,
                   ),
                   decoration: BoxDecoration(
-                    color: color.withOpacity(0.15),
+                    color: color.withValues(alpha: 0.15),
                     borderRadius: BorderRadius.circular(4.0),
                     border: Border.all(
-                      color: color.withOpacity(0.5),
+                      color: color.withValues(alpha: 0.5),
                       width: 1.0,
                     ),
                   ),
@@ -88,10 +88,10 @@ class GuaChangeVisualization extends StatelessWidget {
         Container(
           padding: const EdgeInsets.all(8.0),
           decoration: BoxDecoration(
-            color: theme.colorScheme.surfaceVariant.withOpacity(0.3),
+            color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
             borderRadius: BorderRadius.circular(8.0),
             border: Border.all(
-              color: theme.colorScheme.outline.withOpacity(0.2),
+              color: theme.colorScheme.outline.withValues(alpha: 0.2),
             ),
           ),
           child: Column(
@@ -106,7 +106,7 @@ class GuaChangeVisualization extends StatelessWidget {
           Text(
             changeDescription!,
             style: theme.textTheme.bodySmall?.copyWith(
-              color: theme.colorScheme.onSurface.withOpacity(0.7),
+              color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
             ),
           ),
         ],
@@ -155,7 +155,7 @@ class GuaChangeVisualization extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: isChanged
                       ? accentColor
-                      : theme.colorScheme.onSurface.withOpacity(0.7),
+                      : theme.colorScheme.onSurface.withValues(alpha: 0.7),
                   borderRadius: BorderRadius.circular(3.0),
                 ),
                 child: isYang

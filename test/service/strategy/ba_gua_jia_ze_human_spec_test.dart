@@ -1,3 +1,4 @@
+// ignore_for_file: avoid_print
 import 'package:flutter_test/flutter_test.dart';
 import 'package:xuan_gua_core/xuan_gua_core.dart';
 import 'package:tiebanshenshu/service/strategy/ba_gua_jia_ze_strategy.dart';
@@ -18,7 +19,6 @@ void main() {
       expect(result.tiaoWenNumber, 2472);
       expect(result.methodName, '爻序法');
 
-      // ignore: avoid_print
       print('地山谦(爻序法): ${result.summary}');
     });
 
@@ -33,7 +33,6 @@ void main() {
       expect(result.tiaoWenNumber, 3384);
       expect(result.methodName, '爻序法');
 
-      // ignore: avoid_print
       print('雷天大壮(爻序法): ${result.summary}');
     });
 
@@ -48,7 +47,6 @@ void main() {
       expect(result.tiaoWenNumber, 7352);
       expect(result.methodName, '爻序法');
 
-      // ignore: avoid_print
       print('泽山咸(爻序法): ${result.summary}');
     });
 
@@ -63,7 +61,6 @@ void main() {
       expect(result.tiaoWenNumber, 8351);
       expect(result.methodName, '爻序法');
 
-      // ignore: avoid_print
       print('山火贲(爻序法): ${result.summary}');
     });
   });
@@ -80,7 +77,6 @@ void main() {
       expect(result.tiaoWenNumber, 2712);
       expect(result.methodName, '纳甲法');
 
-      // ignore: avoid_print
       print('地山谦(纳甲法): ${result.summary}');
     });
 
@@ -95,7 +91,6 @@ void main() {
       expect(result.tiaoWenNumber, 3624);
       expect(result.methodName, '纳甲法');
 
-      // ignore: avoid_print
       print('雷天大壮(纳甲法): ${result.summary}');
     });
 
@@ -110,7 +105,6 @@ void main() {
       expect(result.tiaoWenNumber, 7802);
       expect(result.methodName, '纳甲法');
 
-      // ignore: avoid_print
       print('泽山咸(纳甲法): ${result.summary}');
     });
 
@@ -125,7 +119,6 @@ void main() {
       expect(result.tiaoWenNumber, 8531);
       expect(result.methodName, '纳甲法');
 
-      // ignore: avoid_print
       print('山火贲(纳甲法): ${result.summary}');
     });
   });

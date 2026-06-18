@@ -1,6 +1,5 @@
 import 'package:metaphysics_core/enums.dart';
 import 'package:flutter/material.dart';
-import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 import '../../../constant/kao_ke_constants.dart';
 
 /// 斗甲乙宫（三宫之数）选择表格
@@ -73,7 +72,7 @@ class _DouJiaYiSelectionTableState extends State<DouJiaYiSelectionTable> {
 
         return DataRow(
           color: WidgetStateProperty.all(
-            Theme.of(context).colorScheme.secondaryContainer.withOpacity(0.12),
+            Theme.of(context).colorScheme.secondaryContainer.withValues(alpha: 0.12),
           ),
           cells: [
             DataCell(
@@ -126,7 +125,7 @@ class _DouJiaYiSelectionTableState extends State<DouJiaYiSelectionTable> {
                               Text(
                                 '编号 ${item.tiaoWenNumber}',
                                 style: TextStyle(
-                                  color: rowColor.withOpacity(0.7),
+                                  color: rowColor.withValues(alpha: 0.7),
                                   fontSize: 11,
                                 ),
                               ),

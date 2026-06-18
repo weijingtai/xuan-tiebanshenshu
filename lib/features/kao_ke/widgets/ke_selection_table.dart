@@ -92,7 +92,7 @@ class KeSelectionTable extends StatelessWidget {
             isUserBirthShiChen
                 ? Theme.of(
                     context,
-                  ).colorScheme.secondaryContainer.withOpacity(0.3)
+                  ).colorScheme.secondaryContainer.withValues(alpha: 0.3)
                 : null,
           ),
           cells: [
@@ -157,7 +157,7 @@ class KeSelectionTable extends StatelessWidget {
                               ? '${keNumber.originalText.substring(0, 20)}...'
                               : keNumber.originalText,
                           style: TextStyle(
-                            color: rowColor.withOpacity(0.8),
+                            color: rowColor.withValues(alpha: 0.8),
                             fontSize: 10,
                             fontWeight: isUserBirthShiChen
                                 ? FontWeight.w500

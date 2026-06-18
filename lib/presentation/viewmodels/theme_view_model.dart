@@ -36,7 +36,7 @@ class ThemeViewModel extends ChangeNotifier {
         surface: _currentTheme.surfaceColor,
         // Using surfaceContainer for new Material 3 roles if needed,
         // but mapping basic surface here
-        surfaceContainerHighest: _currentTheme.surfaceColor.withOpacity(0.8),
+        surfaceContainerHighest: _currentTheme.surfaceColor.withValues(alpha: 0.8),
         onPrimary: Colors.white,
         onSecondary: Colors.black,
         onSurface: _currentTheme.textColor,
@@ -44,7 +44,7 @@ class ThemeViewModel extends ChangeNotifier {
       useMaterial3: true,
       cardTheme: CardThemeData(
         color: _currentTheme.surfaceColor,
-        shadowColor: Colors.black.withOpacity(0.4),
+        shadowColor: Colors.black.withValues(alpha: 0.4),
       ),
       // Extend with more specific theme data as needed
     );

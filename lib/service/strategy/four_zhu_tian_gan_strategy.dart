@@ -5,12 +5,10 @@ library;
 
 import 'package:metaphysics_core/models/eight_chars.dart';
 import '../../constant/constants.dart' as Constants;
-import '../../utils/tiao_wen_calculator.dart';
 import 'base_calculation_strategy.dart';
 import 'standard_calculation_strategy.dart';
 import '../../domain/models/base_number_model_result.dart';
 import '../../domain/models/base_number_model.dart';
-import 'tiao_wen_list_calculation.dart';
 
 /// 四柱天干取数法计算参数
 ///

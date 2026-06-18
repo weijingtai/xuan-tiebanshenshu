@@ -18,7 +18,7 @@ class CalculationSummary extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
-        color: theme.colorScheme.surfaceContainerHighest.withOpacity(0.3),
+        color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
         border: Border(
           bottom: BorderSide(color: theme.dividerColor, width: 0.5),
         ),
@@ -38,7 +38,7 @@ class CalculationSummary extends StatelessWidget {
               Text(
                 '计算方法',
                 style: theme.textTheme.bodySmall?.copyWith(
-                  color: theme.colorScheme.onSurface.withOpacity(0.7),
+                  color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
                 ),
               ),
               const SizedBox(width: 8.0),
@@ -61,7 +61,7 @@ class CalculationSummary extends StatelessWidget {
               Text(
                 '条文数量',
                 style: theme.textTheme.bodySmall?.copyWith(
-                  color: theme.colorScheme.onSurface.withOpacity(0.7),
+                  color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
                 ),
               ),
               const SizedBox(width: 8.0),
@@ -89,7 +89,7 @@ class CalculationSummary extends StatelessWidget {
                 Text(
                   '数据源',
                   style: theme.textTheme.bodySmall?.copyWith(
-                    color: theme.colorScheme.onSurface.withOpacity(0.7),
+                    color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
                   ),
                 ),
                 const SizedBox(width: 8.0),
@@ -97,7 +97,7 @@ class CalculationSummary extends StatelessWidget {
                   child: Text(
                     _formatTiaoWenSummary(result),
                     style: theme.textTheme.bodySmall?.copyWith(
-                      color: theme.colorScheme.onSurface.withOpacity(0.8),
+                      color: theme.colorScheme.onSurface.withValues(alpha: 0.8),
                     ),
                     overflow: TextOverflow.ellipsis,
                   ),

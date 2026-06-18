@@ -1,5 +1,4 @@
 import 'package:metaphysics_core/enums.dart';
-import 'package:metaphysics_core/models/datetime_details_bundle_logic_model.dart';
 import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:tiebanshenshu/enums.dart';
 import '../domain/models/base_number_tiao_wen_list_model.dart';

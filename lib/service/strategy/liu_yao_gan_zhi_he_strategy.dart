@@ -8,7 +8,6 @@ import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:tiebanshenshu/enums.dart';
 import 'package:tiebanshenshu/features/yuan_tang_gua/yuan_tang_calculator.dart';
 import 'package:tiebanshenshu/features/yuan_tang_gua/yuan_tang_info.dart';
-import 'package:tiebanshenshu/features/yuan_tang_gua/yuan_tang_info_ext.dart';
 
 import '../../constant/constants.dart' as constants;
 import '../../domain/models/base_number_model.dart';

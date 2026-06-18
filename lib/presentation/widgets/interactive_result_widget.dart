@@ -55,13 +55,13 @@ class InteractiveResultWidget extends StatelessWidget {
           Icon(
             Icons.search_off,
             size: 64.0,
-            color: theme.colorScheme.onSurface.withOpacity(0.3),
+            color: theme.colorScheme.onSurface.withValues(alpha: 0.3),
           ),
           const SizedBox(height: 16.0),
           Text(
             '暂无计算结果',
             style: theme.textTheme.titleMedium?.copyWith(
-              color: theme.colorScheme.onSurface.withOpacity(0.6),
+              color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
             ),
           ),
         ],
@@ -144,7 +144,7 @@ class InteractiveResultWidget extends StatelessWidget {
         Icon(
           icon,
           size: 16.0,
-          color: theme.colorScheme.onPrimaryContainer.withOpacity(0.7),
+          color: theme.colorScheme.onPrimaryContainer.withValues(alpha: 0.7),
         ),
         const SizedBox(width: 4.0),
         Text(
@@ -175,7 +175,7 @@ class InteractiveResultWidget extends StatelessWidget {
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   color: Theme.of(
                     context,
-                  ).colorScheme.onSurface.withOpacity(0.6),
+                  ).colorScheme.onSurface.withValues(alpha: 0.6),
                 ),
               ),
             ),

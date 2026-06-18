@@ -1,3 +1,4 @@
+// ignore_for_file: avoid_print
 import 'package:tiebanshenshu/domain/models/huang_ji_formula_data_v2.dart';
 import 'package:metaphysics_core/enums.dart';
 import 'package:tiebanshenshu/domain/models/huang_ji_number.dart';

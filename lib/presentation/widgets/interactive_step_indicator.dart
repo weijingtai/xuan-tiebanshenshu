@@ -52,7 +52,7 @@ class InteractiveStepIndicator extends StatelessWidget {
             Text(
               '进度',
               style: theme.textTheme.bodySmall?.copyWith(
-                color: theme.colorScheme.onSurface.withOpacity(0.7),
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
               ),
             ),
             Text(
@@ -69,7 +69,7 @@ class InteractiveStepIndicator extends StatelessWidget {
         // 进度条
         LinearProgressIndicator(
           value: provider.sessionProgress,
-          backgroundColor: theme.colorScheme.surfaceVariant,
+          backgroundColor: theme.colorScheme.surfaceContainerHighest,
           valueColor: AlwaysStoppedAnimation<Color>(theme.colorScheme.primary),
         ),
       ],
@@ -130,19 +130,19 @@ class InteractiveStepIndicator extends StatelessWidget {
     IconData? icon;
 
     if (isCompleted) {
-      backgroundColor = theme.colorScheme.primary.withOpacity(0.1);
+      backgroundColor = theme.colorScheme.primary.withValues(alpha: 0.1);
       textColor = theme.colorScheme.primary;
       borderColor = theme.colorScheme.primary;
       icon = Icons.check;
     } else if (isActive) {
-      backgroundColor = theme.colorScheme.secondary.withOpacity(0.1);
+      backgroundColor = theme.colorScheme.secondary.withValues(alpha: 0.1);
       textColor = theme.colorScheme.secondary;
       borderColor = theme.colorScheme.secondary;
       icon = Icons.radio_button_checked;
     } else {
-      backgroundColor = theme.colorScheme.surfaceVariant;
-      textColor = theme.colorScheme.onSurface.withOpacity(0.6);
-      borderColor = theme.colorScheme.outline.withOpacity(0.3);
+      backgroundColor = theme.colorScheme.surfaceContainerHighest;
+      textColor = theme.colorScheme.onSurface.withValues(alpha: 0.6);
+      borderColor = theme.colorScheme.outline.withValues(alpha: 0.3);
       icon = Icons.radio_button_unchecked;
     }
 

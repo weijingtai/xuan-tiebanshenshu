@@ -88,20 +88,20 @@ class _CandidateSelectionWidgetState extends State<CandidateSelectionWidget>
           Icon(
             Icons.inbox_outlined,
             size: 64.0,
-            color: theme.colorScheme.onSurface.withOpacity(0.3),
+            color: theme.colorScheme.onSurface.withValues(alpha: 0.3),
           ),
           const SizedBox(height: 16.0),
           Text(
             '暂无可选项',
             style: theme.textTheme.titleMedium?.copyWith(
-              color: theme.colorScheme.onSurface.withOpacity(0.6),
+              color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
             ),
           ),
           const SizedBox(height: 8.0),
           Text(
             '请等待系统加载选项',
             style: theme.textTheme.bodyMedium?.copyWith(
-              color: theme.colorScheme.onSurface.withOpacity(0.5),
+              color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
             ),
           ),
         ],
@@ -169,13 +169,13 @@ class _CandidateSelectionWidgetState extends State<CandidateSelectionWidget>
                 else if (!isEnabled)
                   Icon(
                     Icons.block,
-                    color: theme.colorScheme.onSurface.withOpacity(0.3),
+                    color: theme.colorScheme.onSurface.withValues(alpha: 0.3),
                     size: 24.0,
                   )
                 else
                   Icon(
                     Icons.radio_button_unchecked,
-                    color: theme.colorScheme.onSurface.withOpacity(0.5),
+                    color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
                     size: 24.0,
                   ),
               ],
@@ -224,17 +224,17 @@ class _CandidateSelectionWidgetState extends State<CandidateSelectionWidget>
     }
 
     if (!isEnabled) {
-      iconColor = theme.colorScheme.onSurface.withOpacity(0.3);
+      iconColor = theme.colorScheme.onSurface.withValues(alpha: 0.3);
     } else if (isSelected) {
       iconColor = theme.colorScheme.primary;
     } else {
-      iconColor = theme.colorScheme.onSurface.withOpacity(0.7);
+      iconColor = theme.colorScheme.onSurface.withValues(alpha: 0.7);
     }
 
     return Container(
       padding: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
-        color: iconColor.withOpacity(0.1),
+        color: iconColor.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Icon(icon, color: iconColor, size: 24.0),
@@ -250,7 +250,7 @@ class _CandidateSelectionWidgetState extends State<CandidateSelectionWidget>
   ) {
     Color textColor;
     if (!isEnabled) {
-      textColor = theme.colorScheme.onSurface.withOpacity(0.3);
+      textColor = theme.colorScheme.onSurface.withValues(alpha: 0.3);
     } else if (isSelected) {
       textColor = theme.colorScheme.onPrimaryContainer;
     } else {
@@ -275,7 +275,7 @@ class _CandidateSelectionWidgetState extends State<CandidateSelectionWidget>
           Text(
             candidate.description,
             style: theme.textTheme.bodyMedium?.copyWith(
-              color: textColor.withOpacity(0.8),
+              color: textColor.withValues(alpha: 0.8),
             ),
           ),
         ],
@@ -300,10 +300,10 @@ class _CandidateSelectionWidgetState extends State<CandidateSelectionWidget>
     Color chipTextColor;
 
     if (!isEnabled) {
-      chipColor = theme.colorScheme.onSurface.withOpacity(0.1);
-      chipTextColor = theme.colorScheme.onSurface.withOpacity(0.3);
+      chipColor = theme.colorScheme.onSurface.withValues(alpha: 0.1);
+      chipTextColor = theme.colorScheme.onSurface.withValues(alpha: 0.3);
     } else if (isSelected) {
-      chipColor = theme.colorScheme.primary.withOpacity(0.2);
+      chipColor = theme.colorScheme.primary.withValues(alpha: 0.2);
       chipTextColor = theme.colorScheme.primary;
     } else {
       chipColor = theme.colorScheme.surfaceContainerHighest;

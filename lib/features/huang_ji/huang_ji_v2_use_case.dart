@@ -1,3 +1,4 @@
+// ignore_for_file: avoid_print
 import 'package:metaphysics_core/models/eight_chars.dart';
 import 'huang_ji_formula_v2.dart';
 import 'huang_ji_formula_data_v2.dart';

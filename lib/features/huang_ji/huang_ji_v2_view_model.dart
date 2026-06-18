@@ -1,3 +1,4 @@
+// ignore_for_file: avoid_print
 import 'package:flutter/foundation.dart';
 import 'package:metaphysics_core/models/eight_chars.dart';
 import 'huang_ji_formula_v2.dart';

@@ -67,13 +67,13 @@ class TiaoWenListView extends StatelessWidget {
             Icon(
               Icons.inbox_outlined,
               size: 48.0,
-              color: theme.colorScheme.onSurface.withOpacity(0.5),
+              color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
             ),
             const SizedBox(height: 16.0),
             Text(
               '暂无条文数据',
               style: theme.textTheme.bodyLarge?.copyWith(
-                color: theme.colorScheme.onSurface.withOpacity(0.7),
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
               ),
             ),
           ],
@@ -113,7 +113,7 @@ class TiaoWenHeader extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
       decoration: BoxDecoration(
-        color: theme.colorScheme.primaryContainer.withOpacity(0.3),
+        color: theme.colorScheme.primaryContainer.withValues(alpha: 0.3),
         border: Border(
           bottom: BorderSide(color: theme.dividerColor, width: 0.5),
         ),
@@ -134,7 +134,7 @@ class TiaoWenHeader extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
             decoration: BoxDecoration(
-              color: theme.colorScheme.primary.withOpacity(0.1),
+              color: theme.colorScheme.primary.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(12.0),
             ),
             child: Text(
@@ -193,7 +193,7 @@ class CompactTiaoWenListView extends StatelessWidget {
             child: Text(
               '还有 ${result.tiaoWenCount - maxItems} 条...',
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+                color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6),
               ),
             ),
           );

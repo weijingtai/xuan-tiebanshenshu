@@ -1,6 +1,7 @@
 /// GuaUtils工具方法测试
 ///
 /// 测试新添加的天地卦和先天卦生成方法
+// ignore_for_file: deprecated_member_use_from_same_package
 library;
 
 import 'package:flutter_test/flutter_test.dart';

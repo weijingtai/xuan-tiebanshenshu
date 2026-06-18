@@ -54,7 +54,7 @@ class YuanTangLiuyuePanel extends StatelessWidget {
               vertical: 8.0,
             ),
             decoration: BoxDecoration(
-              color: accentColor.withOpacity(0.1),
+              color: accentColor.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(8.0),
             ),
             child: Row(
@@ -144,7 +144,7 @@ class YuanTangLiuyuePanel extends StatelessWidget {
       elevation: 2.0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8.0),
-        side: BorderSide(color: monthColor.withOpacity(0.3), width: 1.0),
+        side: BorderSide(color: monthColor.withValues(alpha: 0.3), width: 1.0),
       ),
       child: Padding(
         padding: EdgeInsets.all(isCompact ? 6.0 : 8.0),
@@ -174,7 +174,7 @@ class YuanTangLiuyuePanel extends StatelessWidget {
                     vertical: 1.0,
                   ),
                   decoration: BoxDecoration(
-                    color: monthColor.withOpacity(0.15),
+                    color: monthColor.withValues(alpha: 0.15),
                     borderRadius: BorderRadius.circular(3.0),
                   ),
                   child: Text(
@@ -218,7 +218,7 @@ class YuanTangLiuyuePanel extends StatelessWidget {
                 vertical: isCompact ? 2.0 : 3.0,
               ),
               decoration: BoxDecoration(
-                color: accentColor.withOpacity(0.1),
+                color: accentColor.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(4.0),
               ),
               child: Text(
@@ -418,7 +418,7 @@ class YuanTangLiuyueChipsWidget extends StatelessWidget {
         style: const TextStyle(fontSize: 11),
       ),
       avatar: CircleAvatar(
-        backgroundColor: monthColor.withOpacity(0.2),
+        backgroundColor: monthColor.withValues(alpha: 0.2),
         child: Text(
           liuyueGua.isYangMonth ? '阳' : '阴',
           style: TextStyle(
@@ -429,7 +429,7 @@ class YuanTangLiuyueChipsWidget extends StatelessWidget {
         ),
       ),
       visualDensity: VisualDensity.compact,
-      backgroundColor: accentColor.withOpacity(0.05),
+      backgroundColor: accentColor.withValues(alpha: 0.05),
     );
   }
 }

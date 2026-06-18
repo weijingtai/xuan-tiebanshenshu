@@ -289,7 +289,7 @@ class _TaiXuanInteractivePageState extends State<TaiXuanInteractivePage>
               Text(
                 provider.currentStepDescription,
                 style: theme.textTheme.bodyMedium?.copyWith(
-                  color: theme.colorScheme.onSurface.withOpacity(0.7),
+                  color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
                 ),
               ),
             ],
@@ -357,7 +357,7 @@ class _TaiXuanInteractivePageState extends State<TaiXuanInteractivePage>
           Text(
             provider.getSessionDurationText(),
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
-              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6),
             ),
           ),
         ],

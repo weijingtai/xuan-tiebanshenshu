@@ -72,16 +72,16 @@ class InteractiveSessionHeader extends StatelessWidget {
       statusColor = theme.colorScheme.primary;
       statusIcon = Icons.touch_app;
     } else {
-      statusColor = theme.colorScheme.onSurface.withOpacity(0.6);
+      statusColor = theme.colorScheme.onSurface.withValues(alpha: 0.6);
       statusIcon = Icons.radio_button_unchecked;
     }
 
     return Container(
       padding: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
-        color: statusColor.withOpacity(0.1),
+        color: statusColor.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(8.0),
-        border: Border.all(color: statusColor.withOpacity(0.3), width: 1.0),
+        border: Border.all(color: statusColor.withValues(alpha: 0.3), width: 1.0),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -119,7 +119,7 @@ class InteractiveSessionHeader extends StatelessWidget {
       return Text(
         '未设置八字',
         style: theme.textTheme.bodyMedium?.copyWith(
-          color: theme.colorScheme.onSurface.withOpacity(0.6),
+          color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
         ),
       );
     }
@@ -130,7 +130,7 @@ class InteractiveSessionHeader extends StatelessWidget {
         Text(
           '八字信息',
           style: theme.textTheme.bodySmall?.copyWith(
-            color: theme.colorScheme.onSurface.withOpacity(0.7),
+            color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
           ),
         ),
         const SizedBox(height: 2.0),
@@ -192,13 +192,13 @@ class InteractiveSessionHeader extends StatelessWidget {
         Icon(
           icon,
           size: 14.0,
-          color: theme.colorScheme.onSurface.withOpacity(0.6),
+          color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
         ),
         const SizedBox(width: 4.0),
         Text(
           '$label: $value',
           style: theme.textTheme.bodySmall?.copyWith(
-            color: theme.colorScheme.onSurface.withOpacity(0.8),
+            color: theme.colorScheme.onSurface.withValues(alpha: 0.8),
           ),
         ),
       ],

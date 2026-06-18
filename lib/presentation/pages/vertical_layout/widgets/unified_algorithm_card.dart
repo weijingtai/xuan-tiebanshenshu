@@ -68,7 +68,7 @@ class UnifiedAlgorithmCard extends StatelessWidget {
         borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
         boxShadow: [
           BoxShadow(
-            color: themeColor.withOpacity(0.3),
+            color: themeColor.withValues(alpha: 0.3),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -97,7 +97,7 @@ class UnifiedAlgorithmCard extends StatelessWidget {
                   vertical: 2,
                 ),
                 decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.15), // Darker capsule
+                  color: Colors.black.withValues(alpha: 0.15), // Darker capsule
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Text(
@@ -105,7 +105,7 @@ class UnifiedAlgorithmCard extends StatelessWidget {
                   style: TextStyle(
                     fontFamily: Base18Theme.fontMono.first,
                     fontSize: 11,
-                    color: Colors.white.withOpacity(0.9),
+                    color: Colors.white.withValues(alpha: 0.9),
                     letterSpacing: 0.5,
                   ),
                 ),
@@ -172,7 +172,7 @@ class UnifiedAlgorithmCard extends StatelessWidget {
             height: 4,
             margin: const EdgeInsets.symmetric(horizontal: 3),
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.4),
+              color: Colors.white.withValues(alpha: 0.4),
               shape: BoxShape.circle,
             ),
           );

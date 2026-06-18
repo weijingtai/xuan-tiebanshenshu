@@ -92,7 +92,7 @@ class StrategyDemoStyles {
       borderRadius: cardBorderRadius,
       boxShadow: [
         BoxShadow(
-          color: theme.shadowColor.withOpacity(0.1),
+          color: theme.shadowColor.withValues(alpha: 0.1),
           blurRadius: 8.0,
           offset: const Offset(0, 2),
         ),
@@ -110,7 +110,7 @@ class StrategyDemoStyles {
       shape: BoxShape.circle,
       boxShadow: [
         BoxShadow(
-          color: color.withOpacity(0.3),
+          color: color.withValues(alpha: 0.3),
           blurRadius: 4.0,
           offset: const Offset(0, 1),
         ),
@@ -153,14 +153,14 @@ class StrategyDemoStyles {
   static TextStyle? getSubtitleStyle(BuildContext context) {
     final theme = Theme.of(context);
     return theme.textTheme.bodyMedium?.copyWith(
-      color: theme.colorScheme.onSurface.withOpacity(0.7),
+      color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
     );
   }
 
   static TextStyle? getCaptionStyle(BuildContext context) {
     final theme = Theme.of(context);
     return theme.textTheme.bodySmall?.copyWith(
-      color: theme.colorScheme.onSurface.withOpacity(0.6),
+      color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
     );
   }
 

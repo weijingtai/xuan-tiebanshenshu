@@ -1,3 +1,4 @@
+// ignore_for_file: avoid_print
 import 'package:metaphysics_core/enums.dart';
 import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:flutter_test/flutter_test.dart';

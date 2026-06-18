@@ -1,8 +1,8 @@
+// ignore_for_file: avoid_print
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:metaphysics_core/enums.dart';
-import 'huang_ji_formula_v2.dart';
 import '../../domain/models/base_number_selection_batch.dart';
 import './huang_ji_v2_session_models.dart';
 import '../../features/huang_ji_formula_manager.dart';

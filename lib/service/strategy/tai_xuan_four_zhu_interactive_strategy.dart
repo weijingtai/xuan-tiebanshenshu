@@ -4,11 +4,9 @@
 library;
 
 import 'package:collection/collection.dart';
-import 'package:metaphysics_core/enums.dart';
 import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:tiebanshenshu/domain/models/tiao_wen_list_state.dart';
 
-import '../../constant/constants.dart' as Constants;
 import '../../domain/exceptions/tiao_wen_calculation_exceptions.dart';
 import '../../domain/models/base_number_tiao_wen_list_model.dart';
 import '../../domain/models/interactive_session.dart';

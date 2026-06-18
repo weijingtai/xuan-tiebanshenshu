@@ -46,10 +46,12 @@ dependencies:
   path_provider: ^2.1.5
   logger: ^2.6.2
   tuple: ^2.0.2
+  timezone: ^0.9.4
   # flutter_timezone: ^4.1.0
 
   flutter_localizations:
     sdk: flutter
+  google_fonts: any
 dev_dependencies:
   flutter_test:
     sdk: flutter

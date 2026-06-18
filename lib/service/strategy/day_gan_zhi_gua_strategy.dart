@@ -11,7 +11,6 @@ import 'base_calculation_strategy.dart';
 import 'standard_calculation_strategy.dart';
 import '../../domain/models/base_number_model_result.dart';
 import '../../domain/models/base_number_model.dart';
-import 'tiao_wen_list_calculation.dart';
 
 /// 日柱变卦取数法计算参数
 ///

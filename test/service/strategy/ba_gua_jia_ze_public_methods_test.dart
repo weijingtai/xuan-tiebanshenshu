@@ -1,3 +1,4 @@
+// ignore_for_file: avoid_print
 import 'package:flutter_test/flutter_test.dart';
 import 'package:xuan_gua_core/xuan_gua_core.dart'; // Enum64Gua
 import 'package:tiebanshenshu/service/strategy/ba_gua_jia_ze_strategy.dart';
@@ -21,7 +22,6 @@ void main() {
       expect(result.formula, contains('000'));
       expect(result.description, contains('爻序法'));
 
-      // ignore: avoid_print
       print('爻序法结果: ${result.summary}');
     });
 
@@ -42,7 +42,6 @@ void main() {
       expect(result.formula, contains('000'));
       expect(result.description, contains('纳甲法'));
 
-      // ignore: avoid_print
       print('纳甲法结果: ${result.summary}');
     });
 
@@ -55,20 +54,15 @@ void main() {
       final naJiaResult = BaGuaJiaZeStrategy.calculateByNaJiaFromGua64(gua64);
 
       // Debug output
-      // ignore: avoid_print
       print('乾为天 - 爻序法: ${yaoSeqResult.summary}');
-      // ignore: avoid_print
       print('乾为天 - 纳甲法: ${naJiaResult.summary}');
-      // ignore: avoid_print
       print('爻序法 yaoSum: ${yaoSeqResult.yaoSum}');
-      // ignore: avoid_print
       print('纳甲法 yaoSum: ${naJiaResult.yaoSum}');
 
       // Assert
       expect(yaoSeqResult.tiaoWenNumber, isNot(equals(naJiaResult.tiaoWenNumber)));
       expect(yaoSeqResult.yaoSum, isNot(equals(naJiaResult.yaoSum)));
 
-      // ignore: avoid_print
       print('乾为天 - 爻序法: ${yaoSeqResult.tiaoWenNumber}, 纳甲法: ${naJiaResult.tiaoWenNumber}');
     });
 
@@ -87,9 +81,7 @@ void main() {
       expect(naJiaResult.upperGuaNumber, 2);
       expect(naJiaResult.lowerGuaNumber, 2);
 
-      // ignore: avoid_print
       print('坤为地 - 爻序法: ${yaoSeqResult.summary}');
-      // ignore: avoid_print
       print('坤为地 - 纳甲法: ${naJiaResult.summary}');
     });
 
@@ -107,7 +99,6 @@ void main() {
       expect(formulaParts, contains('-'));
       expect(formulaParts, contains('='));
 
-      // ignore: avoid_print
       print('水雷屯公式: ${result.formula}');
     });
 
@@ -124,7 +115,6 @@ void main() {
       // PureSixYaoGua 应该有6个爻
       // 这里只能验证结果不为null,具体验证需要访问内部属性
 
-      // ignore: avoid_print
       print('山火贲 - 纳甲法: ${result.summary}');
     });
   });

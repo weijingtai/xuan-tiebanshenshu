@@ -4,8 +4,6 @@
 library;
 
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'shaozi_tuibian_view_model.dart';
 
 /// 邵子先天推演页面
 ///
