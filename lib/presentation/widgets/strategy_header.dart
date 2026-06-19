@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:theme/theme.dart';
 import '../../domain/models/tiao_wen_list_state.dart';
 
 /// Strategy卡片头部组件
@@ -36,11 +37,12 @@ class StrategyHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final c = XuanThemeData.of(context).component('strategy_header');
     
     return InkWell(
       onTap: onToggle,
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: c.padding ?? const EdgeInsets.all(16.0),
         child: Row(
           children: [
             // 状态指示器

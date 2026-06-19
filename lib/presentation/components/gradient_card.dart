@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:theme/theme.dart' show XuanThemeData;
 import '../../presentation/theme/app_colors.dart';
 
 class GradientCard extends StatelessWidget {
@@ -20,8 +21,11 @@ class GradientCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final c = XuanThemeData.of(context).component('gradient_card');
+    final radius = c.radius ?? 20.0;
+
     final cardContent = ClipRRect(
-      borderRadius: BorderRadius.circular(20),
+      borderRadius: BorderRadius.circular(radius),
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
         child: Container(
@@ -30,13 +34,15 @@ class GradientCard extends StatelessWidget {
             // Prioritize color if provided, otherwise use theme's card gradient
             gradient: color == null ? AppColors.of(context).cardGradient : null,
             color: color,
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(radius),
             border:
-                border ??
-                Border.all(
-                  color: AppColors.of(context).primaryColor.withValues(alpha: 0.1),
-                  width: 1,
-                ),
+                c.border != null
+                    ? Border.all(color: c.border!.color, width: c.border!.width)
+                    : border ??
+                        Border.all(
+                          color: AppColors.of(context).primaryColor.withValues(alpha: 0.1),
+                          width: 1,
+                        ),
           ),
           child: child,
         ),

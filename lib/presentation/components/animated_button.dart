@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:theme/theme.dart' show XuanThemeData;
 import '../../presentation/theme/app_colors.dart';
 import '../../presentation/theme/app_typography.dart';
 
@@ -48,6 +49,8 @@ class _AnimatedButtonState extends State<AnimatedButton>
 
   @override
   Widget build(BuildContext context) {
+    final c = XuanThemeData.of(context).component('animated_button');
+
     return GestureDetector(
       onTapDown: (_) => _controller.forward(),
       onTapUp: (_) {
@@ -60,16 +63,17 @@ class _AnimatedButtonState extends State<AnimatedButton>
         child: Container(
           decoration: BoxDecoration(
             gradient: widget.gradient ?? AppColors.primaryGradient(context),
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(c.radius ?? 12),
             boxShadow: [
-              BoxShadow(
-                color: AppColors.primary.withValues(alpha: 0.4),
-                blurRadius: 10,
-                offset: const Offset(0, 4),
-              ),
+              c.shadow ??
+                  BoxShadow(
+                    color: AppColors.primary.withValues(alpha: 0.4),
+                    blurRadius: 10,
+                    offset: const Offset(0, 4),
+                  ),
             ],
           ),
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+          padding: c.padding ?? const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
           child: Center(
             child: widget.isLoading
                 ? const SizedBox(

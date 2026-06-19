@@ -1,20 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:theme/theme.dart';
+import '../theme/a_class_tokens.dart';
 import '../theme/app_theme_data.dart';
 
 class ThemeViewModel extends ChangeNotifier {
   AppThemeData _currentTheme;
 
   ThemeViewModel({AppThemeData? initialTheme})
-    : _currentTheme = initialTheme ?? AppThemeData.moYu; // 默认为墨玉（深色）
+    : _currentTheme = initialTheme ?? AppThemeData.moYu { // 默认为墨玉（深色）
+    _rebuildXuanData();
+  }
+
+  /// Phase 0a 的 [XuanThemeData]（由 [a_class_tokens] 程序化构建）。
+  /// 后阶段可切换到 YAML 加载。
+  late XuanThemeData _xuanData;
 
   AppThemeData get currentTheme => _currentTheme;
   List<AppThemeData> get availableThemes => AppThemeData.presets;
+  XuanThemeData get xuanThemeData => _xuanData;
 
   void setTheme(AppThemeData theme) {
     if (_currentTheme != theme) {
       _currentTheme = theme;
+      _rebuildXuanData();
       notifyListeners();
     }
+  }
+
+  void _rebuildXuanData() {
+    _xuanData = XuanThemeData(components: buildATokenStyles(_currentTheme));
   }
 
   /// Convenience method to set theme by index

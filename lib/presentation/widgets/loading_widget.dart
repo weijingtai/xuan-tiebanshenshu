@@ -4,6 +4,7 @@
 library;
 
 import 'package:flutter/material.dart';
+import 'package:theme/theme.dart';
 
 /// 大型加载组件
 class LargeLoadingWidget extends StatelessWidget {
@@ -124,12 +125,13 @@ class InlineLoadingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final c = XuanThemeData.of(context).component('loading');
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+      padding: c.padding ?? const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       decoration: BoxDecoration(
-        color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.5),
-        borderRadius: BorderRadius.circular(8.0),
+        color: c.background ?? theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.5),
+        borderRadius: BorderRadius.circular(c.radius ?? 8.0),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:theme/theme.dart' show XuanThemeData;
 import '../../presentation/theme/app_colors.dart';
 import '../../presentation/theme/app_typography.dart';
 
@@ -16,8 +17,10 @@ class SectionHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final c = XuanThemeData.of(context).component('section_header');
+
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 16),
+      padding: c.padding ?? const EdgeInsets.symmetric(vertical: 16),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

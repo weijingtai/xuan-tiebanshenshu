@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:theme/theme.dart';
 
 /// 单个条文项组件
 ///
@@ -31,6 +32,7 @@ class TiaoWenItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final c = XuanThemeData.of(context).component('tiao_wen_item');
 
     return Container(
       decoration: BoxDecoration(
@@ -39,7 +41,7 @@ class TiaoWenItem extends StatelessWidget {
             : Border(bottom: BorderSide(color: theme.dividerColor, width: 0.5)),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: c.padding ?? const EdgeInsets.all(16.0),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

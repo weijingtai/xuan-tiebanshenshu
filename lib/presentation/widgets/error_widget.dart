@@ -4,6 +4,7 @@
 library;
 
 import 'package:flutter/material.dart';
+import 'package:theme/theme.dart';
 
 /// 自定义错误组件
 class CustomErrorWidget extends StatelessWidget {
@@ -34,6 +35,7 @@ class CustomErrorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final c = XuanThemeData.of(context).component('error');
     
     return Center(
       child: Padding(
@@ -73,7 +75,7 @@ class CustomErrorWidget extends StatelessWidget {
             // 详细信息
             if (showDetails && details != null) ...[
               const SizedBox(height: 16.0),
-              _buildDetailsSection(theme),
+              _buildDetailsSection(theme, c),
             ],
             
             // 重试按钮
@@ -98,7 +100,7 @@ class CustomErrorWidget extends StatelessWidget {
   }
 
   /// 构建详细信息部分
-  Widget _buildDetailsSection(ThemeData theme) {
+  Widget _buildDetailsSection(ThemeData theme, ComponentStyle component) {
     return ExpansionTile(
       title: Text(
         '查看详细信息',
@@ -109,14 +111,16 @@ class CustomErrorWidget extends StatelessWidget {
       children: [
         Container(
           width: double.infinity,
-          padding: const EdgeInsets.all(16.0),
-          margin: const EdgeInsets.symmetric(horizontal: 16.0),
+          padding: component.padding ?? const EdgeInsets.all(16.0),
+          margin: component.margin ?? const EdgeInsets.symmetric(horizontal: 16.0),
           decoration: BoxDecoration(
-            color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.5),
-            borderRadius: BorderRadius.circular(8.0),
-            border: Border.all(
-              color: theme.colorScheme.outline.withValues(alpha: 0.3),
-            ),
+            color: component.background ?? theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.5),
+            borderRadius: BorderRadius.circular(component.radius ?? 8.0),
+            border: component.border != null
+                ? Border.all(color: component.border!.color, width: component.border!.width)
+                : Border.all(
+                    color: theme.colorScheme.outline.withValues(alpha: 0.3),
+                  ),
           ),
           child: Text(
             details!,
@@ -148,15 +152,18 @@ class SimpleErrorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final c = XuanThemeData.of(context).component('error');
     
     return Container(
-      padding: const EdgeInsets.all(16.0),
+      padding: c.padding ?? const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
-        color: theme.colorScheme.errorContainer.withValues(alpha: 0.1),
-        borderRadius: BorderRadius.circular(8.0),
-        border: Border.all(
-          color: theme.colorScheme.error.withValues(alpha: 0.3),
-        ),
+        color: c.background ?? theme.colorScheme.errorContainer.withValues(alpha: 0.1),
+        borderRadius: BorderRadius.circular(c.radius ?? 8.0),
+        border: c.border != null
+            ? Border.all(color: c.border!.color, width: c.border!.width)
+            : Border.all(
+                color: theme.colorScheme.error.withValues(alpha: 0.3),
+              ),
       ),
       child: Row(
         children: [

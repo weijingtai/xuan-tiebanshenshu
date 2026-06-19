@@ -4,6 +4,7 @@
 library;
 
 import 'package:flutter/material.dart';
+import 'package:theme/theme.dart';
 
 import '../viewmodels/tai_xuan_four_zhu_interactive_view_model.dart';
 
@@ -17,15 +18,18 @@ class InteractiveStepIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final c = XuanThemeData.of(context).component('interactive_step_indicator');
     final session = provider.currentSession!;
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+      padding: c.padding ?? const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
       decoration: BoxDecoration(
-        color: theme.colorScheme.surface,
-        border: Border(
-          bottom: BorderSide(color: theme.dividerColor, width: 1.0),
-        ),
+        color: c.background ?? theme.colorScheme.surface,
+        border: c.border != null
+            ? Border.all(color: c.border!.color, width: c.border!.width)
+            : Border(
+                bottom: BorderSide(color: theme.dividerColor, width: 1.0),
+              ),
       ),
       child: Column(
         children: [
@@ -35,7 +39,7 @@ class InteractiveStepIndicator extends StatelessWidget {
           const SizedBox(height: 12.0),
 
           // 步骤列表
-          if (session.steps.isNotEmpty) _buildStepList(theme),
+          if (session.steps.isNotEmpty) _buildStepList(theme, c),
         ],
       ),
     );
@@ -77,7 +81,7 @@ class InteractiveStepIndicator extends StatelessWidget {
   }
 
   /// 构建步骤列表
-  Widget _buildStepList(ThemeData theme) {
+  Widget _buildStepList(ThemeData theme, ComponentStyle c) {
     final session = provider.currentSession!;
     final steps = session.steps;
     final currentIndex = session.currentStepIndex;
@@ -102,6 +106,7 @@ class InteractiveStepIndicator extends StatelessWidget {
               margin: const EdgeInsets.only(right: 8.0),
               child: _buildStepItem(
                 theme,
+                c,
                 step.stepName,
                 index + 1,
                 isActive,
@@ -118,6 +123,7 @@ class InteractiveStepIndicator extends StatelessWidget {
   /// 构建步骤项
   Widget _buildStepItem(
     ThemeData theme,
+    ComponentStyle c,
     String stepName,
     int stepNumber,
     bool isActive,
@@ -150,7 +156,7 @@ class InteractiveStepIndicator extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
         color: backgroundColor,
-        borderRadius: BorderRadius.circular(8.0),
+        borderRadius: BorderRadius.circular(c.radius ?? 8.0),
         border: Border.all(color: borderColor, width: 1.0),
       ),
       child: Column(

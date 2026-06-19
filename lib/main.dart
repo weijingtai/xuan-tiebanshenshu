@@ -1,6 +1,7 @@
 import 'package:tiebanshenshu/dev/dev_fixtures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:theme/theme.dart';
 import 'navigator.dart';
 
 import 'providers/datetime_provider.dart';
@@ -37,11 +38,14 @@ class AlgorithmEditorApp extends StatelessWidget {
       providers: [Provider<String>.value(value: 'example2')],
       child: Consumer<ThemeViewModel>(
         builder: (context, themeViewModel, child) {
-          return MaterialApp(
-            title: 'Algorithm Editor Prototype',
-            theme: themeViewModel.materialThemeData,
-            initialRoute: '/dev',
-            onGenerateRoute: NavigatorGenerator.generateRoute,
+          return XuanThemeScope(
+            themeData: themeViewModel.xuanThemeData,
+            child: MaterialApp(
+              title: 'Algorithm Editor Prototype',
+              theme: themeViewModel.materialThemeData,
+              initialRoute: '/dev',
+              onGenerateRoute: NavigatorGenerator.generateRoute,
+            ),
           );
         },
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:theme/theme.dart';
 import '../models/ui_tiao_wen_list_result_model.dart';
 import 'tiao_wen_item.dart';
 import 'empty_state_widget.dart';
@@ -109,11 +110,12 @@ class TiaoWenHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final c = XuanThemeData.of(context).component('tiao_wen_list_view');
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
       decoration: BoxDecoration(
-        color: theme.colorScheme.primaryContainer.withValues(alpha: 0.3),
+        color: c.background ?? theme.colorScheme.primaryContainer.withValues(alpha: 0.3),
         border: Border(
           bottom: BorderSide(color: theme.dividerColor, width: 0.5),
         ),
@@ -134,8 +136,8 @@ class TiaoWenHeader extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
             decoration: BoxDecoration(
-              color: theme.colorScheme.primary.withValues(alpha: 0.1),
-              borderRadius: BorderRadius.circular(12.0),
+              color: c.background ?? theme.colorScheme.primary.withValues(alpha: 0.1),
+              borderRadius: BorderRadius.circular(c.radius ?? 12.0),
             ),
             child: Text(
               calculationMethod,
