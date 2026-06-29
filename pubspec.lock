@@ -247,6 +247,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.31.0"
+  drift_flutter:
+    dependency: transitive
+    description:
+      name: drift_flutter
+      sha256: c07120854742a0cae2f7501a0da02493addde550db6641d284983c08762e60a7
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.8"
   equatable:
     dependency: "direct main"
     description:
@@ -695,6 +703,13 @@ packages:
       relative: true
     source: path
     version: "0.1.0"
+  persistence_drift:
+    dependency: "direct overridden"
+    description:
+      path: "../xuan-storage/drift"
+      relative: true
+    source: path
+    version: "0.0.1"
   platform:
     dependency: transitive
     description:
@@ -767,10 +782,45 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.6.0"
+  repository_interface_account:
+    dependency: transitive
+    description:
+      path: "../repository-interface-account"
+      relative: true
+    source: path
+    version: "0.0.0"
+  repository_interface_ai:
+    dependency: transitive
+    description:
+      path: "../repository-interface-ai"
+      relative: true
+    source: path
+    version: "0.0.0"
+  repository_interface_daliuren:
+    dependency: transitive
+    description:
+      path: "../repository-interface-daliuren"
+      relative: true
+    source: path
+    version: "0.0.0"
   repository_interface_four_zhu_card:
     dependency: transitive
     description:
       path: "../repository-interface-four-zhu-card"
+      relative: true
+    source: path
+    version: "0.0.0"
+  repository_interface_liuyao:
+    dependency: transitive
+    description:
+      path: "../repository-interface-liuyao"
+      relative: true
+    source: path
+    version: "0.0.0"
+  repository_interface_meihuayishu:
+    dependency: transitive
+    description:
+      path: "../repository-interface-meihuayishu"
       relative: true
     source: path
     version: "0.0.0"
@@ -788,6 +838,13 @@ packages:
       relative: true
     source: path
     version: "0.0.0"
+  repository_interface_record:
+    dependency: transitive
+    description:
+      path: "../repository-interface-record"
+      relative: true
+    source: path
+    version: "0.0.0"
   repository_interface_taiyishenshu:
     dependency: transitive
     description:
@@ -799,6 +856,13 @@ packages:
     dependency: "direct main"
     description:
       path: "../repository-interface-tiebanshenshu"
+      relative: true
+    source: path
+    version: "0.0.0"
+  repository_interface_ziweidoushu:
+    dependency: transitive
+    description:
+      path: "../repository-interface-ziweidoushu"
       relative: true
     source: path
     version: "0.0.0"
@@ -927,6 +991,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.9.4"
+  sqlite3_flutter_libs:
+    dependency: transitive
+    description:
+      name: sqlite3_flutter_libs
+      sha256: eeb9e3a45207649076b808f8a5a74d68770d0b7f26ccef6d5f43106eee5375ad
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.42"
   sqlparser:
     dependency: transitive
     description:

@@ -224,13 +224,21 @@ packages:
     source: hosted
     version: "3.1.0"
   drift:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: drift
-      sha256: "8033500116b24398fba0cca0369cc31678cd627c01e41753a61186911cea743e"
+      sha256: "970cd188fddb111b26ea6a9b07a62bf5c2432d74147b8122c67044ae3b97e99e"
       url: "https://pub.dev"
     source: hosted
-    version: "2.33.0"
+    version: "2.31.0"
+  drift_flutter:
+    dependency: transitive
+    description:
+      name: drift_flutter
+      sha256: c07120854742a0cae2f7501a0da02493addde550db6641d284983c08762e60a7
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.8"
   equatable:
     dependency: transitive
     description:
@@ -663,6 +671,20 @@ packages:
       relative: true
     source: path
     version: "0.1.0"
+  persistence_drift:
+    dependency: "direct main"
+    description:
+      path: "../../xuan-storage/drift"
+      relative: true
+    source: path
+    version: "0.0.1"
+  persistence_preferences:
+    dependency: "direct main"
+    description:
+      path: "../../xuan-storage/preferences"
+      relative: true
+    source: path
+    version: "0.0.0"
   platform:
     dependency: transitive
     description:
@@ -719,10 +741,45 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.5.0"
+  repository_interface_account:
+    dependency: transitive
+    description:
+      path: "../../repository-interface-account"
+      relative: true
+    source: path
+    version: "0.0.0"
+  repository_interface_ai:
+    dependency: transitive
+    description:
+      path: "../../repository-interface-ai"
+      relative: true
+    source: path
+    version: "0.0.0"
+  repository_interface_daliuren:
+    dependency: transitive
+    description:
+      path: "../../repository-interface-daliuren"
+      relative: true
+    source: path
+    version: "0.0.0"
   repository_interface_four_zhu_card:
     dependency: transitive
     description:
       path: "../../repository-interface-four-zhu-card"
+      relative: true
+    source: path
+    version: "0.0.0"
+  repository_interface_liuyao:
+    dependency: transitive
+    description:
+      path: "../../repository-interface-liuyao"
+      relative: true
+    source: path
+    version: "0.0.0"
+  repository_interface_meihuayishu:
+    dependency: transitive
+    description:
+      path: "../../repository-interface-meihuayishu"
       relative: true
     source: path
     version: "0.0.0"
@@ -740,6 +797,13 @@ packages:
       relative: true
     source: path
     version: "0.0.0"
+  repository_interface_record:
+    dependency: transitive
+    description:
+      path: "../../repository-interface-record"
+      relative: true
+    source: path
+    version: "0.0.0"
   repository_interface_taiyishenshu:
     dependency: transitive
     description:
@@ -754,6 +818,13 @@ packages:
       relative: true
     source: path
     version: "0.0.0"
+  repository_interface_ziweidoushu:
+    dependency: transitive
+    description:
+      path: "../../repository-interface-ziweidoushu"
+      relative: true
+    source: path
+    version: "0.0.0"
   shake_widget_flutter:
     dependency: transitive
     description:
@@ -763,7 +834,7 @@ packages:
     source: hosted
     version: "0.0.2"
   shared_preferences:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: shared_preferences
       sha256: c3025c5534b01739267eb7d76959bbc25a6d10f6988e1c2a3036940133dd10bf
@@ -859,10 +930,18 @@ packages:
     dependency: transitive
     description:
       name: sqlite3
-      sha256: f8f8ba7f9454f2761d4b416e030c4528ebc45e9290798d848f4dc08890c42a7c
+      sha256: "3145bd74dcdb4fd6f5c6dda4d4e4490a8087d7f286a14dee5d37087290f0f8a2"
       url: "https://pub.dev"
     source: hosted
-    version: "3.1.7"
+    version: "2.9.4"
+  sqlite3_flutter_libs:
+    dependency: transitive
+    description:
+      name: sqlite3_flutter_libs
+      sha256: eeb9e3a45207649076b808f8a5a74d68770d0b7f26ccef6d5f43106eee5375ad
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.42"
   stack_trace:
     dependency: transitive
     description:
