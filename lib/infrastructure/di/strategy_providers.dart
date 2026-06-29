@@ -86,6 +86,23 @@ import '../../features/kao_ding_liu_qin/usecases/kao_ding_liu_qin_use_case.dart'
 import '../../features/kao_ding_liu_qin/models/session_manager.dart';
 import '../../presentation/viewmodels/kao_ding_liu_qin_view_model.dart';
 
+class FakeTiebanRecordRepository implements TiebanRecordRepository {
+  @override
+  Future<String> saveRecord(TiebanDivinationRecordContract record) async => record.uuid;
+
+  @override
+  Future<List<TiebanDivinationRecordContract>> getAllRecords() async => const [];
+
+  @override
+  Future<TiebanDivinationRecordContract?> getRecordByUuid(String uuid) async => null;
+
+  @override
+  Future<bool> softDeleteRecord(String uuid) async => true;
+
+  @override
+  Stream<List<TiebanDivinationRecordContract>> watchAllRecords() => Stream.value(const []);
+}
+
 /// Strategy相关的Provider配置
 ///
 /// 提供MVVM+UseCase架构所需的所有依赖注入配置
@@ -93,7 +110,10 @@ class StrategyProviders {
   /// 获取所有Strategy相关的Provider配置
   ///
   /// 包含Repository、Strategy、UseCase和ViewModel的完整依赖链
-  static List<SingleChildWidget> get providers => [
+  static List<SingleChildWidget> get providers => getProviders(FakeTiebanRecordRepository());
+
+  static List<SingleChildWidget> getProviders(TiebanRecordRepository recordRepository) => [
+    Provider<TiebanRecordRepository>(create: (_) => recordRepository),
     // ============================================================
     // 邵子数 Repository 层（DataSource → RepositoryImpl）
     // ============================================================

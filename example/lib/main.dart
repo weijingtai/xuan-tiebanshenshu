@@ -10,10 +10,36 @@ import 'package:timezone/data/latest.dart' as tz;
 
 import 'package:tiebanshenshu/presentation/viewmodels/theme_view_model.dart';
 import 'dev_tiaowen_page.dart';
+import 'package:persistence_drift/persistence_drift.dart';
+import 'package:persistence_preferences/persistence_preferences.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:drift/native.dart';
+import 'package:persistence_drift/tiebanshenshu/tiebanshenshu_module_registry.dart';
 
-void main() {
+void main() async {
   // Initialize timezone data
   tz.initializeTimeZones();
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final newDb = PersistenceDriftDatabase(NativeDatabase.memory());
+  final prefs = await SharedPreferences.getInstance();
+  final sessionRepo = PreferencesAccountSessionRepository(prefs);
+  final accountDb = AccountDatabase(NativeDatabase.memory());
+  final identityLinkRepo = DriftAccountIdentityLinkRepository(accountDb);
+  
+  final bootstrapStore = DriftScopeBootstrapStore(newDb);
+  final ledger = DriftScopeLedger(db: newDb, bootstrapStore: bootstrapStore);
+  final resolver = ScopeResolver(
+    sessionRepository: sessionRepo,
+    identityLinkRepository: identityLinkRepo,
+    ledger: ledger,
+  );
+  final resolvedScope = await resolver.resolve();
+  final scopeUid = resolvedScope.scopeUid;
+
+  final ds = DriftRecordDataSource(newDb, scopeUid: scopeUid);
+  final store = LocalRecordRepository(ds, RecordAdapterRegistry([TiebanshenshuModuleRegistry.codec()]));
+  final recordBackedRepository = TiebanshenshuModuleRegistry.repository(store: store);
 
   runApp(
     MultiProvider(
@@ -35,7 +61,7 @@ void main() {
         ),
 
         // All strategy related providers from tiebanshenshu
-        ...StrategyProviders.providers,
+        ...StrategyProviders.getProviders(recordBackedRepository),
       ],
       child: const TieBanShenShuExampleApp(),
     ),

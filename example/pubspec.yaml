@@ -15,12 +15,15 @@ dependencies:
   tiebanshenshu:
     path: ../
   repository_interface_tiebanshenshu:
-    git:
-      url: http://192.168.0.165:3000/xuan/repository-interface-tiebanshenshu.git
+    path: ../../repository-interface-tiebanshenshu
   persistence_assets:
-    git:
-      url: http://192.168.0.165:3000/xuan/xuan-storage.git
-      path: assets
+    path: ../../xuan-storage/assets
+  persistence_drift:
+    path: ../../xuan-storage/drift
+  persistence_preferences:
+    path: ../../xuan-storage/preferences
+  shared_preferences: ^2.2.0
+  drift: ^2.30.1
 
   provider: any
   timezone: any
@@ -43,6 +46,10 @@ flutter:
 dependency_overrides:
   persistence_core:
     path: ../../xuan-storage/core
+  persistence_drift:
+    path: ../../xuan-storage/drift
+  persistence_preferences:
+    path: ../../xuan-storage/preferences
   metaphysics_core:
     path: ../../xuan-metaphysics-core
   repository_interface_tiebanshenshu:

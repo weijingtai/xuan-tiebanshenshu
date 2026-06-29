@@ -127,6 +127,8 @@ flutter:
 dependency_overrides:
   persistence_core:
     path: ../xuan-storage/core
+  persistence_drift:
+    path: ../xuan-storage/drift
   persistence_assets:
     path: ../xuan-storage/assets
   metaphysics_core:
