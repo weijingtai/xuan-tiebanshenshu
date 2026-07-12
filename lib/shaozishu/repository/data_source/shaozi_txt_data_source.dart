@@ -1,45 +1,38 @@
 /// 邵子 TXT 条文数据源
 ///
-/// 从本地 TXT 文件加载邵子数条文数据，实现 [TiaoWenLocalDataSource] 接口。
+/// 从 Flutter assets 加载邵子数条文数据，实现 [TiaoWenLocalDataSource] 接口。
 ///
-/// 数据目录：D:\数术\邵子数条目\
+/// 数据位置：assets/shaozishu/
 /// 文件命名：按地支（子/丑/寅...亥）分组的 .txt 文件，每行格式为「编号 内容」。
 library;
 
-import 'dart:io';
-
+import 'package:flutter/services.dart';
 import 'package:metaphysics_core/enums.dart';
 import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 
 import 'tiao_wen_local_data_source.dart';
 
-/// 邵子条文数据默认目录
-const String _defaultDataDir = r'D:\数术\邵子数条目';
-
-/// 地支文件名 → DiZhi 枚举映射
-final Map<String, DiZhi> _fileNameToDiZhi = {
-  '子': DiZhi.ZI,
-  '丑': DiZhi.CHOU,
-  '寅': DiZhi.YIN,
-  '卯': DiZhi.MAO,
-  '辰': DiZhi.CHEN,
-  '巳': DiZhi.SI,
-  '午': DiZhi.WU,
-  '未': DiZhi.WEI,
-  '申': DiZhi.SHEN,
-  '酉': DiZhi.YOU,
-  '戌': DiZhi.XU,
-  '亥': DiZhi.HAI,
+/// 地支 → assets 路径映射
+const Map<DiZhi, String> _diZhiToAssetPath = {
+  DiZhi.ZI:   'assets/shaozishu/子.txt',
+  DiZhi.CHOU: 'assets/shaozishu/丑.txt',
+  DiZhi.YIN:  'assets/shaozishu/寅.txt',
+  DiZhi.MAO:  'assets/shaozishu/卯.txt',
+  DiZhi.CHEN: 'assets/shaozishu/辰.txt',
+  DiZhi.SI:   'assets/shaozishu/巳.txt',
+  DiZhi.WU:   'assets/shaozishu/午.txt',
+  DiZhi.WEI:  'assets/shaozishu/未.txt',
+  DiZhi.SHEN: 'assets/shaozishu/申.txt',
+  DiZhi.YOU:  'assets/shaozishu/酉.txt',
+  DiZhi.XU:   'assets/shaozishu/戌.txt',
+  DiZhi.HAI:  'assets/shaozishu/亥.txt',
 };
 
 /// 邵子 TXT 数据源
 ///
-/// 从 [dataDir] 目录读取 12 个地支 .txt 文件，解析并缓存所有条文。
+/// 从 Flutter assets 读取 12 个地支 .txt 文件，解析并缓存所有条文。
 /// 支持懒加载 + 内存缓存，确保并发安全。
 class ShaoziTxtDataSource implements TiaoWenLocalDataSource {
-  /// 条文数据目录
-  final String dataDir;
-
   /// 内存缓存：条文编号 → 条文模型
   final Map<int, TiaoWenDataModel> _cache = {};
 
@@ -52,46 +45,21 @@ class ShaoziTxtDataSource implements TiaoWenLocalDataSource {
   /// 缓存中的条文总数
   int get cachedCount => _cache.length;
 
-  ShaoziTxtDataSource({String? dataDir})
-      : dataDir = dataDir ?? _defaultDataDir;
-
   /// 确保数据已加载（懒加载入口）
   Future<void> _ensureInitialized() async {
     if (_initialized) return;
 
-    final dir = Directory(dataDir);
-    if (!await dir.exists()) {
-      throw Exception('邵子条文数据目录不存在: $dataDir');
-    }
-
-    final files =
-        await dir.list().where((e) => e.path.endsWith('.txt')).toList();
-
-    if (files.isEmpty) {
-      throw Exception('邵子条文数据目录中没有 .txt 文件: $dataDir');
-    }
-
-    for (final file in files) {
-      await _loadFile(File(file.path));
+    for (final entry in _diZhiToAssetPath.entries) {
+      await _loadAsset(entry.key, entry.value);
     }
 
     _initialized = true;
   }
 
-  /// 解析单个 TXT 条文文件
-  ///
-  /// 从文件名提取地支归属，然后逐行解析。
-  Future<void> _loadFile(File file) async {
-    final fileName =
-        file.uri.pathSegments.last.replaceAll('.txt', '');
-    final diZhi = _fileNameToDiZhi[fileName];
-
-    if (diZhi == null) {
-      // 跳过无法识别地支的文件（如非预期的文件名）
-      return;
-    }
-
-    final lines = await file.readAsLines();
+  /// 从 asset 加载单个地支的条文文件
+  Future<void> _loadAsset(DiZhi diZhi, String assetPath) async {
+    final content = await rootBundle.loadString(assetPath);
+    final lines = content.split('\n');
     for (final line in lines) {
       final tiaoWen = _parseLine(line.trim(), diZhi);
       if (tiaoWen != null) {
@@ -139,7 +107,6 @@ class ShaoziTxtDataSource implements TiaoWenLocalDataSource {
   /// 匹配全角括号内的年龄数字，如"（47）"或"（21 22）"。
   /// 无年龄标记时返回 null。
   List<int>? _extractAgeSet(String content) {
-    // 匹配全角括号：\uff08 和 \uff09
     final agePattern = RegExp(r'\uff08(\d+(?:\s+\d+)*)\uff09');
     final match = agePattern.firstMatch(content);
 

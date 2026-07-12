@@ -1,57 +1,55 @@
 /// 邵子条文 Repository 实现
 ///
-/// 从本地 TXT 文件读取邵子数条文数据，实现 TiaoWenRepository 接口。
+/// 从 Flutter assets 加载邵子数条文数据，实现 TiaoWenRepository 接口。
 library;
 
-import 'dart:io';
-
+import 'package:flutter/services.dart';
 import 'package:metaphysics_core/enums.dart';
 import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 
-/// 邵子条文数据库文件路径
-const String _defaultDataDir = r'D:\数术\邵子数条目';
+/// 地支 → assets 路径映射
+const Map<DiZhi, String> _diZhiToAssetPath = {
+  DiZhi.ZI:   'assets/shaozishu/子.txt',
+  DiZhi.CHOU: 'assets/shaozishu/丑.txt',
+  DiZhi.YIN:  'assets/shaozishu/寅.txt',
+  DiZhi.MAO:  'assets/shaozishu/卯.txt',
+  DiZhi.CHEN: 'assets/shaozishu/辰.txt',
+  DiZhi.SI:   'assets/shaozishu/巳.txt',
+  DiZhi.WU:   'assets/shaozishu/午.txt',
+  DiZhi.WEI:  'assets/shaozishu/未.txt',
+  DiZhi.SHEN: 'assets/shaozishu/申.txt',
+  DiZhi.YOU:  'assets/shaozishu/酉.txt',
+  DiZhi.XU:   'assets/shaozishu/戌.txt',
+  DiZhi.HAI:  'assets/shaozishu/亥.txt',
+};
 
 /// 邵子条文 Repository
 ///
-/// 实现 [TiaoWenRepository] 接口，从本地 TXT 条文文件加载数据。
-/// 条文文件命名格式：按数字范围或地支分组的 .txt 文件。
+/// 实现 [TiaoWenRepository] 接口，从 Flutter assets 加载条文数据。
 class ShaoziTiaoWenRepository implements TiaoWenRepository {
-  /// 条文数据目录
-  final String dataDir;
-
   /// 内存缓存：条文编号 → 条文模型
   final Map<int, TiaoWenDataModel> _cache = {};
 
   /// 是否已初始化
   bool _initialized = false;
 
-  ShaoziTiaoWenRepository({String? dataDir})
-      : dataDir = dataDir ?? _defaultDataDir;
-
-  /// 从 TXT 文件加载条文数据
+  /// 从 assets 加载条文数据
   Future<void> _ensureInitialized() async {
     if (_initialized) return;
 
-    final dir = Directory(dataDir);
-    if (!await dir.exists()) {
-      throw Exception('邵子条文数据目录不存在: $dataDir');
-    }
-
-    final files = await dir.list().where((e) => e.path.endsWith('.txt')).toList();
-    for (final file in files) {
-      await _loadFile(File(file.path));
+    for (final entry in _diZhiToAssetPath.entries) {
+      await _loadAsset(entry.key, entry.value);
     }
 
     _initialized = true;
   }
 
-  /// 解析单个 TXT 条文文件
-  ///
-  /// 预期格式：每行一条，编号与内容以制表符或空格分隔。
-  Future<void> _loadFile(File file) async {
-    final lines = await file.readAsLines();
+  /// 从 asset 加载单个地支的条文文件
+  Future<void> _loadAsset(DiZhi diZhi, String assetPath) async {
+    final content = await rootBundle.loadString(assetPath);
+    final lines = content.split('\n');
     for (final line in lines) {
-      final tiaoWen = _parseLine(line.trim());
+      final tiaoWen = _parseLine(line.trim(), diZhi);
       if (tiaoWen != null) {
         _cache[tiaoWen.id] = tiaoWen;
       }
@@ -59,17 +57,13 @@ class ShaoziTiaoWenRepository implements TiaoWenRepository {
   }
 
   /// 解析单行条文文本
-  ///
-  /// 返回 [TiaoWenDataModel] 或 null（跳过空行/注释）。
-  TiaoWenDataModel? _parseLine(String line) {
+  TiaoWenDataModel? _parseLine(String line, DiZhi diZhi) {
     if (line.isEmpty || line.startsWith('#') || line.startsWith('//')) {
       return null;
     }
 
-    // 按制表符或首个空格分割：编号<TAB>内容
     final splitIndex = line.indexOf('\t');
     if (splitIndex == -1) {
-      // 尝试按空格分割
       final spaceIndex = line.indexOf(' ');
       if (spaceIndex == -1) return null;
       final numberStr = line.substring(0, spaceIndex);
@@ -78,7 +72,7 @@ class ShaoziTiaoWenRepository implements TiaoWenRepository {
       if (number == null) return null;
       return TiaoWenDataModel(
         id: number,
-        setName: DiZhi.ZI,  // 默认地支，实际应在加载后根据分组填充
+        setName: diZhi,
         content1: content,
         ageSet1: [],
       );
@@ -90,7 +84,7 @@ class ShaoziTiaoWenRepository implements TiaoWenRepository {
     if (number == null) return null;
     return TiaoWenDataModel(
       id: number,
-      setName: DiZhi.ZI,
+      setName: diZhi,
       content1: content,
       ageSet1: [],
     );
@@ -113,7 +107,6 @@ class ShaoziTiaoWenRepository implements TiaoWenRepository {
     int steps = 1,
   }) async {
     await _ensureInitialized();
-    // TODO: 实现分页查询
     return ids
         .skip(pageRange[0])
         .take(pageRange[1] - pageRange[0])
@@ -190,7 +183,6 @@ class ShaoziTiaoWenRepository implements TiaoWenRepository {
     bool includeCenterItem = true,
   }) async {
     await _ensureInitialized();
-    // TODO: 实现间隔查询
     return [];
   }
 
