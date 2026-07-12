@@ -32,6 +32,8 @@ dependencies:
       url: http://192.168.0.165:3000/xuan/repository-interface-tiebanshenshu.git
   theme:
     path: ../theme
+  xuan_common_ui:
+    path: ../xuan-common-ui
   xuan_config:
     path: ../xuan_config
   flutter:
@@ -81,6 +83,7 @@ flutter:
   assets:
     - assets/all_tiao_wen_v1.csv
     - assets/kao_ke/
+    - assets/shaozishu/
 
   # To add Flutter specific assets to your application, add an assets section,
   # like this:
@@ -125,6 +128,18 @@ flutter:
     iosBundleIdentifier: com.example.tiebanshenshu
 
 dependency_overrides:
+  theme:
+    path: ../theme
+  calendar:
+    path: ../calendar
+  persistence_domain:
+    path: ../xuan-domain
+  xuan_time_location:
+    path: ../xuan-time-location
+  repository_interface_four_zhu_card:
+    path: ../repository-interface-four-zhu-card
+  xuan_four_zhu_card:
+    path: ../xuan-four-zhu-card
   persistence_core:
     path: ../xuan-storage/core
   persistence_drift:
