@@ -25,8 +25,7 @@ dependencies:
     git:
       url: http://192.168.0.165:3000/xuan/xuan-gua-core.git
   metaphysics_core:
-    git:
-      url: http://192.168.0.165:3000/xuan/metaphysics-core.git
+    path: ../xuan-metaphysics-core
   repository_interface_tiebanshenshu:
     git:
       url: http://192.168.0.165:3000/xuan/repository-interface-tiebanshenshu.git
@@ -154,3 +153,5 @@ dependency_overrides:
     path: ../repository-interface-qimendunjia
   xuan_gua_core:
     path: ../xuan-gua-core
+  xuan_common_ui:
+    path: ../xuan-common-ui
