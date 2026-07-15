@@ -25,16 +25,20 @@ dependencies:
     git:
       url: http://192.168.0.165:3000/xuan/xuan-gua-core.git
   metaphysics_core:
-    path: ../xuan-metaphysics-core
+    git:
+      url: http://192.168.0.165:3000/xuan/metaphysics-core.git
   repository_interface_tiebanshenshu:
     git:
       url: http://192.168.0.165:3000/xuan/repository-interface-tiebanshenshu.git
   theme:
-    path: ../theme
+    git:
+      url: http://192.168.0.165:3000/xuan/theme.git
   xuan_common_ui:
-    path: ../xuan-common-ui
+    git:
+      url: http://192.168.0.165:3000/xuan/xuan-common-ui.git
   xuan_config:
-    path: ../xuan_config
+    git:
+      url: http://192.168.0.165:3000/xuan/xuan_config.git
   flutter:
     sdk: flutter
 
@@ -128,17 +132,23 @@ flutter:
 
 dependency_overrides:
   theme:
-    path: ../theme
+    git:
+      url: http://192.168.0.165:3000/xuan/theme.git
   calendar:
-    path: ../calendar
+    git:
+      url: http://192.168.0.165:3000/xuan/calendar.git
   persistence_domain:
-    path: ../xuan-domain
+    git:
+      url: http://192.168.0.165:3000/xuan/xuan-domain.git
   xuan_time_location:
-    path: ../xuan-time-location
+    git:
+      url: http://192.168.0.165:3000/xuan/xuan-time-location.git
   repository_interface_four_zhu_card:
-    path: ../repository-interface-four-zhu-card
+    git:
+      url: http://192.168.0.165:3000/xuan/repository-interface-four-zhu-card.git
   xuan_four_zhu_card:
-    path: ../xuan-four-zhu-card
+    git:
+      url: http://192.168.0.165:3000/xuan/xuan-four-zhu-card.git
   persistence_core:
     path: ../xuan-storage/core
   persistence_drift:
@@ -146,12 +156,17 @@ dependency_overrides:
   persistence_assets:
     path: ../xuan-storage/assets
   metaphysics_core:
-    path: ../xuan-metaphysics-core
+    git:
+      url: http://192.168.0.165:3000/xuan/metaphysics-core.git
   repository_interface_tiebanshenshu:
-    path: ../repository-interface-tiebanshenshu
+    git:
+      url: http://192.168.0.165:3000/xuan/repository-interface-tiebanshenshu.git
   repository_interface_qimendunjia:
-    path: ../repository-interface-qimendunjia
+    git:
+      url: http://192.168.0.165:3000/xuan/repository-interface-qimendunjia.git
   xuan_gua_core:
-    path: ../xuan-gua-core
+    git:
+      url: http://192.168.0.165:3000/xuan/xuan-gua-core.git
   xuan_common_ui:
-    path: ../xuan-common-ui
+    git:
+      url: http://192.168.0.165:3000/xuan/xuan-common-ui.git
