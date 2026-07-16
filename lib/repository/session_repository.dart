@@ -1,6 +1,7 @@
 import '../features/huang_ji/huang_ji_v2_session_models.dart';
 
 /// Session 仓库接口
+@Deprecated('Use RecordBackedTiebanRepository from xuan-storage')
 abstract class SessionRepository {
   /// 保存 Session
   Future<void> saveSession(HuangJiSession session);

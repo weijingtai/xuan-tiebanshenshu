@@ -86,6 +86,7 @@ import '../../features/kao_ding_liu_qin/usecases/kao_ding_liu_qin_use_case.dart'
 import '../../features/kao_ding_liu_qin/models/session_manager.dart';
 import '../../presentation/viewmodels/kao_ding_liu_qin_view_model.dart';
 
+@Deprecated('Use RecordBackedTiebanRepository from xuan-storage')
 class FakeTiebanRecordRepository implements TiebanRecordRepository {
   @override
   Future<String> saveRecord(TiebanDivinationRecordContract record) async => record.uuid;
@@ -435,4 +436,7 @@ class StrategyProviders {
           KaoDingLiuQinViewModel(context.read<KaoDingLiuQinUseCase>()),
     ),
   ];
+
+  static List<SingleChildWidget> getProvidersWithRealRepo(TiebanRecordRepository recordRepository) =>
+      getProviders(recordRepository);
 }

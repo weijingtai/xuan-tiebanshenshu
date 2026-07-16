@@ -1,6 +1,7 @@
 import '../models/liuqinkaoke_models.dart';
 
 /// 六亲考刻 Session 仓库接口
+@Deprecated('Use RecordBackedTiebanRepository from xuan-storage')
 abstract class LiuQinKaoKeSessionRepository {
   Future<void> save(LiuQinKaoKeSession session);
   Future<LiuQinKaoKeSession?> findById(String id);
