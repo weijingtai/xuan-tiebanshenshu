@@ -13,15 +13,23 @@ dependencies:
 
   cupertino_icons: ^1.0.8
   tiebanshenshu:
-    path: ../
+    git:
+      url: http://192.168.0.165:3000/xuan/xuan-tiebanshenshu.git
   repository_interface_tiebanshenshu:
-    path: ../../repository-interface-tiebanshenshu
+    git:
+      url: http://192.168.0.165:3000/xuan/repository-interface-tiebanshenshu.git
   persistence_assets:
-    path: ../../xuan-storage/assets
+    git:
+      url: http://192.168.0.165:3000/xuan/xuan-storage.git
+      path: assets
   persistence_drift:
-    path: ../../xuan-storage/drift
+    git:
+      url: http://192.168.0.165:3000/xuan/xuan-storage.git
+      path: drift
   persistence_preferences:
-    path: ../../xuan-storage/preferences
+    git:
+      url: http://192.168.0.165:3000/xuan/xuan-storage.git
+      path: preferences
   shared_preferences: ^2.2.0
   drift: ^2.30.1
 
@@ -31,7 +39,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
-  build_runner: ^2.10.5
+  build_runner: ^2.15.0
 
   metaphysics_core: any
   logger: any
@@ -45,30 +53,48 @@ flutter:
 
 dependency_overrides:
   theme:
-    path: ../../theme
+    git:
+      url: http://192.168.0.165:3000/xuan/theme.git
   calendar:
-    path: ../../calendar
+    git:
+      url: http://192.168.0.165:3000/xuan/calendar.git
   persistence_domain:
-    path: ../../xuan-domain
+    git:
+      url: http://192.168.0.165:3000/xuan/xuan-domain.git
   xuan_time_location:
-    path: ../../xuan-time-location
+    git:
+      url: http://192.168.0.165:3000/xuan/time-location.git
   repository_interface_four_zhu_card:
-    path: ../../repository-interface-four-zhu-card
+    git:
+      url: http://192.168.0.165:3000/xuan/repository-interface-four-zhu-card.git
   xuan_common_ui:
-    path: ../../xuan-common-ui
+    git:
+      url: http://192.168.0.165:3000/xuan/xuan-common-ui.git
   xuan_four_zhu_card:
-    path: ../../xuan-four-zhu-card
+    git:
+      url: http://192.168.0.165:3000/xuan/xuan-four-zhu-card.git
   persistence_core:
-    path: ../../xuan-storage/core
+    git:
+      url: http://192.168.0.165:3000/xuan/xuan-storage.git
+      path: core
   persistence_drift:
-    path: ../../xuan-storage/drift
+    git:
+      url: http://192.168.0.165:3000/xuan/xuan-storage.git
+      path: drift
   persistence_preferences:
-    path: ../../xuan-storage/preferences
+    git:
+      url: http://192.168.0.165:3000/xuan/xuan-storage.git
+      path: preferences
   metaphysics_core:
-    path: ../../xuan-metaphysics-core
+    git:
+      url: http://192.168.0.165:3000/xuan/metaphysics-core.git
   repository_interface_tiebanshenshu:
-    path: ../../repository-interface-tiebanshenshu
+    git:
+      url: http://192.168.0.165:3000/xuan/repository-interface-tiebanshenshu.git
   xuan_gua_core:
-    path: ../../xuan-gua-core
+    git:
+      url: http://192.168.0.165:3000/xuan/xuan-gua-core.git
   persistence_assets:
-    path: ../../xuan-storage/assets
+    git:
+      url: http://192.168.0.165:3000/xuan/xuan-storage.git
+      path: assets
