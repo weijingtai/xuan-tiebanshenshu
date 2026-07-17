@@ -4,7 +4,6 @@ import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:tiebanshenshu/service/strategy/xian_houtian_qu_shu_strategy.dart';
 import 'package:tiebanshenshu/domain/models/xian_houtian_qu_shu_base_number_model.dart';
-import 'package:xuan_gua_core/xuan_gua_core.dart';
 
 /// 先后天卦取数法单元测试 - 人工规格测试
 ///
@@ -50,7 +49,7 @@ void main() {
       print('先天卦上卦: ${model.upperGua}');
       print('先天卦下卦: ${model.lowerGua}');
 
-      expect(model.xiantianGua, equals(Enum64Gua.ze_tian_guai), reason: '先天卦应该是兑乾（泽天夬）');
+      expect(model.xiantianGua, equals('兑乾'), reason: '先天卦应该是兑乾（泽天夬）');
     });
 
     test('先天基本数应该=2111', () {
@@ -61,11 +60,11 @@ void main() {
 
   group('步骤2：验证后天卦 - 火泽睽', () {
     test('后天卦应该是火泽睽（离上兑下）', () {
-      print('实际后天卦: ${model.houtianGua}');
+      print('\n实际后天卦: ${model.houtianGua}');
       // 注意：upperGua/lowerGua是先天卦的上下卦，后天卦没有单独的字段
       // 只能通过houtianGua字符串来判断
 
-      expect(model.houtianGua, equals(Enum64Gua.huo_ze_kui), reason: '后天卦应该是离兑（火泽睽）');
+      expect(model.houtianGua, equals('离兑'), reason: '后天卦应该是离兑（火泽睽）');
     });
 
     test('后天基本数应该=9719', () {
@@ -98,9 +97,9 @@ void main() {
       print('====================================\n');
 
       // 验证核心字段
-      expect(model.xiantianGua, equals(Enum64Gua.ze_tian_guai));
+      expect(model.xiantianGua, equals('兑乾'));
       expect(model.xiantianBaseNumber, equals(2111));
-      expect(model.houtianGua, equals(Enum64Gua.huo_ze_kui));
+      expect(model.houtianGua, equals('离兑'));
       expect(model.houtianBaseNumber, equals(9719));
     });
   });

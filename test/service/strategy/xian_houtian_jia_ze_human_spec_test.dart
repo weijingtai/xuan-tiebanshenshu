@@ -4,7 +4,6 @@ import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:tiebanshenshu/service/strategy/xian_houtian_jia_ze_strategy.dart';
 import 'package:tiebanshenshu/domain/models/xian_houtian_gua_base_number_model.dart';
-import 'package:xuan_gua_core/xuan_gua_core.dart';
 
 /// 先后天八卦加则法单元测试 - 人工规格测试
 ///
@@ -124,19 +123,19 @@ void main() {
 
     test('天卦应该=震', () {
       print('实际天卦: ${model.tianGua}');
-      expect(model.tianGua, equals(Enum8Gua.Zhen), reason: '天数3对应震卦');
+      expect(model.tianGua, equals('震'), reason: '天数3对应震卦');
     });
 
     test('地卦应该=震', () {
       print('实际地卦: ${model.diGua}');
-      expect(model.diGua, equals(Enum8Gua.Zhen), reason: '地数3对应震卦');
+      expect(model.diGua, equals('震'), reason: '地数3对应震卦');
     });
   });
 
   group('步骤3：验证先天卦 - 震为雷', () {
     test('先天卦应该是震为雷（震上震下）', () {
       print('\n实际先天卦: ${model.xiantianGua}');
-      expect(model.xiantianGua, equals(Enum64Gua.zhen_wei_lei), reason: '先天卦应该是震震（震为雷）');
+      expect(model.xiantianGua, equals('震震'), reason: '先天卦应该是震震（震为雷）');
     });
 
     test('先天卦基础数应该=3387', () {
@@ -158,7 +157,7 @@ void main() {
     test('后天卦应该是地雷复（坤上震下）', () {
       print('\n实际后天卦: ${model.houtianGua}');
       // 元堂爻为初爻，震卦初爻为阳爻，变为阴爻，上卦震→坤
-      expect(model.houtianGua, equals(Enum64Gua.di_lei_fu), reason: '后天卦应该是坤震（地雷复）');
+      expect(model.houtianGua, equals('坤震'), reason: '后天卦应该是坤震（地雷复）');
     });
 
     test('后天卦基础数应该=2477', () {
@@ -211,9 +210,9 @@ void main() {
       expect(model.ganNumList, equals([9, 8, 4, 1]));
       expect(model.tianGuaNum, equals(3));
       expect(model.diGuaNum, equals(3));
-      expect(model.xiantianGua, equals(Enum64Gua.zhen_wei_lei));
+      expect(model.xiantianGua, equals('震震'));
       expect(model.xiantianBaseNumber, equals(3387));
-      expect(model.houtianGua, equals(Enum64Gua.di_lei_fu));
+      expect(model.houtianGua, equals('坤震'));
       expect(model.houtianBaseNumber, equals(2477));
     });
   });

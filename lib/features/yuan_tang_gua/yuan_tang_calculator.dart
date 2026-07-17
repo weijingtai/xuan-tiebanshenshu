@@ -1338,7 +1338,7 @@ class YuanTangCalculator {
     final yearYinYang = eightChars.yearTianGan.yinYang;
     Enum8Gua tianGua;
     Enum8Gua diGua;
-    bool usedThreeYuanWuGong = true;
+    bool usedThreeYuanWuGong = tianGuaNum == 5 || diGuaNum == 5;
 
     // 天卦配卦（天数为5时查询三元五宫）
     tianGua = numberToHouTianGua(

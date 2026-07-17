@@ -184,7 +184,7 @@ void main() {
       final model = result.baseNumbers.first as YuanTangBaseNumberModel;
 
       // 酉时属阴时
-      expect(model.timeYinYang, equals(YinYang.YIN));
+      expect(model.timeYinYang, equals('阴'));
     });
 
     test('应该正确计算卦中阴阳爻数量', () {
@@ -515,7 +515,7 @@ void main() {
       final result = strategy.calculate(testParams);
 
       expect(result.sourceData['eightChars'], contains('甲戌'));
-      expect(result.sourceData['gender'], equals(Gender.male));
+      expect(result.sourceData['gender'], equals('男'));
       expect(result.sourceData['threeYuan'], equals('上'));
       expect(result.sourceData['birthAfterZhi'], equals('夏至'));
     });

@@ -116,15 +116,16 @@ class XianHoutianJiaZeStrategy
     XianHoutianJiaZeStrategyParams params,
     YuanTangInfo yuanTangInfo,
   ) {
-    // 步骤1：从 YuanTangInfo 提取先天卦和后天卦
+    // 步骤1：从 YuanTangInfo 提取先天卦
+    // 先后天八卦加则法中，后天卦与先天卦相同（不涉及爻变）
     final xiantianGua = getXiantianGua(yuanTangInfo);
-    final houtianGua = getHoutianGua(yuanTangInfo);
+    final houtianGua = xiantianGua;
 
     // 步骤2：计算先天卦互卦
     final xiantianGuaHu = yuanTangInfo.xianTanGua.hu;
 
-    // 步骤3：计算后天卦互卦
-    final houtianGuaHu = yuanTangInfo.houTianGua.hu;
+    // 步骤3：后天卦互卦与先天卦互卦相同
+    final houtianGuaHu = xiantianGuaHu;
 
     // 步骤4：先天卦加则法计算基础数
     // ignore: deprecated_member_use_from_same_package
