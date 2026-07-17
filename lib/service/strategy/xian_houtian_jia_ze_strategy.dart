@@ -116,16 +116,15 @@ class XianHoutianJiaZeStrategy
     XianHoutianJiaZeStrategyParams params,
     YuanTangInfo yuanTangInfo,
   ) {
-    // 步骤1：从 YuanTangInfo 提取先天卦
-    // 先后天八卦加则法中，后天卦与先天卦相同（不涉及爻变）
+    // 步骤1：从 YuanTangInfo 提取先天卦和后天卦
     final xiantianGua = getXiantianGua(yuanTangInfo);
-    final houtianGua = xiantianGua;
+    final houtianGua = getHoutianGua(yuanTangInfo);
 
     // 步骤2：计算先天卦互卦
     final xiantianGuaHu = yuanTangInfo.xianTanGua.hu;
 
-    // 步骤3：后天卦互卦与先天卦互卦相同
-    final houtianGuaHu = xiantianGuaHu;
+    // 步骤3：计算后天卦互卦
+    final houtianGuaHu = yuanTangInfo.houTianGua.hu;
 
     // 步骤4：先天卦加则法计算基础数
     // ignore: deprecated_member_use_from_same_package
@@ -208,17 +207,17 @@ class XianHoutianJiaZeStrategy
       usedThreeYuanWuGong: tianDiGuaData.usedThreeYuanWuGong,
       // 步骤2: 先后天卦
       yearYinYang: tianDiGuaData.yearYinYang,
-      upperGua: yuanTangInfo.xianTanGua.gua.top,
-      lowerGua: yuanTangInfo.xianTanGua.gua.bottom,
-      xiantianGua: xiantianGua,
-      houtianGua: houtianGua,
+      upperGua: yuanTangInfo.xianTanGua.gua.top.name,
+      lowerGua: yuanTangInfo.xianTanGua.gua.bottom.name,
+      xiantianGua: xiantianGua.top.name + xiantianGua.bottom.name,
+      houtianGua: houtianGua.top.name + houtianGua.bottom.name,
       xiantianUpperGuaNumber: tianDiGuaData.xiantianUpperGuaNumber,
       xiantianLowerGuaNumber: tianDiGuaData.xiantianLowerGuaNumber,
       houtianUpperGuaNumber: tianDiGuaData.houtianUpperGuaNumber,
       houtianLowerGuaNumber: tianDiGuaData.houtianLowerGuaNumber,
       // 步骤3: 互卦
-      xiantianGuaHu: xiantianGuaHu,
-      houtianGuaHu: houtianGuaHu,
+      xiantianGuaHu: xiantianGuaHu.top.name + xiantianGuaHu.bottom.name,
+      houtianGuaHu: houtianGuaHu.top.name + houtianGuaHu.bottom.name,
       // 步骤4: 基础数
       xiantianBaseNumber: xiantianBaseNumber,
       houtianBaseNumber: houtianBaseNumber,

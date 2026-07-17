@@ -10,14 +10,15 @@ ShaoZiShuCalculationRecord _$ShaoZiShuCalculationRecordFromJson(
   Map<String, dynamic> json,
 ) => ShaoZiShuCalculationRecord(
   eightChars: EightChars.fromJson(json['eightChars'] as Map<String, dynamic>),
-  twelveNumbers:
-      (json['twelveNumbers'] as List<dynamic>).map((e) => e as int).toList(),
+  twelveNumbers: (json['twelveNumbers'] as List<dynamic>)
+      .map((e) => (e as num).toInt())
+      .toList(),
   tianShu: (json['tianShu'] as num).toInt(),
   diShu: (json['diShu'] as num).toInt(),
   benMingJiShu: (json['benMingJiShu'] as num).toInt(),
   tiaoWenNumber: (json['tiaoWenNumber'] as num).toInt(),
   expandedTiaoWenNumbers: (json['expandedTiaoWenNumbers'] as List<dynamic>)
-      .map((e) => e as int)
+      .map((e) => (e as num).toInt())
       .toList(),
   calculationDetail: json['calculationDetail'] as String,
   calculatedAt: DateTime.parse(json['calculatedAt'] as String),
@@ -41,8 +42,7 @@ ShaoZiShuSessionSnapshot _$ShaoZiShuSessionSnapshotFromJson(
   Map<String, dynamic> json,
 ) => ShaoZiShuSessionSnapshot(
   snapshotId: json['snapshotId'] as String,
-  phase:
-      $enumDecode(_$ShaoZiShuSessionPhaseEnumMap, json['phase']),
+  phase: $enumDecode(_$ShaoZiShuSessionPhaseEnumMap, json['phase']),
   timestamp: DateTime.parse(json['timestamp'] as String),
   state: json['state'] as Map<String, dynamic>,
 );
@@ -72,21 +72,19 @@ ShaoZiShuSession _$ShaoZiShuSessionFromJson(Map<String, dynamic> json) =>
       ),
       currentPhase:
           $enumDecodeNullable(
-                _$ShaoZiShuSessionPhaseEnumMap,
-                json['currentPhase'],
-              ) ??
-              ShaoZiShuSessionPhase.initialized,
+            _$ShaoZiShuSessionPhaseEnumMap,
+            json['currentPhase'],
+          ) ??
+          ShaoZiShuSessionPhase.initialized,
       phaseHistory: json['phaseHistory'] == null
           ? const []
-          : ShaoZiShuSession._snapshotsFromJson(
-              json['phaseHistory'] as List,
-            ),
+          : ShaoZiShuSession._snapshotsFromJson(json['phaseHistory'] as List),
       status:
           $enumDecodeNullable(
-                _$ShaoZiShuSessionStatusEnumMap,
-                json['status'],
-              ) ??
-              ShaoZiShuSessionStatus.notStarted,
+            _$ShaoZiShuSessionStatusEnumMap,
+            json['status'],
+          ) ??
+          ShaoZiShuSessionStatus.notStarted,
       startTime: DateTime.parse(json['startTime'] as String),
       lastActivityAt: DateTime.parse(json['lastActivityAt'] as String),
       endTime: json['endTime'] == null
@@ -99,14 +97,11 @@ Map<String, dynamic> _$ShaoZiShuSessionToJson(ShaoZiShuSession instance) =>
     <String, dynamic>{
       'sessionId': instance.sessionId,
       'sessionName': instance.sessionName,
-      'calculationRecord':
-          ShaoZiShuSession._calculationRecordToJson(
-            instance.calculationRecord,
-          ),
-      'currentPhase':
-          _$ShaoZiShuSessionPhaseEnumMap[instance.currentPhase]!,
-      'phaseHistory':
-          ShaoZiShuSession._snapshotsToJson(instance.phaseHistory),
+      'calculationRecord': ShaoZiShuSession._calculationRecordToJson(
+        instance.calculationRecord,
+      ),
+      'currentPhase': _$ShaoZiShuSessionPhaseEnumMap[instance.currentPhase]!,
+      'phaseHistory': ShaoZiShuSession._snapshotsToJson(instance.phaseHistory),
       'status': _$ShaoZiShuSessionStatusEnumMap[instance.status]!,
       'startTime': instance.startTime.toIso8601String(),
       'lastActivityAt': instance.lastActivityAt.toIso8601String(),

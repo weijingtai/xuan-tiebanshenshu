@@ -365,7 +365,7 @@ class YuanTangStrategy
     for (final dayun in model.xiantianDayunList) {
       final liunianList = _calculateLiunianForDayun(
         dayun,
-        model.xiantianGua,
+        _guaStringToEnum64Gua(model.xiantianGua),
         '先天卦',
         birthYear,
       );
@@ -376,7 +376,7 @@ class YuanTangStrategy
     for (final dayun in model.houtianDayunList) {
       final liunianList = _calculateLiunianForDayun(
         dayun,
-        model.houtianGua,
+        _guaStringToEnum64Gua(model.houtianGua),
         '后天卦',
         birthYear,
       );
@@ -779,5 +779,12 @@ class YuanTangStrategy
   BaseNumberSource _getSourceFromParams(YuanTangStrategyParams params) {
     // 元堂卦只有一个基础数，使用yearZhu作为来源标识
     return BaseNumberSource.yearZhu;
+  }
+
+  /// 将卦名字符串转换为Enum64Gua
+  Enum64Gua _guaStringToEnum64Gua(String guaStr) {
+    final top = Enum8Gua.fromValue(guaStr[0]);
+    final bottom = Enum8Gua.fromValue(guaStr[1]);
+    return Enum64Gua.getBy8Gua(top, bottom);
   }
 }

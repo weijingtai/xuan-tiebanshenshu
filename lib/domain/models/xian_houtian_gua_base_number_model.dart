@@ -65,11 +65,11 @@ class XianHoutianGuaBaseNumberModel extends BaseNumberModel {
 
   /// 天卦名称
   /// 由天数配卦得到
-  final Enum8Gua tianGua;
+  final String tianGua;
 
   /// 地卦名称
   /// 由地数配卦得到
-  final Enum8Gua diGua;
+  final String diGua;
 
   /// 是否使用了三元五宫映射
   /// 当天数或地数为5时，需要查询三元五宫映射表
@@ -79,25 +79,25 @@ class XianHoutianGuaBaseNumberModel extends BaseNumberModel {
 
   /// 年份阴阳："阳" / "阴"
   /// 根据年干判断
-  final YinYang yearYinYang;
+  final String yearYinYang;
 
   /// 上卦名称
   /// 根据年份阴阳和性别决定是天卦还是地卦
-  final Enum8Gua upperGua;
+  final String upperGua;
 
   /// 下卦名称
   /// 根据年份阴阳和性别决定是天卦还是地卦
-  final Enum8Gua lowerGua;
+  final String lowerGua;
 
   /// 先天卦名称（双经卦，如"震坤"）
-  final Enum64Gua xiantianGua;
+  final String xiantianGua;
 
   /// 后天卦名称（双经卦，如"坎震"）
   /// 注意：不同算法对"后天卦"的定义不同
   /// - 在先后天八卦加则法中，后天卦通常指先天卦本身（不涉及爻变）
   /// - 在元堂卦算法中，后天卦指元堂爻爻变后上下卦互换的结果
   /// 此处的houtianGua字段留给具体算法自行定义和使用
-  final Enum64Gua houtianGua;
+  final String houtianGua;
 
   /// 先天卦上卦后天数
   final int xiantianUpperGuaNumber;
@@ -115,11 +115,11 @@ class XianHoutianGuaBaseNumberModel extends BaseNumberModel {
 
   /// 先天卦的互卦
   /// 由2,3,4爻（上互）和3,4,5爻（下互）组成
-  final Enum64Gua xiantianGuaHu;
+  final String xiantianGuaHu;
 
   /// 后天卦的互卦
   /// 由2,3,4爻（上互）和3,4,5爻（下互）组成
-  final Enum64Gua houtianGuaHu;
+  final String houtianGuaHu;
 
   // ========== 步骤4: 基础数 (2个字段) ==========
 
@@ -225,7 +225,7 @@ class XianHoutianGuaBaseNumberModel extends BaseNumberModel {
 
   /// 获取先后天卦规则说明
   String get xianHoutianGuaRule {
-    if (yearYinYang == YinYang.YANG) {
+    if (yearYinYang == '阳') {
       if (gender == Gender.male) {
         return "阳年男性：天卦在上，地卦在下";
       } else {
@@ -266,20 +266,20 @@ class XianHoutianGuaBaseNumberModel extends BaseNumberModel {
     int? evenNumTotal,
     int? tianGuaNum,
     int? diGuaNum,
-    Enum8Gua? tianGua,
-    Enum8Gua? diGua,
+    String? tianGua,
+    String? diGua,
     bool? usedThreeYuanWuGong,
-    YinYang? yearYinYang,
-    Enum8Gua? upperGua,
-    Enum8Gua? lowerGua,
-    Enum64Gua? xiantianGua,
-    Enum64Gua? houtianGua,
+    String? yearYinYang,
+    String? upperGua,
+    String? lowerGua,
+    String? xiantianGua,
+    String? houtianGua,
     int? xiantianUpperGuaNumber,
     int? xiantianLowerGuaNumber,
     int? houtianUpperGuaNumber,
     int? houtianLowerGuaNumber,
-    Enum64Gua? xiantianGuaHu,
-    Enum64Gua? houtianGuaHu,
+    String? xiantianGuaHu,
+    String? houtianGuaHu,
     int? xiantianBaseNumber,
     int? houtianBaseNumber,
     List<int>? xiantianTiaoWenNumbers,
