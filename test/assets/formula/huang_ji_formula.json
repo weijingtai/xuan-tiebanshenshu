@@ -9,7 +9,7 @@
         "baseNumberDefinition": {
           "name": "元会基础数",
           "description": "年+月互合成数顺左旋取数",
-          "source": "yuanHui",
+          "source": "元会",
           "type": "predefined"
         },
         "formulas": []
@@ -20,7 +20,7 @@
         "baseNumberDefinition": {
           "name": "运世基础数",
           "description": "日+时互合成数逆右旋取数",
-          "source": "yunShi",
+          "source": "运世",
           "type": "predefined"
         },
         "formulas": []
@@ -368,7 +368,7 @@
         "baseNumberDefinition": {
           "name": "元会基础数",
           "description": "年+月互合成数顺左旋取数",
-          "source": "yuanHui",
+          "source": "元会",
           "type": "predefined"
         },
         "formulas": []
@@ -379,7 +379,7 @@
         "baseNumberDefinition": {
           "name": "运世基础数",
           "description": "日+时互合成数逆右旋取数",
-          "source": "yunShi",
+          "source": "运世",
           "type": "predefined"
         },
         "formulas": []
@@ -549,7 +549,7 @@
         "baseNumberDefinition": {
           "name": "元会基础数",
           "description": "年+月互合成数顺左旋取数",
-          "source": "yuanHui",
+          "source": "元会",
           "type": "predefined"
         },
         "formulas": []
@@ -560,7 +560,7 @@
         "baseNumberDefinition": {
           "name": "运世基础数",
           "description": "日+时互合成数逆右旋取数",
-          "source": "yunShi",
+          "source": "运世",
           "type": "predefined"
         },
         "formulas": []

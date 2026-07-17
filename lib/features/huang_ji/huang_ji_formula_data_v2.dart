@@ -338,8 +338,8 @@ class DataDerivedBaseNumber extends DataBaseNumberDefinition {
   )
   final DataBaseNumberDefinition baseNumberDefinition;
 
-  @override
-  int get rawNumber {
+  /// 派生计算后的实际值
+  int get derivedNumber {
     return calculationParts.fold(
       baseNumberDefinition.number,
       (prev, component) => prev + component.rawNumber,

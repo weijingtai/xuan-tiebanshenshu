@@ -117,11 +117,18 @@ class TiaoWenListResult {
 
   @override
   int get hashCode {
+    List<String>? keys;
+    if (sourceData != null) {
+      keys = sourceData!.keys.toList()..sort();
+    }
+    final valuesHash = keys != null
+        ? Object.hashAll(keys.map((k) => Object.hash(k, sourceData![k])))
+        : null;
     return Object.hash(
-      tiaoWenNumbers,
+      Object.hashAll(tiaoWenNumbers),
       state,
       calculationMethod,
-      sourceData,
+      valuesHash,
       errorMessage,
     );
   }

@@ -3,6 +3,7 @@ import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:tiebanshenshu/service/strategy/liu_yao_gan_zhi_he_strategy.dart';
 import 'package:tiebanshenshu/domain/models/liu_yao_gan_zhi_he_base_number_model.dart';
+import 'package:xuan_gua_core/xuan_gua_core.dart';
 
 /// 先后天卦六爻干支和数法单元测试 - 癸巳甲子丁酉癸卯
 ///
@@ -53,12 +54,12 @@ void main() {
     });
 
     test('先天卦应该是震坤', () {
-      expect(model.xiantianGua, equals('震坤'), reason: '先天卦应该是震坤（雷地豫）');
+      expect(model.xiantianGua, equals(Enum64Gua.lei_di_yu), reason: '先天卦应该是震坤（雷地豫）');
     });
 
     test('后天卦应该已生成', () {
-      expect(model.houtianGua, isNotEmpty, reason: '后天卦应该已生成');
-      expect(model.houtianGua, equals('震坤'), reason: '后天卦应该是震坤（雷地豫）');
+      expect(model.houtianGua, isNotNull, reason: '后天卦应该已生成');
+      expect(model.houtianGua, equals(Enum64Gua.lei_di_yu), reason: '后天卦应该是震坤（雷地豫）');
     });
   });
 
@@ -178,8 +179,8 @@ void main() {
     });
 
     test('所有关键字段应该已填充', () {
-      expect(model.xiantianGua, equals('震坤'), reason: '先天卦应该是震坤');
-      expect(model.houtianGua, isNotEmpty, reason: '后天卦应该已生成');
+      expect(model.xiantianGua, equals(Enum64Gua.lei_di_yu), reason: '先天卦应该是震坤');
+      expect(model.houtianGua, isNotNull, reason: '后天卦应该已生成');
       expect(
         model.xiantianYaoTianGanList.length,
         equals(6),

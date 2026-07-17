@@ -72,14 +72,14 @@ class BaseNumberDefinitionConverter
 class HuangJiCalculationFormula {
   final int id;
   final String name; // 例如："皇极取数法三"
-  final String description; // 例如："元会公式"
+  final String? description; // 例如："元会公式"
   @JsonKey(fromJson: _groupsFromJson, toJson: _groupsToJson)
   final List<CalculationGroup> groups; // 按顺序包含所有计算组
 
   HuangJiCalculationFormula({
     required this.id,
     required this.name,
-    required this.description,
+    this.description,
     required this.groups,
   });
   factory HuangJiCalculationFormula.fromJson(Map<String, dynamic> json) =>

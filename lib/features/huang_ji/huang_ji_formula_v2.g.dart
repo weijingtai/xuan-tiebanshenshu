@@ -11,7 +11,7 @@ HuangJiCalculationFormula _$HuangJiCalculationFormulaFromJson(
 ) => HuangJiCalculationFormula(
   id: (json['id'] as num).toInt(),
   name: json['name'] as String,
-  description: json['description'] as String,
+  description: json['description'] as String?,
   groups: HuangJiCalculationFormula._groupsFromJson(json['groups'] as List),
 );
 

@@ -70,9 +70,9 @@ void main() {
       print('修正方案：移除line 592的reversed操作');
       print('=====================================\n');
 
-      // 验证当前输出
-      expect(model.yuantangYaoIndex, equals(5)); // 当前在上爻
-      expect(model.yuantangYaoLabel, equals('上'));
+      // 修正后，元堂爻在初爻（索引0）
+      expect(model.yuantangYaoIndex, equals(0));
+      expect(model.yuantangYaoLabel, equals('初'));
     });
 
     test('外部预期值验证', () {

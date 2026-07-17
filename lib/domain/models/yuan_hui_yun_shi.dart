@@ -75,14 +75,14 @@ class YuanHuiYunShi extends EightChars {
     timeGanNumber = ganMapper[time.tianGan]!;
 
     // 计算结果初始化
-    int yuanNumber = ganMapper[year.tianGan]! + zhiMapper[year.diZhi]!;
-    yuanNumber = yuanNumber < 10 ? yuanNumber * 10 : yuanNumber;
-    int huiNumber = ganMapper[month.tianGan]! + zhiMapper[month.diZhi]!;
-    huiNumber = huiNumber < 10 ? huiNumber * 10 : huiNumber;
-    int yunNumber = ganMapper[day.tianGan]! + zhiMapper[day.diZhi]!;
-    yunNumber = yunNumber < 10 ? yunNumber * 10 : yunNumber;
-    int shiNumber = ganMapper[time.tianGan]! + zhiMapper[time.diZhi]!;
-    shiNumber = shiNumber < 10 ? shiNumber * 10 : shiNumber;
+    int yuanCalc = ganMapper[year.tianGan]! + zhiMapper[year.diZhi]!;
+    yuanNumber = yuanCalc < 10 ? yuanCalc * 10 : yuanCalc;
+    int huiCalc = ganMapper[month.tianGan]! + zhiMapper[month.diZhi]!;
+    huiNumber = huiCalc < 10 ? huiCalc * 10 : huiCalc;
+    int yunCalc = ganMapper[day.tianGan]! + zhiMapper[day.diZhi]!;
+    yunNumber = yunCalc < 10 ? yunCalc * 10 : yunCalc;
+    int shiCalc = ganMapper[time.tianGan]! + zhiMapper[time.diZhi]!;
+    shiNumber = shiCalc < 10 ? shiCalc * 10 : shiCalc;
 
     // 互合成数初始化
     // 年+月 互合成数顺左旋取数（元会基本数）：如年元数为"9"，月会数为"18"，元会互合成数为9018
@@ -99,7 +99,7 @@ class YuanHuiYunShi extends EightChars {
       name: "运世基础数",
       description: "运与世互合数(右旋)",
       orinialNumber: int.parse(
-        '${(yunNumber).toString().split('').reversed.join()}${(shiNumber).toString().split('').reversed.join()}',
+        '${yunNumber.toString().split('').reversed.join()}${shiNumber.toString().split('').reversed.join()}',
       ),
 
       baseNumberType: BaseNumberType.basic,
