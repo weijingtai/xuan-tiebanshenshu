@@ -164,6 +164,14 @@ class HomePage extends StatelessWidget {
           icon: Icons.manage_accounts,
           route: '/tiebanshenshu/kao_ding_liu_qin',
         ),
+        const SizedBox(height: 12),
+        _buildUtilityItem(
+          context,
+          title: '邵子数',
+          subtitle: 'Shao Zi Shu - 河洛天地数法',
+          icon: Icons.psychology,
+          route: '/tiebanshenshu/shaozishu',
+        ),
       ],
     );
   }

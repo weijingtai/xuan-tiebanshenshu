@@ -41,7 +41,7 @@ class AlgorithmEditorApp extends StatelessWidget {
           return MaterialApp(
             title: 'Algorithm Editor Prototype',
             theme: themeViewModel.materialThemeData,
-            initialRoute: '/dev',
+            initialRoute: '/tiebanshenshu/home',
             onGenerateRoute: NavigatorGenerator.generateRoute,
           );
         },
