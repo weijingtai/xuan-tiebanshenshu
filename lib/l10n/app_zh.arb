@@ -1,0 +1,12 @@
+{
+  "@@locale": "zh",
+  "tiebanshenshu": "铁板神数",
+  "taiXuanInteractive": "太玄四柱交互式计算",
+  "undo": "撤销",
+  "restart": "重新开始",
+  "help": "帮助",
+  "waitingForUserAction": "等待用户操作...",
+  "cancel": "取消",
+  "confirm": "确定",
+  "interactiveHelp": "交互式计算帮助"
+}

@@ -110,6 +110,7 @@ class _TaiXuanInteractivePageState extends State<TaiXuanInteractivePage>
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: _buildAppBar(),
       body: Consumer<TaiXuanFourZhuInteractiveViewModel>(
@@ -123,7 +124,7 @@ class _TaiXuanInteractivePageState extends State<TaiXuanInteractivePage>
   /// 构建应用栏
   PreferredSizeWidget _buildAppBar() {
     return AppBar(
-      title: const Text('太玄四柱交互式计算'),
+      title: Text(l10n.taiXuanInteractive),
       elevation: 0,
       actions: [
         Consumer<TaiXuanFourZhuInteractiveViewModel>(
@@ -136,7 +137,7 @@ class _TaiXuanInteractivePageState extends State<TaiXuanInteractivePage>
                     value: 'undo',
                     child: ListTile(
                       leading: Icon(Icons.undo),
-                      title: Text('撤销'),
+                      title: Text(l10n.undo),
                       contentPadding: EdgeInsets.zero,
                     ),
                   ),
@@ -145,7 +146,7 @@ class _TaiXuanInteractivePageState extends State<TaiXuanInteractivePage>
                     value: 'restart',
                     child: ListTile(
                       leading: Icon(Icons.refresh),
-                      title: Text('重新开始'),
+                      title: Text(l10n.restart),
                       contentPadding: EdgeInsets.zero,
                     ),
                   ),
@@ -153,7 +154,7 @@ class _TaiXuanInteractivePageState extends State<TaiXuanInteractivePage>
                   value: 'help',
                   child: ListTile(
                     leading: Icon(Icons.help_outline),
-                    title: Text('帮助'),
+                    title: Text(l10n.help),
                     contentPadding: EdgeInsets.zero,
                   ),
                 ),
@@ -466,11 +467,11 @@ class _TaiXuanInteractivePageState extends State<TaiXuanInteractivePage>
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(false),
-            child: const Text('取消'),
+            child: Text(l10n.cancel),
           ),
           TextButton(
             onPressed: () => Navigator.of(context).pop(true),
-            child: const Text('确定'),
+            child: Text(l10n.confirm),
           ),
         ],
       ),
@@ -483,7 +484,7 @@ class _TaiXuanInteractivePageState extends State<TaiXuanInteractivePage>
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('交互式计算帮助'),
+        title: Text(l10n.interactiveHelp),
         content: const SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -504,7 +505,7 @@ class _TaiXuanInteractivePageState extends State<TaiXuanInteractivePage>
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: const Text('确定'),
+            child: Text(l10n.confirm),
           ),
         ],
       ),
