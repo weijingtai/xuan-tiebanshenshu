@@ -28,16 +28,36 @@ class HuangJiFormulaManager {
   /// 是否已初始化
   bool _isInitialized = false;
 
-  /// 可用的公式文件列表（公式 JSON 尚未创建，预留接口）
-  static const List<String> _formulaFiles = [];
+  /// 可用的公式文件列表
+  static const List<String> _formulaFiles = [
+    'assets/formulas/huang_ji_1_formula.json',
+    'assets/formulas/huang_ji_2_formula.json',
+    'assets/formulas/huang_ji_3_formula.json',
+  ];
 
   /// 初始化管理器，加载所有可用的公式
   ///
   /// 返回加载成功的公式数量
   Future<int> initialize() async {
     if (_isInitialized) return _formulaCache.length;
+
+    int loadedCount = 0;
+
+    for (final filePath in _formulaFiles) {
+      try {
+        final formula = await _loadFormulaFromAsset(filePath);
+        if (formula != null) {
+          _formulaCache[formula.id] = formula;
+          _nameToIdMap[formula.name] = formula.id;
+          loadedCount++;
+        }
+      } catch (e) {
+        // ignore — formula file may not exist
+      }
+    }
+
     _isInitialized = true;
-    return 0;
+    return loadedCount;
   }
 
   /// 从资源文件加载公式

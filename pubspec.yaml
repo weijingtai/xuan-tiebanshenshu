@@ -86,6 +86,7 @@ flutter:
 
   assets:
     - assets/all_tiao_wen_v1.csv
+    - assets/formulas/
     - assets/kao_ke/
     - assets/shaozishu/
 
