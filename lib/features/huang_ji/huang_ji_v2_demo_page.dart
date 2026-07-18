@@ -24,6 +24,7 @@ class HuangJiV2DemoPage extends StatefulWidget {
 
 class _HuangJiV2DemoPageState extends State<HuangJiV2DemoPage> {
   final Map<String, int> _userSelections = {};
+  bool _formulasNotReady = false;
 
   @override
   void initState() {
@@ -52,7 +53,10 @@ class _HuangJiV2DemoPageState extends State<HuangJiV2DemoPage> {
     final allFormulas = HuangJiFormulaManager.instance.getAllFormulas();
 
     if (allFormulas.isEmpty) {
-      viewModel.resetSession();
+      if (mounted) {
+        viewModel.resetSession();
+        setState(() { _formulasNotReady = true; });
+      }
       return;
     }
 
@@ -107,6 +111,30 @@ class _HuangJiV2DemoPageState extends State<HuangJiV2DemoPage> {
                     viewModel.errorMessage!,
                     style: const TextStyle(color: Colors.red),
                     textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+            );
+          }
+
+          if (_formulasNotReady) {
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(Icons.hourglass_empty, size: 48, color: Colors.orange),
+                  const SizedBox(height: 16),
+                  const Text('皇极公式数据尚未就绪', style: TextStyle(fontSize: 16)),
+                  const SizedBox(height: 8),
+                  const Text('需要部署 formula JSON 文件', style: TextStyle(color: Colors.grey, fontSize: 13)),
+                  const SizedBox(height: 16),
+                  ElevatedButton.icon(
+                    icon: const Icon(Icons.refresh),
+                    label: const Text('重试'),
+                    onPressed: () {
+                      setState(() { _formulasNotReady = false; });
+                      _initializeTestSession();
+                    },
                   ),
                 ],
               ),
