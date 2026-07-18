@@ -4,6 +4,7 @@ import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:tiebanshenshu/service/strategy/qian_hou_gua_strategy.dart';
 import 'package:tiebanshenshu/domain/models/qian_hou_gua_base_number_model.dart';
+import 'package:xuan_gua_core/xuan_gua_core.dart';
 
 /// 前后卦取数法单元测试 - 人工规格测试
 ///
@@ -69,7 +70,7 @@ void main() {
       print('前卦上卦后天数(年): ${model.qianGuaUpperNumber}');
       print('前卦下卦后天数(月): ${model.qianGuaLowerNumber}');
       // 人规指定：年干支->坎，月干支->坤
-      expect(model.qianGuaName, equals('坎坤'));
+      expect(model.qianGuaName, equals(Enum64Gua.shui_di_bi));
     });
 
     test('后卦（由日、时）应为坎震', () {
@@ -77,7 +78,7 @@ void main() {
       print('后卦上卦后天数(日): ${model.houGuaUpperNumber}');
       print('后卦下卦后天数(时): ${model.houGuaLowerNumber}');
       // 人规指定：日干支->坎，时干支->震
-      expect(model.houGuaName, equals('坎震'));
+      expect(model.houGuaName, equals(Enum64Gua.shui_lei_tun));
     });
   });
 
@@ -139,8 +140,8 @@ void main() {
       print('============================================\n');
 
       // 核心断言（与人规一致）
-      expect(model.qianGuaName, equals('坎坤'));
-      expect(model.houGuaName, equals('坎震'));
+      expect(model.qianGuaName, equals(Enum64Gua.shui_di_bi));
+      expect(model.houGuaName, equals(Enum64Gua.shui_lei_tun));
       expect(model.qianGuaBaseNumber, equals(1478));
       expect(
         model.qianGuaTiaoWenNumbers,

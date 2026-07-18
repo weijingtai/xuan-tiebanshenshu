@@ -10,38 +10,38 @@ part 'yuan_hui_yun_shi.g.dart';
 @JsonSerializable()
 class YuanHuiYunShi extends EightChars {
   // 年柱
-  late final DiZhi yearZhi;
-  late final TianGan yearGan;
-  late final int yearZhiNumber;
-  late final int yearGanNumber;
+  late DiZhi yearZhi;
+  late TianGan yearGan;
+  late int yearZhiNumber;
+  late int yearGanNumber;
 
   // 月柱
-  late final DiZhi monthZhi;
-  late final TianGan monthGan;
-  late final int monthZhiNumber;
-  late final int monthGanNumber;
+  late DiZhi monthZhi;
+  late TianGan monthGan;
+  late int monthZhiNumber;
+  late int monthGanNumber;
 
   // 日柱
-  late final DiZhi dayZhi;
-  late final TianGan dayGan;
-  late final int dayZhiNumber;
-  late final int dayGanNumber;
+  late DiZhi dayZhi;
+  late TianGan dayGan;
+  late int dayZhiNumber;
+  late int dayGanNumber;
 
   // 时柱
-  late final DiZhi timeZhi;
-  late final TianGan timeGan;
-  late final int timeZhiNumber;
-  late final int timeGanNumber;
+  late DiZhi timeZhi;
+  late TianGan timeGan;
+  late int timeZhiNumber;
+  late int timeGanNumber;
 
   // 计算结果
-  late final int yuanNumber; // 年干支相加为"元"
-  late final int huiNumber; // 月干支相加为"会"
-  late final int yunNumber; // 日干支相加为"运"
-  late final int shiNumber; // 时干支相加为"世"
+  late int yuanNumber; // 年干支相加为"元"
+  late int huiNumber; // 月干支相加为"会"
+  late int yunNumber; // 日干支相加为"运"
+  late int shiNumber; // 时干支相加为"世"
 
   // 互合成数
-  late final HuangJiBaseNumber yuanHuiMergeNumber; // 年+月 互合成数顺左旋取数（元会基本数）
-  late final HuangJiBaseNumber yunShiMergeNumber; // 日+时 互合成数逆右旋取数（运世基础数）
+  late HuangJiBaseNumber yuanHuiMergeNumber; // 年+月 互合成数顺左旋取数（元会基本数）
+  late HuangJiBaseNumber yunShiMergeNumber; // 日+时 互合成数逆右旋取数（运世基础数）
   YuanHuiYunShi({
     required JiaZi year,
     required JiaZi month,
@@ -75,13 +75,13 @@ class YuanHuiYunShi extends EightChars {
     timeGanNumber = ganMapper[time.tianGan]!;
 
     // 计算结果初始化
-    int yuanNumber = ganMapper[year.tianGan]! + zhiMapper[year.diZhi]!;
+    yuanNumber = ganMapper[year.tianGan]! + zhiMapper[year.diZhi]!;
     yuanNumber = yuanNumber < 10 ? yuanNumber * 10 : yuanNumber;
-    int huiNumber = ganMapper[month.tianGan]! + zhiMapper[month.diZhi]!;
+    huiNumber = ganMapper[month.tianGan]! + zhiMapper[month.diZhi]!;
     huiNumber = huiNumber < 10 ? huiNumber * 10 : huiNumber;
-    int yunNumber = ganMapper[day.tianGan]! + zhiMapper[day.diZhi]!;
+    yunNumber = ganMapper[day.tianGan]! + zhiMapper[day.diZhi]!;
     yunNumber = yunNumber < 10 ? yunNumber * 10 : yunNumber;
-    int shiNumber = ganMapper[time.tianGan]! + zhiMapper[time.diZhi]!;
+    shiNumber = ganMapper[time.tianGan]! + zhiMapper[time.diZhi]!;
     shiNumber = shiNumber < 10 ? shiNumber * 10 : shiNumber;
 
     // 互合成数初始化

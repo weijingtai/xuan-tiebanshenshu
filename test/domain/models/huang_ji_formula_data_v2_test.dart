@@ -136,7 +136,7 @@ void main() {
       );
 
       final dataDerived = DataDerivedBaseNumber(
-        rawNumber: 600, // 月干百位的值
+        rawNumber: 1810,
         name: "派生基础数",
         description: "从元会基础数派生",
         parentGroupId: "base_one",
@@ -151,7 +151,7 @@ void main() {
 
       // 测试 JSON 序列化
       final json = dataDerived.toJson();
-      expect(json['rawNumber'], equals(600));
+      expect(json['rawNumber'], equals(1810));
       expect(json['name'], equals("派生基础数"));
       expect(json['parentGroupId'], equals("base_one"));
       expect(json['calculationParts'], isA<List>());
@@ -159,7 +159,7 @@ void main() {
 
       // 测试反序列化
       final restored = DataDerivedBaseNumber.fromJson(json);
-      expect(restored.number, equals(600));
+      expect(restored.number, equals(1810));
       expect(restored.name, equals("派生基础数"));
       expect(restored.parentGroupId, equals("base_one"));
       expect(restored.calculationParts.length, equals(1));

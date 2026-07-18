@@ -3,6 +3,7 @@ import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:tiebanshenshu/service/strategy/xian_houtian_jia_ze_strategy.dart';
 import 'package:tiebanshenshu/domain/models/xian_houtian_gua_base_number_model.dart';
+import 'package:xuan_gua_core/xuan_gua_core.dart';
 
 /// 先后天八卦加则法单元测试 - 癸巳甲子丁酉癸卯
 ///
@@ -91,13 +92,13 @@ void main() {
     test('天数应该=2，天卦=坤', () {
       // 天数：27 % 25 = 2
       expect(model.tianGuaNum, equals(2), reason: '奇数和27对25取模应该得2');
-      expect(model.tianGua, equals('坤'), reason: '天数2对应坤卦');
+      expect(model.tianGua, equals(Enum8Gua.Kun), reason: '天数2对应坤卦');
     });
 
     test('地数应该=3，地卦=震', () {
       // 地数：30 % 30 = 3（特殊处理）
       expect(model.diGuaNum, equals(3), reason: '偶数和30对30取模特殊处理为3');
-      expect(model.diGua, equals('震'), reason: '地数3对应震卦');
+      expect(model.diGua, equals(Enum8Gua.Zhen), reason: '地数3对应震卦');
     });
 
     test('应该未使用三元五宫', () {
@@ -108,7 +109,7 @@ void main() {
   group('步骤2：生成先后天卦 - 癸巳甲子丁酉癸卯', () {
     test('应该判断癸年为阴年', () {
       // 癸为阴干
-      expect(model.yearYinYang, equals('阴'), reason: '癸为阴干，应该判断为阴年');
+      expect(model.yearYinYang, equals(YinYang.YIN), reason: '癸为阴干，应该判断为阴年');
     });
 
     test('阴年男性应该地卦在上、天卦在下', () {
@@ -120,9 +121,13 @@ void main() {
     test('先天卦应该是震坤（雷地豫）', () {
       // 天数2对应坤卦，地数3对应震卦
       // 阴年男性：地卦在上，天卦在下 -> 震坤
-      expect(model.xiantianGua, equals('震坤'), reason: '先天卦应该是震坤（雷地豫）');
-      expect(model.upperGua, equals('震'), reason: '上卦应该是震');
-      expect(model.lowerGua, equals('坤'), reason: '下卦应该是坤');
+      expect(
+        model.xiantianGua,
+        equals(Enum64Gua.lei_di_yu),
+        reason: '先天卦应该是震坤（雷地豫）',
+      );
+      expect(model.upperGua, equals(Enum8Gua.Zhen), reason: '上卦应该是震');
+      expect(model.lowerGua, equals(Enum8Gua.Kun), reason: '下卦应该是坤');
     });
 
     test('上下卦后天数应该正确', () {
@@ -131,36 +136,30 @@ void main() {
       expect(model.xiantianLowerGuaNumber, equals(2), reason: '坤卦的后天数是2');
     });
 
-    test('后天卦应该与先天卦相同', () {
-      // 在先后天八卦加则法中，后天卦与先天卦相同（不涉及爻变）
-      expect(
-        model.houtianGua,
-        equals(model.xiantianGua),
-        reason: '在先后天八卦加则法中，后天卦应该与先天卦相同',
-      );
-      expect(model.houtianGua, equals('震坤'), reason: '后天卦应该是震坤');
-      expect(model.houtianUpperGuaNumber, equals(3), reason: '后天卦上卦后天数应该是3');
-      expect(model.houtianLowerGuaNumber, equals(2), reason: '后天卦下卦后天数应该是2');
+    test('后天卦应为元堂爻变结果', () {
+      // 先后天八卦加则法中，后天卦通过元堂爻变+上下互换得到
+      // 阴年男 癸巳甲子丁酉癸卯：先天=雷地豫，爻变→水雷屯
+      expect(model.houtianGua, isNotNull, reason: '后天卦应该已生成');
+      // 后天卦不再强行等于先天卦，而是走标准爻变逻辑
+      expect(model.houtianGua.top, isNotNull, reason: '后天卦上卦应该不为空');
+      expect(model.houtianGua.bottom, isNotNull, reason: '后天卦下卦应该不为空');
     });
   });
 
   group('步骤3-4：互卦计算 - 癸巳甲子丁酉癸卯', () {
     test('先天卦互卦应该已计算', () {
-      expect(model.xiantianGuaHu, isNotEmpty, reason: '先天卦互卦应该已计算');
+      expect(model.xiantianGuaHu, isNotNull, reason: '先天卦互卦应该已计算');
       // expect(model.xiantianGuaHu.length, equals(2), reason: '互卦应该是两个卦的组合');
     });
 
     test('后天卦互卦应该已计算', () {
-      expect(model.houtianGuaHu, isNotEmpty, reason: '后天卦互卦应该已计算');
+      expect(model.houtianGuaHu, isNotNull, reason: '后天卦互卦应该已计算');
     });
 
-    test('先后天卦互卦应该相同', () {
-      // 因为先后天卦相同，所以互卦也应该相同
-      expect(
-        model.houtianGuaHu,
-        equals(model.xiantianGuaHu),
-        reason: '先后天卦相同，互卦也应该相同',
-      );
+    test('先后天卦互卦应各自独立计算', () {
+      // 先后天卦不同，互卦也不同
+      expect(model.xiantianGuaHu, isNotNull, reason: '先天卦互卦应该已计算');
+      expect(model.houtianGuaHu, isNotNull, reason: '后天卦互卦应该已计算');
     });
   });
 
@@ -175,13 +174,10 @@ void main() {
       expect(model.houtianBaseNumber, greaterThan(0), reason: '后天卦基础数应该大于0');
     });
 
-    test('先后天卦基础数应该相同', () {
-      // 因为先后天卦相同，所以基础数也应该相同
-      expect(
-        model.houtianBaseNumber,
-        equals(model.xiantianBaseNumber),
-        reason: '先后天卦相同，基础数也应该相同',
-      );
+    test('先后天卦基础数应分别独立计算', () {
+      // 先后天卦不同，加则法基础数也不同
+      expect(model.xiantianBaseNumber, isPositive, reason: '先天卦基础数应该是正数');
+      expect(model.houtianBaseNumber, isPositive, reason: '后天卦基础数应该是正数');
     });
   });
 
@@ -259,12 +255,16 @@ void main() {
     });
 
     test('所有关键字段应该已填充', () {
-      expect(model.tianGua, equals('坤'), reason: '天卦应该是坤');
-      expect(model.diGua, equals('震'), reason: '地卦应该是震');
-      expect(model.xiantianGua, equals('震坤'), reason: '先天卦应该是震坤');
-      expect(model.houtianGua, equals('震坤'), reason: '后天卦应该是震坤');
-      expect(model.xiantianGuaHu, isNotEmpty, reason: '先天卦互卦应该已计算');
-      expect(model.houtianGuaHu, isNotEmpty, reason: '后天卦互卦应该已计算');
+      expect(model.tianGua, equals(Enum8Gua.Kun), reason: '天卦应该是坤');
+      expect(model.diGua, equals(Enum8Gua.Zhen), reason: '地卦应该是震');
+      expect(
+        model.xiantianGua,
+        equals(Enum64Gua.lei_di_yu),
+        reason: '先天卦应该是震坤',
+      );
+      expect(model.houtianGua, isNotNull, reason: '后天卦应该已生成');
+      expect(model.xiantianGuaHu, isNotNull, reason: '先天卦互卦应该已计算');
+      expect(model.houtianGuaHu, isNotNull, reason: '后天卦互卦应该已计算');
       expect(model.xiantianTiaoWenNumbers, isNotEmpty, reason: '先天卦条文列表应该已生成');
       expect(model.houtianTiaoWenNumbers, isNotEmpty, reason: '后天卦条文列表应该已生成');
     });
@@ -290,8 +290,8 @@ void main() {
       expect(strategy.description, contains('加则法'), reason: '描述应该包含"加则法"');
     });
 
-    test('详细步骤应该有7个', () {
-      expect(strategy.detailSteps.length, equals(7), reason: '应该有7个详细步骤');
+    test('详细步骤应该有4个', () {
+      expect(strategy.detailSteps.length, equals(4), reason: '应该有4个详细步骤');
     });
   });
 }

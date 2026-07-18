@@ -218,12 +218,12 @@ void main() {
       expect(mockRepository.lastQueryList, isNotNull);
 
       // 验证收集了多个条文编号
-      // 先天卦5个 + 后天卦5个 = 10个唯一条文编号（基础数不同则无重复）
+      // 先天卦5个 + 后天卦5个 = 10个唯一条文编号（先后天卦不同，无重叠）
       final queryList = mockRepository.lastQueryList!;
       expect(
         queryList.length,
         equals(10),
-        reason: '应该有10个唯一条文编号（先天卦5个 + 后天卦5个）',
+        reason: '应该有10个唯一条文编号（先天卦5个 + 后天卦5个，先后天卦不同无重叠）',
       );
     });
 

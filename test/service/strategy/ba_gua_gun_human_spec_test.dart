@@ -142,13 +142,13 @@ void main() {
         print('  先天洛书数(b): ${threeNums.xiantianLuoshu}');
         print('  后天洛书数(c): ${threeNums.houtianLuoshu}');
 
-        // 验证范围
-        expect(threeNums.xiantianShunxu, greaterThanOrEqualTo(1), reason: 'a应该>=1');
-        expect(threeNums.xiantianShunxu, lessThanOrEqualTo(8), reason: 'a应该<=8');
-        expect(threeNums.xiantianLuoshu, greaterThanOrEqualTo(1), reason: 'b应该>=1');
-        expect(threeNums.xiantianLuoshu, lessThanOrEqualTo(9), reason: 'b应该<=9');
-        expect(threeNums.houtianLuoshu, greaterThanOrEqualTo(1), reason: 'c应该>=1');
-        expect(threeNums.houtianLuoshu, lessThanOrEqualTo(9), reason: 'c应该<=9');
+        // 验证范围：三基数为上下卦数字拼接的两位数（非单数字 1-8）
+        expect(threeNums.xiantianShunxu, greaterThanOrEqualTo(11), reason: 'a 应为两位数');
+        expect(threeNums.xiantianShunxu, lessThanOrEqualTo(88), reason: 'a 应为两位数');
+        expect(threeNums.xiantianLuoshu, greaterThanOrEqualTo(11), reason: 'b 应为两位数');
+        expect(threeNums.xiantianLuoshu, lessThanOrEqualTo(99), reason: 'b 应为两位数');
+        expect(threeNums.houtianLuoshu, greaterThanOrEqualTo(11), reason: 'c 应为两位数');
+        expect(threeNums.houtianLuoshu, lessThanOrEqualTo(99), reason: 'c 应为两位数');
       }
     });
 

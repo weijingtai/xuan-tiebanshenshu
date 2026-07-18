@@ -865,10 +865,10 @@ class YuanTangBaseNumberModel extends BaseNumberModel {
   }
 
   /// 上卦显示文本（带后天数）
-  String get upperGuaDisplayText => '$upperGua($xiantianUpperGuaNumber)';
+  String get upperGuaDisplayText => '${upperGua.name}($xiantianUpperGuaNumber)';
 
   /// 下卦显示文本（带后天数）
-  String get lowerGuaDisplayText => '$lowerGua($xiantianLowerGuaNumber)';
+  String get lowerGuaDisplayText => '${lowerGua.name}($xiantianLowerGuaNumber)';
 
   /// 后天卦上卦显示文本
   String get houtianUpperGuaDisplayText {

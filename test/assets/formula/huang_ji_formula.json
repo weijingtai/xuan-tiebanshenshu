@@ -9,7 +9,7 @@
         "baseNumberDefinition": {
           "name": "元会基础数",
           "description": "年+月互合成数顺左旋取数",
-          "source": "yuanHui",
+          "source": "元会",
           "type": "predefined"
         },
         "formulas": []
@@ -20,7 +20,7 @@
         "baseNumberDefinition": {
           "name": "运世基础数",
           "description": "日+时互合成数逆右旋取数",
-          "source": "yunShi",
+          "source": "运世",
           "type": "predefined"
         },
         "formulas": []
@@ -45,13 +45,20 @@
                 "type": "singleNumber"
               }
             ],
-            "type": "derived"
+            "type": "derived",
+            "baseNumberDefinition": {
+              "name": "元会基础数",
+              "description": "年+月互合成数顺左旋取数",
+              "source": "元会",
+              "type": "predefined"
+            }
           },
           "type": "selectable"
         },
         "formulas": [
           {
             "name": "加月干百位数",
+            "description": "月干百位数",
             "parts": [
               {
                 "name": "月干(百位)",
@@ -65,6 +72,7 @@
           },
           {
             "name": "加月支百位数",
+            "description": "加月支百位数",
             "parts": [
               {
                 "name": "月支(百位)",
@@ -102,7 +110,8 @@
                 ],
                 "type": "compositeNumber"
               }
-            ]
+            ],
+            "description": "加月干支互数"
           },
           {
             "name": "加时干个位数",
@@ -115,7 +124,8 @@
                 "numberPlace": "个",
                 "type": "singleNumber"
               }
-            ]
+            ],
+            "description": "加时干个位数"
           },
           {
             "name": "加时支个位数",
@@ -128,7 +138,8 @@
                 "numberPlace": "个",
                 "type": "singleNumber"
               }
-            ]
+            ],
+            "description": "加时支个位数"
           },
           {
             "name": "加日干支互合数及时干个位数",
@@ -164,7 +175,8 @@
                 "numberPlace": "个",
                 "type": "singleNumber"
               }
-            ]
+            ],
+            "description": "加日干支互合数及时干个位数"
           },
           {
             "name": "加日干支互合数及时支个位数",
@@ -200,7 +212,8 @@
                 "numberPlace": "个",
                 "type": "singleNumber"
               }
-            ]
+            ],
+            "description": "加日干支互合数及时支个位数"
           },
           {
             "name": "加年支千位数",
@@ -213,7 +226,8 @@
                 "numberPlace": "千",
                 "type": "singleNumber"
               }
-            ]
+            ],
+            "description": "加年支千位数"
           }
         ]
       },
@@ -225,7 +239,13 @@
           "description": "直接使用运世基础数进行计算",
           "parentGroupId": "yunShiBase",
           "parts": [],
-          "type": "derived"
+          "type": "derived",
+          "baseNumberDefinition": {
+            "name": "运世基础数",
+            "description": "日+时互合成数逆右旋取数",
+            "source": "运世",
+            "type": "predefined"
+          }
         },
         "formulas": [
           {
@@ -254,7 +274,8 @@
                 ],
                 "type": "compositeNumber"
               }
-            ]
+            ],
+            "description": "加日干支互合数"
           },
           {
             "name": "加时干个位数",
@@ -267,7 +288,8 @@
                 "numberPlace": "个",
                 "type": "singleNumber"
               }
-            ]
+            ],
+            "description": "加时干个位数"
           },
           {
             "name": "加时支个位数",
@@ -280,7 +302,8 @@
                 "numberPlace": "个",
                 "type": "singleNumber"
               }
-            ]
+            ],
+            "description": "加时支个位数"
           },
           {
             "name": "加日干支互合数及时干个位数",
@@ -316,7 +339,8 @@
                 "numberPlace": "个",
                 "type": "singleNumber"
               }
-            ]
+            ],
+            "description": "加日干支互合数及时干个位数"
           },
           {
             "name": "加日干支互合数及时支个位数",
@@ -352,11 +376,13 @@
                 "numberPlace": "个",
                 "type": "singleNumber"
               }
-            ]
+            ],
+            "description": "加日干支互合数及时支个位数"
           }
         ]
       }
-    ]
+    ],
+    "description": ""
   },
   {
     "id": 2,
@@ -368,7 +394,7 @@
         "baseNumberDefinition": {
           "name": "元会基础数",
           "description": "年+月互合成数顺左旋取数",
-          "source": "yuanHui",
+          "source": "元会",
           "type": "predefined"
         },
         "formulas": []
@@ -379,7 +405,7 @@
         "baseNumberDefinition": {
           "name": "运世基础数",
           "description": "日+时互合成数逆右旋取数",
-          "source": "yunShi",
+          "source": "运世",
           "type": "predefined"
         },
         "formulas": []
@@ -404,13 +430,20 @@
                 "type": "singleNumber"
               }
             ],
-            "type": "derived"
+            "type": "derived",
+            "baseNumberDefinition": {
+              "name": "元会基础数",
+              "description": "年+月互合成数顺左旋取数",
+              "source": "元会",
+              "type": "predefined"
+            }
           },
           "type": "selectable"
         },
         "formulas": [
           {
             "name": "加月干百位数",
+            "description": "月干百位数",
             "parts": [
               {
                 "name": "月干(百位)",
@@ -433,7 +466,8 @@
                 "numberPlace": "十",
                 "type": "singleNumber"
               }
-            ]
+            ],
+            "description": "加日干十位数"
           },
           {
             "name": "加时干个位数",
@@ -446,7 +480,8 @@
                 "numberPlace": "个",
                 "type": "singleNumber"
               }
-            ]
+            ],
+            "description": "加时干个位数"
           },
           {
             "name": "加时支个位数",
@@ -459,7 +494,8 @@
                 "numberPlace": "个",
                 "type": "singleNumber"
               }
-            ]
+            ],
+            "description": "加时支个位数"
           }
         ]
       },
@@ -480,11 +516,18 @@
               "type": "singleNumber"
             }
           ],
-          "type": "derived"
+          "type": "derived",
+          "baseNumberDefinition": {
+            "name": "运世基础数",
+            "description": "日+时互合成数逆右旋取数",
+            "source": "运世",
+            "type": "predefined"
+          }
         },
         "formulas": [
           {
             "name": "加月干百位数",
+            "description": "月干百位数",
             "parts": [
               {
                 "name": "月干(百位)",
@@ -507,7 +550,8 @@
                 "numberPlace": "十",
                 "type": "singleNumber"
               }
-            ]
+            ],
+            "description": "加日干十位数"
           },
           {
             "name": "加时干个位数",
@@ -520,7 +564,8 @@
                 "numberPlace": "个",
                 "type": "singleNumber"
               }
-            ]
+            ],
+            "description": "加时干个位数"
           },
           {
             "name": "加日干个位数",
@@ -533,11 +578,13 @@
                 "numberPlace": "个",
                 "type": "singleNumber"
               }
-            ]
+            ],
+            "description": "加日干个位数"
           }
         ]
       }
-    ]
+    ],
+    "description": ""
   },
   {
     "id": 3,
@@ -549,7 +596,7 @@
         "baseNumberDefinition": {
           "name": "元会基础数",
           "description": "年+月互合成数顺左旋取数",
-          "source": "yuanHui",
+          "source": "元会",
           "type": "predefined"
         },
         "formulas": []
@@ -560,7 +607,7 @@
         "baseNumberDefinition": {
           "name": "运世基础数",
           "description": "日+时互合成数逆右旋取数",
-          "source": "yunShi",
+          "source": "运世",
           "type": "predefined"
         },
         "formulas": []
@@ -585,13 +632,20 @@
                 "type": "singleNumber"
               }
             ],
-            "type": "derived"
+            "type": "derived",
+            "baseNumberDefinition": {
+              "name": "元会基础数",
+              "description": "年+月互合成数顺左旋取数",
+              "source": "元会",
+              "type": "predefined"
+            }
           },
           "type": "selectable"
         },
         "formulas": [
           {
             "name": "加月干百位数",
+            "description": "月干百位数",
             "parts": [
               {
                 "name": "月干(百位)",
@@ -605,6 +659,7 @@
           },
           {
             "name": "加月支百位数",
+            "description": "加月支百位数",
             "parts": [
               {
                 "name": "月支(百位)",
@@ -650,7 +705,28 @@
               "type": "compositeNumber"
             }
           ],
-          "type": "derived"
+          "type": "derived",
+          "baseNumberDefinition": {
+            "name": "基础数一",
+            "description": "次条文数为初刻数，如果符合则将此条文数作为基础数计算",
+            "initialCandidateFormula": {
+              "name": "初刻数",
+              "description": "元会基础数 + 年干太玄数(千位)",
+              "parentGroupId": "yuanHuiBase",
+              "parts": [
+                {
+                  "name": "年干(千位)",
+                  "description": "年干太玄数，置于千位",
+                  "fourZhuGanZhiType": "gan",
+                  "fourZhuName": "year",
+                  "numberPlace": "千",
+                  "type": "singleNumber"
+                }
+              ],
+              "type": "derived"
+            },
+            "type": "selectable"
+          }
         },
         "formulas": [
           {
@@ -664,7 +740,8 @@
                 "numberPlace": "个",
                 "type": "singleNumber"
               }
-            ]
+            ],
+            "description": "加时干个位数"
           },
           {
             "name": "加时支个位数",
@@ -677,7 +754,8 @@
                 "numberPlace": "个",
                 "type": "singleNumber"
               }
-            ]
+            ],
+            "description": "加时支个位数"
           }
         ]
       },
@@ -698,11 +776,18 @@
               "type": "singleNumber"
             }
           ],
-          "type": "derived"
+          "type": "derived",
+          "baseNumberDefinition": {
+            "name": "运世基础数",
+            "description": "日+时互合成数逆右旋取数",
+            "source": "运世",
+            "type": "predefined"
+          }
         },
         "formulas": [
           {
             "name": "加月干百位数",
+            "description": "月干百位数",
             "parts": [
               {
                 "name": "月干(百位)",
@@ -716,6 +801,7 @@
           },
           {
             "name": "加月支百位数",
+            "description": "加月支百位数",
             "parts": [
               {
                 "name": "月支(百位)",
@@ -761,7 +847,29 @@
               "type": "compositeNumber"
             }
           ],
-          "type": "derived"
+          "type": "derived",
+          "baseNumberDefinition": {
+            "name": "基础数三",
+            "description": "运世基本数 + 年干太玄千位",
+            "parentGroupId": "yunShiBase",
+            "parts": [
+              {
+                "name": "年干(千位)",
+                "description": "年干太玄数，置于千位",
+                "fourZhuGanZhiType": "gan",
+                "fourZhuName": "year",
+                "numberPlace": "千",
+                "type": "singleNumber"
+              }
+            ],
+            "type": "derived",
+            "baseNumberDefinition": {
+              "name": "运世基础数",
+              "description": "日+时互合成数逆右旋取数",
+              "source": "运世",
+              "type": "predefined"
+            }
+          }
         },
         "formulas": [
           {
@@ -775,7 +883,8 @@
                 "numberPlace": "个",
                 "type": "singleNumber"
               }
-            ]
+            ],
+            "description": "加时干个位数"
           },
           {
             "name": "加时支个位数",
@@ -788,10 +897,12 @@
                 "numberPlace": "个",
                 "type": "singleNumber"
               }
-            ]
+            ],
+            "description": "加时支个位数"
           }
         ]
       }
-    ]
+    ],
+    "description": ""
   }
 ]

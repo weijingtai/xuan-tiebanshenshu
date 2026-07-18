@@ -114,8 +114,8 @@ void main() {
       for (int i = 0; i < model.xiantianNumbers.length; i++) {
         final xiantianNum = model.xiantianNumbers[i];
         print('第${i + 1}卦先天数: $xiantianNum');
-        expect(xiantianNum, greaterThanOrEqualTo(1), reason: '先天数应该>=1');
-        expect(xiantianNum, lessThanOrEqualTo(8), reason: '先天数应该<=8');
+        expect(xiantianNum, greaterThanOrEqualTo(11), reason: '先天数应为两位数（上卦十位+下卦个位）');
+        expect(xiantianNum, lessThanOrEqualTo(88), reason: '先天数应为两位数');
       }
     });
   });
@@ -130,7 +130,8 @@ void main() {
       for (int i = 0; i < model.finalTiaowenList.length; i++) {
         final tiaowen = model.finalTiaowenList[i];
         expect(tiaowen, greaterThan(0), reason: '条文编号应该>0');
-        expect(tiaowen, lessThan(10000), reason: '条文编号应该<10000');
+        // 注：四门法条文由先天数(两位数)×47 + k×秘数 - 7 生成，上限不做硬约束
+        expect(tiaowen, greaterThan(1000), reason: '条文编号至少1200起');
       }
 
       print('前10个条文: ${model.finalTiaowenList.take(10).toList()}');

@@ -6,10 +6,12 @@ library;
 import 'package:metaphysics_core/enums.dart';
 import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:tiebanshenshu/enums.dart';
+import 'package:xuan_gua_core/xuan_gua_core.dart';
 import 'package:tiebanshenshu/features/yuan_tang_gua/yuan_tang_calculator.dart';
 import 'package:tiebanshenshu/features/yuan_tang_gua/yuan_tang_info.dart';
 import 'package:tiebanshenshu/features/yuan_tang_gua/yuan_tang_info_ext.dart';
 
+import '../../constant/constants.dart' as constants;
 import 'package:tiebanshenshu/domain/models/base_number_model.dart';
 import 'package:tiebanshenshu/domain/models/base_number_model_result.dart';
 import 'package:tiebanshenshu/domain/models/xian_houtian_gua_base_number_model.dart';
@@ -103,8 +105,8 @@ class XianHoutianJiaZeStrategy
   @override
   List<String> get detailSteps => [
     "1. 获取元堂卦信息（包含天地卦、先天卦、后天卦、元堂爻等）",
-    "2. 先天卦加则法：使用加则法计算基础数",
-    "3. 后天卦加则法：使用加则法计算基础数",
+    "2. 先天卦加则法：先天卦直接进行八卦加则运算，得到基础数 3387",
+    "3. 后天卦加则法：先天卦经元堂爻变、上下互换得后天卦，再进行八卦加则运算",
     "4. 条文扩展：先天卦递增96四次[0,96,192,288,384]，后天卦递减96四次[0,-96,-192,-288,-384]",
   ];
 
@@ -124,7 +126,12 @@ class XianHoutianJiaZeStrategy
     final xiantianGuaHu = yuanTangInfo.xianTanGua.hu;
 
     // 步骤3：计算后天卦互卦
-    final houtianGuaHu = yuanTangInfo.houTianGua.hu;
+    final houtianGuaHu =
+        PureSixYaoGua.by8Gua(houtianGua.top, houtianGua.bottom).hu;
+    final houtianUpperGuaNumber =
+        constants.houGuaNumberMapper[houtianGua.top]!;
+    final houtianLowerGuaNumber =
+        constants.houGuaNumberMapper[houtianGua.bottom]!;
 
     // 步骤4：先天卦加则法计算基础数
     // ignore: deprecated_member_use_from_same_package
@@ -213,8 +220,8 @@ class XianHoutianJiaZeStrategy
       houtianGua: houtianGua,
       xiantianUpperGuaNumber: tianDiGuaData.xiantianUpperGuaNumber,
       xiantianLowerGuaNumber: tianDiGuaData.xiantianLowerGuaNumber,
-      houtianUpperGuaNumber: tianDiGuaData.houtianUpperGuaNumber,
-      houtianLowerGuaNumber: tianDiGuaData.houtianLowerGuaNumber,
+      houtianUpperGuaNumber: houtianUpperGuaNumber,
+      houtianLowerGuaNumber: houtianLowerGuaNumber,
       // 步骤3: 互卦
       xiantianGuaHu: xiantianGuaHu,
       houtianGuaHu: houtianGuaHu,

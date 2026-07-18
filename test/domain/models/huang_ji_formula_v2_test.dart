@@ -225,7 +225,9 @@ void main() {
       expect(dataResult.name, equals("派生基础数"));
       expect(dataResult.parentGroupId, equals("base_one"));
       expect(dataResult.calculationParts.length, equals(1));
-      expect(dataResult.number, equals(testYuanHuiYunShi.monthGanNumber * 100));
+      expect(dataResult.number,
+          equals(testYuanHuiYunShi.yuanHuiMergeNumber.number +
+              testYuanHuiYunShi.monthGanNumber * 100));
     });
   });
 

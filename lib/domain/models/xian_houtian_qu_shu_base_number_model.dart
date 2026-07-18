@@ -303,10 +303,10 @@ class XianHoutianQuShuBaseNumberModel extends BaseNumberModel {
   String get timeZhuDisplayText => eightChars.time.name;
 
   /// 获取上卦显示文本（带后天数）
-  String get upperGuaDisplayText => '$upperGua($xiantianUpperGuaNumber)';
+  String get upperGuaDisplayText => '${upperGua.name}($xiantianUpperGuaNumber)';
 
   /// 获取下卦显示文本（带后天数）
-  String get lowerGuaDisplayText => '$lowerGua($xiantianLowerGuaNumber)';
+  String get lowerGuaDisplayText => '${lowerGua.name}($xiantianLowerGuaNumber)';
 
   /// 获取天地卦计算公式
   String get tianDiGuaFormula =>

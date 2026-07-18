@@ -102,6 +102,12 @@ class TaiXuanFourZhuStrategy
         results.add(result);
       }
 
+      final isYangYear = params.eightChars.year.gan.isYang;
+      final expandedTiaoWenNumbers = {
+        for (final result in results)
+          result.pillarName: result.expandedTiaoWenNumbers,
+      };
+
       return BaseNumberModelResult.success(
         algorithmName: name,
         algorithmDescription: description,
@@ -110,7 +116,19 @@ class TaiXuanFourZhuStrategy
         sourceData: {
           'naJiaMethod': params.naJiaMethod.name,
           'eightChars': params.eightChars.toString(),
+          'isYangYear': isYangYear,
           'pillarCount': 4,
+          'baseNumbers': results.map((result) => result.toMap()).toList(),
+          'baseNumberValues': results
+              .map((result) => result.baseNumber)
+              .toList(),
+          'expandedTiaoWenNumbers': expandedTiaoWenNumbers,
+          'expandedTiaoWenCount': expandedTiaoWenNumbers.values.fold<int>(
+            0,
+            (count, numbers) => count + numbers.length,
+          ),
+          'expandedTiaoWenExplanation':
+              '基础四数只展示，不计入32条文；每柱基础数分别递加96四次、递减96四次，四组各8条，共32条文。',
         },
       );
     } catch (e, stackTrace) {
@@ -241,7 +259,7 @@ class TaiXuanFourZhuStrategy
 
     return TaiXuanBaseNumberModel(
       baseNumber: baseNumber,
-      name: '$pillarName-年干阴阳纳甲',
+      name: '$pillarName太玄数',
       description: '$pillarName${ganzhi.name}年干阴阳纳甲计算',
       source: source,
       pillarName: pillarName,

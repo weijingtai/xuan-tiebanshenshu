@@ -7,7 +7,11 @@ import 'package:tiebanshenshu/service/strategy/xian_houtian_qu_shu_strategy.dart
 
 void main() {
   setUpAll(() {
-    tz.initializeTimeZones();
+    try {
+      tz.initializeTimeZones();
+    } catch (_) {
+      // Timezone already initialized by another test
+    }
   });
 
   group('Debug XianHoutianQuShuStrategy null error', () {

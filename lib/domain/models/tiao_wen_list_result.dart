@@ -118,10 +118,10 @@ class TiaoWenListResult {
   @override
   int get hashCode {
     return Object.hash(
-      tiaoWenNumbers,
+      Object.hashAll(tiaoWenNumbers),
       state,
       calculationMethod,
-      sourceData,
+      Object.hashAll(sourceData.entries.map((e) => Object.hash(e.key, e.value))),
       errorMessage,
     );
   }

@@ -100,9 +100,9 @@ class DayGanZhiGuaStrategy
   TiaoWenCalculationConfig get defaultTiaoWenCalculationConfig {
     return GenericTiaoWenCalculationConfig.customList(
       name: "日柱变卦标准配置",
-      description: "基础数±1000：±1000",
-      customList: [0, 1000],
-      withSub: true,
+      description: "基础数±96×4（含基础数）：9条条文",
+      customList: [-384, -288, -192, -96, 0, 96, 192, 288, 384],
+      withSub: false,
     );
   }
 
@@ -128,9 +128,9 @@ class DayGanZhiGuaStrategy
     return [
       GenericTiaoWenCalculationConfig.customList(
         name: "日柱变卦标准配置",
-        description: "基础数±1000：±1000",
-        customList: [0, 1000],
-        withSub: true,
+        description: "基础数±96×4（含基础数）：9条条文",
+        customList: [-384, -288, -192, -96, 0, 96, 192, 288, 384],
+        withSub: false,
       ),
       GenericTiaoWenCalculationConfig.customList(
         name: "日柱变卦简化配置",

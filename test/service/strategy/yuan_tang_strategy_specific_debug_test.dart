@@ -3,6 +3,7 @@ import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:tiebanshenshu/service/strategy/yuan_tang_strategy.dart';
 import 'package:tiebanshenshu/domain/models/yuan_tang_base_number_model.dart';
+import 'package:xuan_gua_core/xuan_gua_core.dart';
 
 /// 元堂卦取数法单元测试 - 己酉丙子辛巳戊子
 ///
@@ -85,13 +86,13 @@ void main() {
     test('天数应该=3，天卦=震', () {
       // 天数：28 % 25 = 3
       expect(model.tianGuaNum, equals(3), reason: '奇数和28对25取模应该得3');
-      expect(model.tianGua, equals('震'), reason: '天数3对应震卦');
+      expect(model.tianGua, equals(Enum8Gua.Zhen), reason: '天数3对应震卦');
     });
 
     test('地数应该=3，地卦=震', () {
       // 地数：30 % 30 = 3（特殊处理）
       expect(model.diGuaNum, equals(3), reason: '偶数和30对30取模特殊处理为3');
-      expect(model.diGua, equals('震'), reason: '地数3对应震卦');
+      expect(model.diGua, equals(Enum8Gua.Zhen), reason: '地数3对应震卦');
     });
 
     test('应该未使用三元五宫', () {
@@ -102,7 +103,7 @@ void main() {
   group('步骤2：生成上下卦（先天卦） - 己酉丙子辛巳戊子', () {
     test('应该判断己年为阴年', () {
       // 己为阴干
-      expect(model.yearYinYang, equals('阴'), reason: '己为阴干，应该判断为阴年');
+      expect(model.yearYinYang, equals(YinYang.YIN), reason: '己为阴干，应该判断为阴年');
     });
 
     test('阴年男性应该地卦在上、天卦在下', () {
@@ -112,9 +113,13 @@ void main() {
     });
 
     test('先天卦应该是震震（震为雷）', () {
-      expect(model.xiantianGua, equals('震震'), reason: '天卦震+地卦震，阴年男性组合为震震');
-      expect(model.upperGua, equals('震'), reason: '上卦应该是震');
-      expect(model.lowerGua, equals('震'), reason: '下卦应该是震');
+      expect(
+        model.xiantianGua,
+        equals(Enum64Gua.zhen_wei_lei),
+        reason: '天卦震+地卦震，阴年男性组合为震震',
+      );
+      expect(model.upperGua, equals(Enum8Gua.Zhen), reason: '上卦应该是震');
+      expect(model.lowerGua, equals(Enum8Gua.Zhen), reason: '下卦应该是震');
     });
 
     test('上下卦后天数应该都是3', () {
@@ -234,16 +239,24 @@ void main() {
   group('步骤4：生成后天卦 - 己酉丙子辛巳戊子', () {
     test('后天卦应该是坤震（地雷复）', () {
       // 初爻（索引0）阳爻爻变：震(001001) -> 变后卦，上下卦互换
-      expect(model.houtianGua, equals('坤震'), reason: '初爻爻变且上下卦互换后应该得到坤震（地雷复）');
+      expect(
+        model.houtianGua,
+        equals(Enum64Gua.di_lei_fu),
+        reason: '初爻爻变且上下卦互换后应该得到坤震（地雷复）',
+      );
     });
 
     test('后天卦上卦应该是坤', () {
-      expect(model.houtianGua.top, equals('坤'), reason: '后天卦上卦应该是坤');
+      expect(model.houtianGua.top, equals(Enum8Gua.Kun), reason: '后天卦上卦应该是坤');
       expect(model.houtianUpperGuaNumber, equals(2), reason: '坤卦的后天数是2');
     });
 
     test('后天卦下卦应该是震', () {
-      expect(model.houtianGua.bottom, equals('震'), reason: '后天卦下卦应该是震');
+      expect(
+        model.houtianGua.bottom,
+        equals(Enum8Gua.Zhen),
+        reason: '后天卦下卦应该是震',
+      );
       expect(model.houtianLowerGuaNumber, equals(3), reason: '震卦的后天数是3');
     });
 
@@ -337,12 +350,20 @@ void main() {
     });
 
     test('所有关键字段应该已填充', () {
-      expect(model.tianGua, equals('震'), reason: '天卦应该是震');
-      expect(model.diGua, equals('震'), reason: '地卦应该是震');
-      expect(model.xiantianGua, equals('震震'), reason: '先天卦应该是震震');
-      expect(model.houtianGua, equals('坤震'), reason: '后天卦应该是坤震');
-      expect(model.xiantianGuaHu, equals('坎艮'), reason: '先天卦互卦应该是坎艮');
-      expect(model.houtianGuaHu, isNotEmpty, reason: '后天卦互卦应该已计算');
+      expect(model.tianGua, equals(Enum8Gua.Zhen), reason: '天卦应该是震');
+      expect(model.diGua, equals(Enum8Gua.Zhen), reason: '地卦应该是震');
+      expect(
+        model.xiantianGua,
+        equals(Enum64Gua.zhen_wei_lei),
+        reason: '先天卦应该是震震',
+      );
+      expect(model.houtianGua, equals(Enum64Gua.di_lei_fu), reason: '后天卦应该是坤震');
+      expect(
+        model.xiantianGuaHu,
+        equals(Enum64Gua.shui_shan_jian),
+        reason: '先天卦互卦应该是坎艮',
+      );
+      expect(model.houtianGuaHu, isNotNull, reason: '后天卦互卦应该已计算');
     });
 
     test('便捷getter应该正常工作', () {
@@ -373,7 +394,7 @@ void main() {
         '偶数总和': model.evenNumTotal == 30,
         '天数': model.tianGuaNum == 3,
         '地数': model.diGuaNum == 3,
-        '先天卦': model.xiantianGua == '震震',
+        '先天卦': model.xiantianGua == Enum64Gua.zhen_wei_lei,
         '时辰阴阳': model.timeYinYang == '阳',
         '元堂爻位置': model.yuantangYaoIndex == 0,
         '元堂爻标签': model.yuantangYaoLabel == '初',
@@ -381,7 +402,7 @@ void main() {
             model.zhiList[0].length == 2 &&
             model.zhiList[0].contains('子') &&
             model.zhiList[0].contains('寅'),
-        '后天卦': model.houtianGua == '坤震',
+        '后天卦': model.houtianGua == Enum64Gua.di_lei_fu,
         '先天卦加则数（爻序法）': model.tiaowenNumberJiazeXiantiangua == 3387,
         '后天卦加则数（爻序法）': model.tiaowenNumberJiazeHoutiangua == 2477,
       };

@@ -263,6 +263,21 @@ class TaiXuanBaseNumberModel extends BaseNumberModel {
     return yaoDetails.where((yao) => !yao.isFiltered).toList();
   }
 
+  /// 基础数向上递加96四次得到的条文编号
+  List<int> get increment96TiaoWenNumbers {
+    return List.generate(4, (index) => baseNumber + 96 * (index + 1));
+  }
+
+  /// 基础数向下递减96四次得到的条文编号
+  List<int> get decrement96TiaoWenNumbers {
+    return List.generate(4, (index) => baseNumber - 96 * (index + 1));
+  }
+
+  /// 每柱基础数对应的8条条文编号；基础数本身只展示，不计入此列表
+  List<int> get expandedTiaoWenNumbers {
+    return [...increment96TiaoWenNumbers, ...decrement96TiaoWenNumbers];
+  }
+
   /// 复制并更新太玄基础数信息
   @override
   TaiXuanBaseNumberModel copyWith({
@@ -317,6 +332,9 @@ class TaiXuanBaseNumberModel extends BaseNumberModel {
       'upperGuaSum': upperGuaSum,
       'lowerGuaSum': lowerGuaSum,
       'formula': formula,
+      'increment96TiaoWenNumbers': increment96TiaoWenNumbers,
+      'decrement96TiaoWenNumbers': decrement96TiaoWenNumbers,
+      'expandedTiaoWenNumbers': expandedTiaoWenNumbers,
       'yaoDetails': yaoDetails.map((d) => d.toMap()).toList(),
       'filteredYaoCount': filteredYaos.length,
       'activeYaoCount': activeYaos.length,

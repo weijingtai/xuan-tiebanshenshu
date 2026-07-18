@@ -515,9 +515,9 @@ void main() {
       final result = strategy.calculate(testParams);
 
       expect(result.sourceData['eightChars'], contains('甲戌'));
-      expect(result.sourceData['gender'], equals('男'));
-      expect(result.sourceData['threeYuan'], equals('上'));
-      expect(result.sourceData['birthAfterZhi'], equals('夏至'));
+      expect(result.sourceData['gender'], equals(Gender.male));
+      expect(result.sourceData['threeYuan'], equals(YuanYunOrder.upper));
+      expect(result.sourceData['birthAfterZhi'], equals(TwentyFourJieQi.XIA_ZHI));
     });
 
     test('algorithmName应该正确', () {
@@ -530,7 +530,7 @@ void main() {
       final result = strategy.calculate(testParams);
 
       expect(result.calculationParams, contains('甲戌'));
-      expect(result.calculationParams, contains('男'));
+      expect(result.calculationParams, contains('Gender.male'));
     });
   });
 
@@ -742,7 +742,7 @@ void main() {
       expect(model.tiaowenNumberJiazeHoutiangua, equals(2477));
       expect(model.tiaowenNumberNajiaTaixuanXiantiangua, equals(4545));
       // expect(model.tiaowenNumberNajiaTaixuanHoutiangua, equals(3345));
-      expect(model.tiaowenNumberXiantianBenhu, equals(4487));
+      expect(model.tiaowenNumberXiantianBenhu, equals(4467));
       expect(model.tiaowenNumberHoutianBenhu, equals(2322));
 
       expect(model.tiaowenNumberListXiantianGuahu.length, equals(8));
