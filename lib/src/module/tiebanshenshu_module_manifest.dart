@@ -1,7 +1,9 @@
+import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 
 import '../../infrastructure/di/strategy_providers.dart';
+import '../../presentation/viewmodels/theme_view_model.dart';
 
 final class TiebanshenshuModuleManifest {
   const TiebanshenshuModuleManifest._();
@@ -12,6 +14,9 @@ final class TiebanshenshuModuleManifest {
   static const String minShellVersion = '0.1.0-a3';
 
   static List<SingleChildWidget> createProviders(TiebanRecordRepository repo) {
-    return StrategyProviders.getProvidersWithRealRepo(repo);
+    return [
+      ChangeNotifierProvider(create: (_) => ThemeViewModel()),
+      ...StrategyProviders.getProvidersWithRealRepo(repo),
+    ];
   }
 }
