@@ -28,54 +28,16 @@ class HuangJiFormulaManager {
   /// 是否已初始化
   bool _isInitialized = false;
 
-  /// 可用的公式文件列表
-  static const List<String> _formulaFiles = [
-    'packages/persistence_assets/lib/tiebanshenshu/assets/formulas/huang_ji_1_formula.json',
-    'packages/persistence_assets/lib/tiebanshenshu/assets/formulas/huang_ji_2_formula.json',
-    'packages/persistence_assets/lib/tiebanshenshu/assets/formulas/huang_ji_3_formula.json',
-  ];
+  /// 可用的公式文件列表（公式 JSON 尚未创建，预留接口）
+  static const List<String> _formulaFiles = [];
 
   /// 初始化管理器，加载所有可用的公式
   ///
   /// 返回加载成功的公式数量
   Future<int> initialize() async {
-    if (_isInitialized) {
-      if (kDebugMode) {
-        print('🔄 HuangJiFormulaManager: 已经初始化，跳过重复初始化');
-      }
-      return _formulaCache.length;
-    }
-
-    if (kDebugMode) {
-      print('🚀 HuangJiFormulaManager: 开始初始化');
-    }
-
-    int loadedCount = 0;
-
-    for (final filePath in _formulaFiles) {
-      try {
-        final formula = await _loadFormulaFromAsset(filePath);
-        if (formula != null) {
-          _formulaCache[formula.id] = formula;
-          _nameToIdMap[formula.name] = formula.id;
-          loadedCount++;
-
-          if (kDebugMode) {
-            print('✅ 加载公式: ${formula.name} (ID: ${formula.id})');
-          }
-        }
-      } catch (e) {
-        // 公式文件尚未创建（未来功能），静默跳过
-      }
-    }
-
+    if (_isInitialized) return _formulaCache.length;
     _isInitialized = true;
-
-    if (kDebugMode) {
-      print('🎉 HuangJiFormulaManager: 初始化完成，共加载 $loadedCount 个公式');
-    }
-
-    return loadedCount;
+    return 0;
   }
 
   /// 从资源文件加载公式
