@@ -69,7 +69,6 @@ import '../../features/kao_ke/kao_ke_calculation_strategy_impl.dart';
 import '../../features/kao_ke/kao_ke_use_case.dart';
 import '../../features/kao_ke/kao_ke_view_model.dart';
 // 邵子数 Repository
-import '../../shaozishu/repository/data_source/tiao_wen_local_data_source.dart';
 import '../../shaozishu/repository/data_source/shaozi_txt_data_source.dart';
 import '../../shaozishu/repository/data_source/tiao_wen_remote_data_source.dart';
 import '../../shaozishu/repository/tiao_wen_repository_impl.dart';
@@ -113,23 +112,26 @@ class StrategyProviders {
   /// 包含Repository、Strategy、UseCase和ViewModel的完整依赖链
   static List<SingleChildWidget> get providers => getProviders(FakeTiebanRecordRepository());
 
-  static List<SingleChildWidget> getProviders(TiebanRecordRepository recordRepository) => [
+  static List<SingleChildWidget> getProviders(TiebanRecordRepository recordRepository, {TiaoWenRepository? tiaoWenRepository}) => [
     Provider<TiebanRecordRepository>(create: (_) => recordRepository),
     // ============================================================
     // 邵子数 Repository 层（DataSource → RepositoryImpl）
     // ============================================================
-    Provider<TiaoWenLocalDataSource>(
-      create: (_) => ShaoziTxtDataSource(),
-    ),
-    Provider<TiaoWenRemoteDataSource>(
-      create: (_) => const StubTiaoWenRemoteDataSource(),
-    ),
-    Provider<TiaoWenRepository>(
-      create: (context) => TiaoWenRepositoryImpl(
-        localDataSource: context.read<TiaoWenLocalDataSource>(),
-        remoteDataSource: context.read<TiaoWenRemoteDataSource>(),
+    if (tiaoWenRepository == null) ...[
+      Provider<TiaoWenLocalDataSource>(
+        create: (_) => ShaoziTxtDataSource(),
       ),
-    ),
+      Provider<TiaoWenRemoteDataSource>(
+        create: (_) => const StubTiaoWenRemoteDataSource(),
+      ),
+      Provider<TiaoWenRepository>(
+        create: (context) => TiaoWenRepositoryImpl(
+          localDataSource: context.read<TiaoWenLocalDataSource>(),
+          remoteDataSource: context.read<TiaoWenRemoteDataSource>(),
+        ),
+      ),
+    ] else
+      Provider<TiaoWenRepository>.value(value: tiaoWenRepository),
 
     // —— 邵子数 DI（SessionManager → Strategy → UseCase → ViewModel）——
     Provider<ShaoZiShuSessionManager>(
@@ -437,6 +439,6 @@ class StrategyProviders {
     ),
   ];
 
-  static List<SingleChildWidget> getProvidersWithRealRepo(TiebanRecordRepository recordRepository) =>
-      getProviders(recordRepository);
+  static List<SingleChildWidget> getProvidersWithRealRepo(TiebanRecordRepository recordRepository, {TiaoWenRepository? forwardedTiaoWenRepository}) =>
+      getProviders(recordRepository, tiaoWenRepository: forwardedTiaoWenRepository);
 }

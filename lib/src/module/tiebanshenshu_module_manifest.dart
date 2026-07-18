@@ -13,10 +13,14 @@ final class TiebanshenshuModuleManifest {
   static const String version = '0.1.0';
   static const String minShellVersion = '0.1.0-a3';
 
-  static List<SingleChildWidget> createProviders(TiebanRecordRepository repo) {
+  static List<SingleChildWidget> createProviders(
+      TiebanRecordRepository repo, {
+      TiaoWenRepository? forwardedTiaoWenRepository,
+    }) {
     return [
       ChangeNotifierProvider(create: (_) => ThemeViewModel()),
-      ...StrategyProviders.getProvidersWithRealRepo(repo),
+      ...StrategyProviders.getProvidersWithRealRepo(repo,
+          forwardedTiaoWenRepository: forwardedTiaoWenRepository),
     ];
   }
 }

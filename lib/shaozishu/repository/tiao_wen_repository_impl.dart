@@ -16,7 +16,6 @@ import 'dart:async';
 import 'package:metaphysics_core/enums.dart';
 import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 
-import 'data_source/tiao_wen_local_data_source.dart';
 import 'data_source/tiao_wen_remote_data_source.dart';
 
 /// 条文 Repository 实现
