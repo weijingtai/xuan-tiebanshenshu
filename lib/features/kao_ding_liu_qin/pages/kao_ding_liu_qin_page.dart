@@ -1,3 +1,4 @@
+import 'package:tiebanshenshu/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:metaphysics_core/models/eight_chars.dart';
@@ -91,7 +92,7 @@ class _KaoDingLiuQinPageState extends State<KaoDingLiuQinPage> {
                 children: [
                   const Icon(Icons.error_outline, size: 48, color: Colors.red),
                   const SizedBox(height: 16),
-                  Text(viewModel.errorMessage ?? '计算失败'),
+                  Text(viewModel.errorMessage ?? AppLocalizations.of(context)!.calculationFailed),
                   const SizedBox(height: 16),
                   ElevatedButton(
                     onPressed: _calculateAll,
@@ -400,7 +401,7 @@ class _KaoDingLiuQinPageState extends State<KaoDingLiuQinPage> {
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(vertical: 16),
               ),
-              child: const Text('确认选择，进行后续计算'),
+              child: Text(AppLocalizations.of(context)!.selectAndCalculate),
             ),
           ),
         ],
@@ -419,7 +420,7 @@ class _KaoDingLiuQinPageState extends State<KaoDingLiuQinPage> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('选择完成'),
+        title: Text(AppLocalizations.of(context)!.selectComplete),
         content: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -486,7 +487,7 @@ class _KaoDingLiuQinPageState extends State<KaoDingLiuQinPage> {
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: const Text('确定'),
+            child: Text(AppLocalizations.of(context)!.confirm),
           ),
         ],
       ),
@@ -499,20 +500,20 @@ class _KaoDingLiuQinPageState extends State<KaoDingLiuQinPage> {
       context: context,
       builder: (context) => AlertDialog(
         title: const Text('使用说明'),
-        content: const SingleChildScrollView(
+        content: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text('1. 系统自动计算所有六亲类型的流度表'),
-              SizedBox(height: 8),
-              Text('2. 每个流度表显示12个地支对应的条文'),
-              SizedBox(height: 8),
-              Text('3. 带星标(⭐)的条目是系统推荐的目标条目'),
-              SizedBox(height: 8),
-              Text('4. 点击任意条目进行选择'),
-              SizedBox(height: 8),
-              Text('5. 选择完所有六亲类型后，点击"确认选择"继续'),
+              const Text('1. 系统自动计算所有六亲类型的流度表'),
+              const SizedBox(height: 8),
+              const Text('2. 每个流度表显示12个地支对应的条文'),
+              const SizedBox(height: 8),
+              const Text('3. 带星标(⭐)的条目是系统推荐的目标条目'),
+              const SizedBox(height: 8),
+              const Text('4. 点击任意条目进行选择'),
+              const SizedBox(height: 8),
+              Text(AppLocalizations.of(context)!.kaoDingLiuQinStep5),
             ],
           ),
         ),

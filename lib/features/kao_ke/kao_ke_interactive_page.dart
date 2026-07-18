@@ -1,3 +1,4 @@
+import 'package:tiebanshenshu/l10n/app_localizations.dart';
 import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -104,13 +105,13 @@ class _KaoKeInteractivePageState extends State<KaoKeInteractivePage> {
         builder: (context, viewModel, child) {
           // 加载状态
           if (viewModel.isLoading) {
-            return const Center(
+            return Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  CircularProgressIndicator(),
-                  SizedBox(height: 16),
-                  Text('加载中...'),
+                  const CircularProgressIndicator(),
+                  const SizedBox(height: 16),
+                  Text(AppLocalizations.of(context)!.loading),
                 ],
               ),
             );
@@ -182,7 +183,7 @@ class _KaoKeInteractivePageState extends State<KaoKeInteractivePage> {
     final birthShiChen = viewModel.birthShiChen;
 
     if (keData == null || birthShiChen == null) {
-      return const Center(child: Text('数据加载失败'));
+      return Center(child: Text(AppLocalizations.of(context)!.dataLoadFailed));
     }
 
     return SingleChildScrollView(
@@ -271,7 +272,7 @@ class _KaoKeInteractivePageState extends State<KaoKeInteractivePage> {
     final douSelection = viewModel.douJiaYiSelection;
 
     if (guaResult == null || (keSelection == null && douSelection == null)) {
-      return const Center(child: Text('数据加载失败'));
+      return Center(child: Text(AppLocalizations.of(context)!.dataLoadFailed));
     }
 
     // 基础数来源与已选刻卡片
@@ -321,7 +322,7 @@ class _KaoKeInteractivePageState extends State<KaoKeInteractivePage> {
     final finalResults = viewModel.finalResults;
 
     if (finalResults == null || finalResults.isEmpty) {
-      return const Center(child: Text('暂无计算结果'));
+      return Center(child: Text(AppLocalizations.of(context)!.noCalculationResult));
     }
 
     return Padding(
@@ -507,7 +508,7 @@ class _KaoKeInteractivePageState extends State<KaoKeInteractivePage> {
               child: FilledButton.icon(
                 onPressed: () => _submitDouJiaYi(viewModel),
                 icon: const Icon(Icons.check),
-                label: const Text('按三宫之数确认'),
+                label: Text(AppLocalizations.of(context)!.confirmByThreeGong),
               ),
             ),
             if (douData != null) ...[
@@ -652,7 +653,7 @@ class _RollbackDialog extends StatelessWidget {
       actions: [
         TextButton(
           onPressed: () => Navigator.of(context).pop(),
-          child: const Text('取消'),
+          child: Text(AppLocalizations.of(context)!.cancel),
         ),
       ],
     );

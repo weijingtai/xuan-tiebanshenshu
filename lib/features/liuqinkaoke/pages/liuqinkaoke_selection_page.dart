@@ -1,3 +1,4 @@
+import 'package:tiebanshenshu/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tiebanshenshu/features/liuqinkaoke/models/liuqinkaoke_models.dart';
@@ -61,7 +62,7 @@ class _LiuQinKaoKeSelectionPageState extends State<LiuQinKaoKeSelectionPage> {
           }
 
           if (viewModel.session == null) {
-            return const Center(child: Text('请开始一个新的会话'));
+            return Center(child: Text(AppLocalizations.of(context)!.startNewSession));
           }
 
           if (viewModel.session!.stage ==

@@ -1,3 +1,4 @@
+import 'package:tiebanshenshu/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:tiebanshenshu/presentation/components/gradient_card.dart';
 import '../../domain/models/yuan_tang_base_number_model.dart';
@@ -752,7 +753,7 @@ class _YuanTangCardState extends State<YuanTangCard> {
           color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
           borderRadius: BorderRadius.circular(8.0),
         ),
-        child: const Center(child: Text('暂无条文内容')),
+        child: Center(child: Text(AppLocalizations.of(context)!.noContent)),
       );
     }
 

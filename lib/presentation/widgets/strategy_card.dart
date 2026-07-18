@@ -1,3 +1,4 @@
+import 'package:tiebanshenshu/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:tiebanshenshu/presentation/components/gradient_card.dart';
 import '../viewmodels/base_tiao_wen_list_view_model.dart';
@@ -110,9 +111,9 @@ class _StrategyCardState extends State<StrategyCard> {
   Widget _buildStateContent() {
     switch (widget.viewModel.state) {
       case TiaoWenListState.initial:
-        return const Padding(
-          padding: EdgeInsets.all(16.0),
-          child: SimpleEmptyWidget(message: '点击刷新开始计算', icon: Icons.play_arrow),
+        return Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: SimpleEmptyWidget(message: AppLocalizations.of(context)!.tapToStart, icon: Icons.play_arrow),
         );
 
       case TiaoWenListState.loading:

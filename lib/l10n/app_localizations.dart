@@ -147,6 +147,168 @@ abstract class AppLocalizations {
   /// In zh, this message translates to:
   /// **'交互式计算帮助'**
   String get interactiveHelp;
+
+  /// No description provided for @loading.
+  ///
+  /// In zh, this message translates to:
+  /// **'加载中...'**
+  String get loading;
+
+  /// No description provided for @dataLoadFailed.
+  ///
+  /// In zh, this message translates to:
+  /// **'数据加载失败'**
+  String get dataLoadFailed;
+
+  /// No description provided for @noCalculationResult.
+  ///
+  /// In zh, this message translates to:
+  /// **'暂无计算结果'**
+  String get noCalculationResult;
+
+  /// No description provided for @calculationFailed.
+  ///
+  /// In zh, this message translates to:
+  /// **'计算失败'**
+  String get calculationFailed;
+
+  /// No description provided for @confirmSelect.
+  ///
+  /// In zh, this message translates to:
+  /// **'确认选择'**
+  String get confirmSelect;
+
+  /// No description provided for @selectAndCalculate.
+  ///
+  /// In zh, this message translates to:
+  /// **'确认选择，进行后续计算'**
+  String get selectAndCalculate;
+
+  /// No description provided for @selectComplete.
+  ///
+  /// In zh, this message translates to:
+  /// **'选择完成'**
+  String get selectComplete;
+
+  /// No description provided for @confirmByThreeGong.
+  ///
+  /// In zh, this message translates to:
+  /// **'按三宫之数确认'**
+  String get confirmByThreeGong;
+
+  /// No description provided for @startNewSession.
+  ///
+  /// In zh, this message translates to:
+  /// **'请开始一个新的会话'**
+  String get startNewSession;
+
+  /// No description provided for @initFailed.
+  ///
+  /// In zh, this message translates to:
+  /// **'初始化失败：{error}'**
+  String initFailed(Object error);
+
+  /// No description provided for @refreshComplete.
+  ///
+  /// In zh, this message translates to:
+  /// **'刷新完成'**
+  String get refreshComplete;
+
+  /// No description provided for @refreshFailed.
+  ///
+  /// In zh, this message translates to:
+  /// **'刷新失败：{error}'**
+  String refreshFailed(Object error);
+
+  /// No description provided for @noResult.
+  ///
+  /// In zh, this message translates to:
+  /// **'暂无结果'**
+  String get noResult;
+
+  /// No description provided for @selectFailed.
+  ///
+  /// In zh, this message translates to:
+  /// **'选择失败：{error}'**
+  String selectFailed(Object error);
+
+  /// No description provided for @undoFailed.
+  ///
+  /// In zh, this message translates to:
+  /// **'撤销失败：{error}'**
+  String undoFailed(Object error);
+
+  /// No description provided for @restartFailed.
+  ///
+  /// In zh, this message translates to:
+  /// **'重新开始失败：{error}'**
+  String restartFailed(Object error);
+
+  /// No description provided for @confirmOrModifySizhu.
+  ///
+  /// In zh, this message translates to:
+  /// **'确认或修改四柱信息'**
+  String get confirmOrModifySizhu;
+
+  /// No description provided for @canUndoAnyStep.
+  ///
+  /// In zh, this message translates to:
+  /// **'您可以随时撤销到上一步，或重新开始整个过程。'**
+  String get canUndoAnyStep;
+
+  /// No description provided for @finalCalculationNotice.
+  ///
+  /// In zh, this message translates to:
+  /// **'完成所有步骤后，系统将计算最终的条文列表。'**
+  String get finalCalculationNotice;
+
+  /// No description provided for @shareResult.
+  ///
+  /// In zh, this message translates to:
+  /// **'分享结果'**
+  String get shareResult;
+
+  /// No description provided for @shareNotImplemented.
+  ///
+  /// In zh, this message translates to:
+  /// **'分享功能待实现'**
+  String get shareNotImplemented;
+
+  /// No description provided for @noContent.
+  ///
+  /// In zh, this message translates to:
+  /// **'暂无条文内容'**
+  String get noContent;
+
+  /// No description provided for @noMonthData.
+  ///
+  /// In zh, this message translates to:
+  /// **'暂无流月数据'**
+  String get noMonthData;
+
+  /// No description provided for @tapToStart.
+  ///
+  /// In zh, this message translates to:
+  /// **'点击刷新开始计算'**
+  String get tapToStart;
+
+  /// No description provided for @noYearData.
+  ///
+  /// In zh, this message translates to:
+  /// **'暂无大运数据'**
+  String get noYearData;
+
+  /// No description provided for @kaoDingLiuQinStep5.
+  ///
+  /// In zh, this message translates to:
+  /// **'选择完所有六亲类型后，点击\"确认选择\"继续'**
+  String get kaoDingLiuQinStep5;
+
+  /// No description provided for @taiXuanInteractiveHelpIntro.
+  ///
+  /// In zh, this message translates to:
+  /// **'太玄四柱交互式计算允许您参与计算过程：'**
+  String get taiXuanInteractiveHelpIntro;
 }
 
 class _AppLocalizationsDelegate

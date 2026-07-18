@@ -1,3 +1,4 @@
+import 'package:tiebanshenshu/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:tiebanshenshu/presentation/components/gradient_card.dart';
 import '../models/ba_gua_jia_ze_ui_model.dart';
@@ -354,8 +355,8 @@ class BaGuaJiaZeResultsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (models.isEmpty) {
-      return const Center(
-        child: Padding(padding: EdgeInsets.all(32.0), child: Text('暂无结果')),
+      return Center(
+        child: Padding(padding: const EdgeInsets.all(32.0), child: Text(AppLocalizations.of(context)!.noResult)),
       );
     }
 

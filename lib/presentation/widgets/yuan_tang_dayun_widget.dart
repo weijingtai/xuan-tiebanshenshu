@@ -3,6 +3,7 @@
 /// 用于展示元堂卦的大运信息（先天卦或后天卦）
 library;
 
+import 'package:tiebanshenshu/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import '../models/yuan_tang_ui_model.dart';
 
@@ -61,10 +62,10 @@ class YuanTangDayunWidget extends StatelessWidget {
   /// 构建大运表格
   Widget _buildDayunTable(BuildContext context) {
     if (dayunList.isEmpty) {
-      return const Center(
+      return Center(
         child: Padding(
-          padding: EdgeInsets.all(16.0),
-          child: Text('暂无大运数据'),
+          padding: const EdgeInsets.all(16.0),
+          child: Text(AppLocalizations.of(context)!.noYearData),
         ),
       );
     }
@@ -200,7 +201,7 @@ class YuanTangDayunCompactWidget extends StatelessWidget {
           const SizedBox(height: 4),
         ],
         if (dayunList.isEmpty)
-          const Text('暂无大运数据')
+          Text(AppLocalizations.of(context)!.noYearData)
         else
           Wrap(
             spacing: 8,

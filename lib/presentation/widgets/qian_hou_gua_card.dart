@@ -1,3 +1,4 @@
+import 'package:tiebanshenshu/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import '../viewmodels/qian_hou_gua_view_model.dart';
 import '../components/gradient_card.dart';
@@ -557,7 +558,7 @@ class _QianHouGuaCardState extends State<QianHouGuaCard> {
           color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
           borderRadius: BorderRadius.circular(8.0),
         ),
-        child: const Center(child: Text('暂无条文内容')),
+        child: Center(child: Text(AppLocalizations.of(context)!.noContent)),
       );
     }
 

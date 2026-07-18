@@ -1,3 +1,4 @@
+import 'package:tiebanshenshu/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import '../../../constant/kao_ke_constants.dart';
 
@@ -197,13 +198,13 @@ class TiaoWenDetailDialog extends StatelessWidget {
         children: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: const Text('取消'),
+            child: Text(AppLocalizations.of(context)!.cancel),
           ),
           const SizedBox(width: 12),
           FilledButton.icon(
             onPressed: () => Navigator.of(context).pop(true),
             icon: const Icon(Icons.check),
-            label: const Text('确认选择'),
+            label: Text(AppLocalizations.of(context)!.confirmSelect),
           ),
         ],
       ),

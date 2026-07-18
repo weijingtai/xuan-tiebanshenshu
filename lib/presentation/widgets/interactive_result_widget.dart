@@ -3,6 +3,7 @@
 /// 显示交互式计算的最终结果
 library;
 
+import 'package:tiebanshenshu/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:tiebanshenshu/presentation/widgets/tiao_wen_item.dart';
 
@@ -216,7 +217,7 @@ class InteractiveResultWidget extends StatelessWidget {
             child: ElevatedButton.icon(
               onPressed: onRestart,
               icon: const Icon(Icons.refresh),
-              label: const Text('重新开始'),
+              label: Text(AppLocalizations.of(context)!.restart),
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(vertical: 12.0),
               ),
@@ -230,7 +231,7 @@ class InteractiveResultWidget extends StatelessWidget {
             child: OutlinedButton.icon(
               onPressed: () => _shareResult(context),
               icon: const Icon(Icons.share),
-              label: const Text('分享结果'),
+              label: Text(AppLocalizations.of(context)!.shareResult),
               style: OutlinedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(vertical: 12.0),
               ),
@@ -246,6 +247,6 @@ class InteractiveResultWidget extends StatelessWidget {
     // 实现分享功能
     ScaffoldMessenger.of(
       context,
-    ).showSnackBar(const SnackBar(content: Text('分享功能待实现')));
+    ).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context)!.shareNotImplemented)));
   }
 }

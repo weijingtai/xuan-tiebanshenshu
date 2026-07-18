@@ -1,3 +1,4 @@
+import 'package:tiebanshenshu/l10n/app_localizations.dart';
 import 'package:metaphysics_core/enums.dart';
 import 'package:tiebanshenshu/dev/dev_fixtures.dart';
 import 'package:flutter/material.dart';
@@ -116,7 +117,7 @@ class _FourDoorsAndGunFaPageState extends State<FourDoorsAndGunFaPage>
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('初始化失败: $e'),
+            content: Text(AppLocalizations.of(context)!.initFailed(e)),
             backgroundColor: Theme.of(context).colorScheme.error,
           ),
         );
@@ -137,14 +138,14 @@ class _FourDoorsAndGunFaPageState extends State<FourDoorsAndGunFaPage>
 
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('刷新完成'), duration: Duration(seconds: 2)),
+          SnackBar(content: Text(AppLocalizations.of(context)!.refreshComplete), duration: const Duration(seconds: 2)),
         );
       }
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('刷新失败: $e'),
+            content: Text(AppLocalizations.of(context)!.refreshFailed(e)),
             backgroundColor: Theme.of(context).colorScheme.error,
           ),
         );
@@ -163,14 +164,14 @@ class _FourDoorsAndGunFaPageState extends State<FourDoorsAndGunFaPage>
 
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('刷新完成'), duration: Duration(seconds: 2)),
+          SnackBar(content: Text(AppLocalizations.of(context)!.refreshComplete), duration: const Duration(seconds: 2)),
         );
       }
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('刷新失败: $e'),
+            content: Text(AppLocalizations.of(context)!.refreshFailed(e)),
             backgroundColor: Theme.of(context).colorScheme.error,
           ),
         );
@@ -267,9 +268,9 @@ class _FourDoorsAndGunFaPageState extends State<FourDoorsAndGunFaPage>
     }
 
     if (!viewModel.hasResult || !viewModel.hasUIModel) {
-      return const Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Center(child: Text('暂无结果')),
+      return Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Center(child: Text(AppLocalizations.of(context)!.noResult)),
       );
     }
 
@@ -453,9 +454,9 @@ class _FourDoorsAndGunFaPageState extends State<FourDoorsAndGunFaPage>
     }
 
     if (!viewModel.hasResult || !viewModel.hasUIModel) {
-      return const Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Center(child: Text('暂无结果')),
+      return Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Center(child: Text(AppLocalizations.of(context)!.noResult)),
       );
     }
 
@@ -698,7 +699,7 @@ class _FourDoorsAndGunFaPageState extends State<FourDoorsAndGunFaPage>
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: const Text('确定'),
+            child: Text(AppLocalizations.of(context)!.confirm),
           ),
         ],
       ),

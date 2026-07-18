@@ -1,3 +1,4 @@
+import 'package:tiebanshenshu/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../features/kao_ding_liu_qin/models/liu_qin_type.dart';
@@ -123,7 +124,7 @@ class _KaoDingLiuQinCardState extends State<KaoDingLiuQinCard> {
     }
 
     if (!viewModel.hasResult) {
-      return const Padding(padding: EdgeInsets.all(16.0), child: Text('暂无结果'));
+      return Padding(padding: const EdgeInsets.all(16.0), child: Text(AppLocalizations.of(context)!.noResult));
     }
 
     return Padding(

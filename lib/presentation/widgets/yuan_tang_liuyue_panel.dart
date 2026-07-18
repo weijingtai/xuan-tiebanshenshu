@@ -3,6 +3,7 @@
 /// 用于展示某个流年的12个流月卦，支持按月份展开查看详情
 library;
 
+import 'package:tiebanshenshu/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import '../../domain/models/yuan_tang_base_number_model.dart';
 import 'gua_change_visualization.dart';
@@ -77,10 +78,10 @@ class YuanTangLiuyuePanel extends StatelessWidget {
 
         // 流月卦网格
         if (liuyueList.isEmpty)
-          const Center(
+          Center(
             child: Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Text('暂无流月数据'),
+              padding: const EdgeInsets.all(16.0),
+              child: Text(AppLocalizations.of(context)!.noMonthData),
             ),
           )
         else if (compact)
@@ -289,7 +290,7 @@ class YuanTangLiuyueListWidget extends StatelessWidget {
           const SizedBox(height: 8.0),
         ],
         if (liuyueList.isEmpty)
-          const Text('暂无流月数据')
+          Text(AppLocalizations.of(context)!.noMonthData)
         else
           ListView.separated(
             shrinkWrap: true,
@@ -393,7 +394,7 @@ class YuanTangLiuyueChipsWidget extends StatelessWidget {
           const SizedBox(height: 6.0),
         ],
         if (liuyueList.isEmpty)
-          const Text('暂无流月数据')
+          Text(AppLocalizations.of(context)!.noMonthData)
         else
           Wrap(
             spacing: 6.0,

@@ -3,6 +3,7 @@
 /// 提供用户参与式的太玄四柱计算体验
 library;
 
+import 'package:tiebanshenshu/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tiebanshenshu/dev/dev_fixtures.dart';
@@ -110,7 +111,6 @@ class _TaiXuanInteractivePageState extends State<TaiXuanInteractivePage>
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: _buildAppBar(),
       body: Consumer<TaiXuanFourZhuInteractiveViewModel>(
@@ -123,6 +123,7 @@ class _TaiXuanInteractivePageState extends State<TaiXuanInteractivePage>
 
   /// 构建应用栏
   PreferredSizeWidget _buildAppBar() {
+    final l10n = AppLocalizations.of(context)!;
     return AppBar(
       title: Text(l10n.taiXuanInteractive),
       elevation: 0,
@@ -133,27 +134,27 @@ class _TaiXuanInteractivePageState extends State<TaiXuanInteractivePage>
               onSelected: (value) => _handleMenuAction(value, provider),
               itemBuilder: (context) => [
                 if (provider.canUndo)
-                  const PopupMenuItem(
+                  PopupMenuItem(
                     value: 'undo',
                     child: ListTile(
-                      leading: Icon(Icons.undo),
+                      leading: const Icon(Icons.undo),
                       title: Text(l10n.undo),
                       contentPadding: EdgeInsets.zero,
                     ),
                   ),
                 if (provider.hasSession)
-                  const PopupMenuItem(
+                  PopupMenuItem(
                     value: 'restart',
                     child: ListTile(
-                      leading: Icon(Icons.refresh),
+                      leading: const Icon(Icons.refresh),
                       title: Text(l10n.restart),
                       contentPadding: EdgeInsets.zero,
                     ),
                   ),
-                const PopupMenuItem(
+                PopupMenuItem(
                   value: 'help',
                   child: ListTile(
-                    leading: Icon(Icons.help_outline),
+                    leading: const Icon(Icons.help_outline),
                     title: Text(l10n.help),
                     contentPadding: EdgeInsets.zero,
                   ),
@@ -223,7 +224,7 @@ class _TaiXuanInteractivePageState extends State<TaiXuanInteractivePage>
       return _buildInteractiveContent(provider);
     }
 
-    return const Center(child: Text('等待用户操作...'));
+    return Center(child: Text(AppLocalizations.of(context)!.waitingForUserAction));
   }
 
   /// 构建加载内容
@@ -395,7 +396,7 @@ class _TaiXuanInteractivePageState extends State<TaiXuanInteractivePage>
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('选择失败: ${e.toString()}'),
+            content: Text(AppLocalizations.of(context)!.selectFailed(e.toString())),
             backgroundColor: Theme.of(context).colorScheme.error,
           ),
         );
@@ -411,7 +412,7 @@ class _TaiXuanInteractivePageState extends State<TaiXuanInteractivePage>
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('撤销失败: ${e.toString()}'),
+            content: Text(AppLocalizations.of(context)!.undoFailed(e.toString())),
             backgroundColor: Theme.of(context).colorScheme.error,
           ),
         );
@@ -439,7 +440,7 @@ class _TaiXuanInteractivePageState extends State<TaiXuanInteractivePage>
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text('重新开始失败: ${e.toString()}'),
+              content: Text(AppLocalizations.of(context)!.restartFailed(e.toString())),
               backgroundColor: Theme.of(context).colorScheme.error,
             ),
           );
@@ -459,6 +460,7 @@ class _TaiXuanInteractivePageState extends State<TaiXuanInteractivePage>
 
   /// 显示确认对话框
   Future<bool> _showConfirmDialog(String title, String content) async {
+    final l10n = AppLocalizations.of(context)!;
     final result = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
@@ -481,24 +483,25 @@ class _TaiXuanInteractivePageState extends State<TaiXuanInteractivePage>
 
   /// 显示帮助对话框
   void _showHelpDialog() {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
         title: Text(l10n.interactiveHelp),
-        content: const SingleChildScrollView(
+        content: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text('太玄四柱交互式计算允许您参与计算过程：'),
-              SizedBox(height: 12.0),
-              Text('• 确认或修改四柱信息'),
-              Text('• 选择计算方法'),
-              Text('• 选择卦象映射（如果启用）'),
-              SizedBox(height: 12.0),
-              Text('您可以随时撤销到上一步，或重新开始整个过程。'),
-              SizedBox(height: 12.0),
-              Text('完成所有步骤后，系统将计算最终的条文列表。'),
+              Text(l10n.taiXuanInteractiveHelpIntro),
+              const SizedBox(height: 12.0),
+              Text(l10n.confirmOrModifySizhu),
+              const Text('• 选择计算方法'),
+              const Text('• 选择卦象映射（如果启用）'),
+              const SizedBox(height: 12.0),
+              Text(l10n.canUndoAnyStep),
+              const SizedBox(height: 12.0),
+              Text(l10n.finalCalculationNotice),
             ],
           ),
         ),

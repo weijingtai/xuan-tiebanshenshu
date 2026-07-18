@@ -1,3 +1,4 @@
+import 'package:tiebanshenshu/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:tiebanshenshu/presentation/components/gradient_card.dart';
 import '../viewmodels/tai_xuan_four_zhu_view_model.dart';
@@ -255,9 +256,9 @@ class _TaiXuanDualMethodCardState extends State<TaiXuanDualMethodCard> {
     }
 
     // 默认空状态
-    return const Padding(
-      padding: EdgeInsets.all(16.0),
-      child: SimpleEmptyWidget(message: '暂无计算结果', icon: Icons.info_outline),
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: SimpleEmptyWidget(message: AppLocalizations.of(context)!.noCalculationResult, icon: Icons.info_outline),
     );
   }
 

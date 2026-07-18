@@ -1,3 +1,4 @@
+import 'package:tiebanshenshu/l10n/app_localizations.dart';
 import 'package:metaphysics_core/enums.dart';
 import 'package:tiebanshenshu/presentation/components/glass_scaffold.dart';
 import 'package:flutter/material.dart';
@@ -160,7 +161,7 @@ class _StrategyDemoPageState extends State<StrategyDemoPage>
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('初始化失败: $e'),
+            content: Text(AppLocalizations.of(context)!.initFailed(e)),
             backgroundColor: Theme.of(context).colorScheme.error,
           ),
         );
@@ -201,14 +202,14 @@ class _StrategyDemoPageState extends State<StrategyDemoPage>
 
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('刷新完成'), duration: Duration(seconds: 2)),
+          SnackBar(content: Text(AppLocalizations.of(context)!.refreshComplete), duration: const Duration(seconds: 2)),
         );
       }
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('刷新失败: $e'),
+            content: Text(AppLocalizations.of(context)!.refreshFailed(e)),
             backgroundColor: Theme.of(context).colorScheme.error,
           ),
         );
@@ -475,14 +476,14 @@ class _StrategyDemoPageState extends State<StrategyDemoPage>
 
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('刷新完成'), duration: Duration(seconds: 2)),
+          SnackBar(content: Text(AppLocalizations.of(context)!.refreshComplete), duration: const Duration(seconds: 2)),
         );
       }
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('刷新失败: $e'),
+            content: Text(AppLocalizations.of(context)!.refreshFailed(e)),
             backgroundColor: Theme.of(context).colorScheme.error,
           ),
         );
@@ -661,9 +662,9 @@ class _StrategyDemoPageState extends State<StrategyDemoPage>
     }
 
     if (!viewModel.hasResult || viewModel.resultCount == 0) {
-      return const Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Center(child: Text('暂无结果')),
+      return Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Center(child: Text(AppLocalizations.of(context)!.noResult)),
       );
     }
 
@@ -732,9 +733,9 @@ class _StrategyDemoPageState extends State<StrategyDemoPage>
     }
 
     if (!viewModel.hasResult) {
-      return const Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Center(child: Text('暂无结果')),
+      return Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Center(child: Text(AppLocalizations.of(context)!.noResult)),
       );
     }
 
@@ -804,9 +805,9 @@ class _StrategyDemoPageState extends State<StrategyDemoPage>
     }
 
     if (!viewModel.hasResult) {
-      return const Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Center(child: Text('暂无结果')),
+      return Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Center(child: Text(AppLocalizations.of(context)!.noResult)),
       );
     }
 
@@ -833,9 +834,9 @@ class _StrategyDemoPageState extends State<StrategyDemoPage>
     }
 
     if (!viewModel.hasResult) {
-      return const Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Center(child: Text('暂无结果')),
+      return Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Center(child: Text(AppLocalizations.of(context)!.noResult)),
       );
     }
 
@@ -862,9 +863,9 @@ class _StrategyDemoPageState extends State<StrategyDemoPage>
     }
 
     if (!viewModel.hasResult) {
-      return const Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Center(child: Text('暂无结果')),
+      return Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Center(child: Text(AppLocalizations.of(context)!.noResult)),
       );
     }
 
@@ -891,9 +892,9 @@ class _StrategyDemoPageState extends State<StrategyDemoPage>
     }
 
     if (!viewModel.hasResult) {
-      return const Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Center(child: Text('暂无结果')),
+      return Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Center(child: Text(AppLocalizations.of(context)!.noResult)),
       );
     }
 
@@ -920,9 +921,9 @@ class _StrategyDemoPageState extends State<StrategyDemoPage>
     }
 
     if (!viewModel.hasResult) {
-      return const Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Center(child: Text('暂无结果')),
+      return Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Center(child: Text(AppLocalizations.of(context)!.noResult)),
       );
     }
 
@@ -949,9 +950,9 @@ class _StrategyDemoPageState extends State<StrategyDemoPage>
     }
 
     if (!viewModel.hasResult) {
-      return const Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Center(child: Text('暂无结果')),
+      return Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Center(child: Text(AppLocalizations.of(context)!.noResult)),
       );
     }
 
@@ -993,7 +994,7 @@ class _StrategyDemoPageState extends State<StrategyDemoPage>
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: const Text('确定'),
+            child: Text(AppLocalizations.of(context)!.confirm),
           ),
         ],
       ),
