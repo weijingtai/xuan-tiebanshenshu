@@ -6,8 +6,6 @@ import 'package:tiebanshenshu/presentation/home/home_page.dart';
 import 'package:tiebanshenshu/presentation/pages/strategy_demo_page.dart';
 import 'package:tiebanshenshu/presentation/pages/four_doors_and_gun_fa_page.dart';
 import 'package:tiebanshenshu/ui/pages/dev_page.dart';
-import 'package:provider/provider.dart';
-import 'infrastructure/di/strategy_providers.dart';
 import 'features/liuqinkaoke/pages/liuqinkaoke_selection_page.dart';
 import 'features/kao_ke/kao_ke_interactive_page.dart';
 import 'features/kao_ding_liu_qin/pages/kao_ding_liu_qin_page.dart';
@@ -62,10 +60,7 @@ class NavigatorGenerator {
           ? arguments
           : defaultEightChars;
 
-      return MultiProvider(
-        providers: StrategyProviders.providers,
-        child: KaoKeInteractivePage(eightChars: eightChars),
-      );
+      return KaoKeInteractivePage(eightChars: eightChars);
     },
 
     // 邵子数：河洛天地数法纯演绎推演页
@@ -78,10 +73,7 @@ class NavigatorGenerator {
       );
       final eightChars = arguments is EightChars ? arguments : defaultEightChars;
 
-      return MultiProvider(
-        providers: StrategyProviders.providers,
-        child: ShaoZiShuPage(eightChars: eightChars),
-      );
+      return ShaoZiShuPage(eightChars: eightChars);
     },
 
     // 考订六亲：六亲推算交互页
