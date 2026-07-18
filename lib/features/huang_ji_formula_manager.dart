@@ -30,9 +30,9 @@ class HuangJiFormulaManager {
 
   /// 可用的公式文件列表
   static const List<String> _formulaFiles = [
-    'assets/formulas/huang_ji_1_formula.json',
-    'assets/formulas/huang_ji_2_formula.json',
-    'assets/formulas/huang_ji_3_formula.json',
+    'packages/persistence_assets/lib/tiebanshenshu/assets/formulas/huang_ji_1_formula.json',
+    'packages/persistence_assets/lib/tiebanshenshu/assets/formulas/huang_ji_2_formula.json',
+    'packages/persistence_assets/lib/tiebanshenshu/assets/formulas/huang_ji_3_formula.json',
   ];
 
   /// 初始化管理器，加载所有可用的公式
