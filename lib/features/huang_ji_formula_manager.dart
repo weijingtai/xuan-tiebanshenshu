@@ -30,9 +30,9 @@ class HuangJiFormulaManager {
 
   /// 可用的公式文件列表
   static const List<String> _formulaFiles = [
-    'assets/formulas/huang_ji_1_formula.json',
-    'assets/formulas/huang_ji_2_formula.json',
-    'assets/formulas/huang_ji_3_formula.json',
+    'packages/persistence_assets/lib/tiebanshenshu/assets/formulas/huang_ji_1_formula.json',
+    'packages/persistence_assets/lib/tiebanshenshu/assets/formulas/huang_ji_2_formula.json',
+    'packages/persistence_assets/lib/tiebanshenshu/assets/formulas/huang_ji_3_formula.json',
   ];
 
   /// 初始化管理器，加载所有可用的公式
@@ -65,9 +65,7 @@ class HuangJiFormulaManager {
           }
         }
       } catch (e) {
-        if (kDebugMode) {
-          print('❌ 加载公式失败: $filePath, 错误: $e');
-        }
+        // 公式文件尚未创建（未来功能），静默跳过
       }
     }
 
