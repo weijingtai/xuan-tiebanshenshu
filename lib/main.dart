@@ -1,5 +1,6 @@
 import 'package:tiebanshenshu/dev/dev_fixtures.dart';
 import 'package:flutter/material.dart';
+import 'package:persistence_assets/persistence_assets.dart';
 import 'package:provider/provider.dart';
 
 import 'navigator.dart';
@@ -18,11 +19,17 @@ void main() {
         Provider<String>.value(value: 'example'),
         ChangeNotifierProvider<DateTimeProvider>(
           create: (_) =>
-              DateTimeProvider()..updateDateTime(TiebanshenshuDevFixtures.devUsa),
+              DateTimeProvider()
+                ..updateDateTime(TiebanshenshuDevFixtures.devUsa),
         ),
         ChangeNotifierProvider(create: (_) => ThemeViewModel()),
         // Strategy相关的Provider配置
-        ...StrategyProviders.providers,
+        ...StrategyProviders.getProviders(
+          FakeTiebanRecordRepository(),
+          tiaoWenRepository: AssetsTiaoWenRepository(
+            dataPath: kDefaultTiaoWenAssetPath,
+          ),
+        ),
       ],
       child: const AlgorithmEditorApp(),
     ),

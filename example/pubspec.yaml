@@ -13,8 +13,7 @@ dependencies:
 
   cupertino_icons: ^1.0.8
   tiebanshenshu:
-    git:
-      url: http://192.168.0.165:3000/xuan/xuan-tiebanshenshu.git
+    path: ..
   repository_interface_tiebanshenshu:
     git:
       url: http://192.168.0.165:3000/xuan/repository-interface-tiebanshenshu.git

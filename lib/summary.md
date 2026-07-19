@@ -42,10 +42,10 @@
     3) 调 TiaoWenRepository 批量取内容，构造 BaseNumberTiaoWenListModel 或特定 UI 模型。
 - repository：
   - TiaoWenRepository 抽象接口：提供按 ID、区间、间隔与搜索的多种读取方式；支持批量获取条文内容（numbers→content）。
-  - TiaoWenRepositoryImpl：基于 CSV 资源加载（assets），带 Map/List 双缓存与并发安全；解析 setName（地支）、content 与 ageSet（年龄段）。
+  - 条文资源读取实现下沉到 `persistence_assets`，本模块通过组合根注入 `TiaoWenRepository`，不再维护 TXT/CSV 本地数据源实现。
   - 辅助：RepositoryFactory 与 SessionRepository（会话管理，供某些交互或 V2 架构使用）。
 - infrastructure/di：
-  - strategy_providers.dart：集中声明 Provider 依赖：Repository→Strategy→UseCase→ViewModel；含 HuangJiV2、LiuQinKaoKe、KaoKe、KaoDingLiuQin 等特性线的 DI。
+  - strategy_providers.dart：集中声明 Provider 依赖：TiaoWenRepository（由外部组合根传入）→Strategy→UseCase→ViewModel；含 HuangJiV2、LiuQinKaoKe、KaoKe、KaoDingLiuQin 等特性线的 DI。
 - presentation：
   - models：UI 展示模型（如 YuanTangUIModel、BaGuaGunUIModel、BaGuaJiaZeUIModel 等），把领域模型转为易读文案与表格化结构。
   - viewmodels：针对每个策略的 ViewModel（tai_xuan_four_zhu_view_model、four_zhu_tian_gan_view_model 等），封装用户输入与结果状态。
@@ -71,7 +71,7 @@
 
 ## 依赖注入与运行时配置
 - strategy_providers.dart 将：
-  - RepositoryFactory.defaultTiaoWenRepository 注入为 TiaoWenRepository；
+  - 组合根从 `persistence_assets` 创建资产版 TiaoWenRepository，并传入 StrategyProviders；
   - 每个 Strategy、UseCase、ViewModel 成链路注入；
   - TiaoWenListCalculationConfig 作为全局或默认偏移配置供用例使用（可在 UI 侧切换）。
 
@@ -488,9 +488,9 @@
     - TiaoWenListCalculationConfig：支持 loopAddTimes（基数+次数）、fromMultiples（倍数列表）、listAdd（自定义偏移）
     - TiaoWenListCalculator：把 baseNumber 与 offsets 组合为条文编号列表
 - 条文数据仓库
-  - /tiebanshenshu/lib/repository/tiao_wen_repository.dart（抽象接口）
-  - /tiebanshenshu/lib/repository/tiao_wen_repository_impl.dart（CSV 资源加载、并发安全、Map/List 双缓存、区间/间隔/搜索）
-  - /tiebanshenshu/lib/infrastructure/di/strategy_providers.dart（RepositoryFactory.defaultTiaoWenRepository 注入）
+  - repository_interface_tiebanshenshu 的 TiaoWenRepository（抽象接口）
+  - persistence_assets 的 AssetsTiaoWenRepository（CSV 资源加载、并发安全、Map/List 双缓存、区间/间隔/搜索）
+  - /tiebanshenshu/lib/infrastructure/di/strategy_providers.dart（外部 TiaoWenRepository 注入）
   - 常用方法：
     - getTiaoWenContentByNumbers(numbers)：批量取条文内容（Map<int,String>）
     - getByIdList、getByIdRange、getByIntervalAroundId、getAroundById、search 等

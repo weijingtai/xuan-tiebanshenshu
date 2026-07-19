@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 import 'package:persistence_assets/persistence_assets.dart';
 
 import 'package:tiebanshenshu/infrastructure/di/strategy_providers.dart';
@@ -26,7 +25,7 @@ void main() async {
   final sessionRepo = PreferencesAccountSessionRepository(prefs);
   final accountDb = AccountDatabase(NativeDatabase.memory());
   final identityLinkRepo = DriftAccountIdentityLinkRepository(accountDb);
-  
+
   final bootstrapStore = DriftScopeBootstrapStore(newDb);
   final ledger = DriftScopeLedger(db: newDb, bootstrapStore: bootstrapStore);
   final resolver = ScopeResolver(
@@ -38,8 +37,16 @@ void main() async {
   final scopeUid = resolvedScope.scopeUid;
 
   final ds = DriftRecordDataSource(newDb, scopeUid: scopeUid);
-  final store = LocalRecordRepository(ds, RecordAdapterRegistry([TiebanshenshuModuleRegistry.codec()]));
-  final recordBackedRepository = TiebanshenshuModuleRegistry.repository(store: store);
+  final store = LocalRecordRepository(
+    ds,
+    RecordAdapterRegistry([TiebanshenshuModuleRegistry.codec()]),
+  );
+  final recordBackedRepository = TiebanshenshuModuleRegistry.repository(
+    store: store,
+  );
+  final tiaoWenRepository = AssetsTiaoWenRepository(
+    dataPath: kDefaultTiaoWenAssetPath,
+  );
 
   runApp(
     MultiProvider(
@@ -56,12 +63,11 @@ void main() async {
 
         ChangeNotifierProvider(create: (_) => ThemeViewModel()),
 
-        Provider<TiaoWenRepository>(
-          create: (_) => AssetsTiaoWenRepository(dataPath: kDefaultTiaoWenAssetPath),
-        ),
-
         // All strategy related providers from tiebanshenshu
-        ...StrategyProviders.getProviders(recordBackedRepository),
+        ...StrategyProviders.getProviders(
+          recordBackedRepository,
+          tiaoWenRepository: tiaoWenRepository,
+        ),
       ],
       child: const TieBanShenShuExampleApp(),
     ),

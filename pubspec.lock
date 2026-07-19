@@ -689,7 +689,7 @@ packages:
     source: hosted
     version: "2.3.0"
   persistence_assets:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       path: assets
       ref: HEAD

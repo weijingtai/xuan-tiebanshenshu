@@ -1051,11 +1051,9 @@ packages:
   tiebanshenshu:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "9b7868785adb52ee365f3c1c228f6e5d0196e1b6"
-      url: "http://192.168.0.165:3000/xuan/xuan-tiebanshenshu.git"
-    source: git
+      path: ".."
+      relative: true
+    source: path
     version: "1.0.0+1"
   timezone:
     dependency: "direct main"
