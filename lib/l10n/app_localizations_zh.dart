@@ -125,4 +125,22 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get taiXuanInteractiveHelpIntro => '太玄四柱交互式计算允许您参与计算过程：';
+
+  @override
+  String get featureStrategyDemoSubtitle => '综合策略演示';
+
+  @override
+  String get featureFourDoorsSubtitle => '四门与枪法';
+
+  @override
+  String get featureKaoKeSubtitle => '考刻交互推演';
+
+  @override
+  String get featureHuangJiSubtitle => '皇极经世排盘';
+
+  @override
+  String get featureVerticalLayoutSubtitle => '传统竖排版';
+
+  @override
+  String get featureBase18Subtitle => 'Base 18 竖排版';
 }

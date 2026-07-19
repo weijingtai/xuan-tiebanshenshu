@@ -4,6 +4,7 @@ import '../../presentation/components/gradient_card.dart';
 import '../../presentation/components/section_header.dart';
 import '../../presentation/theme/app_colors.dart';
 import '../../presentation/theme/app_typography.dart';
+import '../../l10n/app_localizations.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -52,45 +53,46 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _buildFeatureGrid(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final features = [
       _FeatureItem(
         title: '策略演示',
-        subtitle: 'Comprehensive Strategy Demo',
+        subtitle: l10n.featureStrategyDemoSubtitle,
         icon: Icons.auto_awesome,
         route: '/tiebanshenshu/strategy_demo',
         color: AppColors.primary,
       ),
       _FeatureItem(
         title: '四门枪法',
-        subtitle: 'Four Doors & Gun Fa',
+        subtitle: l10n.featureFourDoorsSubtitle,
         icon: Icons.explore,
         route: '/tiebanshenshu/four_doors_and_gun_fa',
         color: AppColors.secondaryDark,
       ),
       _FeatureItem(
         title: '考刻交互',
-        subtitle: 'Kao Ke Interactive',
+        subtitle: l10n.featureKaoKeSubtitle,
         icon: Icons.access_time,
         route: '/tiebanshenshu/kaoke',
         color: Colors.teal,
       ),
       _FeatureItem(
         title: '皇极经世',
-        subtitle: 'Huang Ji V2 Demo',
+        subtitle: l10n.featureHuangJiSubtitle,
         icon: Icons.history_edu,
         route: '/tiebanshenshu/huang_ji_v2_demo',
         color: Colors.indigo,
       ),
       _FeatureItem(
         title: '竖排布局',
-        subtitle: 'Vertical Layout (Original)',
+        subtitle: l10n.featureVerticalLayoutSubtitle,
         icon: Icons.vertical_split, // Or Icons.format_align_justify
         route: '/tiebanshenshu/vertical_layout',
         color: const Color(0xFF5D4037), // Antique Brown
       ),
       _FeatureItem(
         title: 'Base 18 布局',
-        subtitle: 'Base 18 Vertical Layout',
+        subtitle: l10n.featureBase18Subtitle,
         icon: Icons.view_agenda,
         route: '/tiebanshenshu/base18',
         color: const Color(0xFFA62B1F), // Taixuan Red

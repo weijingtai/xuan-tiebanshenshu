@@ -309,6 +309,42 @@ abstract class AppLocalizations {
   /// In zh, this message translates to:
   /// **'太玄四柱交互式计算允许您参与计算过程：'**
   String get taiXuanInteractiveHelpIntro;
+
+  /// No description provided for @featureStrategyDemoSubtitle.
+  ///
+  /// In zh, this message translates to:
+  /// **'综合策略演示'**
+  String get featureStrategyDemoSubtitle;
+
+  /// No description provided for @featureFourDoorsSubtitle.
+  ///
+  /// In zh, this message translates to:
+  /// **'四门与枪法'**
+  String get featureFourDoorsSubtitle;
+
+  /// No description provided for @featureKaoKeSubtitle.
+  ///
+  /// In zh, this message translates to:
+  /// **'考刻交互推演'**
+  String get featureKaoKeSubtitle;
+
+  /// No description provided for @featureHuangJiSubtitle.
+  ///
+  /// In zh, this message translates to:
+  /// **'皇极经世排盘'**
+  String get featureHuangJiSubtitle;
+
+  /// No description provided for @featureVerticalLayoutSubtitle.
+  ///
+  /// In zh, this message translates to:
+  /// **'传统竖排版'**
+  String get featureVerticalLayoutSubtitle;
+
+  /// No description provided for @featureBase18Subtitle.
+  ///
+  /// In zh, this message translates to:
+  /// **'Base 18 竖排版'**
+  String get featureBase18Subtitle;
 }
 
 class _AppLocalizationsDelegate

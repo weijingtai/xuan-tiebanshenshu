@@ -60,5 +60,11 @@
   "tapToStart": "点击刷新开始计算",
   "noYearData": "暂无大运数据",
   "kaoDingLiuQinStep5": "选择完所有六亲类型后，点击\"确认选择\"继续",
-  "taiXuanInteractiveHelpIntro": "太玄四柱交互式计算允许您参与计算过程："
+  "taiXuanInteractiveHelpIntro": "太玄四柱交互式计算允许您参与计算过程：",
+  "featureStrategyDemoSubtitle": "综合策略演示",
+  "featureFourDoorsSubtitle": "四门与枪法",
+  "featureKaoKeSubtitle": "考刻交互推演",
+  "featureHuangJiSubtitle": "皇极经世排盘",
+  "featureVerticalLayoutSubtitle": "传统竖排版",
+  "featureBase18Subtitle": "Base 18 竖排版"
 }
