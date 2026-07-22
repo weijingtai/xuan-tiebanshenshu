@@ -74,6 +74,8 @@ class TiebanshenshuDevFixtures {
       coordinates: coordinates,
       trueSolarDatetime: trueSolarDatetime,
       trueSolarChineseInfo: chineseInfo,
+      politicalCenterDatetime: null,
+      politicalCenterChineseInfo: null,
     );
   }
 }
