@@ -5,6 +5,7 @@ import 'package:tiebanshenshu/features/huang_ji/huang_ji_v2_demo_page.dart';
 import 'package:tiebanshenshu/presentation/home/home_page.dart';
 import 'package:tiebanshenshu/presentation/pages/strategy_demo_page.dart';
 import 'package:tiebanshenshu/presentation/pages/four_doors_and_gun_fa_page.dart';
+import 'package:tiebanshenshu/presentation/pages/chart_input_page.dart';
 import 'package:tiebanshenshu/ui/pages/dev_page.dart';
 import 'features/liuqinkaoke/pages/liuqinkaoke_selection_page.dart';
 import 'features/kao_ke/kao_ke_interactive_page.dart';
@@ -32,6 +33,8 @@ class NavigatorGenerator {
     //     const HuangJiV2DemoPage(),
     "/tiebanshenshu/strategy_demo": (context, {arguments}) =>
         const StrategyDemoPage(),
+    "/tiebanshenshu/chart_input": (context, {arguments}) =>
+        const ChartInputPage(),
     "/tiebanshenshu/four_doors_and_gun_fa": (context, {arguments}) =>
         const FourDoorsAndGunFaPage(),
 

@@ -56,6 +56,13 @@ class HomePage extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
     final features = [
       _FeatureItem(
+        title: '排盘输入',
+        subtitle: '统一时间输入组件',
+        icon: Icons.input,
+        route: '/tiebanshenshu/chart_input',
+        color: AppColors.primary,
+      ),
+      _FeatureItem(
         title: '策略演示',
         subtitle: l10n.featureStrategyDemoSubtitle,
         icon: Icons.auto_awesome,

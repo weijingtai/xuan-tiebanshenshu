@@ -62,7 +62,7 @@ dependency_overrides:
       url: http://192.168.0.165:3000/xuan/xuan-domain.git
   xuan_time_location:
     git:
-      url: http://192.168.0.165:3000/xuan/time-location.git
+      url: http://192.168.0.165:3000/xuan/xuan-time-location.git
   repository_interface_four_zhu_card:
     git:
       url: http://192.168.0.165:3000/xuan/repository-interface-four-zhu-card.git
@@ -73,9 +73,7 @@ dependency_overrides:
     git:
       url: http://192.168.0.165:3000/xuan/xuan-four-zhu-card.git
   persistence_core:
-    git:
-      url: http://192.168.0.165:3000/xuan/xuan-storage.git
-      path: core
+    path: ../xuan-storage/core
   persistence_drift:
     git:
       url: http://192.168.0.165:3000/xuan/xuan-storage.git
@@ -85,8 +83,7 @@ dependency_overrides:
       url: http://192.168.0.165:3000/xuan/xuan-storage.git
       path: preferences
   metaphysics_core:
-    git:
-      url: http://192.168.0.165:3000/xuan/metaphysics-core.git
+    path: ../xuan-metaphysics-core
   repository_interface_tiebanshenshu:
     git:
       url: http://192.168.0.165:3000/xuan/repository-interface-tiebanshenshu.git
@@ -97,3 +94,7 @@ dependency_overrides:
     git:
       url: http://192.168.0.165:3000/xuan/xuan-storage.git
       path: assets
+  repository_interface_divination_pipeline:
+    path: ../repository-interface-divination-pipeline
+  divination_case:
+    path: ../xuan-divination-case
