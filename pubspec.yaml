@@ -49,6 +49,10 @@ dependencies:
   repository_interface_record:
     git:
       url: http://192.168.0.165:3000/xuan/repository-interface-record.git
+  repository_interface_divination_pipeline:
+    git:
+      url: http://192.168.0.165:3000/xuan/repository-interface-divination-pipeline.git
+      ref: ed17984
 
   cupertino_icons: ^1.0.8
   json_annotation: ^4.10.0

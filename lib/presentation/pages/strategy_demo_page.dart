@@ -2,6 +2,7 @@ import 'package:tiebanshenshu/l10n/app_localizations.dart';
 import 'package:bazi_embed_ui_interface/bazi_embed_ui_interface.dart';
 import 'package:metaphysics_core/enums.dart';
 import 'package:metaphysics_core/models/chinese_date_info.dart';
+import 'package:metaphysics_core/models/seventy_two_phenology.dart';
 import 'package:metaphysics_core/models/jie_qi_info.dart';
 import 'package:repository_interface_bazi/repository_interface_bazi.dart';
 import 'package:repository_interface_divination_pipeline/geo.dart';

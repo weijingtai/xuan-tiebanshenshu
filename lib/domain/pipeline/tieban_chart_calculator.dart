@@ -6,6 +6,7 @@ import 'package:repository_interface_divination_pipeline/repository_interface_di
 import 'package:tiebanshenshu/features/yuan_tang_gua/yuan_tang_calculator.dart';
 import 'package:tiebanshenshu/features/yuan_tang_gua/yuan_tang_info.dart';
 import 'package:tiebanshenshu/enums.dart' as tieban_enums;
+import 'package:tiebanshenshu/service/strategy/yuan_tang_strategy.dart';
 
 import 'tieban_chart.dart';
 import 'tieban_chart_params.dart';
@@ -31,7 +32,7 @@ final class TiebanChartCalculator
       threeYuan: YuanYunOrder.lower,
       birthJieQi: TwentyFourJieQi.XIA_ZHI,
       monthType: YuanTangMonthType.monthYinYan,
-      calanderType: CalanderType.solar,
+      calanderType: tieban_enums.CalanderType.solar,
       birthMonth: YuanTangStrategyParams.getMonthNumberFromZhi(
         eightChars.month.zhi.name,
       ),
@@ -41,7 +42,7 @@ final class TiebanChartCalculator
       'xiantianGua': yuanTangInfo.xianTanGua.gua.name,
       'houTianGua': yuanTangInfo.houTianGua.gua.name,
       'yuanTangYaoIndex': yuanTangInfo.xianTanGua.yuanTangYao.indexAtYaoList,
-      'yaoList': yuanTangInfo.xianTanGua.yaoList
+      'yaoList': yuanTangInfo.xianTanGua.yuanTangYaoList
           .map((y) => {
                 'order': y.order.index,
                 'yinYang': y.yinYang.isYang ? '阳' : '阴',
@@ -51,7 +52,7 @@ final class TiebanChartCalculator
     };
 
     final chartRequest = {
-      'eightChars': eightChars.name,
+      'eightChars': eightChars.toString(),
       'gender': gender.name,
       'yearYinYang': yearYinYang.name,
       'latitude': params.latitude,

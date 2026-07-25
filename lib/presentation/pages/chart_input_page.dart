@@ -100,7 +100,7 @@ class _ChartInputPageState extends State<ChartInputPage> {
                       if (_selectedDateTime != null)
                         Text('时间: $_selectedDateTime'),
                       if (_selectedLocation != null)
-                        Text('地点: ${_selectedLocation!.name}'),
+                        Text('地点: ${_selectedLocation!.address?.formattedAddress ?? ""}'),
                     ],
                   ),
                 ),
