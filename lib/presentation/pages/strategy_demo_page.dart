@@ -1,5 +1,10 @@
 import 'package:tiebanshenshu/l10n/app_localizations.dart';
+import 'package:bazi_embed_ui_interface/bazi_embed_ui_interface.dart';
 import 'package:metaphysics_core/enums.dart';
+import 'package:metaphysics_core/models/chinese_date_info.dart';
+import 'package:metaphysics_core/models/jie_qi_info.dart';
+import 'package:repository_interface_bazi/repository_interface_bazi.dart';
+import 'package:repository_interface_divination_pipeline/geo.dart';
 import 'package:tiebanshenshu/presentation/components/glass_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -35,7 +40,9 @@ import '../viewmodels/yuan_tang_liuyun_view_model.dart';
 ///
 /// 展示四个Strategy的计算结果，支持刷新和交互
 class StrategyDemoPage extends StatefulWidget {
-  const StrategyDemoPage({super.key});
+  final BaziEmbedUiPort? baziEmbedUiPort;
+
+  const StrategyDemoPage({super.key, this.baziEmbedUiPort});
 
   @override
   State<StrategyDemoPage> createState() => _StrategyDemoPageState();
@@ -217,6 +224,44 @@ class _StrategyDemoPageState extends State<StrategyDemoPage>
     }
   }
 
+  void _showBaziEmbed() {
+    final uiPort = widget.baziEmbedUiPort;
+    if (uiPort == null) return;
+
+    final devData = TiebanshenshuDevFixtures.devUsa;
+    final eightChars = devData.standeredChineseInfo.eightChars;
+    final gender = Gender.male;
+
+    final chineseDateInfo = ChineseDateInfo(
+      eightChars: eightChars,
+      phenology: Phenology(
+        name: 'auto',
+        jieqi: TwentyFourJieQi.LI_CHUN,
+        description: 'auto',
+        order: 1,
+      ),
+      lunarMonth: devData.standeredChineseInfo.lunarMonth,
+      lunarDay: devData.standeredChineseInfo.lunarDay,
+      isLeapMonth: devData.standeredChineseInfo.isLeapMonth,
+      jieQiInfo: JieQiInfo(
+        jieQi: TwentyFourJieQi.LI_CHUN,
+        startAt: devData.standeredDatetime,
+        endAt: devData.standeredDatetime,
+      ),
+      threeYuan: YuanYunOrder.values.first,
+      nineYun: NineYun.values.first,
+    );
+
+    final birthContext = BaziBirthContext(
+      birthDateTime: devData.standeredDatetime.toUtc(),
+      gender: gender,
+      eightChars: eightChars,
+      chineseDateInfo: chineseDateInfo,
+    );
+
+    uiPort.showDayunLiunianSheet(context, birthContext);
+  }
+
   @override
   Widget build(BuildContext context) {
     return GlassScaffold(
@@ -236,6 +281,12 @@ class _StrategyDemoPageState extends State<StrategyDemoPage>
             icon: const Icon(Icons.refresh_outlined),
             tooltip: '刷新所有',
           ),
+          if (widget.baziEmbedUiPort != null)
+            IconButton(
+              onPressed: _showBaziEmbed,
+              icon: const Icon(Icons.timeline),
+              tooltip: '大运流年',
+            ),
           IconButton(
             onPressed: () => _showInfoDialog(context),
             icon: const Icon(Icons.info_outline),
