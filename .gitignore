@@ -54,3 +54,4 @@ app.*.map.json
 .chrome-profile/
 example/.chrome-profile/
 pubspec_overrides.yaml
+pubspec_overrides.yaml.bak
