@@ -115,24 +115,30 @@ void main() {
   });
 
   group('QTIC integration smoke test', () {
-    test('TiebanshenshuTimezoneProviderAdapter is compatible with QueryTimeInputCard',
+    test('QueryTimeInputCard constructs with TiebanshenshuTimezoneProviderAdapter',
         () {
       final adapter = TiebanshenshuTimezoneProviderAdapter(
         initialDatetime: DateTime(2024, 1, 15, 10, 30),
       );
 
-      // 编译级验证：adapter 可以作为 QTIC 的 timezoneProvider 参数传入
-      // QueryTimeInputCard 构造函数要求 ITimezoneProvider 类型
-      // 编译通过 = 类型兼容 = 集成链路正确
-      void acceptTimezoneProvider(ITimezoneProvider provider) {}
-      expect(() => acceptTimezoneProvider(adapter), returnsNormally);
+      // 真实构造 QueryTimeInputCard，让 Dart 类型系统实际检查构造路径
+      // 不 pump（避免 PrecisionSettingsCapsule 布局溢出），但验证构造+类型
+      final card = QueryTimeInputCard(
+        defaultDateTimeType: DateTimeType.solar,
+        selectableCardsNotifier: ValueNotifier(null),
+        timezoneProvider: adapter,
+        initialDateTime: adapter.selectedDatetime ?? DateTime.now(),
+      );
+
+      // 断言 widget 类型正确
+      expect(card, isA<QueryTimeInputCard>());
+      expect(card, isA<StatefulWidget>());
+
+      // 断言 adapter 状态与构造参数一致
+      expect(adapter.selectedDatetime, equals(DateTime(2024, 1, 15, 10, 30)));
+      expect(adapter.timezone, equals('Asia/Shanghai'));
 
       // 验证 adapter 满足 QTIC 所需的全部接口方法
-      expect(adapter.selectedDatetime, isNotNull);
-      expect(adapter.timezone, isNotNull);
-      expect(adapter.localTimezone, isNotNull);
-
-      // 验证 QTIC 会调用的关键方法
       adapter.updateDatetime(DateTime(2024, 6, 20, 14, 45));
       expect(adapter.selectedDatetime, equals(DateTime(2024, 6, 20, 14, 45)));
 
