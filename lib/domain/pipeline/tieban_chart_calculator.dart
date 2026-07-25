@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:metaphysics_core/enums.dart';
-import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:repository_interface_divination_pipeline/repository_interface_divination_pipeline.dart';
 import 'package:tiebanshenshu/features/yuan_tang_gua/yuan_tang_calculator.dart';
 import 'package:tiebanshenshu/features/yuan_tang_gua/yuan_tang_info.dart';

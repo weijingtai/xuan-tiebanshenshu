@@ -565,7 +565,7 @@ packages:
     source: hosted
     version: "1.18.0"
   metaphysics_core:
-    dependency: "direct overridden"
+    dependency: "direct main"
     description:
       path: "../../xuan-metaphysics-core"
       relative: true
@@ -660,7 +660,7 @@ packages:
     source: hosted
     version: "2.3.0"
   persistence_assets:
-    dependency: "direct overridden"
+    dependency: "direct main"
     description:
       path: "../../xuan-storage/assets"
       relative: true
@@ -681,14 +681,14 @@ packages:
     source: path
     version: "0.1.0"
   persistence_drift:
-    dependency: "direct overridden"
+    dependency: "direct main"
     description:
       path: "../../xuan-storage/drift"
       relative: true
     source: path
     version: "0.0.1"
   persistence_preferences:
-    dependency: "direct overridden"
+    dependency: "direct main"
     description:
       path: "../../xuan-storage/preferences"
       relative: true
