@@ -45,7 +45,6 @@ dependencies:
   bazi_embed_ui_interface:
     git:
       url: http://192.168.0.165:3000/xuan/bazi-embed-ui-interface.git
-      ref: 0b637d3
   repository_interface_record:
     git:
       url: http://192.168.0.165:3000/xuan/repository-interface-record.git
@@ -144,7 +143,6 @@ dependency_overrides:
   bazi_embed_ui_interface:
     git:
       url: http://192.168.0.165:3000/xuan/bazi-embed-ui-interface.git
-      ref: 0b637d3
   repository_interface_record:
     git:
       url: http://192.168.0.165:3000/xuan/repository-interface-record.git
