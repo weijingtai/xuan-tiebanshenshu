@@ -908,11 +908,9 @@ packages:
   repository_interface_tiebanshenshu:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "99ae19a96cb35f6d6160c31db3c7a619e3601f51"
-      url: "http://192.168.0.165:3000/xuan/repository-interface-tiebanshenshu.git"
-    source: git
+      path: "../repository-interface-tiebanshenshu"
+      relative: true
+    source: path
     version: "0.0.0"
   repository_interface_ziweidoushu:
     dependency: transitive
