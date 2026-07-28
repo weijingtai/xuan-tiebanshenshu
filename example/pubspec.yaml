@@ -13,10 +13,10 @@ dependencies:
 
   cupertino_icons: ^1.0.8
   tiebanshenshu:
-    git:
-      url: http://192.168.0.165:3000/xuan/xuan-tiebanshenshu.git
+    path: ../
   shared_preferences: ^2.2.0
   drift: ^2.30.1
+  drift_flutter: ^0.2.0
   provider: any
   timezone: any
   persistence_assets:

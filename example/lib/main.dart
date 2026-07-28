@@ -12,7 +12,7 @@ import 'dev_tiaowen_page.dart';
 import 'package:persistence_drift/persistence_drift.dart';
 import 'package:persistence_preferences/persistence_preferences.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:drift/native.dart';
+import 'package:drift_flutter/drift_flutter.dart';
 import 'package:persistence_drift/tiebanshenshu/tiebanshenshu_module_registry.dart';
 
 void main() async {
@@ -20,10 +20,10 @@ void main() async {
   tz.initializeTimeZones();
   WidgetsFlutterBinding.ensureInitialized();
 
-  final newDb = PersistenceDriftDatabase(NativeDatabase.memory());
+  final newDb = PersistenceDriftDatabase(driftDatabase(name: 'tieban_example_persistence'));
   final prefs = await SharedPreferences.getInstance();
   final sessionRepo = PreferencesAccountSessionRepository(prefs);
-  final accountDb = AccountDatabase(NativeDatabase.memory());
+  final accountDb = AccountDatabase(driftDatabase(name: 'tieban_example_account'));
   final identityLinkRepo = DriftAccountIdentityLinkRepository(accountDb);
 
   final bootstrapStore = DriftScopeBootstrapStore(newDb);

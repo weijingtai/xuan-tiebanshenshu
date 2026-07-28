@@ -4,9 +4,7 @@ import 'package:metaphysics_core/models/chinese_date_info.dart';
 import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:metaphysics_core/models/jie_qi_info.dart';
 import 'package:metaphysics_core/models/seventy_two_phenology.dart';
-import 'package:metaphysics_core/enums/enum_jia_zi.dart';
-import 'package:metaphysics_core/enums/enum_twenty_four_jie_qi.dart';
-import 'package:metaphysics_core/enums/enum_three_yuan.dart';
+import 'package:enumeration/enums.dart';
 import 'package:metaphysics_core/datamodel/location.dart';
 import 'package:metaphysics_core/datamodel/geo_location.dart';
 

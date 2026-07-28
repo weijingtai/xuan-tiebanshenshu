@@ -50,6 +50,10 @@ dependencies:
   repository_interface_divination_pipeline:
     git:
       url: http://192.168.0.165:3000/xuan/repository-interface-divination-pipeline.git
+  enumeration:
+    git:
+      url: http://192.168.0.165:3000/xuan/enumeration.git
+  
   cupertino_icons: ^1.0.8
   json_annotation: ^4.10.0
   provider: ^6.1.5+1
