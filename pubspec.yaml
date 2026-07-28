@@ -11,7 +11,8 @@ dependencies:
     git:
       url: http://192.168.0.165:3000/xuan/xuan-gua-core.git
   metaphysics_core:
-    path: ../xuan-metaphysics-core
+    git:
+      url: http://192.168.0.165:3000/xuan/metaphysics-core.git
   repository_interface_tiebanshenshu:
     git:
       url: http://192.168.0.165:3000/xuan/repository-interface-tiebanshenshu.git
@@ -27,7 +28,6 @@ dependencies:
   persistence_assets:
     git:
       url: http://192.168.0.165:3000/xuan/xuan-storage.git
-      ref: fix/phase456-storage
       path: assets
   flutter:
     sdk: flutter
@@ -41,19 +41,15 @@ dependencies:
   repository_interface_bazi:
     git:
       url: http://192.168.0.165:3000/xuan/repository-interface-bazi.git
-      ref: df3e486
   bazi_embed_ui_interface:
     git:
       url: http://192.168.0.165:3000/xuan/bazi-embed-ui-interface.git
-      ref: 0b637d3
   repository_interface_record:
     git:
       url: http://192.168.0.165:3000/xuan/repository-interface-record.git
   repository_interface_divination_pipeline:
     git:
       url: http://192.168.0.165:3000/xuan/repository-interface-divination-pipeline.git
-      ref: ed17984
-
   cupertino_icons: ^1.0.8
   json_annotation: ^4.10.0
   provider: ^6.1.5+1
@@ -76,7 +72,7 @@ dev_dependencies:
   flutter_lints: ^6.0.0
   build_runner: ^2.15.0
   json_serializable: ^6.12.0
-  drift_dev:  ^2.30.1
+  drift_dev: ^2.30.1
 
 flutter:
   generate: true
@@ -113,7 +109,9 @@ dependency_overrides:
     git:
       url: http://192.168.0.165:3000/xuan/xuan-four-zhu-card.git
   persistence_core:
-    path: ../xuan-storage/core
+    git:
+      url: http://192.168.0.165:3000/xuan/xuan-storage.git
+      path: core
   persistence_drift:
     git:
       url: http://192.168.0.165:3000/xuan/xuan-storage.git
@@ -123,7 +121,8 @@ dependency_overrides:
       url: http://192.168.0.165:3000/xuan/xuan-storage.git
       path: assets
   metaphysics_core:
-    path: ../xuan-metaphysics-core
+    git:
+      url: http://192.168.0.165:3000/xuan/metaphysics-core.git
   repository_interface_tiebanshenshu:
     git:
       url: http://192.168.0.165:3000/xuan/repository-interface-tiebanshenshu.git
@@ -137,17 +136,17 @@ dependency_overrides:
     git:
       url: http://192.168.0.165:3000/xuan/xuan-common-ui.git
   repository_interface_divination_pipeline:
-    path: ../repository-interface-divination-pipeline
+    git:
+      url: http://192.168.0.165:3000/xuan/repository-interface-divination-pipeline.git
   divination_case:
-    path: ../xuan-divination-case
+    git:
+      url: http://192.168.0.165:3000/xuan/xuan-divination-case.git
   repository_interface_bazi:
     git:
       url: http://192.168.0.165:3000/xuan/repository-interface-bazi.git
-      ref: df3e486
   bazi_embed_ui_interface:
     git:
       url: http://192.168.0.165:3000/xuan/bazi-embed-ui-interface.git
-      ref: 0b637d3
   repository_interface_record:
     git:
       url: http://192.168.0.165:3000/xuan/repository-interface-record.git
