@@ -1,5 +1,3 @@
-import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
-
 /// 铁板神数排盘预处理上下文，参照七政的 QizhengCalculationContext 结构。
 ///
 /// 当前铁板排盘链路是纯同步计算（YuanTangCalculator），无需预加载异步数据。

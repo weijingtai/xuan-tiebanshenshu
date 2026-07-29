@@ -8,11 +8,16 @@ import 'package:tiebanshenshu/features/yuan_tang_gua/yuan_tang_info.dart';
 import 'package:tiebanshenshu/enums.dart' as tieban_enums;
 import 'package:tiebanshenshu/service/strategy/yuan_tang_strategy.dart';
 
+import 'tieban_calculation_context.dart';
 import 'tieban_chart_params.dart';
 
 final class TiebanChartCalculator
     implements ChartCalculator<TiebanChartParams, TiebanDivinationRecordContract> {
-  const TiebanChartCalculator();
+  final TiebanCalculationContext context;
+
+  const TiebanChartCalculator({
+    this.context = const TiebanCalculationContext(),
+  });
 
   @override
   String get module => 'tiebanshenshu';

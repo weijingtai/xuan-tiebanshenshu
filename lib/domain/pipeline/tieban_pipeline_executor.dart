@@ -17,7 +17,7 @@ class TiebanPipelineExecutor {
     required TiebanChartParams params,
   }) async {
     final context = await TiebanCalculationContext.load();
-    final calculator = const TiebanChartCalculator();
+    final calculator = TiebanChartCalculator(context: context);
     final contract = calculator.calculate(moment, params);
     return TiebanPipelineResult(contract: contract);
   }
