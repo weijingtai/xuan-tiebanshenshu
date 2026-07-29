@@ -117,9 +117,7 @@ dependency_overrides:
       url: http://192.168.0.165:3000/xuan/xuan-storage.git
       path: core
   persistence_drift:
-    git:
-      url: http://192.168.0.165:3000/xuan/xuan-storage.git
-      path: drift
+    path: ../xuan-storage/drift
   persistence_assets:
     git:
       url: http://192.168.0.165:3000/xuan/xuan-storage.git
@@ -128,8 +126,7 @@ dependency_overrides:
     git:
       url: http://192.168.0.165:3000/xuan/metaphysics-core.git
   repository_interface_tiebanshenshu:
-    git:
-      url: http://192.168.0.165:3000/xuan/repository-interface-tiebanshenshu.git
+    path: ../repository-interface-tiebanshenshu
   repository_interface_qimendunjia:
     git:
       url: http://192.168.0.165:3000/xuan/repository-interface-qimendunjia.git
