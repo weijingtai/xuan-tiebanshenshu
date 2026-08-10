@@ -82,11 +82,8 @@ flutter:
   generate: true
   uses-material-design: true
 
-  assets:
-    - assets/all_tiao_wen_v1.csv
-    - assets/formulas/
-    - assets/kao_ke/
-    - assets/shaozishu/
+  # 数据资源已迁入 xuan-storage（XRAP 协议），源仓 assets/ 双副本已 git rm，
+  # 不再注册本地资源。见 docs/assets-migration Todo.md M6。
 
   module:
     androidX: true

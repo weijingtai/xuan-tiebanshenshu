@@ -14,6 +14,8 @@ import 'package:persistence_preferences/persistence_preferences.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:drift_flutter/drift_flutter.dart';
 import 'package:persistence_drift/tiebanshenshu/tiebanshenshu_module_registry.dart';
+import 'package:drift/native.dart';
+import 'package:persistence_core/persistence_core.dart' hide StorageError;
 
 void main() async {
   // Initialize timezone data
@@ -44,8 +46,18 @@ void main() async {
   final recordBackedRepository = TiebanshenshuModuleRegistry.repository(
     store: store,
   );
-  final tiaoWenRepository = AssetsTiaoWenRepository(
-    dataPath: kDefaultTiaoWenAssetPath,
+  // XRAP 链路：数据经 tiebanshenshu.tiao_wen 数据集（XRAP 协议）安装进
+  // TiebanshenshuDatabase（drift），查询走 SQLite。替代旧桩 AssetsTiaoWenRepository
+  // （CSV 直读，已 @Deprecated）。
+  final tiaoWenDb = TiebanshenshuDatabase(NativeDatabase.memory());
+  final tiaoWenInstaller = TiebanshenshuDriftDatasetInstaller(
+    db: tiaoWenDb,
+    bundledSource: const BundledDatasetSource(),
+  );
+  registerTiebanshenshuDatasets(db: tiaoWenDb);
+  final tiaoWenRepository = XrapTiaoWenRepository(
+    db: tiaoWenDb,
+    installer: tiaoWenInstaller,
   );
 
   runApp(
