@@ -60,7 +60,6 @@ dependencies:
   uuid: ^4.6.0
   collection: ^1.19.1
   equatable: ^2.0.8
-  fl_nodes: 0.4.0+1
   http: ^1.5.0
   path_provider: ^2.1.5
   logger: ^2.6.2
