@@ -258,67 +258,74 @@ class _TaiXuanDualMethodCardState extends State<TaiXuanDualMethodCard> {
     // 默认空状态
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: SimpleEmptyWidget(message: AppLocalizations.of(context)!.noCalculationResult, icon: Icons.info_outline),
+      child: SimpleEmptyWidget(
+        message: AppLocalizations.of(context)!.noCalculationResult,
+        icon: Icons.info_outline,
+      ),
     );
   }
 
   /// 构建方案选择器
   Widget _buildMethodSelector() {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+    return Material(
       color: Colors.grey[100],
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            '显示方案',
-            style: Theme.of(context).textTheme.titleSmall?.copyWith(
-              fontWeight: FontWeight.bold,
-              color: Colors.grey[700],
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              '显示方案',
+              style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                fontWeight: FontWeight.bold,
+                color: Colors.grey[700],
+              ),
             ),
-          ),
-          const SizedBox(height: 8.0),
-          Row(
-            children: [
-              Expanded(
-                child: CheckboxListTile(
-                  dense: true,
-                  contentPadding: EdgeInsets.zero,
-                  title: const Text('年干阴阳纳甲'),
-                  subtitle: widget.viewModel.hasYearGanYinYangResult
-                      ? Text(
-                          '${widget.viewModel.yearGanYinYangTiaoWenCount}条',
-                          style: const TextStyle(fontSize: 12.0),
-                        )
-                      : null,
-                  value: widget.viewModel.showYearGanYinYang,
-                  onChanged: widget.viewModel.hasYearGanYinYangResult
-                      ? (value) => widget.viewModel.toggleYearGanYinYang(value!)
-                      : null,
-                  controlAffinity: ListTileControlAffinity.leading,
+            const SizedBox(height: 8.0),
+            Row(
+              children: [
+                Expanded(
+                  child: CheckboxListTile(
+                    dense: true,
+                    contentPadding: EdgeInsets.zero,
+                    title: const Text('年干阴阳纳甲'),
+                    subtitle: widget.viewModel.hasYearGanYinYangResult
+                        ? Text(
+                            '${widget.viewModel.yearGanYinYangTiaoWenCount}条',
+                            style: const TextStyle(fontSize: 12.0),
+                          )
+                        : null,
+                    value: widget.viewModel.showYearGanYinYang,
+                    onChanged: widget.viewModel.hasYearGanYinYangResult
+                        ? (value) =>
+                              widget.viewModel.toggleYearGanYinYang(value!)
+                        : null,
+                    controlAffinity: ListTileControlAffinity.leading,
+                  ),
                 ),
-              ),
-              Expanded(
-                child: CheckboxListTile(
-                  dense: true,
-                  contentPadding: EdgeInsets.zero,
-                  title: const Text('传统内外卦纳甲'),
-                  subtitle: widget.viewModel.hasInnerOuterGuaResult
-                      ? Text(
-                          '${widget.viewModel.innerOuterGuaTiaoWenCount}条',
-                          style: const TextStyle(fontSize: 12.0),
-                        )
-                      : null,
-                  value: widget.viewModel.showInnerOuterGua,
-                  onChanged: widget.viewModel.hasInnerOuterGuaResult
-                      ? (value) => widget.viewModel.toggleInnerOuterGua(value!)
-                      : null,
-                  controlAffinity: ListTileControlAffinity.leading,
+                Expanded(
+                  child: CheckboxListTile(
+                    dense: true,
+                    contentPadding: EdgeInsets.zero,
+                    title: const Text('传统内外卦纳甲'),
+                    subtitle: widget.viewModel.hasInnerOuterGuaResult
+                        ? Text(
+                            '${widget.viewModel.innerOuterGuaTiaoWenCount}条',
+                            style: const TextStyle(fontSize: 12.0),
+                          )
+                        : null,
+                    value: widget.viewModel.showInnerOuterGua,
+                    onChanged: widget.viewModel.hasInnerOuterGuaResult
+                        ? (value) =>
+                              widget.viewModel.toggleInnerOuterGua(value!)
+                        : null,
+                    controlAffinity: ListTileControlAffinity.leading,
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
