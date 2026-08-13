@@ -180,7 +180,8 @@ class _ChartInputPageState extends State<ChartInputPage> {
         'houTianGua': decoded['houTianGua'],
         'yuanTangYaoIndex': decoded['yuanTangYaoIndex'],
       };
-    } catch (_) {
+    } catch (error, stack) {
+      debugPrint('铁板 keyResult 解析失败: $error\n$stack');
       return null;
     }
   }
