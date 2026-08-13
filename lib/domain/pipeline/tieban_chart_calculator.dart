@@ -67,7 +67,7 @@ final class TiebanChartCalculator
     };
 
     return TiebanDivinationRecordContract(
-      uuid: '',
+      uuid: params.uuid,
       question: '铁板神数排盘',
       createdAt: moment.nominalTime,
       calculationResultJson: jsonEncode(calculationResult),

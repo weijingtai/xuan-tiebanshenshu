@@ -1,6 +1,7 @@
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
+import '../../domain/pipeline/tieban_pipeline_executor.dart';
 import '../../features/huang_ji/huang_ji_session_manager.dart';
 import '../../features/huang_ji/huang_ji_v2_calculation_strategy.dart';
 import '../../features/huang_ji/huang_ji_v2_calculation_strategy_impl.dart';
@@ -118,6 +119,9 @@ class StrategyProviders {
     TiaoWenRepository? tiaoWenRepository,
   }) => [
     Provider<TiebanRecordRepository>(create: (_) => recordRepository),
+    Provider<TiebanPipelineExecutor>(
+      create: (_) => TiebanPipelineExecutor(),
+    ),
     if (tiaoWenRepository == null)
       Provider<TiaoWenRepository>(
         create: (_) => throw StateError(

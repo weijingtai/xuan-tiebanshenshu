@@ -41,11 +41,15 @@ final _params = const TiebanChartParams(
 
 void main() {
   group('TiebanPipelineExecutor', () {
-    final executor = TiebanPipelineExecutor();
+    final executor = TiebanPipelineExecutor(momentResolver: _FixedMomentResolver());
 
     test('execute() 跑通完整排盘，返回 TiebanDivinationRecordContract 且关键字段具具体值', () async {
-      final result = await executor.execute(moment: _moment, params: _params);
-      final contract = result.contract;
+      final contract = await executor.execute(
+        ChartRequest<TiebanChartParams>(
+          moment: _moment.source,
+          params: _params,
+        ),
+      );
 
       expect(contract.uuid, equals(''));
       expect(contract.question, equals('铁板神数排盘'));
@@ -64,8 +68,12 @@ void main() {
     });
 
     test('产出的 contract 满足 Chart 契约：toJson() 返回非空 Map，可 jsonDecode 往返', () async {
-      final result = await executor.execute(moment: _moment, params: _params);
-      final contract = result.contract;
+      final contract = await executor.execute(
+        ChartRequest<TiebanChartParams>(
+          moment: _moment.source,
+          params: _params,
+        ),
+      );
       final jsonMap = contract.toJson();
 
       expect(jsonMap.isEmpty, equals(false));
@@ -83,14 +91,47 @@ void main() {
     });
 
     test('相同输入产出稳定结果（同一 moment + params 调两次，关键字段一致）', () async {
-      final result1 = await executor.execute(moment: _moment, params: _params);
-      final result2 = await executor.execute(moment: _moment, params: _params);
+      final req = ChartRequest<TiebanChartParams>(
+        moment: _moment.source,
+        params: _params,
+      );
+      final result1 = await executor.execute(req);
+      final result2 = await executor.execute(req);
 
-      expect(result1.contract.question, equals(result2.contract.question));
-      expect(result1.contract.createdAt, equals(result2.contract.createdAt));
-      expect(result1.contract.calculationResultJson, equals(result2.contract.calculationResultJson));
-      expect(result1.contract.paramsJson, equals(result2.contract.paramsJson));
-      expect(result1.contract, equals(result2.contract));
+      expect(result1.question, equals(result2.question));
+      expect(result1.createdAt, equals(result2.createdAt));
+      expect(result1.calculationResultJson, equals(result2.calculationResultJson));
+      expect(result1.paramsJson, equals(result2.paramsJson));
+      expect(result1, equals(result2));
     });
   });
+}
+
+/// 固定 ResolvedMoment，隔离真实历法计算，专注验证接线与入参透传。
+class _FixedMomentResolver implements MomentResolver {
+  const _FixedMomentResolver();
+
+  @override
+  ResolvedMoment resolve(DivinationMoment moment) => ResolvedMoment(
+    source: moment,
+    nominalTime: DateTime(1990, 6, 21, 12),
+    eightChars: EightChars(
+      year: JiaZi.JIA_ZI,
+      month: JiaZi.JIA_ZI,
+      day: JiaZi.JIA_ZI,
+      time: JiaZi.JIA_ZI,
+    ),
+    lunar: const LunarDate(month: 5, day: 1, isLeapMonth: false),
+    jieQi: JieQiInfo(
+      jieQi: TwentyFourJieQi.XIA_ZHI,
+      startAt: DateTime(1990, 6, 21),
+      endAt: DateTime(1990, 7, 7),
+    ),
+  );
+
+  @override
+  List<ResolvedMoment> resolveCandidates(
+    DivinationMoment moment,
+    CandidateSpec spec,
+  ) => [];
 }
