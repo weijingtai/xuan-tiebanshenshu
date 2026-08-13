@@ -9,6 +9,7 @@ import 'package:repository_interface_divination_pipeline/repository_interface_di
 import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 import 'package:tiebanshenshu/domain/pipeline/tieban_chart_params.dart';
 import 'package:tiebanshenshu/domain/pipeline/tieban_pipeline_executor.dart';
+import 'package:tiebanshenshu/domain/pipeline/pipeline_evidence.dart';
 import 'package:tiebanshenshu/presentation/pages/chart_input_page.dart';
 import 'package:tiebanshenshu/presentation/viewmodels/theme_view_model.dart';
 import 'package:timezone/data/latest.dart' as tz;
@@ -39,6 +40,20 @@ void main() {
     final saved = await recordRepo.getAllRecords();
     expect(saved, hasLength(1));
     expect(saved.single.uuid, record.uuid);
+
+    // ── 执行证据：executor 真实执行 + 落库 uuid 同源 ──
+    final evidence = state.lastPipelineEvidence as PipelineEvidence?;
+    expect(evidence, isNotNull, reason: 'pipeline 路径必须产出执行证据');
+    expect(evidence!.callCount, 1, reason: 'executor 恰好执行一次');
+    expect(evidence.requestId, record.uuid, reason: 'requestId 取 Record uuid');
+    expect(evidence.resultUuid, record.uuid,
+        reason: 'resultUuid 与落库 Record uuid 同源');
+    expect(evidence.module, 'tiebanshenshu');
+    expect(evidence.error, isNull, reason: '成功执行无异常');
+    expect(evidence.keyResult, isNotNull, reason: '先天/后天卦是页面可观察结果');
+    // 落库的 Record 就是 lastPipelineRecord（同 uuid）
+    expect(saved.single.uuid, record.uuid,
+        reason: '落库 Record uuid 与排盘 uuid 同源');
   });
 
   testWidgets('B: 未选时间不崩、不落库', (tester) async {

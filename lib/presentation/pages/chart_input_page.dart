@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:metaphysics_core/models/divination_datetime.dart';
 import 'package:provider/provider.dart';
@@ -7,6 +9,7 @@ import 'package:xuan_four_zhu_card/four_zhu_card.dart';
 import 'package:xuan_four_zhu_card/widgets/query_time_input_card.dart';
 import 'package:tiebanshenshu/domain/pipeline/tieban_chart_params.dart';
 import 'package:tiebanshenshu/domain/pipeline/tieban_pipeline_executor.dart';
+import 'package:tiebanshenshu/domain/pipeline/pipeline_evidence.dart';
 import 'package:tiebanshenshu/infrastructure/tiebanshenshu_timezone_provider_adapter.dart';
 import 'package:tiebanshenshu/presentation/components/glass_scaffold.dart';
 import 'package:tiebanshenshu/presentation/theme/app_colors.dart';
@@ -35,6 +38,15 @@ class _ChartInputPageState extends State<ChartInputPage> {
   TiebanDivinationRecordContract? lastPipelineRecord;
   String? lastPipelineError;
   bool _isCalculating = false;
+
+  /// 本次排盘执行证据（供壳侧 E2E 测试断言 executor 真实执行）。
+  /// 只读：不参与生产逻辑判断、不影响渲染。
+  PipelineEvidence? _lastPipelineEvidence;
+  int _pipelineCallCount = 0;
+
+  /// 最后一次走统一入参排盘的执行证据；未走 pipeline 路径时为 null。
+  @visibleForTesting
+  PipelineEvidence? get lastPipelineEvidence => _lastPipelineEvidence;
 
   @override
   void initState() {
@@ -122,15 +134,54 @@ class _ChartInputPageState extends State<ChartInputPage> {
     lastPipelineError = null;
     setState(() {});
     try {
+      _pipelineCallCount++;
       final record = await executor.execute(request);
       lastPipelineRecord = record;
+      _lastPipelineEvidence = PipelineEvidence(
+        callCount: _pipelineCallCount,
+        requestId: record.uuid,
+        resultUuid: record.uuid,
+        module: 'tiebanshenshu',
+        keyResult: _keyResultOf(record),
+        error: null,
+      );
       await recordRepo.saveRecord(record);
     } catch (error, stack) {
+      _lastPipelineEvidence = PipelineEvidence(
+        callCount: _pipelineCallCount,
+        requestId: null,
+        resultUuid: null,
+        module: 'tiebanshenshu',
+        keyResult: null,
+        error: error,
+      );
       debugPrint('铁板 Pipeline 排盘失败: $error\n$stack');
       lastPipelineError = error.toString();
     } finally {
       _isCalculating = false;
       if (mounted) setState(() {});
+    }
+  }
+
+  /// 提取页面可观察的关键结果（先天卦/后天卦/元堂爻），
+  /// 作为执行证据的 keyResult。
+  ///
+  /// 这些值由本次排盘决定（calculationResultJson 由 calculator 序列化），
+  /// 且直接显示在铁板排盘结果页面上，因此能代表「这次执行真的发生了」。
+  Object? _keyResultOf(TiebanDivinationRecordContract record) {
+    final calculationResultJson = record.calculationResultJson;
+    if (calculationResultJson == null || calculationResultJson.isEmpty) {
+      return null;
+    }
+    try {
+      final decoded = jsonDecode(calculationResultJson) as Map<String, dynamic>;
+      return {
+        'xiantianGua': decoded['xiantianGua'],
+        'houTianGua': decoded['houTianGua'],
+        'yuanTangYaoIndex': decoded['yuanTangYaoIndex'],
+      };
+    } catch (_) {
+      return null;
     }
   }
 
