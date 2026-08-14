@@ -7,6 +7,7 @@ import 'package:repository_interface_divination_pipeline/repository_interface_di
 import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 import 'package:xuan_four_zhu_card/four_zhu_card.dart';
 import 'package:xuan_four_zhu_card/widgets/query_time_input_card.dart';
+import 'package:xuan_time_location/xuan_time_location.dart';
 import 'package:tiebanshenshu/domain/pipeline/tieban_chart_params.dart';
 import 'package:tiebanshenshu/domain/pipeline/tieban_pipeline_executor.dart';
 import 'package:tiebanshenshu/domain/pipeline/pipeline_evidence.dart';
@@ -107,7 +108,7 @@ class _ChartInputPageState extends State<ChartInputPage> {
     final recordRepo = context.read<TiebanRecordRepository>();
     final selectedLocation = location ?? _selectedLocation;
     final coordinates = selectedLocation?.coordinates;
-    final timezone = selectedLocation?.address?.timezone ?? 'Asia/Shanghai';
+    final timezone = selectedLocation?.address?.timezone ?? chinaTimeZoneId;
     final latitude = coordinates?.latitude ?? 0.0;
     final longitude = coordinates?.longitude ?? 0.0;
 

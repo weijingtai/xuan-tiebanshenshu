@@ -10,9 +10,13 @@ import 'infrastructure/di/strategy_providers.dart';
 import 'presentation/viewmodels/theme_view_model.dart';
 
 import 'package:timezone/data/latest.dart' as tz;
+import 'package:xuan_time_location/xuan_time_location.dart';
 
 void main() {
   tz.initializeTimeZones();
+  // 注册产品时区标识 Asia/Beijing → IANA Asia/Shanghai 别名
+  // （tzdata 无 Asia/Beijing，见 china_time_zone_alias.dart）。
+  ensureChinaTimeZoneAlias();
   runApp(
     MultiProvider(
       providers: [

@@ -4,6 +4,7 @@ import 'package:metaphysics_core/datamodel/location.dart';
 import 'package:metaphysics_core/enums.dart';
 import 'package:xuan_four_zhu_card/domain/ports/i_timezone_provider.dart';
 import 'package:xuan_four_zhu_card/widgets/query_time_input_card.dart';
+import 'package:xuan_time_location/xuan_time_location.dart';
 import 'package:tiebanshenshu/infrastructure/tiebanshenshu_timezone_provider_adapter.dart';
 
 void main() {
@@ -40,13 +41,13 @@ void main() {
       expect(callbackDt, equals(newDt));
     });
 
-    test('timezone defaults to Asia/Shanghai', () {
+    test('timezone defaults to chinaTimeZoneId', () {
       final adapter = TiebanshenshuTimezoneProviderAdapter(
         initialDatetime: DateTime.now(),
       );
 
-      expect(adapter.timezone, equals('Asia/Shanghai'));
-      expect(adapter.localTimezone, equals('Asia/Shanghai'));
+      expect(adapter.timezone, equals(chinaTimeZoneId));
+      expect(adapter.localTimezone, equals(chinaTimeZoneId));
     });
 
     test('updateTimezone updates timezone notifier', () {
@@ -136,7 +137,7 @@ void main() {
 
       // 断言 adapter 状态与构造参数一致
       expect(adapter.selectedDatetime, equals(DateTime(2024, 1, 15, 10, 30)));
-      expect(adapter.timezone, equals('Asia/Shanghai'));
+      expect(adapter.timezone, equals(chinaTimeZoneId));
 
       // 验证 adapter 满足 QTIC 所需的全部接口方法
       adapter.updateDatetime(DateTime(2024, 6, 20, 14, 45));

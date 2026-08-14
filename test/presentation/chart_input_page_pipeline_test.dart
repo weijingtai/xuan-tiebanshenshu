@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:metaphysics_core/datamodel/geo_location.dart';
+import 'package:metaphysics_core/datamodel/location.dart';
 import 'package:metaphysics_core/enums.dart';
 import 'package:metaphysics_core/models/divination_datetime.dart';
 import 'package:metaphysics_core/models/eight_chars.dart';
@@ -13,10 +17,14 @@ import 'package:tiebanshenshu/domain/pipeline/pipeline_evidence.dart';
 import 'package:tiebanshenshu/presentation/pages/chart_input_page.dart';
 import 'package:tiebanshenshu/presentation/viewmodels/theme_view_model.dart';
 import 'package:timezone/data/latest.dart' as tz;
+import 'package:xuan_time_location/xuan_time_location.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
   tz.initializeTimeZones();
+  // 与产品 main.dart / module_manifest 一致：注册产品时区标识 Asia/Beijing 别名，
+  // 否则 dropdown 找不到 chinaTimeZoneId 选项。
+  ensureChinaTimeZoneAlias();
 
 
   testWidgets('A: 排盘按钮路径真实执行 Pipeline，落库走 Record', (tester) async {
@@ -110,7 +118,7 @@ void main() {
     expect(decoded.latitude, 0.0);
     expect(decoded.longitude, 0.0);
     expect(decoded.altitude, 0.0);
-    expect(decoded.timezone, 'Asia/Shanghai');
+    expect(decoded.timezone, chinaTimeZoneId);
     expect(decoded.isMale, false);
     expect(decoded.uuid, '');
   });
@@ -132,6 +140,45 @@ void main() {
       () => TiebanChartParams.fromJson(const {'uuid': 123}),
       throwsFormatException,
     );
+  });
+
+  testWidgets('D: 时区来自地点携带值，不落回 chinaTimeZoneId 兜底', (tester) async {
+    final recordRepo = _InMemoryTiebanRecordRepository();
+    final executor = TiebanPipelineExecutor(
+      momentResolver: _FixedMomentResolver(),
+    );
+
+    await tester.pumpWidget(
+      _wrap(executor: executor, recordRepo: recordRepo),
+    );
+
+    final state = tester.state<State<ChartInputPage>>(find.byType(ChartInputPage)) as dynamic;
+    final location = Location(
+      address: Address(
+        countryName: '美国',
+        countryId: 1,
+        regionId: 1,
+        province: GeoLocation(
+          name: '纽约',
+          latitude: 40.7128,
+          longitude: -74.0060,
+          level: GeoLevel.province,
+          code: 'US-NY',
+          parentCode: '0',
+        ),
+        timezone: 'America/New_York',
+      ),
+    );
+    await state.runPipelineWith(
+      dateTime: DateTime(1990, 6, 21, 12),
+      location: location,
+    );
+
+    final record = state.lastPipelineRecord as TiebanDivinationRecordContract?;
+    expect(record, isNotNull, reason: '地点携带时区必须能正常排盘');
+    final paramsJson =
+        jsonDecode(record!.paramsJson!) as Map<String, dynamic>;
+    expect(paramsJson['timezone'], equals('America/New_York'));
   });
 }
 

@@ -15,7 +15,7 @@ class TiebanshenshuTimezoneProviderAdapter implements ITimezoneProvider {
   })  : _selectedDatetime = initialDatetime,
         _selectedTimeNotifier = ValueNotifier<DateTime?>(initialDatetime),
         _selectedDSTTimeNotifier = ValueNotifier<DateTime?>(null),
-        _timezoneNotifier = ValueNotifier<String?>('Asia/Shanghai'),
+        _timezoneNotifier = ValueNotifier<String?>(chinaTimeZoneId),
         _defaultTimezoneNotifier = ValueNotifier<String?>(null),
         _displayDefaultTimezoneNotifier =
             ValueNotifier<Tuple2<TimezoneType, String>?>(null),
@@ -58,7 +58,7 @@ class TiebanshenshuTimezoneProviderAdapter implements ITimezoneProvider {
   String? get timezone => _timezoneNotifier.value;
 
   @override
-  String? get localTimezone => 'Asia/Shanghai';
+  String? get localTimezone => chinaTimeZoneId;
 
   final ValueNotifier<String?> _timezoneNotifier;
   @override
