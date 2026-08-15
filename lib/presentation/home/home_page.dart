@@ -61,6 +61,8 @@ class HomePage extends StatelessWidget {
         icon: Icons.input,
         route: '/tiebanshenshu/chart_input',
         color: AppColors.primary,
+        // 壳内 E2E 定位排盘入口卡片用（禁坐标点击、禁文案定位）。
+        key: const ValueKey('tiebanshenshu.nav.chartInput'),
       ),
       _FeatureItem(
         title: '策略演示',
@@ -119,6 +121,7 @@ class HomePage extends StatelessWidget {
       itemBuilder: (context, index) {
         final item = features[index];
         return GradientCard(
+          key: item.key,
           onTap: () => Navigator.pushNamed(context, item.route),
           padding: const EdgeInsets.all(20),
           child: Column(
@@ -218,11 +221,15 @@ class _FeatureItem {
   final String route;
   final Color color;
 
+  /// 可选稳定 Key，透传给对应的 [GradientCard]，供壳内 E2E 定位入口卡片。
+  final Key? key;
+
   _FeatureItem({
     required this.title,
     required this.subtitle,
     required this.icon,
     required this.route,
     required this.color,
+    this.key,
   });
 }

@@ -22,10 +22,19 @@ class ChartInputPage extends StatefulWidget {
   const ChartInputPage({super.key});
 
   @override
-  State<ChartInputPage> createState() => _ChartInputPageState();
+  State<ChartInputPage> createState() => ChartInputPageState();
 }
 
-class _ChartInputPageState extends State<ChartInputPage> {
+/// 铁板神数排盘输入页 State。
+///
+/// **公开（非下划线私有）是刻意为之**：壳（xuan-shell）内的
+/// integration test 位于另一个包，私有类型跨库不可见，无法写
+/// `tester.state<ChartInputPageState>(...)` 读取本类 `@visibleForTesting`
+/// 的 [lastPipelineEvidence]。公开 State 类是 Flutter 官方惯例
+/// （`FormState` / `ScaffoldState` / `TabBarState` 皆然），不是 hack。
+///
+/// 仅供测试读取执行证据用，**不供生产代码调用**。
+class ChartInputPageState extends State<ChartInputPage> {
   late final ValueNotifier<
     List<MapEntry<EnumDatetimeType, DivinationDatetimeModel>>?
   > _selectableCardsNotifier;
@@ -198,7 +207,9 @@ class _ChartInputPageState extends State<ChartInputPage> {
             const SizedBox(height: 16),
 
             // 统一时间输入组件
+            // Key 供壳内 E2E 定位时间输入卡（禁坐标点击、禁文案定位）。
             QueryTimeInputCard(
+              key: const ValueKey('tiebanshenshu.input.datetime'),
               defaultDateTimeType: DateTimeType.solar,
               selectableCardsNotifier: _selectableCardsNotifier,
               timezoneProvider: _timezoneAdapter,
@@ -236,7 +247,9 @@ class _ChartInputPageState extends State<ChartInputPage> {
             const SizedBox(height: 24),
 
             // Pipeline 统一入参排盘按钮
+            // Key 供壳内 E2E 定位主动作控件（禁坐标点击、禁文案定位）。
             ElevatedButton(
+              key: const ValueKey('tiebanshenshu.action.calculate'),
               onPressed: _isCalculating ? null : _runPipeline,
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.surface,
