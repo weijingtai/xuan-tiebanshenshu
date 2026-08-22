@@ -2,6 +2,7 @@ import 'package:metaphysics_core/enums.dart';
 import 'package:tiebanshenshu/features/liuqinkaoke/models/liuqinkaoke_models.dart';
 import 'package:tiebanshenshu/features/liuqinkaoke/repository/liuqinkaoke_session_repository.dart';
 import 'package:tiebanshenshu/features/liuqinkaoke/strategy/liuqinkaoke_calculation_strategy.dart';
+import 'package:repository_contract_kernel/repository_contract_kernel.dart';
 import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 import 'package:uuid/uuid.dart';
 import 'package:tiebanshenshu/dev/dev_fixtures.dart';
@@ -38,7 +39,15 @@ class LiuQinKaoKeSessionManager {
     );
 
     final numbersToQuery = candidates.map((c) => c.number).toList();
-    final contents = await _tiaoWenRepository.getTiaoWenContentByNumbers(numbersToQuery);
+    final ctx = RequestContext(scopeUid: 'local-anonymous');
+    final queryResult = await _tiaoWenRepository.query({"ids": numbersToQuery}, PageRequest(limit: 100), ctx);
+    final page = switch (queryResult) {
+      Ok(:final value) => value,
+      Err(:final error) => throw error,
+    };
+    final contents = <int, String>{
+      for (final item in page.items) item.id: item.content1,
+    };
 
     final selectionItems = candidates.map((c) {
       return LiuQinKaoKeSelectionItem(
@@ -100,12 +109,20 @@ class LiuQinKaoKeSessionManager {
       }
     }
 
-    final contents = await _tiaoWenRepository.getTiaoWenContentByNumbers(numbersToQuery.where((n) => n > 0).toList());
+    final ctx2 = RequestContext(scopeUid: 'local-anonymous');
+    final queryResult2 = await _tiaoWenRepository.query({"ids": numbersToQuery.where((n) => n > 0).toList()}, PageRequest(limit: 100), ctx2);
+    final page2 = switch (queryResult2) {
+      Ok(:final value) => value,
+      Err(:final error) => throw error,
+    };
+    final contents2 = <int, String>{
+      for (final item in page2.items) item.id: item.content1,
+    };
 
     final finalItems = derivationInfo.map((info) {
       final num = info['number'] as int;
-      if (contents.containsKey(num)) {
-        return FinalTiaoWenItem(number: num, content: contents[num]!, originKind: info['origin'] as OriginKind, offset: info['offset'] as int);
+      if (contents2.containsKey(num)) {
+        return FinalTiaoWenItem(number: num, content: contents2[num]!, originKind: info['origin'] as OriginKind, offset: info['offset'] as int);
       }
       return null;
     }).whereType<FinalTiaoWenItem>().toList();

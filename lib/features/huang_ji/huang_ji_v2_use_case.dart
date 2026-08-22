@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print
 import 'package:metaphysics_core/models/eight_chars.dart';
+import 'package:repository_contract_kernel/repository_contract_kernel.dart';
 import 'huang_ji_formula_v2.dart';
 import 'huang_ji_formula_data_v2.dart';
 import '../../domain/models/yuan_hui_yun_shi.dart';
@@ -136,8 +137,20 @@ class HuangJiV2UseCase {
         final candidateNumbers = candidatesWithoutContent
             .map((c) => c.number)
             .toList();
-        final tiaoWenContentMap = await _tiaoWenRepository
-            .getTiaoWenContentByNumbers(candidateNumbers);
+        final ctx = RequestContext(scopeUid: 'local-anonymous');
+        final queryResult = await _tiaoWenRepository.query(
+          {"ids": candidateNumbers},
+          PageRequest(limit: 100),
+          ctx,
+        );
+        final queryItems = switch (queryResult) {
+          Ok(:final value) => value.items,
+          Err(:final error) => throw error,
+        };
+        // 将列表转为 Map<int, String> 便于按编号查找
+        final tiaoWenContentMap = {
+          for (final item in queryItems) item.id: item.content1,
+        };
 
         // 补充条文内容
         final candidatesWithContent = candidatesWithoutContent.map((candidate) {
@@ -311,8 +324,12 @@ class HuangJiV2UseCase {
           print('📊       条文: ${tiaoWenFormula.name} → $tiaoWenNumber');
 
           // 获取条文内容
-          final tiaoWenContent = await _tiaoWenRepository
-              .getTiaoWenContentByNumber(tiaoWenNumber);
+          final ctx2 = RequestContext(scopeUid: 'local-anonymous');
+          final getResult = await _tiaoWenRepository.get(tiaoWenNumber, ctx2);
+          final tiaoWenContent = switch (getResult) {
+            Ok(:final value) => value?.content1,
+            Err(:final error) => throw error,
+          };
 
           // 创建结果
           final result = TiaoWenResult(

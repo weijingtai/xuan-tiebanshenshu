@@ -5,6 +5,7 @@ library;
 
 import 'package:flutter/services.dart';
 import 'package:metaphysics_core/enums.dart';
+import 'package:repository_contract_kernel/repository_contract_kernel.dart';
 import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 
 /// 地支 → assets 路径映射
@@ -91,45 +92,41 @@ class ShaoziTiaoWenRepository implements TiaoWenRepository {
   }
 
   // ============================================================
-  // TiaoWenRepository 接口实现
+  // L0 TiaoWenRepository 接口实现
   // ============================================================
 
   @override
-  Future<TiaoWenDataModel?> getById(int id) async {
+  Future<Result<TiaoWenDataModel?>> get(int id, RequestContext ctx) async {
     await _ensureInitialized();
-    return _cache[id];
+    return Ok(_cache[id]);
   }
 
   @override
-  Future<List<TiaoWenDataModel>> getByIdsWithPageRange({
-    required List<int> ids,
-    required List<int> pageRange,
-    int steps = 1,
-  }) async {
+  Future<Result<bool>> exists(int id, RequestContext ctx) async {
     await _ensureInitialized();
-    return ids
-        .skip(pageRange[0])
-        .take(pageRange[1] - pageRange[0])
-        .where((id) => _cache.containsKey(id))
-        .map((id) => _cache[id]!)
-        .toList();
+    return Ok(_cache.containsKey(id));
   }
 
   @override
-  Future<List<TiaoWenDataModel>> listAll() async {
+  Future<Result<Page<TiaoWenDataModel>>> query(
+    Map<String, Object?> spec,
+    PageRequest page,
+    RequestContext ctx,
+  ) async {
     await _ensureInitialized();
-    return _cache.values.toList()..sort((a, b) => a.id.compareTo(b.id));
-  }
 
-  @override
-  Future<List<TiaoWenDataModel>> search({
-    String? setName,
-    String? contentKeyword,
-  }) async {
-    await _ensureInitialized();
     var results = _cache.values.toList();
 
-    if (setName != null) {
+    // 按 ids 过滤
+    final ids = spec['ids'];
+    if (ids is List) {
+      final idSet = ids.whereType<int>().toSet();
+      results = results.where((e) => idSet.contains(e.id)).toList();
+    }
+
+    // 按地支名称过滤
+    final setName = spec['setName'];
+    if (setName is String) {
       final targetZhi = DiZhi.values.firstWhere(
         (d) => d.name == setName,
         orElse: () => DiZhi.ZI,
@@ -137,104 +134,29 @@ class ShaoziTiaoWenRepository implements TiaoWenRepository {
       results = results.where((e) => e.setName == targetZhi).toList();
     }
 
-    if (contentKeyword != null) {
+    // 按内容关键词过滤
+    final contentKeyword = spec['contentKeyword'];
+    if (contentKeyword is String) {
       results = results
           .where((e) => e.content1.contains(contentKeyword))
           .toList();
     }
 
-    return results;
+    // 排序
+    results.sort((a, b) => a.id.compareTo(b.id));
+
+    // 分页
+    final items = results.take(page.limit).toList();
+
+    return Ok(Page(
+      items: items,
+      nextCursor: items.length < results.length ? '${items.length}' : null,
+    ));
   }
 
   @override
-  Future<int> getCount() async {
+  Future<Result<int>> count(Map<String, Object?> spec, RequestContext ctx) async {
     await _ensureInitialized();
-    return _cache.length;
-  }
-
-  @override
-  Future<List<TiaoWenDataModel>> getAroundById({
-    required int centerId,
-    required int beforeCount,
-    required int afterCount,
-    bool includeCenterItem = true,
-  }) async {
-    await _ensureInitialized();
-    final sortedIds = _cache.keys.toList()..sort();
-    final centerIndex = sortedIds.indexOf(centerId);
-    if (centerIndex == -1) return [];
-
-    final start = (centerIndex - beforeCount).clamp(0, sortedIds.length - 1);
-    final end = (centerIndex + afterCount).clamp(0, sortedIds.length - 1);
-
-    return sortedIds
-        .sublist(start, end + 1)
-        .where((id) => includeCenterItem || id != centerId)
-        .map((id) => _cache[id]!)
-        .toList();
-  }
-
-  @override
-  Future<List<TiaoWenDataModel>> getByIntervalAroundId({
-    required int centerId,
-    required int interval,
-    required int minCount,
-    int? maxRange,
-    bool includeCenterItem = true,
-  }) async {
-    await _ensureInitialized();
-    return [];
-  }
-
-  @override
-  Future<List<TiaoWenDataModel>> getByIdRange({
-    required int startId,
-    required int endId,
-  }) async {
-    await _ensureInitialized();
-    return _cache.values
-        .where((e) => e.id >= startId && e.id <= endId)
-        .toList()
-      ..sort((a, b) => a.id.compareTo(b.id));
-  }
-
-  @override
-  Future<List<TiaoWenDataModel>> getByIdList({
-    required List<int> queryList,
-    bool preserveOrder = false,
-    bool skipNotFound = true,
-  }) async {
-    await _ensureInitialized();
-    if (preserveOrder) {
-      return queryList
-          .where((id) => skipNotFound ? _cache.containsKey(id) : true)
-          .map((id) => _cache[id])
-          .whereType<TiaoWenDataModel>()
-          .toList();
-    }
-    return queryList
-        .where((id) => _cache.containsKey(id))
-        .map((id) => _cache[id]!)
-        .toList()
-      ..sort((a, b) => a.id.compareTo(b.id));
-  }
-
-  @override
-  Future<Map<int, String>> getTiaoWenContentByNumbers(List<int> numbers) async {
-    await _ensureInitialized();
-    final result = <int, String>{};
-    for (final num in numbers) {
-      final tiaoWen = _cache[num];
-      if (tiaoWen != null) {
-        result[num] = tiaoWen.content1;
-      }
-    }
-    return result;
-  }
-
-  @override
-  Future<String?> getTiaoWenContentByNumber(int number) async {
-    await _ensureInitialized();
-    return _cache[number]?.content1;
+    return Ok(_cache.length);
   }
 }

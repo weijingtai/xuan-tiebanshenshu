@@ -1,5 +1,6 @@
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
+import 'package:repository_contract_kernel/repository_contract_kernel.dart';
 
 import '../../domain/pipeline/tieban_pipeline_executor.dart';
 import '../../features/huang_ji/huang_ji_session_manager.dart';
@@ -85,23 +86,67 @@ import '../../presentation/viewmodels/kao_ding_liu_qin_view_model.dart';
 @Deprecated('Use RecordBackedTiebanRepository from xuan-storage')
 class FakeTiebanRecordRepository implements TiebanRecordRepository {
   @override
-  Future<String> saveRecord(TiebanDivinationRecordContract record) async =>
-      record.uuid;
+  Future<Result<Rev>> put(
+    TiebanDivinationRecordContract record,
+    RequestContext ctx, {
+    Precondition pre = const Unconditional(),
+  }) async => const Ok(Rev('v1'));
 
   @override
-  Future<List<TiebanDivinationRecordContract>> getAllRecords() async =>
-      const [];
+  Future<Result<TiebanDivinationRecordContract?>> get(
+    String uuid,
+    RequestContext ctx,
+  ) async => const Ok(null);
 
   @override
-  Future<TiebanDivinationRecordContract?> getRecordByUuid(String uuid) async =>
-      null;
+  Future<Result<bool>> exists(String uuid, RequestContext ctx) async =>
+      const Ok(false);
 
   @override
-  Future<bool> softDeleteRecord(String uuid) async => true;
+  Future<Result<void>> softDelete(
+    String uuid,
+    RequestContext ctx, {
+    Precondition pre = const Unconditional(),
+  }) async => const Ok(null);
 
   @override
-  Stream<List<TiebanDivinationRecordContract>> watchAllRecords() =>
-      Stream.value(const []);
+  Future<Result<void>> restore(String uuid, RequestContext ctx) async =>
+      const Ok(null);
+
+  @override
+  Future<Result<TiebanDivinationRecordContract?>> getIncludingDeleted(
+    String uuid,
+    RequestContext ctx,
+  ) async => const Ok(null);
+
+  @override
+  Future<Result<Page<TiebanDivinationRecordContract>>> query(
+    Map<String, Object?> spec,
+    PageRequest page,
+    RequestContext ctx,
+  ) async => const Ok(Page(items: []));
+
+  @override
+  Future<Result<int>> count(
+    Map<String, Object?> spec,
+    RequestContext ctx,
+  ) async => const Ok(0);
+
+  @override
+  Stream<Result<List<TiebanDivinationRecordContract>>> watch(
+    Map<String, Object?> spec,
+    RequestContext ctx,
+  ) => Stream.value(const Ok([]));
+
+  @override
+  Future<Result<BatchOutcome<String>>> putAll(
+    List<TiebanDivinationRecordContract> entities,
+    RequestContext ctx,
+  ) async => const Ok(BatchOutcome([]));
+
+  @override
+  Future<Result<R>> inTransaction<R>(Future<R> Function() body) async =>
+      Ok(await body());
 }
 
 /// Strategy相关的Provider配置

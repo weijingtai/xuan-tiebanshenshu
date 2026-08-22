@@ -3,6 +3,8 @@
 /// 定义所有交互式UseCase的基础抽象类和接口
 library;
 
+import 'package:repository_contract_kernel/repository_contract_kernel.dart';
+
 import '../../domain/exceptions/tiao_wen_calculation_exceptions.dart';
 import '../../domain/models/base_number_model.dart';
 import '../../domain/models/interactive_session.dart';
@@ -191,7 +193,16 @@ abstract class BaseInteractiveUseCase<TParams> {
     TiaoWenRepository repository,
   ) async {
     try {
-      return await repository.getByIdList(queryList: tiaoWenNumbers);
+      final ctx = RequestContext(scopeUid: 'local-anonymous');
+      final result = await repository.query(
+        {"ids": tiaoWenNumbers},
+        PageRequest(limit: 100),
+        ctx,
+      );
+      return switch (result) {
+        Ok(:final value) => value.items,
+        Err(:final error) => throw error,
+      };
     } catch (e) {
       throw TiaoWenDataException(
         message: '批量查询条文数据失败: ${e.toString()}',

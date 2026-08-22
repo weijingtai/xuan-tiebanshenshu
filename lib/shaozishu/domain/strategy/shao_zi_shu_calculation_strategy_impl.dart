@@ -6,6 +6,7 @@
 library;
 
 import 'package:metaphysics_core/models/eight_chars.dart';
+import 'package:repository_contract_kernel/repository_contract_kernel.dart';
 import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 
 import '../../helper/shao_zi_shu_calculation_helper.dart';
@@ -43,11 +44,16 @@ class ShaoZiShuCalculationStrategyImpl
   }) async {
     if (tiaoWenNumbers.isEmpty) return [];
 
-    return await _repository.getByIdList(
-      queryList: tiaoWenNumbers,
-      preserveOrder: true,
-      skipNotFound: true,
+    final ctx = RequestContext(scopeUid: 'local-anonymous');
+    final result = await _repository.query(
+      {"ids": tiaoWenNumbers},
+      PageRequest(limit: 1000),
+      ctx,
     );
+    return switch (result) {
+      Ok(:final value) => value.items,
+      Err(:final error) => throw error,
+    };
   }
 
   @override

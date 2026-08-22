@@ -1,4 +1,5 @@
 import 'package:metaphysics_core/models/eight_chars.dart';
+import 'package:repository_contract_kernel/repository_contract_kernel.dart';
 import '../../domain/models/tiao_wen_result.dart';
 import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 import '../../service/strategy/ba_gua_jia_ze_strategy.dart';
@@ -104,8 +105,19 @@ class KaoKeCalculationStrategyImpl implements KaoKeCalculationStrategy {
       naJiaResult.tiaoWenNumber,
     ];
 
-    final tiaoWenContentMap =
-        await _tiaoWenRepository.getTiaoWenContentByNumbers(tiaoWenNumbers);
+    final ctx = RequestContext(scopeUid: 'local-anonymous');
+    final queryResult = await _tiaoWenRepository.query(
+      {"ids": tiaoWenNumbers},
+      PageRequest(limit: 100),
+      ctx,
+    );
+    final queryItems = switch (queryResult) {
+      Ok(:final value) => value.items,
+      Err(:final error) => throw error,
+    };
+    final tiaoWenContentMap = {
+      for (final item in queryItems) item.id: item.content1,
+    };
 
     // 构建结果列表
     final results = <TiaoWenResult>[];
@@ -182,19 +194,30 @@ class KaoKeCalculationStrategyImpl implements KaoKeCalculationStrategy {
     );
 
     // 批量查询条文内容
-    final tiaoWenNumbers = [
+    final tiaoWenNumbers2 = [
       yearGanResult.tiaoWenNumber,
       innerOuterResult.tiaoWenNumber,
     ];
 
-    final tiaoWenContentMap =
-        await _tiaoWenRepository.getTiaoWenContentByNumbers(tiaoWenNumbers);
+    final ctx2 = RequestContext(scopeUid: 'local-anonymous');
+    final queryResult2 = await _tiaoWenRepository.query(
+      {"ids": tiaoWenNumbers2},
+      PageRequest(limit: 100),
+      ctx2,
+    );
+    final queryItems2 = switch (queryResult2) {
+      Ok(:final value) => value.items,
+      Err(:final error) => throw error,
+    };
+    final tiaoWenContentMap2 = {
+      for (final item in queryItems2) item.id: item.content1,
+    };
 
     // 构建结果列表
     final results = <TiaoWenResult>[];
 
     // 添加年干阴阳纳甲法结果
-    final yearGanContent = tiaoWenContentMap[yearGanResult.tiaoWenNumber];
+    final yearGanContent = tiaoWenContentMap2[yearGanResult.tiaoWenNumber];
     if (yearGanContent != null) {
       results.add(
         TiaoWenResult(
@@ -210,7 +233,7 @@ class KaoKeCalculationStrategyImpl implements KaoKeCalculationStrategy {
     }
 
     // 添加传统内外卦纳甲法结果
-    final innerOuterContent = tiaoWenContentMap[innerOuterResult.tiaoWenNumber];
+    final innerOuterContent = tiaoWenContentMap2[innerOuterResult.tiaoWenNumber];
     if (innerOuterContent != null) {
       results.add(
         TiaoWenResult(

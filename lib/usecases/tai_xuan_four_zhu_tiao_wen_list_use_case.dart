@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print
 import 'package:metaphysics_core/models/eight_chars.dart';
+import 'package:repository_contract_kernel/repository_contract_kernel.dart';
 
 import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 import 'base_get_tiao_wen_list_use_case.dart';
@@ -77,9 +78,14 @@ class TaiXuanFourZhuTiaoWenListUseCase
 
         // 从Repository获取条文数据
         final tiaoWenDataList = <TiaoWenDataModel>[];
+        final ctx = RequestContext(scopeUid: 'local-anonymous');
         for (final number in tiaoWenNumbers) {
           try {
-            final tiaoWenData = await _repository.getById(number);
+            final result2 = await _repository.get(number, ctx);
+            final tiaoWenData = switch (result2) {
+              Ok(:final value) => value,
+              Err(:final error) => throw error,
+            };
             if (tiaoWenData != null) {
               tiaoWenDataList.add(tiaoWenData);
             }

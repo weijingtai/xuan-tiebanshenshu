@@ -3,6 +3,8 @@
 /// 定义获取条文列表的通用业务逻辑接口
 library;
 
+import 'package:repository_contract_kernel/repository_contract_kernel.dart';
+
 import '../domain/exceptions/tiao_wen_calculation_exceptions.dart';
 import '../domain/models/multi_base_number_result.dart';
 import '../domain/models/base_number_tiao_wen_list_model.dart';
@@ -85,9 +87,16 @@ abstract class BaseGetTiaoWenListUseCase<TParams> {
     }
 
     // 2. 批量查询所有条文实体
-    final tiaoWenEntities = await repository.getByIdList(
-      queryList: allTiaoWenNumbers,
+    final ctx = RequestContext(scopeUid: 'local-anonymous');
+    final result = await repository.query(
+      {"ids": allTiaoWenNumbers},
+      PageRequest(limit: 100),
+      ctx,
     );
+    final tiaoWenEntities = switch (result) {
+      Ok(:final value) => value.items,
+      Err(:final error) => throw error,
+    };
 
     // 3. 为每个BaseNumberTiaoWenListModel填充条文数据
     final updatedBaseNumbers = <BaseNumberTiaoWenListModel>[];

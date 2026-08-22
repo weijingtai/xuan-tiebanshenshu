@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Page;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:metaphysics_core/datamodel/geo_location.dart';
 import 'package:metaphysics_core/datamodel/location.dart';
@@ -9,6 +9,7 @@ import 'package:metaphysics_core/models/divination_datetime.dart';
 import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:metaphysics_core/models/jie_qi_info.dart';
 import 'package:provider/provider.dart';
+import 'package:repository_contract_kernel/repository_contract_kernel.dart';
 import 'package:repository_interface_divination_pipeline/repository_interface_divination_pipeline.dart';
 import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 import 'package:tiebanshenshu/domain/pipeline/tieban_chart_params.dart';
@@ -25,6 +26,19 @@ void main() {
   // 与产品 main.dart / module_manifest 一致：注册产品时区标识 Asia/Beijing 别名，
   // 否则 dropdown 找不到 chinaTimeZoneId 选项。
   ensureChinaTimeZoneAlias();
+  final _ctx = RequestContext(scopeUid: 'local-anonymous');
+
+  Future<List<TiebanDivinationRecordContract>> _getAllRecords(
+    TiebanRecordRepository repo,
+  ) async {
+    final result = await repo.query(const {}, PageRequest(limit: 100), _ctx);
+    switch (result) {
+      case Ok(:final value):
+        return value.items;
+      case Err(:final error):
+        throw error;
+    }
+  }
 
 
   testWidgets('A: 排盘按钮路径真实执行 Pipeline，落库走 Record', (tester) async {
@@ -45,7 +59,7 @@ void main() {
     expect(record!.uuid, 'tieban-${DateTime(1990, 6, 21, 12).millisecondsSinceEpoch}');
     expect(state.lastPipelineError, isNull);
 
-    final saved = await recordRepo.getAllRecords();
+    final saved = await _getAllRecords(recordRepo);
     expect(saved, hasLength(1));
     expect(saved.single.uuid, record.uuid);
 
@@ -79,7 +93,7 @@ void main() {
 
     expect(state.lastPipelineError, '未选择时间');
     expect(state.lastPipelineRecord, isNull);
-    expect(await recordRepo.getAllRecords(), isEmpty);
+    expect(await _getAllRecords(recordRepo), isEmpty);
   });
 
   testWidgets('B2: Pipeline 抛错时不崩、不落库、错误被记录', (tester) async {
@@ -97,7 +111,7 @@ void main() {
 
     expect(state.lastPipelineRecord, isNull);
     expect(state.lastPipelineError, isNotNull);
-    expect(await recordRepo.getAllRecords(), isEmpty);
+    expect(await _getAllRecords(recordRepo), isEmpty);
   });
 
   test('C: TiebanChartParams toJson/fromJson 互逆 round-trip', () {
@@ -204,34 +218,58 @@ class _InMemoryTiebanRecordRepository implements TiebanRecordRepository {
   final List<TiebanDivinationRecordContract> _records = [];
 
   @override
-  Future<String> saveRecord(TiebanDivinationRecordContract record) async {
+  Future<Result<Rev>> put(TiebanDivinationRecordContract record, RequestContext ctx, {Precondition pre = const Unconditional()}) async {
     _records.add(record);
-    return record.uuid;
+    return const Ok(Rev('v1'));
   }
 
   @override
-  Future<List<TiebanDivinationRecordContract>> getAllRecords() async {
-    return List.of(_records);
-  }
-
-  @override
-  Future<TiebanDivinationRecordContract?> getRecordByUuid(String uuid) async {
+  Future<Result<TiebanDivinationRecordContract?>> get(String uuid, RequestContext ctx) async {
     for (final r in _records) {
-      if (r.uuid == uuid) return r;
+      if (r.uuid == uuid) return Ok(r);
     }
-    return null;
+    return const Ok(null);
   }
 
   @override
-  Future<bool> softDeleteRecord(String uuid) async {
+  Future<Result<bool>> exists(String uuid, RequestContext ctx) async {
+    for (final r in _records) {
+      if (r.uuid == uuid) return const Ok(true);
+    }
+    return const Ok(false);
+  }
+
+  @override
+  Future<Result<void>> softDelete(String uuid, RequestContext ctx, {Precondition pre = const Unconditional()}) async {
     _records.removeWhere((r) => r.uuid == uuid);
-    return true;
+    return const Ok(null);
   }
 
   @override
-  Stream<List<TiebanDivinationRecordContract>> watchAllRecords() async* {
-    yield List.of(_records);
+  Future<Result<void>> restore(String uuid, RequestContext ctx) async => const Ok(null);
+
+  @override
+  Future<Result<TiebanDivinationRecordContract?>> getIncludingDeleted(String uuid, RequestContext ctx) async => const Ok(null);
+
+  @override
+  Future<Result<Page<TiebanDivinationRecordContract>>> query(Map<String, Object?> spec, PageRequest page, RequestContext ctx) async => Ok(Page(items: List.of(_records)));
+
+  @override
+  Future<Result<int>> count(Map<String, Object?> spec, RequestContext ctx) async => Ok(_records.length);
+
+  @override
+  Stream<Result<List<TiebanDivinationRecordContract>>> watch(Map<String, Object?> spec, RequestContext ctx) async* {
+    yield Ok(List.of(_records));
   }
+
+  @override
+  Future<Result<BatchOutcome<String>>> putAll(List<TiebanDivinationRecordContract> entities, RequestContext ctx) async {
+    _records.addAll(entities);
+    return Ok(BatchOutcome(entities.map((e) => (id: e.uuid, result: const Ok(Rev('v1')))).toList()));
+  }
+
+  @override
+  Future<Result<R>> inTransaction<R>(Future<R> Function() body) async => Ok(await body());
 }
 
 /// 固定 ResolvedMoment，隔离真实历法计算。

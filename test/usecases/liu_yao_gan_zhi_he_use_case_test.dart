@@ -1,5 +1,6 @@
 import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:repository_contract_kernel/repository_contract_kernel.dart';
 import 'package:tiebanshenshu/domain/models/base_number_model_result.dart';
 import 'package:tiebanshenshu/domain/models/liu_yao_gan_zhi_he_base_number_model.dart';
 import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
@@ -28,76 +29,36 @@ class MockTiaoWenRepository implements TiaoWenRepository {
   List<int>? lastQueryList;
 
   @override
-  Future<List<TiaoWenDataModel>> getByIdList({
-    required List<int> queryList,
-    bool preserveOrder = false,
-    bool skipNotFound = true,
-  }) async {
-    getByIdListCallCount++;
-    lastQueryList = queryList;
-
-    final result = <TiaoWenDataModel>[];
-    for (var id in queryList) {
-      if (mockData.containsKey(id)) {
-        result.add(mockData[id]!);
-      }
-    }
-    return result;
+  Future<Result<TiaoWenDataModel?>> get(int id, RequestContext ctx) async {
+    return Ok(mockData[id]);
   }
 
-  // 其他方法抛出 UnimplementedError
   @override
-  Future<TiaoWenDataModel?> getById(int id) => throw UnimplementedError();
+  Future<Result<bool>> exists(int id, RequestContext ctx) async {
+    return Ok(mockData.containsKey(id));
+  }
 
   @override
-  Future<List<TiaoWenDataModel>> getByIdsWithPageRange({
-    required List<int> ids,
-    required List<int> pageRange,
-    int steps = 1,
-  }) => throw UnimplementedError();
+  Future<Result<Page<TiaoWenDataModel>>> query(Map<String, Object?> spec, PageRequest page, RequestContext ctx) async {
+    getByIdListCallCount++;
+    final ids = spec['ids'] as List<int>?;
+    lastQueryList = ids;
+
+    final result = <TiaoWenDataModel>[];
+    if (ids != null) {
+      for (var id in ids) {
+        if (mockData.containsKey(id)) {
+          result.add(mockData[id]!);
+        }
+      }
+    }
+    return Ok(Page(items: result));
+  }
 
   @override
-  Future<List<TiaoWenDataModel>> listAll() => throw UnimplementedError();
-
-  @override
-  Future<List<TiaoWenDataModel>> search({
-    String? setName,
-    String? contentKeyword,
-  }) => throw UnimplementedError();
-
-  @override
-  Future<int> getCount() => throw UnimplementedError();
-
-  @override
-  Future<List<TiaoWenDataModel>> getAroundById({
-    required int centerId,
-    required int beforeCount,
-    required int afterCount,
-    bool includeCenterItem = true,
-  }) => throw UnimplementedError();
-
-  @override
-  Future<List<TiaoWenDataModel>> getByIntervalAroundId({
-    required int centerId,
-    required int interval,
-    required int minCount,
-    int? maxRange,
-    bool includeCenterItem = true,
-  }) => throw UnimplementedError();
-
-  @override
-  Future<List<TiaoWenDataModel>> getByIdRange({
-    required int startId,
-    required int endId,
-  }) => throw UnimplementedError();
-
-  @override
-  Future<String?> getTiaoWenContentByNumber(int number) =>
-      throw UnimplementedError();
-
-  @override
-  Future<Map<int, String>> getTiaoWenContentByNumbers(List<int> numbers) =>
-      throw UnimplementedError();
+  Future<Result<int>> count(Map<String, Object?> spec, RequestContext ctx) async {
+    return Ok(mockData.length);
+  }
 }
 
 /// 先后天卦六爻干支和数法UseCase测试

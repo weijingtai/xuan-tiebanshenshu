@@ -1,5 +1,6 @@
 import 'package:metaphysics_core/enums.dart';
 import 'package:metaphysics_core/models/eight_chars.dart';
+import 'package:repository_contract_kernel/repository_contract_kernel.dart';
 import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 import '../../../features/kao_ke/gua_calculation_helper.dart';
 import '../../../features/kao_ke/kao_ke_session_models.dart';
@@ -208,12 +209,17 @@ class KaoDingLiuQinUseCase {
     final entriesWithTiaoWen = <LiuDuEntryWithTiaoWen>[];
 
     // 如果是按地支索引的表，需要保留地支信息
+    final ctx = RequestContext(scopeUid: 'local-anonymous');
     if (table.hasZhiMapper && table.zhiMapper != null) {
       for (final zhi in DiZhi.values) {
         final entry = table.zhiMapper![zhi];
         if (entry != null) {
           // 获取条文内容
-          final tiaoWen = await _tiaoWenRepository.getById(entry.tiaoWenNumber);
+          final result2 = await _tiaoWenRepository.get(entry.tiaoWenNumber, ctx);
+          final tiaoWen = switch (result2) {
+            Ok(:final value) => value,
+            Err(:final error) => throw error,
+          };
 
           // 判断是否是目标条目
           final isTarget = result.targetEntry != null &&
@@ -230,7 +236,11 @@ class KaoDingLiuQinUseCase {
     } else {
       // 固定列表表
       for (final entry in entries) {
-        final tiaoWen = await _tiaoWenRepository.getById(entry.tiaoWenNumber);
+        final result2 = await _tiaoWenRepository.get(entry.tiaoWenNumber, ctx);
+        final tiaoWen = switch (result2) {
+          Ok(:final value) => value,
+          Err(:final error) => throw error,
+        };
 
         final isTarget = result.targetEntry != null &&
                         result.targetEntry!.chiperNumber == entry.chiperNumber;
@@ -252,12 +262,17 @@ class KaoDingLiuQinUseCase {
     LiuDuEntry? targetEntry,
   }) async {
     final entriesWithTiaoWen = <LiuDuEntryWithTiaoWen>[];
+    final ctx = RequestContext(scopeUid: 'local-anonymous');
 
     if (table.hasZhiMapper && table.zhiMapper != null) {
       for (final zhi in DiZhi.values) {
         final entry = table.zhiMapper![zhi];
         if (entry != null) {
-          final tiaoWen = await _tiaoWenRepository.getById(entry.tiaoWenNumber);
+          final result2 = await _tiaoWenRepository.get(entry.tiaoWenNumber, ctx);
+          final tiaoWen = switch (result2) {
+            Ok(:final value) => value,
+            Err(:final error) => throw error,
+          };
           final isTarget = targetEntry != null &&
               targetEntry.chiperNumber == entry.chiperNumber;
           entriesWithTiaoWen.add(LiuDuEntryWithTiaoWen(
@@ -270,7 +285,11 @@ class KaoDingLiuQinUseCase {
       }
     } else {
       for (final entry in table.getAllEntries()) {
-        final tiaoWen = await _tiaoWenRepository.getById(entry.tiaoWenNumber);
+        final result2 = await _tiaoWenRepository.get(entry.tiaoWenNumber, ctx);
+        final tiaoWen = switch (result2) {
+          Ok(:final value) => value,
+          Err(:final error) => throw error,
+        };
         final isTarget = targetEntry != null &&
             targetEntry.chiperNumber == entry.chiperNumber;
         entriesWithTiaoWen.add(LiuDuEntryWithTiaoWen(

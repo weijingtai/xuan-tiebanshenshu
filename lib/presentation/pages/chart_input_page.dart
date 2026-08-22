@@ -1,6 +1,7 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Page;
+import 'package:repository_contract_kernel/repository_contract_kernel.dart';
 import 'package:metaphysics_core/models/divination_datetime.dart';
 import 'package:provider/provider.dart';
 import 'package:repository_interface_divination_pipeline/repository_interface_divination_pipeline.dart';
@@ -155,7 +156,8 @@ class ChartInputPageState extends State<ChartInputPage> {
         keyResult: _keyResultOf(record),
         error: null,
       );
-      await recordRepo.saveRecord(record);
+      final ctx = RequestContext(scopeUid: 'local-anonymous');
+      await recordRepo.put(record, ctx);
     } catch (error, stack) {
       _lastPipelineEvidence = PipelineEvidence(
         callCount: _pipelineCallCount,

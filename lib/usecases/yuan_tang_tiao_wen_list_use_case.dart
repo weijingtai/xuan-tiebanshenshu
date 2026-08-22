@@ -1,3 +1,4 @@
+import 'package:repository_contract_kernel/repository_contract_kernel.dart';
 import 'package:metaphysics_core/enums.dart';
 import 'package:metaphysics_core/models/eight_chars.dart';
 import 'package:tiebanshenshu/enums.dart';
@@ -94,9 +95,16 @@ class YuanTangTiaoWenListUseCase
       ].toSet().toList(); // 去重
 
       // 7. 批量查询条文
-      final tiaoWenDataList = await _repository.getByIdList(
-        queryList: allTiaoWenNumbers,
+      final ctx = RequestContext(scopeUid: 'local-anonymous');
+      final queryResult = await _repository.query(
+        {"ids": allTiaoWenNumbers},
+        PageRequest(limit: 100),
+        ctx,
       );
+      final tiaoWenDataList = switch (queryResult) {
+        Ok(:final value) => value.items,
+        Err(:final error) => throw error,
+      };
 
       // 8. 构建两个BaseNumberTiaoWenListModel（先天和后天分开）
       final baseNumberTiaoWenList = [

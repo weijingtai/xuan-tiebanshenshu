@@ -1,3 +1,4 @@
+import 'package:repository_contract_kernel/repository_contract_kernel.dart';
 import 'package:metaphysics_core/enums.dart';
 
 import 'package:metaphysics_core/models/eight_chars.dart';
@@ -79,9 +80,16 @@ class QianHouGuaTiaoWenListUseCase
       // final dbIds = allTiaoWenNumbers.map((n) => n + 1000).toList();
 
       // 8. 批量查询条文
-      final tiaoWenDataList = await _repository.getByIdList(
-        queryList: allTiaoWenNumbers,
+      final ctx = RequestContext(scopeUid: 'local-anonymous');
+      final queryResult = await _repository.query(
+        {"ids": allTiaoWenNumbers},
+        PageRequest(limit: 100),
+        ctx,
       );
+      final tiaoWenDataList = switch (queryResult) {
+        Ok(:final value) => value.items,
+        Err(:final error) => throw error,
+      };
 
       // 9. 构建两个BaseNumberTiaoWenListModel（前卦和后卦分开）
       // 注意：这里需要将数据库ID转换回条文编号来进行匹配

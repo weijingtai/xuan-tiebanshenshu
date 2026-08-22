@@ -1,3 +1,4 @@
+import 'package:repository_contract_kernel/repository_contract_kernel.dart';
 import 'package:metaphysics_core/models/eight_chars.dart';
 import '../domain/models/base_number_tiao_wen_list_model.dart';
 import '../domain/models/multi_base_number_result.dart';
@@ -64,9 +65,16 @@ class GuaZhongTiaoWenListUseCase
           .toList();
 
       // 6. 批量查询条文
-      final tiaoWenDataList = await _repository.getByIdList(
-        queryList: allTiaoWenNumbers,
+      final ctx = RequestContext(scopeUid: 'local-anonymous');
+      final queryResult = await _repository.query(
+        {"ids": allTiaoWenNumbers},
+        PageRequest(limit: 100),
+        ctx,
       );
+      final tiaoWenDataList = switch (queryResult) {
+        Ok(:final value) => value.items,
+        Err(:final error) => throw error,
+      };
 
       // 7. 构建两个BaseNumberTiaoWenListModel（年月卦和日时卦分开）
       // 获取所有三种方案的条文编号

@@ -14,6 +14,7 @@ import 'package:persistence_preferences/persistence_preferences.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:drift_flutter/drift_flutter.dart';
 import 'package:persistence_drift/tiebanshenshu/tiebanshenshu_module_registry.dart';
+import 'package:persistence_drift/scope/scope_handover.dart';
 import 'package:drift/native.dart';
 import 'package:persistence_core/persistence_core.dart' hide StorageError;
 
@@ -34,6 +35,7 @@ void main() async {
     sessionRepository: sessionRepo,
     identityLinkRepository: identityLinkRepo,
     ledger: ledger,
+    handoverService: _NoOpScopeHandoverService(),
   );
   final resolvedScope = await resolver.resolve();
   final scopeUid = resolvedScope.scopeUid;
@@ -102,4 +104,13 @@ class TieBanShenShuExampleApp extends StatelessWidget {
       },
     );
   }
+}
+
+/// 示例应用中不需要真实的 scope 交接逻辑。
+class _NoOpScopeHandoverService implements ScopeHandoverService {
+  @override
+  Future<void> handover({
+    required String fromScope,
+    required String toScope,
+  }) async {}
 }

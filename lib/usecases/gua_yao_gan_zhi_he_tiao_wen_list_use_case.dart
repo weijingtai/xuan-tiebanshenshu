@@ -1,4 +1,5 @@
 // ignore_for_file: avoid_print
+import 'package:repository_contract_kernel/repository_contract_kernel.dart';
 import 'package:metaphysics_core/models/eight_chars.dart';
 
 import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
@@ -65,9 +66,14 @@ class GuaYaoGanZhiHeTiaoWenListUseCase
         final tiaoWenNumbers = calculationResult.tiaoWenNumbers;
 
         final tiaoWenDataList = <TiaoWenDataModel>[];
+        final ctx = RequestContext(scopeUid: 'local-anonymous');
         for (final number in tiaoWenNumbers) {
           try {
-            final tiaoWenData = await _repository.getById(number);
+            final result = await _repository.get(number, ctx);
+            final tiaoWenData = switch (result) {
+              Ok(:final value) => value,
+              Err(:final error) => throw error,
+            };
             if (tiaoWenData != null) {
               tiaoWenDataList.add(tiaoWenData);
             }

@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print
 import 'package:metaphysics_core/models/eight_chars.dart';
+import 'package:repository_contract_kernel/repository_contract_kernel.dart';
 
 import '../domain/models/base_number_tiao_wen_list_model.dart';
 import '../domain/models/multi_base_number_result.dart';
@@ -65,7 +66,7 @@ class BaGuaJiaZeTiaoWenListUseCase
 
         // 查询单个条文
         try {
-          final tiaoWenData = await _repository.getById(tiaoWenNumber);
+          final tiaoWenData = await _getById(tiaoWenNumber);
 
           // 创建BaseNumberTiaoWenListModel（条文列表只包含自己）
           baseNumberTiaoWenList.add(
@@ -135,6 +136,16 @@ class BaGuaJiaZeTiaoWenListUseCase
   void validateParams(BaGuaJiaZeUseCaseParams params) {
     // 八字对象不会为null，因为是required参数
     // 这里可以添加其他验证逻辑
+  }
+
+  /// 通过 L0 get 方法获取单个条文
+  Future<TiaoWenDataModel?> _getById(int id) async {
+    final ctx = RequestContext(scopeUid: 'local-anonymous');
+    final result = await _repository.get(id, ctx);
+    return switch (result) {
+      Ok(:final value) => value,
+      Err(:final error) => throw error,
+    };
   }
 }
 

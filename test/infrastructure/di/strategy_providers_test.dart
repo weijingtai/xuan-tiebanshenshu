@@ -1,88 +1,55 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:repository_contract_kernel/repository_contract_kernel.dart';
 import 'package:repository_interface_tiebanshenshu/repository_interface_tiebanshenshu.dart';
 import 'package:tiebanshenshu/infrastructure/di/strategy_providers.dart';
 
 class _FakeTiebanRecordRepository implements TiebanRecordRepository {
   @override
-  Future<List<TiebanDivinationRecordContract>> getAllRecords() async =>
-      const [];
+  Future<Result<TiebanDivinationRecordContract?>> get(String uuid, RequestContext ctx) async => const Ok(null);
 
   @override
-  Future<TiebanDivinationRecordContract?> getRecordByUuid(String uuid) async =>
-      null;
+  Future<Result<bool>> exists(String uuid, RequestContext ctx) async => const Ok(false);
 
   @override
-  Future<String> saveRecord(TiebanDivinationRecordContract record) async =>
-      record.uuid;
+  Future<Result<Rev>> put(TiebanDivinationRecordContract record, RequestContext ctx, {Precondition pre = const Unconditional()}) async => const Ok(Rev('v1'));
 
   @override
-  Future<bool> softDeleteRecord(String uuid) async => true;
+  Future<Result<void>> softDelete(String uuid, RequestContext ctx, {Precondition pre = const Unconditional()}) async => const Ok(null);
 
   @override
-  Stream<List<TiebanDivinationRecordContract>> watchAllRecords() =>
-      Stream.value(const []);
+  Future<Result<void>> restore(String uuid, RequestContext ctx) async => const Ok(null);
+
+  @override
+  Future<Result<TiebanDivinationRecordContract?>> getIncludingDeleted(String uuid, RequestContext ctx) async => const Ok(null);
+
+  @override
+  Future<Result<Page<TiebanDivinationRecordContract>>> query(Map<String, Object?> spec, PageRequest page, RequestContext ctx) async => const Ok(Page(items: []));
+
+  @override
+  Future<Result<int>> count(Map<String, Object?> spec, RequestContext ctx) async => const Ok(0);
+
+  @override
+  Stream<Result<List<TiebanDivinationRecordContract>>> watch(Map<String, Object?> spec, RequestContext ctx) => Stream.value(const Ok([]));
+
+  @override
+  Future<Result<BatchOutcome<String>>> putAll(List<TiebanDivinationRecordContract> entities, RequestContext ctx) async => const Ok(BatchOutcome([]));
+
+  @override
+  Future<Result<R>> inTransaction<R>(Future<R> Function() body) async => Ok(await body());
 }
 
 class _FakeTiaoWenRepository implements TiaoWenRepository {
   @override
-  Future<TiaoWenDataModel?> getById(int id) async => null;
+  Future<Result<TiaoWenDataModel?>> get(int id, RequestContext ctx) async => const Ok(null);
 
   @override
-  Future<List<TiaoWenDataModel>> getAroundById({
-    required int centerId,
-    required int beforeCount,
-    required int afterCount,
-    bool includeCenterItem = true,
-  }) async => const [];
+  Future<Result<bool>> exists(int id, RequestContext ctx) async => const Ok(false);
 
   @override
-  Future<List<TiaoWenDataModel>> getByIdList({
-    required List<int> queryList,
-    bool preserveOrder = false,
-    bool skipNotFound = true,
-  }) async => const [];
+  Future<Result<Page<TiaoWenDataModel>>> query(Map<String, Object?> spec, PageRequest page, RequestContext ctx) async => const Ok(Page(items: []));
 
   @override
-  Future<List<TiaoWenDataModel>> getByIdRange({
-    required int startId,
-    required int endId,
-  }) async => const [];
-
-  @override
-  Future<List<TiaoWenDataModel>> getByIdsWithPageRange({
-    required List<int> ids,
-    required List<int> pageRange,
-    int steps = 1,
-  }) async => const [];
-
-  @override
-  Future<List<TiaoWenDataModel>> getByIntervalAroundId({
-    required int centerId,
-    required int interval,
-    required int minCount,
-    int? maxRange,
-    bool includeCenterItem = true,
-  }) async => const [];
-
-  @override
-  Future<int> getCount() async => 0;
-
-  @override
-  Future<String?> getTiaoWenContentByNumber(int number) async => null;
-
-  @override
-  Future<Map<int, String>> getTiaoWenContentByNumbers(
-    List<int> numbers,
-  ) async => const {};
-
-  @override
-  Future<List<TiaoWenDataModel>> listAll() async => const [];
-
-  @override
-  Future<List<TiaoWenDataModel>> search({
-    String? setName,
-    String? contentKeyword,
-  }) async => const [];
+  Future<Result<int>> count(Map<String, Object?> spec, RequestContext ctx) async => const Ok(0);
 }
 
 void main() {

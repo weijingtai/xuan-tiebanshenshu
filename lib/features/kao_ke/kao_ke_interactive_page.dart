@@ -1,7 +1,8 @@
 import 'package:tiebanshenshu/l10n/app_localizations.dart';
 import 'package:metaphysics_core/models/eight_chars.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Page;
 import 'package:provider/provider.dart';
+import 'package:repository_contract_kernel/repository_contract_kernel.dart';
 import '../../constant/kao_ke_constants.dart';
 import 'kao_ke_session_models.dart';
 import 'kao_ke_view_model.dart';
@@ -61,7 +62,15 @@ class _KaoKeInteractivePageState extends State<KaoKeInteractivePage> {
     if (numbers.isEmpty) return;
     try {
       final repo = context.read<TiaoWenRepository>();
-      final map = await repo.getTiaoWenContentByNumbers(numbers);
+      final ctx = RequestContext(scopeUid: 'local-anonymous');
+      final result = await repo.query({"ids": numbers}, PageRequest(limit: 100), ctx);
+      final page = switch (result) {
+        Ok(:final value) => value,
+        Err(:final error) => throw error,
+      };
+      final map = <int, String>{
+        for (final item in page.items) item.id: item.content1,
+      };
       if (mounted) setState(() => _douJiaYiContentMap = map);
     } catch (_) {}
   }
@@ -424,9 +433,15 @@ class _KaoKeInteractivePageState extends State<KaoKeInteractivePage> {
               ),
             ),
             FutureBuilder<String?>(
-              future: context
-                  .read<TiaoWenRepository>()
-                  .getTiaoWenContentByNumber(record.tiaoWenNumber),
+              future: () async {
+                final repo = context.read<TiaoWenRepository>();
+                final ctx = RequestContext(scopeUid: 'local-anonymous');
+                final result = await repo.get(record.tiaoWenNumber, ctx);
+                return switch (result) {
+                  Ok(:final value) => value?.content1,
+                  Err(:final error) => throw error,
+                };
+              }(),
               builder: (context, snapshot) {
                 final content = snapshot.data;
                 return Text(

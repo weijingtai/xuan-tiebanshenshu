@@ -1,3 +1,4 @@
+import 'package:repository_contract_kernel/repository_contract_kernel.dart';
 import 'package:metaphysics_core/models/eight_chars.dart';
 
 import 'base_get_tiao_wen_list_use_case.dart';
@@ -134,9 +135,16 @@ class FourZhuTianGanTiaoWenListUseCase
     tiaoWenNumbers.tiaoWenNumbers.insert(0, baseNumber.baseNumber);
 
     // 获取包括基础数在内的所有条文
-    final tiaoWenEntities = await repository.getByIdList(
-      queryList: tiaoWenNumbers.tiaoWenNumbers,
+    final ctx = RequestContext(scopeUid: 'local-anonymous');
+    final queryResult = await repository.query(
+      {"ids": tiaoWenNumbers.tiaoWenNumbers},
+      PageRequest(limit: 100),
+      ctx,
     );
+    final tiaoWenEntities = switch (queryResult) {
+      Ok(:final value) => value.items,
+      Err(:final error) => throw error,
+    };
 
     // 创建BaseNumberTiaoWenListModel
     return BaseNumberTiaoWenListModel.fromBaseModelWithData(
